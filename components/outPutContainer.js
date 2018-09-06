@@ -6,6 +6,7 @@ class OutPutContainer extends Component {
         return ( 
             <div className="w-100">
                 OutPut Container
+                {this.props.myIncome}
             </div>
          );
     }

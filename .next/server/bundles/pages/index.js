@@ -177,23 +177,22 @@ var InputContainer =
 function (_Component) {
   _inherits(InputContainer, _Component);
 
-  function InputContainer() {
-    var _ref;
-
-    var _temp, _this;
+  function InputContainer(props) {
+    var _this;
 
     _classCallCheck(this, InputContainer);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = InputContainer.__proto__ || Object.getPrototypeOf(InputContainer)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
+    _this = _possibleConstructorReturn(this, (InputContainer.__proto__ || Object.getPrototypeOf(InputContainer)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "handleInput", {
       configurable: true,
       enumerable: true,
       writable: true,
-      value: {}
-    }), _temp));
+      value: function value(e) {
+        return _this.props.handleIncomeChange(e.target.value);
+      }
+    });
+    _this.state = {};
+    return _this;
   }
 
   _createClass(InputContainer, [{
@@ -203,9 +202,17 @@ function (_Component) {
         className: "w-100 bg-near-white",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 7
+          lineNumber: 14
         }
-      }, "Input Container");
+      }, "Input Container", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        type: "text",
+        placeholder: "hello",
+        onChange: this.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        }
+      }));
     }
   }]);
 
@@ -274,7 +281,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 7
         }
-      }, "OutPut Container");
+      }, "OutPut Container", this.props.myIncome);
     }
   }]);
 
@@ -299,6 +306,8 @@ var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/pages/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -321,55 +330,57 @@ var Index =
 function (_Component) {
   _inherits(Index, _Component);
 
-  function Index() {
-    var _ref;
-
-    var _temp, _this;
+  function Index(props) {
+    var _this;
 
     _classCallCheck(this, Index);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {}
-    }), _temp));
+    _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+    _this.state = {
+      myIncome: 2000
+    };
+    _this.handleIncomeChange = _this.handleIncomeChange.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Index, [{
+    key: "handleIncomeChange",
+    value: function handleIncomeChange(inputValue) {
+      this.setState({
+        myIncome: inputValue
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 24
         }
       }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_header__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 25
         }
       }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
         className: "flex w-100 vh-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 26
         }
-      }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0__components_inputContainer__["a" /* default */], {
+      }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0__components_inputContainer__["a" /* default */], _extends({}, this.state, {
+        handleIncomeChange: this.handleIncomeChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 27
         }
-      }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_outPutContainer__["a" /* default */], {
+      })), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_outPutContainer__["a" /* default */], _extends({}, this.state, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 28
         }
-      })));
+      }))));
     }
   }]);
 
