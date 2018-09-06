@@ -4,7 +4,7 @@ class InputContainer extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>
+            <div className="w-100 bg-near-white">
                 Input Container
             </div>
          );

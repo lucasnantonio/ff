@@ -4,7 +4,7 @@ class OutPutContainer extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>
+            <div className="w-100">
                 OutPut Container
             </div>
          );
