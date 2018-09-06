@@ -24,7 +24,8 @@ class Index extends Component {
         <div>
             <Header />
             <div className="flex w-100 vh-100">
-                <InputContainer {...this.state} handleIncomeChange = {this.handleIncomeChange}/>
+                <InputContainer {...this.state} 
+                    handleIncomeChange = {this.handleIncomeChange}/>
                 <OutPutContainer {...this.state}/>
             </div>
         </div> );
