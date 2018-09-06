@@ -1,0 +1,1 @@
+export default () => <div>Welcome to FF</div>
