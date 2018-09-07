@@ -2,7 +2,7 @@ import InputContainer from "../components/inputContainer";
 import OutPutContainer from "../components/outPutContainer";
 import Header from "../components/header";
 import React, { Component } from 'react'
-import { toCurrency, getMyRetirementAge } from '../utils/math'
+import { toCurrency, getMyRetirementAge, getRetirementChart } from '../utils/math'
 // import Tachyons from 'tachyons'
 
 class Index extends Component {

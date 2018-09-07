@@ -11,13 +11,21 @@ export function getMyRetirementAge (state) {
   const lifeExpectancy = parseFloat(state.myLifeExpectancy)
   const myCurrentAge = parseFloat(state.myCurrentAge)
 
-  const chartData = getRetirementChart (mIR, balance, savings, retirementIncome,
-    myCurrentAge * 12, lifeExpectancy * 12)
-
-  console.log(chartData);
-
   return getRetirementAge (mIR, balance, savings, retirementIncome,
     myCurrentAge * 12, lifeExpectancy * 12) / 12
+}
+
+export function getMyRetirementChart (state) {
+  const aIR = parseFloat(state.myAnnualInterestRate)
+  const mIR = annualToMonthly(aIR)
+  const balance = parseFloat(state.myCurrentBalance)
+  const savings = parseFloat(state.myCurrentMonthlySavings)
+  const retirementIncome = parseFloat(state.myRetirementIncome)
+  const lifeExpectancy = parseFloat(state.myLifeExpectancy)
+  const myCurrentAge = parseFloat(state.myCurrentAge)
+
+  return getRetirementChart (mIR, balance, savings, retirementIncome,
+    myCurrentAge * 12, lifeExpectancy * 12)
 }
 
 function annualToMonthly(annualRate) {
