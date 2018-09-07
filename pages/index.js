@@ -48,7 +48,6 @@ class Index extends Component {
         // check if is special currencyInput
         if(floatValue && maskedValue){
             state[e.target.id] = floatValue
-            console.log(state)
             this.setState(state)
         } else {
         // update state for every input field
