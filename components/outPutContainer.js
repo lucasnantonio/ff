@@ -1,6 +1,5 @@
 import { Component } from "react";
 import RetirementChart from "../components/RetirementChart";
-import { getMyRetirementChart } from '../utils/math'
 
 class OutPutContainer extends Component {
     state = {  }
@@ -11,7 +10,7 @@ class OutPutContainer extends Component {
                 {this.props.myRetirementAge}
                 {/* {this.props.myCurrentAge} */}
                 <div> anos</div>
-                <RetirementChart data={getMyRetirementChart(this.props)}/>
+                <RetirementChart {...this.props}/>
             </div>
          );
     }

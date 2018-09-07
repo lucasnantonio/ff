@@ -1,15 +1,10 @@
 import Chart from 'chart.js';
 
-export function getRetirementChart(ctx, data) {
+export function getRetirementChart(ctx, datasets) {
   const RetirementChart = new Chart(ctx, {
     type: 'line',
     data: {
-      datasets: [
-        {
-          label: '',
-          data: data,
-        }
-      ],
+      datasets: datasets
     },
     options: {
       animation: false,
@@ -30,7 +25,7 @@ export function getRetirementChart(ctx, data) {
         ],
       },
       legend: {
-        display: false,
+        display: true,
       },
     },
   });
