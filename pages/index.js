@@ -40,10 +40,17 @@ class Index extends Component {
         //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
-    handleInput (e) {
+    handleInput (e, floatValue, maskedValue) {
 
-        // update state for every input field
+        // save state in a variable
         let state = this.state
+        
+        // check if is special currencyInput
+        if(floatValue && maskedValue){
+            state[e.target.id] = floatValue
+            this.setState(state)
+        } else {
+        // update state for every input field
         if (e.target.type){
             state[e.target.id] = e.target.value
             this.setState(state)
@@ -51,6 +58,7 @@ class Index extends Component {
             state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value
             this.setState(state)
         }
+    }
 
         // calculate retirement age
         this.setState({retirementResults : getRetirementResults(this.state)})
