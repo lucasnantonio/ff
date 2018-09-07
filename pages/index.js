@@ -48,7 +48,7 @@ class Index extends Component {
             state[e.target.id] = e.target.value
             this.setState(state)
         } else {
-            state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.querySelectorAll('input')[0].value
+            state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value
             this.setState(state)
         }
 

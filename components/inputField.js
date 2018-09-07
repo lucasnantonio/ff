@@ -61,18 +61,18 @@ class InputField extends Component {
         return (
             <div className="flex flex-column">
                 <div className={`flex justify-between f4 pv4 ${this.state.isFocused ? "o-100" : "o-50"}`}>
-                    <div className="flex justify-start self-start">
+                    <div className="flex justify-start self-start w-70">
                         <label className="gray mw5">{this.props.label}</label>
                     </div>
-                    <div className={`flex w5`}>
+                    <div className={`flex w-30`}>
                         {this.props.hasSteppers && 
                             <div className="pointer" onClick={this.handleDecrement}>
                             <MinusBtn />
                             </div>
                         }
-                        <div className={`bb w5 flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
+                        <div className={`bb w-100 flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
                         <input
-                            className="bn bg-transparent f3 tc"
+                            className="bn w-100 bg-transparent f3 tc"
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
