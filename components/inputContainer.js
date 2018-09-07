@@ -14,7 +14,6 @@ class InputContainer extends Component {
     }
 
     startApp () {
-        console.log('click')
         this.setState({
             isIntroShowing: false
         })
@@ -30,6 +29,8 @@ class InputContainer extends Component {
            <div id="questions" className="pt5">
            <QuestionChunk index="1" title="Sobre você">
                 <InputField
+                    isCurrency = "false"
+                    value = {this.props.myCurrentAge}
                     hasSteppers = "true"
                     stepperIncrement = "1"
                     min = "1"
@@ -40,6 +41,8 @@ class InputContainer extends Component {
                     helperText = {this.props.myCurrentAge > 25 ? "Ainda dá tempo" : "Começando jovem hein!"}
                 />
                 <InputField
+                    isCurrency = "false"
+                    value = {this.props.myLifeExpectancy}
                     hasSteppers = "true"
                     stepperIncrement = "1"
                     id = "myLifeExpectancy"
@@ -49,16 +52,14 @@ class InputContainer extends Component {
             </QuestionChunk>
             <QuestionChunk index="2" title="Sobre seu dinheiro">
             <InputField
+                isCurrency = "true"
+                value = {this.props.myCurrentBalance}
                 id = "myCurrentBalance"
-                label = "Quanto você tem hoje para começar a investir"
+                label = "Quanto você tem hoje para começar a investir?"
                 handleInput = {this.props.handleInput}
             />
             <InputField
-                id = "myCurrentIncome"
-                label = "Quanto você ganha hoje por mês?"
-                handleInput = {this.props.handleInput}
-            />
-            <InputField
+                value={this.props.myCurrentMonthlySavings}
                 id = "myCurrentMonthlySavings"
                 label = "Quanto você consegue guardar todo mês?"
                 handleInput = {this.props.handleInput}

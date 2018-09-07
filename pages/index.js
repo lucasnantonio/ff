@@ -7,11 +7,10 @@ import { isNumber } from '../utils/input'
 // import Tachyons from 'tachyons'
 
 class Index extends Component {
-
-
      constructor(props) {
         super(props);
         this.state = {
+            isShowingIntro: "true",
             myCurrentIncome: 10000,
             myCurrentBalance: 100000,
             myCurrentAge: 27,
@@ -51,10 +50,23 @@ class Index extends Component {
         //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
-    handleInput (e) {
+    handleInput (e, floatValue, maskedValue) {
 
-        // update state for every input field
+        //remove picture on first edit
+        document.getElementById('chartContainer').scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+
+        // save state in a variable
         let state = this.state
+        
+        // check if is special currencyInput
+        if(floatValue && maskedValue){
+            state[e.target.id] = floatValue
+            this.setState(state)
+        } else {
+        // update state for every input field
         if (e.target.type){
             state[e.target.id] = e.target.value
             this.setState(state)
@@ -62,6 +74,7 @@ class Index extends Component {
             state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value
             this.setState(state)
         }
+    }
 
         // calculate retirement age
         this.setState({retirementResults : getRetirementResults(this.state)})
@@ -120,6 +133,18 @@ class Index extends Component {
                 />
                 <OutPutContainer {...this.state}/>
             </div>
+            <style jsx global>{`
+                input{outline:none}
+                .checkmark{
+                    transition: all .2s;
+                }
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    /* display: none; <- Crashes Chrome on hover */
+                    -webkit-appearance: none;
+                    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+                }
+            `}</style>
             <style jsx>{
                 `.bg-light-pink{background-color: #fee0e0}
                 .dark-blue{color: #0148B3}
