@@ -1,16 +1,18 @@
 import { Component } from "react";
 import RetirementChart from "../components/RetirementChart";
+import RetirementTable from "../components/RetirementTable";
 
 class OutPutContainer extends Component {
     state = {  }
-    render() { 
-        return ( 
+    render() {
+        return (
             <div className="w-100">
-                <div>Você vai se aposentar com</div>
-                {this.props.myRetirementAge}
-                {/* {this.props.myCurrentAge} */}
-                <div> anos</div>
-                <RetirementChart {...this.props}/>
+              <RetirementChart
+                retirementResults={this.props.retirementResults}
+              />
+            <RetirementTable
+                retirementResults={this.props.retirementResults}
+              />
             </div>
          );
     }

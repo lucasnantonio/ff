@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { getRetirementChart } from '../utils/charts';
-import { getMyRetirementData } from '../utils/math'
 
 class RetirementChart extends Component {
     constructor(props) {
@@ -9,23 +8,13 @@ class RetirementChart extends Component {
         this.chart = null
     }
 
-    getInvestimentData(props) {
-      const { myInvestiments } = props
-
-      return myInvestiments.map((investiment) => {
-        const {label, rate} = investiment
-        return [label, getMyRetirementData(props, rate)]
-      })
-    }
-
     componentDidMount() {
       this.ctx = this.canvas.getContext('2d');
       this.chart = getRetirementChart(this.ctx);
     }
 
     componentWillUpdate(nextProps) {
-
-      const investimentData = this.getInvestimentData(nextProps)
+      const { retirementResults } = nextProps
 
       const options = {
         'poupança': {
@@ -54,7 +43,7 @@ class RetirementChart extends Component {
         }
       }
 
-      const linesets = investimentData.map((investiment) => {
+      const linesets = retirementResults.map((investiment) => {
         const [label, data] = investiment
         return {
           label: label,
@@ -63,7 +52,7 @@ class RetirementChart extends Component {
         }
       })
 
-      const pointsets = investimentData.map((investiment) => {
+      const pointsets = retirementResults.map((investiment) => {
         const [label, data] = investiment
         return {
           label: label,

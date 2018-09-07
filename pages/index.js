@@ -2,7 +2,7 @@ import InputContainer from "../components/inputContainer";
 import OutPutContainer from "../components/outPutContainer";
 import Header from "../components/header";
 import React, { Component } from 'react'
-import { toCurrency, getMyRetirementAge, getRetirementChart } from '../utils/math'
+import { toCurrency, getRetirementResults } from '../utils/math'
 // import Tachyons from 'tachyons'
 
 class Index extends Component {
@@ -33,7 +33,8 @@ class Index extends Component {
                 label: 'renda variável',
                 rate: 0.085
               }
-            ]
+            ],
+            retirementResults: false,
          }
          this.handleInput = this.handleInput.bind(this);
         //  this.handleIncrement = this.handleIncrement.bind(this);
@@ -52,7 +53,7 @@ class Index extends Component {
         }
 
         // calculate retirement age
-        this.setState({myRetirementAge : getMyRetirementAge(this.state)})
+        this.setState({retirementResults : getRetirementResults(this.state)})
     }
 
     render() {
