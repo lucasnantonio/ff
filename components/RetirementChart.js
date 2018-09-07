@@ -32,8 +32,6 @@ class RetirementChart extends Component {
 
       const { data } = nextProps;
 
-      console.log(data);
-
       this.chart = getRetirementChart(this.ctx, data);
       this.chart.update();
     }
