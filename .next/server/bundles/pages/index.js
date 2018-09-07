@@ -132,7 +132,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 7
         },
-        className: "jsx-1418763945"
+        className: "jsx-2757152517"
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
         rel: "stylesheet",
         href: "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css",
@@ -140,18 +140,18 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 8
         },
-        className: "jsx-1418763945"
+        className: "jsx-2757152517"
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
-        href: "https://fonts.googleapis.com/css?family=Rubik:300,500,700,900",
+        href: "https://fonts.googleapis.com/css?family=Poppins:300,700",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 10
         },
-        className: "jsx-1418763945"
+        className: "jsx-2757152517"
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
-        styleId: "1418763945",
-        css: "body *{font-family:'Rubik',sans-serif;font-weight:100;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaGVhZGVyLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVVxQixBQUc2RCwrQkFDaEIsZ0JBQ3BCIiwiZmlsZSI6ImNvbXBvbmVudHMvaGVhZGVyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sdWNhc25ldW1hbm5kZWFudG9uaW8vQ29kZS9mZiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdyZWFjdCdcblxuY2xhc3MgSGVhZGVyIGV4dGVuZHMgQ29tcG9uZW50IHtcbiAgICBzdGF0ZSA9IHsgIH1cbiAgICByZW5kZXIoKSB7IFxuICAgICAgICByZXR1cm4gKCBcbiAgICAgICAgICAgIDxoZWFkZXI+XG4gICAgICAgICAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL3VucGtnLmNvbS90YWNoeW9uc0A0LjEwLjAvY3NzL3RhY2h5b25zLm1pbi5jc3NcIi8+XG4gICAgICAgICAgICAgICAgPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1SdWJpazozMDAsNTAwLDcwMCw5MDBcIiByZWw9XCJzdHlsZXNoZWV0XCI+PC9saW5rPlxuICAgICAgICAgICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPlxuICAgICAgICAgICAgICAgICAgICB7YFxuICAgICAgICAgICAgICAgICAgICAgICAgYm9keSAqe1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAnUnViaWsnLCBzYW5zLXNlcmlmO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiAxMDA7XG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIGB9XG4gICAgICAgICAgICAgICAgPC9zdHlsZT5cbiAgICAgICAgICAgIDwvaGVhZGVyPlxuICAgICAgICAgKTtcbiAgICB9XG59XG4gXG5leHBvcnQgZGVmYXVsdCBIZWFkZXI7Il19 */\n/*@ sourceURL=components/header.js */"
+        styleId: "2757152517",
+        css: "body *{font-family:'Poppins',sans-serif;font-weight:100;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaGVhZGVyLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVdxQixBQUkrRCxpQ0FDbEIsZ0JBQ3BCIiwiZmlsZSI6ImNvbXBvbmVudHMvaGVhZGVyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sdWNhc25ldW1hbm5kZWFudG9uaW8vQ29kZS9mZiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdyZWFjdCdcblxuY2xhc3MgSGVhZGVyIGV4dGVuZHMgQ29tcG9uZW50IHtcbiAgICBzdGF0ZSA9IHsgIH1cbiAgICByZW5kZXIoKSB7IFxuICAgICAgICByZXR1cm4gKCBcbiAgICAgICAgICAgIDxoZWFkZXI+XG4gICAgICAgICAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL3VucGtnLmNvbS90YWNoeW9uc0A0LjEwLjAvY3NzL3RhY2h5b25zLm1pbi5jc3NcIi8+XG4gICAgICAgICAgICAgICAgey8qIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9UnViaWs6MzAwLDUwMCw3MDAsOTAwXCIgcmVsPVwic3R5bGVzaGVldFwiPjwvbGluaz4gKi99XG4gICAgICAgICAgICAgICAgPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1Qb3BwaW5zOjMwMCw3MDBcIiByZWw9XCJzdHlsZXNoZWV0XCI+PC9saW5rPlxuICAgICAgICAgICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPlxuICAgICAgICAgICAgICAgICAgICB7YFxuICAgICAgICAgICAgICAgICAgICAgICAgYm9keSAqe1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIGZvbnQtZmFtaWx5OiAnUnViaWsnLCBzYW5zLXNlcmlmO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAnUG9wcGlucycsIHNhbnMtc2VyaWY7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDEwMDtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgYH1cbiAgICAgICAgICAgICAgICA8L3N0eWxlPlxuICAgICAgICAgICAgPC9oZWFkZXI+XG4gICAgICAgICApO1xuICAgIH1cbn1cbiBcbmV4cG9ydCBkZWZhdWx0IEhlYWRlcjsiXX0= */\n/*@ sourceURL=components/header.js */"
       }));
     }
   }]);
@@ -170,6 +170,7 @@ function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_inputField__ = __webpack_require__("./components/inputField.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_questionChunk__ = __webpack_require__("./components/questionChunk.js");
 var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/inputContainer.js";
 
 
@@ -186,6 +187,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -209,24 +211,78 @@ function (_Component) {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        className: "w-100 bg-near-white",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 12
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
-        handleIncomeChange: this.props.handleIncomeChange,
+        className: "w-100 bg-yellow pa5 overflow-scroll",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 13
         }
-      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
-        handleIncomeChange: this.props.handleIncomeChange,
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h1", {
+        className: "f1 b mb6",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        }
+      }, "Bem-vindo \xE0 melhor calculadora de independ\xEAncia financeira da Internet"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_questionChunk__["a" /* default */], {
+        title: "Vamos come\xE7ar falando sobre voc\xEA",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
+        id: "myCurrentAge",
+        label: "Quantos anos voc\xEA tem?",
+        handleInput: this.props.handleInput,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 16
         }
-      }));
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
+        id: "myLifeExpectancy",
+        label: "Voc\xEA pretende viver at\xE9 quantos anos?",
+        handleInput: this.props.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_questionChunk__["a" /* default */], {
+        title: "Agora, sobre seu dinheiro",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
+        id: "myCurrentBalance",
+        label: "Quanto voc\xEA tem hoje para come\xE7ar a investir",
+        handleInput: this.props.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
+        id: "myCurrentIncome",
+        label: "Quanto voc\xEA ganha hoje por m\xEAs?",
+        handleInput: this.props.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
+        id: "myCurrentMonthlySavings",
+        label: "Quanto voc\xEA consegue guardar todo m\xEAs?",
+        handleInput: this.props.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_inputField__["a" /* default */], {
+        id: "myCurrentMonthlyCost",
+        label: "Qual o seu custo de vida atual?",
+        handleInput: this.props.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      })));
     }
   }]);
 
@@ -277,25 +333,39 @@ function (_Component) {
       enumerable: true,
       writable: true,
       value: function value(e) {
-        return _this.props.handleIncomeChange(e.target.value);
+        return _this.props.handleInput(e);
       }
     });
     _this.state = {};
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(InputField, [{
     key: "render",
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
-        type: "text",
-        placeholder: "hello",
-        onChange: this.handleInput,
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        className: "flex justify-between f3 pv4",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 15
         }
-      });
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("label", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        }
+      }, this.props.label), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        className: "bn bg-white f3",
+        id: this.props.id,
+        type: "number",
+        placeholder: this.props.placeholder,
+        onChange: this.handleInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        }
+      }));
     }
   }]);
 
@@ -359,12 +429,22 @@ function (_Component) {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        className: "w-100",
+        className: "w-100 bg-yellow",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 7
         }
-      }, "OutPut Container", this.props.myIncome);
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        }
+      }, "Voc\xEA vai se aposentar com"), this.props.myRetirementAge, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11
+        }
+      }, " anos"));
     }
   }]);
 
@@ -372,6 +452,86 @@ function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (OutPutContainer);
+
+/***/ }),
+
+/***/ "./components/questionChunk.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/questionChunk.js";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+var QuestionChunk =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(QuestionChunk, _Component);
+
+  function QuestionChunk() {
+    var _ref;
+
+    var _temp, _this;
+
+    _classCallCheck(this, QuestionChunk);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = QuestionChunk.__proto__ || Object.getPrototypeOf(QuestionChunk)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {}
+    }), _temp));
+  }
+
+  _createClass(QuestionChunk, [{
+    key: "render",
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        className: "mb6",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h2", {
+        className: "f2 b",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        }
+      }, this.props.title), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      }, this.props.children));
+    }
+  }]);
+
+  return QuestionChunk;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (QuestionChunk);
 
 /***/ }),
 
@@ -385,6 +545,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_header__ = __webpack_require__("./components/header.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_math__ = __webpack_require__("./utils/math.js");
 var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/pages/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -406,6 +567,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
  // import Tachyons from 'tachyons'
 
 var Index =
@@ -420,17 +582,27 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
     _this.state = {
-      myIncome: 2000
+      myCurrentIncome: 10000,
+      myCurrentBalance: 10000,
+      myCurrentAge: 25,
+      myCurrentMonthlySavings: 5000,
+      myCurrentLifestyleCost: 3000,
+      myRetirementAge: 0
     };
-    _this.handleIncomeChange = _this.handleIncomeChange.bind(_assertThisInitialized(_this));
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Index, [{
-    key: "handleIncomeChange",
-    value: function handleIncomeChange(inputValue) {
+    key: "handleInput",
+    value: function handleInput(e) {
+      // update state for every input field
+      var state = this.state;
+      state[e.target.id] = e.target.value;
+      this.setState(state); // calculate retirement age
+
       this.setState({
-        myIncome: inputValue
+        myRetirementAge: Object(__WEBPACK_IMPORTED_MODULE_4__utils_math__["a" /* calculateRetirementAge */])(this.state)
       });
     }
   }, {
@@ -439,29 +611,29 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 35
         }
       }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_header__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 36
         }
       }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
         className: "flex w-100 vh-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 37
         }
       }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0__components_inputContainer__["a" /* default */], _extends({}, this.state, {
-        handleIncomeChange: this.handleIncomeChange,
+        handleInput: this.handleInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 38
         }
       })), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_outPutContainer__["a" /* default */], _extends({}, this.state, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 40
         }
       }))));
     }
@@ -471,6 +643,21 @@ function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_3_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
+
+/***/ }),
+
+/***/ "./utils/math.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export toCurrency */
+/* harmony export (immutable) */ __webpack_exports__["a"] = calculateRetirementAge;
+function toCurrency(value) {
+  return "R$ " + Number(value).toFixed(2);
+}
+function calculateRetirementAge(state) {
+  return 100 - state.myCurrentAge;
+}
 
 /***/ }),
 
