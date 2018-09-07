@@ -20,8 +20,8 @@ function NPER(rate, payment, present, future, type) {
 
 export function getLifeEvent(age, lifeEvents) {
   for (const e of lifeEvents) {
-    if (e.age === age) {
-      return e.cost
+    if (parseFloat(e.age) === age) {
+      return parseFloat(e.cost)
     }
   }
   return 0
@@ -46,6 +46,8 @@ export function retirementAge(iR, balance, savings, retirementIncome,
   while (true) {
     balance = (1 + iR) * balance + savings - getLifeEvent(retirementAge, lifeEvents)
     const nper = NPER(iR, -retirementIncome, balance)
+
+    console.log(nper);
 
     if (isNaN(nper) || retirementAge + nper >= lifeExpectancy) {
       return [retirementAge + 1, balance]

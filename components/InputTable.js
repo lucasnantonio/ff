@@ -19,6 +19,7 @@ class InputTable extends Component {
             <table>
               <thead>
                 <tr>
+                  <td></td>
                   <td>evento</td>
                   <td>idade</td>
                   <td>valor</td>

@@ -41,11 +41,6 @@ class Index extends Component {
                 age: 30 * 12,
                 cost: 100000
               },
-              {
-                label: 'MBA',
-                age: 40 * 12,
-                cost: 200000
-              }
             ],
             retirementResults: false,
          }
@@ -88,8 +83,11 @@ class Index extends Component {
           return row;
         });
         this.setState({ [tableName]: updatedTable });
+        this.setState({retirementResults : getRetirementResults(
+          {...this.state,
+          [tableName] : updatedTable}
+        )}) // fix goHorse
       }
-      console.log(this.state);
     };
 
     handleAddTableRow = (tableName, fields) => () => {
