@@ -6,11 +6,10 @@ import { toCurrency, getRetirementResults } from '../utils/math'
 // import Tachyons from 'tachyons'
 
 class Index extends Component {
-
-
      constructor(props) {
         super(props);
         this.state = {
+            isShowingIntro: "true",
             myCurrentIncome: 10000,
             myCurrentBalance: 100000,
             myCurrentAge: 27,
@@ -41,6 +40,12 @@ class Index extends Component {
     }
 
     handleInput (e, floatValue, maskedValue) {
+
+        //remove picture on first edit
+        document.getElementById('chartContainer').scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
 
         // save state in a variable
         let state = this.state
