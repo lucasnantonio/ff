@@ -47,7 +47,7 @@ class InputTable extends Component {
                         <input
                           style={{width: 100}}
                           id="age"
-                          type="text"
+                          type="number"
                           value={row.age}
                           onChange={handleTableInput(rowId, id, table)}
                           />
@@ -56,7 +56,8 @@ class InputTable extends Component {
                         <input
                           style={{width: 100}}
                           id="cost"
-                          type="text"
+                          type="number"
+                          step="10000"
                           value={row.cost}
                           onChange={handleTableInput(rowId, id, table)}
                           />

@@ -38,7 +38,7 @@ class Index extends Component {
             lifeEvents: [
               {
                 label: 'viagem',
-                age: 30 * 12,
+                age: 30, // years, not months
                 cost: 100000
               },
             ],
@@ -98,10 +98,13 @@ class Index extends Component {
     };
 
     handleRemoveTableRow = (idx, tableName, table) => () => {
-
-      this.setState({
-        [tableName]: table.filter((p, pidx) => idx !== pidx),
-      });
+      const updatedTable = table.filter((p, pidx) => idx !== pidx)
+      this.setState({ [tableName]: updatedTable });
+      
+      this.setState({retirementResults : getRetirementResults(
+        {...this.state,
+        [tableName] : updatedTable}
+      )}) // fix goHorse
     };
 
     render() {

@@ -71,7 +71,13 @@ class InputContainer extends Component {
             <InputTable
               id = "lifeEvents"
               table = {this.props.lifeEvents}
-              fields = {{label:'', age: '', cost: ''}}
+              fields = {
+                {
+                  label:'',
+                  age: 0,
+                  cost: 0
+                }
+              }
               handleTableInput = {this.props.handleTableInput}
               handleAddTableRow = {this.props.handleAddTableRow}
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
