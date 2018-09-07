@@ -3,6 +3,7 @@ import InputContainer from './inputContainer';
 import InputHelper from './inputHelper'
 import MinusBtn from './minusBtn'
 import PlusBtn from './plusBtn'
+import CurrencyInput from 'react-currency-input'
 
 class InputField extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class InputField extends Component {
         this.handleDecrement = this.handleDecrement.bind(this)
     }
 
-    handleInput (e) {
+    handleInput (e, maskedValue, floatValue) {
         this.props.handleInput(e);
     }
 
@@ -44,7 +45,6 @@ class InputField extends Component {
 
     handleBlur (e) {
         if (e.target.value.length != 0){
-            console.log(e.target.value.length)
             this.setState({
                 isEmpty : false,
                 isFocused : true
@@ -71,7 +71,9 @@ class InputField extends Component {
                             </div>
                         }
                         <div className={`bb w-100 flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
+                       {this.props.isCurrency == "false" ?
                         <input
+                            value={this.props.value}
                             className="bn w-100 bg-transparent f3 tc"
                             min={this.props.min}
                             max={this.props.max}
@@ -82,7 +84,17 @@ class InputField extends Component {
                             placeholder={this.props.placeholder}
                             onChange={this.handleInput} >
                         </input>
+                        :
+                        <CurrencyInput
+                            className="bn w-100 bg-transparent f3 tc"
+                            prefix="R$"
+                            decimalSeparator="," 
+                            thousandSeparator="."
+                            onChangeEvent={this.handleInput}
+                             />
+                        }
                         </div>
+                       
                         {this.props.hasSteppers && 
                              <div className="pointer" onClick={this.handleIncrement}>
                              <PlusBtn />
