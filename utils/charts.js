@@ -15,13 +15,17 @@ export function getRetirementChart(ctx) {
               display: true,
               labelString: 'idade (anos)',
             },
+            ticks: {
+                min: 0,
+                suggestedMax: 100, // maximum value, unless there is a bigger value.
+            }
           },
         ],
         yAxes: [
           {
             scaleLabel: {
               display: true,
-              labelString: 'balance',
+              labelString: 'dinheiro',
             },
           },
         ],
