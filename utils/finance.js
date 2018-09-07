@@ -18,10 +18,10 @@ function NPER(rate, payment, present, future, type) {
   return Math.log(num / den) / Math.log(1 + rate);
 }
 
-export function getLifeEvent(t, lifeEvents) {
-  for (let [tE, cE] of lifeEvents) {
-    if (tE === t) {
-      return cE
+export function getLifeEvent(age, lifeEvents) {
+  for (const e of lifeEvents) {
+    if (e.age === age) {
+      return e.cost
     }
   }
   return 0
