@@ -3,7 +3,22 @@ import InputContainer from './inputContainer';
 import InputHelper from './inputHelper'
 import MinusBtn from './minusBtn'
 import PlusBtn from './plusBtn'
-import CurrencyInput from 'react-currency-input'
+// import CurrencyInput from 'react-currency-input'
+import IntlCurrencyInput from "react-intl-currency-input"
+
+const currencyConfig = {
+    locale: "pt-BR",
+    formats: {
+      number: {
+        BRL: {
+          style: "currency",
+          currency: "BRL",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        },
+      },
+    },
+  };
 
 class InputField extends Component {
     constructor(props) {
@@ -19,8 +34,8 @@ class InputField extends Component {
         this.handleDecrement = this.handleDecrement.bind(this)
     }
 
-    handleInput (e, maskedValue, floatValue) {
-        this.props.handleInput(e);
+    handleInput (e, floatValue, maskedValue) {
+        this.props.handleInput(e, floatValue, maskedValue);
     }
 
     handleFocus () {
@@ -85,13 +100,12 @@ class InputField extends Component {
                             onChange={this.handleInput} >
                         </input>
                         :
-                        <CurrencyInput
-                            className="bn w-100 bg-transparent f3 tc"
-                            prefix="R$"
-                            decimalSeparator="," 
-                            thousandSeparator="."
-                            onChangeEvent={this.handleInput}
-                             />
+                        <IntlCurrencyInput 
+                            value={this.props.value}
+                            id={this.props.id}
+                            currency="BRL" 
+                            config={currencyConfig}
+                            onChange={this.handleInput} />  
                         }
                         </div>
                        
