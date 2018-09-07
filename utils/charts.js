@@ -11,6 +11,10 @@ export function getRetirementChart(ctx) {
           {
             type: 'linear',
             position: 'bottom',
+            scaleLabel: {
+              display: true,
+              labelString: 'idade (anos)',
+            },
           },
         ],
         yAxes: [
