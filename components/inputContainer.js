@@ -28,7 +28,11 @@ class InputContainer extends Component {
            
            <div id="questions" className="pt5">
            <QuestionChunk index="1" title="Sobre você">
-                <InputField 
+                <InputField
+                    hasSteppers = "true"
+                    stepperIncrement = "1"
+                    min = "1"
+                    max = "100"
                     id = "myCurrentAge"
                     label = "Quantos anos você tem?"
                     handleInput = {this.props.handleInput}

@@ -22,13 +22,21 @@ class Index extends Component {
             myLifeExpectancy: 100,
          }
          this.handleInput = this.handleInput.bind(this);
+        //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
     handleInput (e) {
+    
         // update state for every input field
         let state = this.state
-        state[e.target.id] = e.target.value
-        this.setState(state)
+        if (e.target.type){
+            state[e.target.id] = e.target.value
+            this.setState(state)
+        } else {
+            state[e.target.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.querySelectorAll('input')[0].value
+            this.setState(state)
+        }
+    
         // calculate retirement age
         this.setState({myRetirementAge : calculateRetirementAge(this.state)})
     }
