@@ -1,6 +1,7 @@
 import { Component } from "react";
 import InputField from '../components/inputField'
 import QuestionChunk from '../components/questionChunk'
+import Intro from '../components/intro'
 
 class InputContainer extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class InputContainer extends Component {
 
     render() { 
         return ( 
-            <div className="w-100 bg-yellow pa5 overflow-scroll">
+            <div className="w-100 pa5 overflow-scroll">
+            <Intro />
             <h1 className="f1 b mb6">Bem-vindo à melhor calculadora de independência financeira da Internet</h1>
            <QuestionChunk title="Vamos começar falando sobre você">
                 <InputField 
@@ -46,7 +48,13 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             </QuestionChunk>
-
+            <style jsx>
+                {`
+                ::-webkit-scrollbar {
+                    width: 0px;  /* remove scrollbar space */
+                    background: transparent;  /* optional: just make scrollbar invisible */
+                }`}
+            </style>
             </div>
          );
     }

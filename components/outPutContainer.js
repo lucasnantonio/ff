@@ -4,7 +4,7 @@ class OutPutContainer extends Component {
     state = {  }
     render() { 
         return ( 
-            <div className="w-100 bg-yellow">
+            <div className="w-100">
                 <div>Você vai se aposentar com</div>
                 {this.props.myRetirementAge}
                 {/* {this.props.myCurrentAge} */}

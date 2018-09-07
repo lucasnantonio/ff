@@ -11,6 +11,7 @@ class Index extends Component {
      constructor(props) {
         super(props);
         this.state = {
+            
             myCurrentIncome: 10000,
             myCurrentBalance: 100000,
             myCurrentAge: 27,
@@ -37,11 +38,16 @@ class Index extends Component {
         return (
         <div>
             <Header />
-            <div className="flex w-100 vh-100">
+            <div className="flex w-100 vh-100 bg-light-pink dark-blue">
                 <InputContainer {...this.state}
                     handleInput = {this.handleInput}/>
                 <OutPutContainer {...this.state}/>
             </div>
+            <style jsx>{
+                `.bg-light-pink{background-color: #fee0e0}
+                .dark-blue{color: #0148B3}
+                `
+            }</style>
         </div> );
     }
 }
