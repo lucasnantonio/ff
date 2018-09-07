@@ -2,7 +2,7 @@ import InputContainer from "../components/inputContainer";
 import OutPutContainer from "../components/outPutContainer";
 import Header from "../components/header";
 import React, { Component } from 'react'
-import { toCurrency, calculateRetirementAge } from '../utils/math'
+import { toCurrency, getMyRetirementAge } from '../utils/math'
 // import Tachyons from 'tachyons'
 
 class Index extends Component {
@@ -30,7 +30,7 @@ class Index extends Component {
         state[e.target.id] = e.target.value
         this.setState(state)
         // calculate retirement age
-        this.setState({myRetirementAge : calculateRetirementAge(this.state)})
+        this.setState({myRetirementAge : getMyRetirementAge(this.state)})
     }
 
     render() {

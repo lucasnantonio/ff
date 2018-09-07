@@ -2,31 +2,17 @@ export function toCurrency (value) {
     return ("R$ " + Number(value).toFixed(2))
 }
 
-export function calculateRetirementAge (state) {
-  const aIR = state.myAnnualInterestRate
+export function getMyRetirementAge (state) {
+  const aIR = parseFloat(state.myAnnualInterestRate)
   const mIR = annualToMonthly(aIR)
-
-  let balance = parseFloat(state.myCurrentBalance)
-  let age = parseFloat(state.myCurrentAge)
+  const balance = parseFloat(state.myCurrentBalance)
   const savings = parseFloat(state.myCurrentMonthlySavings)
   const retirementIncome = parseFloat(state.myRetirementIncome)
   const lifeExpectancy = parseFloat(state.myLifeExpectancy)
+  const myCurrentAge = parseFloat(state.myCurrentAge)
 
-  balance += savings
-  let m = 1
-  while (true) {
-    balance = (1 + mIR) * balance + savings
-    const nper = NPER(mIR, -retirementIncome, balance)
-
-    if (isNaN(nper) || age + nper / 12 > lifeExpectancy) {
-      return age
-    }
-
-    m += 1
-    age += 1 / 12
-  }
-
-    return null
+  return getRetirementAge (mIR, balance, savings, retirementIncome,
+    myCurrentAge * 12, lifeExpectancy * 12) / 12
 }
 
 function annualToMonthly(annualRate) {
@@ -47,4 +33,27 @@ function NPER(rate, payment, present, future, type) {
   var num = payment * (1 + rate * type) - future * rate;
   var den = (present * rate + payment * (1 + rate * type));
   return Math.log(num / den) / Math.log(1 + rate);
+}
+
+export function getRetirementAge (mIR, balance, savings, retirementIncome,
+  currentAge, lifeExpectancy) {
+  /* all variables in months */
+
+  let retirementAge = currentAge
+  balance += savings
+  let m = 1
+
+  while (true) {
+    balance = (1 + mIR) * balance + savings
+    const nper = NPER(mIR, -retirementIncome, balance)
+
+    if (isNaN(nper) || retirementAge + nper > lifeExpectancy) {
+      return retirementAge
+    }
+
+    m += 1
+    retirementAge += 1
+  }
+
+  return null
 }
