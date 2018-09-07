@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import InputContainer from './inputContainer';
 import InputHelper from './inputHelper'
+import MinusBtn from './minusBtn'
+import PlusBtn from './plusBtn'
 
 class InputField extends Component {
     constructor(props) {
@@ -27,14 +29,14 @@ class InputField extends Component {
     }
     
     handleIncrement (e){
-        let input = e.target.parentElement.querySelectorAll('input')[0]
+        let input = e.target.parentElement.parentElement.querySelectorAll('input')[0]
         input.stepUp()
         input.focus()
         this.handleInput(e)
     }
 
     handleDecrement (e){
-        let input = e.target.parentElement.querySelectorAll('input')[0]
+        let input = e.target.parentElement.parentElement.querySelectorAll('input')[0]
         input.stepDown()
         input.focus()
         this.handleInput(e)
@@ -64,11 +66,13 @@ class InputField extends Component {
                     </div>
                     <div className={`flex w5`}>
                         {this.props.hasSteppers && 
-                            <div onClick={this.handleDecrement} className=" mh2 w2 b h2 br-pill ba bw1 tc center pa1 pointer">-</div>
+                            <div className="pointer" onClick={this.handleDecrement}>
+                            <MinusBtn />
+                            </div>
                         }
-                        <div className={`bb ${this.state.isFocused ? "b--red" : "b--gray"}`}>
+                        <div className={`bb flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
                         <input
-                            className="bn bg-transparent f3 mw3"
+                            className="bn bg-transparent f3 mw3 tc"
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
@@ -80,11 +84,13 @@ class InputField extends Component {
                         </input>
                         </div>
                         {this.props.hasSteppers && 
-                            <div onClick={this.handleIncrement} data-name="incrementBtn" className=" mh2 w2 h2 br-pill ba bw1 b tc center pa1 pointer">+</div>
+                             <div className="pointer" onClick={this.handleIncrement}>
+                             <PlusBtn />
+                             </div>
                         }
                     </div>
                 </div>
-                <InputHelper isEmpty={this.state.isEmpty} helperText={this.props.helperText}/>
+                {/* <InputHelper isEmpty={this.state.isEmpty} helperText={this.props.helperText}/> */}
                 <style jsx>{`
                     input{outline:none}
                     .checkmark{
