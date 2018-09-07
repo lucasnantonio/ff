@@ -23,13 +23,10 @@ class RetirementChart extends Component {
 
     componentDidMount() {
       this.ctx = this.canvas.getContext('2d');
+      this.chart = getRetirementChart(this.ctx);
     }
 
     componentWillUpdate(nextProps) {
-      if (this.chart) {
-        this.chart.destroy();
-      }
-
       const datasets = [
         {
           label: 'POUPANÇA',
@@ -63,8 +60,8 @@ class RetirementChart extends Component {
         },
       ]
 
-      this.chart = getRetirementChart(this.ctx, datasets);
-      this.chart.update();
+      this.chart.data = {datasets: datasets}
+      this.chart.update()
     }
 }
 

@@ -1,11 +1,9 @@
 import Chart from 'chart.js';
 
-export function getRetirementChart(ctx, datasets) {
+export function getRetirementChart(ctx) {
   const RetirementChart = new Chart(ctx, {
     type: 'line',
-    data: {
-      datasets: datasets
-    },
+    data: {},
     options: {
       animation: false,
       scales: {
