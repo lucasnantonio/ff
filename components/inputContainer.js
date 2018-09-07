@@ -54,7 +54,7 @@ class InputContainer extends Component {
                 isCurrency = "true"
                 value = {this.props.myCurrentBalance}
                 id = "myCurrentBalance"
-                label = "Quanto você tem hoje para começar a investir"
+                label = "Quanto você tem hoje para começar a investir?"
                 handleInput = {this.props.handleInput}
             />
             <InputField
