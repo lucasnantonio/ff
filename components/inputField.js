@@ -85,7 +85,7 @@ class InputField extends Component {
                             <MinusBtn />
                             </div>
                         }
-                        <div className={`bb w-100 flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
+                        <div className={`bb w-100 flex flex-column justify-center ${this.state.isFocused ? "b--gray" : "b--black-20"}`}>
                        {this.props.isCurrency == "false" ?
                         <input
                             value={this.props.value}
