@@ -36,8 +36,11 @@ class InputContainer extends Component {
                     id = "myCurrentAge"
                     label = "Quantos anos você tem?"
                     handleInput = {this.props.handleInput}
+                    helperText = {this.props.myCurrentAge > 25 ? "Ainda dá tempo" : "Começando jovem hein!"}
                 />
                 <InputField
+                    hasSteppers = "true"
+                    stepperIncrement = "1"
                     id = "myLifeExpectancy"
                     label = "Você pretende viver até quantos anos?"
                     handleInput = {this.props.handleInput}
