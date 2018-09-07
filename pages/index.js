@@ -10,13 +10,16 @@ class Index extends Component {
 
      constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             myCurrentIncome: 10000,
-            myCurrentBalance: 10000,
-            myCurrentAge: 25,
-            myCurrentMonthlySavings: 5000,
+            myCurrentBalance: 100000,
+            myCurrentAge: 27,
+            myCurrentMonthlySavings: 1500,
             myCurrentLifestyleCost: 3000,
             myRetirementAge: 0,
+            myAnnualInterestRate: 0.08,
+            myRetirementIncome: 10000,
+            myLifeExpectancy: 100,
          }
          this.handleInput = this.handleInput.bind(this);
     }
@@ -28,9 +31,9 @@ class Index extends Component {
         this.setState(state)
         // calculate retirement age
         this.setState({myRetirementAge : calculateRetirementAge(this.state)})
-    }   
+    }
 
-    render() { 
+    render() {
         return (
         <div>
             <Header />

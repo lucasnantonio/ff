@@ -80,7 +80,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/header.js";
+var _jsxFileName = "C:\\Users\\guilh\\Desktop\\ff\\components\\header.js";
 
 
 
@@ -151,7 +151,7 @@ function (_Component) {
         className: "jsx-2757152517"
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
         styleId: "2757152517",
-        css: "body *{font-family:'Poppins',sans-serif;font-weight:100;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaGVhZGVyLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVdxQixBQUkrRCxpQ0FDbEIsZ0JBQ3BCIiwiZmlsZSI6ImNvbXBvbmVudHMvaGVhZGVyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy9sdWNhc25ldW1hbm5kZWFudG9uaW8vQ29kZS9mZiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdyZWFjdCdcblxuY2xhc3MgSGVhZGVyIGV4dGVuZHMgQ29tcG9uZW50IHtcbiAgICBzdGF0ZSA9IHsgIH1cbiAgICByZW5kZXIoKSB7IFxuICAgICAgICByZXR1cm4gKCBcbiAgICAgICAgICAgIDxoZWFkZXI+XG4gICAgICAgICAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL3VucGtnLmNvbS90YWNoeW9uc0A0LjEwLjAvY3NzL3RhY2h5b25zLm1pbi5jc3NcIi8+XG4gICAgICAgICAgICAgICAgey8qIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9UnViaWs6MzAwLDUwMCw3MDAsOTAwXCIgcmVsPVwic3R5bGVzaGVldFwiPjwvbGluaz4gKi99XG4gICAgICAgICAgICAgICAgPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1Qb3BwaW5zOjMwMCw3MDBcIiByZWw9XCJzdHlsZXNoZWV0XCI+PC9saW5rPlxuICAgICAgICAgICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPlxuICAgICAgICAgICAgICAgICAgICB7YFxuICAgICAgICAgICAgICAgICAgICAgICAgYm9keSAqe1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIGZvbnQtZmFtaWx5OiAnUnViaWsnLCBzYW5zLXNlcmlmO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAnUG9wcGlucycsIHNhbnMtc2VyaWY7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDEwMDtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgYH1cbiAgICAgICAgICAgICAgICA8L3N0eWxlPlxuICAgICAgICAgICAgPC9oZWFkZXI+XG4gICAgICAgICApO1xuICAgIH1cbn1cbiBcbmV4cG9ydCBkZWZhdWx0IEhlYWRlcjsiXX0= */\n/*@ sourceURL=components/header.js */"
+        css: "body *{font-family:'Poppins',sans-serif;font-weight:100;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHNcXGhlYWRlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFXcUIsQUFJK0QsaUNBQ2xCLGdCQUNwQiIsImZpbGUiOiJjb21wb25lbnRzXFxoZWFkZXIuanMiLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxndWlsaFxcRGVza3RvcFxcZmYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAncmVhY3QnXHJcblxyXG5jbGFzcyBIZWFkZXIgZXh0ZW5kcyBDb21wb25lbnQge1xyXG4gICAgc3RhdGUgPSB7ICB9XHJcbiAgICByZW5kZXIoKSB7IFxyXG4gICAgICAgIHJldHVybiAoIFxyXG4gICAgICAgICAgICA8aGVhZGVyPlxyXG4gICAgICAgICAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL3VucGtnLmNvbS90YWNoeW9uc0A0LjEwLjAvY3NzL3RhY2h5b25zLm1pbi5jc3NcIi8+XHJcbiAgICAgICAgICAgICAgICB7LyogPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1SdWJpazozMDAsNTAwLDcwMCw5MDBcIiByZWw9XCJzdHlsZXNoZWV0XCI+PC9saW5rPiAqL31cclxuICAgICAgICAgICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9UG9wcGluczozMDAsNzAwXCIgcmVsPVwic3R5bGVzaGVldFwiPjwvbGluaz5cclxuICAgICAgICAgICAgICAgIDxzdHlsZSBqc3ggZ2xvYmFsPlxyXG4gICAgICAgICAgICAgICAgICAgIHtgXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIGJvZHkgKntcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIGZvbnQtZmFtaWx5OiAnUnViaWsnLCBzYW5zLXNlcmlmO1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZm9udC1mYW1pbHk6ICdQb3BwaW5zJywgc2Fucy1zZXJpZjtcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiAxMDA7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgICAgICBgfVxyXG4gICAgICAgICAgICAgICAgPC9zdHlsZT5cclxuICAgICAgICAgICAgPC9oZWFkZXI+XHJcbiAgICAgICAgICk7XHJcbiAgICB9XHJcbn1cclxuIFxyXG5leHBvcnQgZGVmYXVsdCBIZWFkZXI7Il19 */\n/*@ sourceURL=components\\header.js */"
       }));
     }
   }]);
@@ -171,7 +171,7 @@ function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_inputField__ = __webpack_require__("./components/inputField.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_questionChunk__ = __webpack_require__("./components/questionChunk.js");
-var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/inputContainer.js";
+var _jsxFileName = "C:\\Users\\guilh\\Desktop\\ff\\components\\inputContainer.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -299,7 +299,7 @@ function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/inputField.js";
+var _jsxFileName = "C:\\Users\\guilh\\Desktop\\ff\\components\\inputField.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -382,7 +382,7 @@ function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/outPutContainer.js";
+var _jsxFileName = "C:\\Users\\guilh\\Desktop\\ff\\components\\outPutContainer.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -461,7 +461,7 @@ function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/components/questionChunk.js";
+var _jsxFileName = "C:\\Users\\guilh\\Desktop\\ff\\components\\questionChunk.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -546,7 +546,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_math__ = __webpack_require__("./utils/math.js");
-var _jsxFileName = "/Users/lucasneumanndeantonio/Code/ff/pages/index.js";
+var _jsxFileName = "C:\\Users\\guilh\\Desktop\\ff\\pages\\index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -583,11 +583,14 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
     _this.state = {
       myCurrentIncome: 10000,
-      myCurrentBalance: 10000,
-      myCurrentAge: 25,
-      myCurrentMonthlySavings: 5000,
+      myCurrentBalance: 100000,
+      myCurrentAge: 27,
+      myCurrentMonthlySavings: 1500,
       myCurrentLifestyleCost: 3000,
-      myRetirementAge: 0
+      myRetirementAge: 0,
+      myAnnualInterestRate: 0.08,
+      myRetirementIncome: 10000,
+      myLifeExpectancy: 100
     };
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     return _this;
@@ -611,29 +614,29 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 38
         }
       }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_header__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 39
         }
       }), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement("div", {
         className: "flex w-100 vh-100",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 40
         }
       }, __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0__components_inputContainer__["a" /* default */], _extends({}, this.state, {
         handleInput: this.handleInput,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 41
         }
       })), __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_outPutContainer__["a" /* default */], _extends({}, this.state, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 43
         }
       }))));
     }
@@ -656,7 +659,46 @@ function toCurrency(value) {
   return "R$ " + Number(value).toFixed(2);
 }
 function calculateRetirementAge(state) {
-  return 100 - state.myCurrentAge;
+  var aIR = state.myAnnualInterestRate;
+  var mIR = annualToMonthly(aIR);
+  var balance = parseFloat(state.myCurrentBalance);
+  var age = parseFloat(state.myCurrentAge);
+  var savings = parseFloat(state.myCurrentMonthlySavings);
+  var retirementIncome = parseFloat(state.myRetirementIncome);
+  var lifeExpectancy = parseFloat(state.myLifeExpectancy);
+  balance += savings;
+  var m = 1;
+
+  while (true) {
+    balance = (1 + mIR) * balance + savings;
+    var nper = NPER(mIR, -retirementIncome, balance);
+
+    if (isNaN(nper) || age + nper / 12 > lifeExpectancy) {
+      return age;
+    }
+
+    m += 1;
+    age += 1 / 12;
+  }
+
+  return null;
+}
+
+function annualToMonthly(annualRate) {
+  return Math.pow(1 + annualRate, 1 / 12) - 1;
+}
+
+function NPER(rate, payment, present, future, type) {
+  // Initialize type
+  var type = typeof type === 'undefined' ? 0 : type; // Initialize future value
+
+  var future = typeof future === 'undefined' ? 0 : future; // Evaluate rate and periods (TODO: replace with secure expression evaluator)
+
+  rate = eval(rate); // Return number of periods
+
+  var num = payment * (1 + rate * type) - future * rate;
+  var den = present * rate + payment * (1 + rate * type);
+  return Math.log(num / den) / Math.log(1 + rate);
 }
 
 /***/ }),

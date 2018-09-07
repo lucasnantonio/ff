@@ -1,1 +1,0 @@
-{"version":3,"file":"4.cedf5bf8812775ca2afa.hot-update.js","sources":["webpack:///utils/math.js"],"sourcesContent":["export function toCurrency (value) {\n    return (\"R$ \" + Number(value).toFixed(2))\n}\n\n\n\n\n\n// WEBPACK FOOTER //\n// utils/math.js"],"mappings":";;;;;;AAAA;AAAA;AACA;AACA;;;;A","sourceRoot":""}
