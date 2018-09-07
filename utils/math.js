@@ -1,50 +1,75 @@
+import * as fin from './finance'
+
 export function toCurrency (value) {
     return ("R$ " + Number(value).toFixed(2))
 }
 
-export function calculateRetirementAge (state) {
-  const aIR = state.myAnnualInterestRate
-  const mIR = annualToMonthly(aIR)
-
-  let balance = parseFloat(state.myCurrentBalance)
-  let age = parseFloat(state.myCurrentAge)
+export function getMyRetirementAge (state) {
+  const aIR = parseFloat(state.myAnnualInterestRate)
+  const mIR = fin.annualToMonthly(aIR)
+  const balance = parseFloat(state.myCurrentBalance)
   const savings = parseFloat(state.myCurrentMonthlySavings)
   const retirementIncome = parseFloat(state.myRetirementIncome)
   const lifeExpectancy = parseFloat(state.myLifeExpectancy)
+  const myCurrentAge = parseFloat(state.myCurrentAge)
+
+  return fin.retirementAge(mIR, balance, savings, retirementIncome,
+    myCurrentAge * 12, lifeExpectancy * 12)[0] / 12
+}
+
+export function getMyRetirementData (state, aIR) {
+  //const aIR = parseFloat(state.myAnnualInterestRate)
+  const mIR = fin.annualToMonthly(aIR)
+  const balance = parseFloat(state.myCurrentBalance)
+  const savings = parseFloat(state.myCurrentMonthlySavings)
+  const retirementIncome = parseFloat(state.myRetirementIncome)
+  const lifeExpectancy = parseFloat(state.myLifeExpectancy)
+  const myCurrentAge = parseFloat(state.myCurrentAge)
+
+  return getRetirementData(mIR, balance, savings, retirementIncome,
+    myCurrentAge * 12, lifeExpectancy * 12)
+}
+
+function getRetirementData(mIR, balance, savings, retirementIncome,
+  currentAge, lifeExpectancy) {
+  /* all variables in months */
+  let chartData = []
+  let age = currentAge
+  let m = 0
+
+  const [retirementAge, retirementBalance] = fin.retirementAge(mIR, balance, savings,
+    retirementIncome, currentAge, lifeExpectancy)
+
+    chartData.push({x: age / 12, y: balance})
+
+  age += 1
+  m += 1
 
   balance += savings
-  let m = 1
-  while (true) {
+
+  while (age < retirementAge) {
     balance = (1 + mIR) * balance + savings
-    const nper = NPER(mIR, -retirementIncome, balance)
 
-    if (isNaN(nper) || age + nper / 12 > lifeExpectancy) {
-      return age
-    }
+    chartData.push({x: age / 12, y: balance})
 
+    age += 1
     m += 1
-    age += 1 / 12
   }
 
-    return null
-}
+  while (age < lifeExpectancy) {
+    balance = (1 + mIR) * balance - retirementIncome
 
-function annualToMonthly(annualRate) {
-  return (1 + annualRate) ** (1 / 12) - 1
-}
+    chartData.push({x: age / 12, y: balance})
 
-function NPER(rate, payment, present, future, type) {
-  // Initialize type
-  var type = (typeof type === 'undefined') ? 0 : type;
+    age += 1
+    m += 1
+  }
 
-  // Initialize future value
-  var future = (typeof future === 'undefined') ? 0 : future;
-
-  // Evaluate rate and periods (TODO: replace with secure expression evaluator)
-  rate = eval(rate);
-
-  // Return number of periods
-  var num = payment * (1 + rate * type) - future * rate;
-  var den = (present * rate + payment * (1 + rate * type));
-  return Math.log(num / den) / Math.log(1 + rate);
+  return {
+    timeHistory: chartData,
+    retirement: {
+      age: retirementAge,
+      balance: retirementBalance
+    }
+  }
 }
