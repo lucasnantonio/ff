@@ -34,6 +34,10 @@ class Index extends Component {
                 rate: 0.085
               }
             ],
+            lifeEvents: [
+              [30 * 12, 100000],
+              [40 * 12, 200000],
+            ],
             retirementResults: false,
          }
          this.handleInput = this.handleInput.bind(this);
