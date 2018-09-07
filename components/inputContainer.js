@@ -6,15 +6,28 @@ import Intro from '../components/intro'
 class InputContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { 
+            isIntroShowing: true
+         };
+         this.startApp = this.startApp.bind(this)
+    }
+
+    startApp () {
+        console.log('click')
+        this.setState({
+            isIntroShowing: false
+        })
+        document.getElementById('questions').scrollIntoView({behavior: "smooth", block:"start"})
     }
 
     render() { 
         return ( 
-            <div className="w-100 pa5 overflow-scroll">
-            <Intro />
-            <h1 className="f1 b mb6">Bem-vindo à melhor calculadora de independência financeira da Internet</h1>
-           <QuestionChunk title="Vamos começar falando sobre você">
+            <div className={`w-100 ph5 ${this.state.isIntroShowing ? "overflow-hidden" : "overflow-scroll"}` }>
+            
+            <Intro handleClick={this.startApp}/>
+           
+           <div id="questions">
+           <QuestionChunk title="Vamos começar falando sobre vocêzzzz">
                 <InputField 
                     id = "myCurrentAge"
                     label = "Quantos anos você tem?"
@@ -48,6 +61,7 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             </QuestionChunk>
+            </div>
             <style jsx>
                 {`
                 ::-webkit-scrollbar {

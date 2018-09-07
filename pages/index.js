@@ -11,7 +11,6 @@ class Index extends Component {
      constructor(props) {
         super(props);
         this.state = {
-            
             myCurrentIncome: 10000,
             myCurrentBalance: 100000,
             myCurrentAge: 27,
