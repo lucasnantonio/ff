@@ -6,7 +6,7 @@ import Intro from '../components/intro'
 class InputContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             isIntroShowing: true
          };
          this.startApp = this.startApp.bind(this)
@@ -20,12 +20,12 @@ class InputContainer extends Component {
         document.getElementById('questions').scrollIntoView({behavior: "smooth", block:"start"})
     }
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <div className={`w-100 ph5 ${this.state.isIntroShowing ? "overflow-hidden" : "overflow-scroll"}` }>
-            
+
             <Intro handleClick={this.startApp}/>
-           
+
            <div id="questions" className="pt5">
            <QuestionChunk index="1" title="Sobre você">
                 <InputField
@@ -63,8 +63,8 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             <InputField
-                id = "myCurrentMonthlyCost"
-                label = "Qual o seu custo de vida atual?"
+                id = "myRetirementIncome"
+                label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
             </QuestionChunk>
