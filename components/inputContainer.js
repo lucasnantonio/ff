@@ -26,20 +26,20 @@ class InputContainer extends Component {
             
             <Intro handleClick={this.startApp}/>
            
-           <div id="questions">
-           <QuestionChunk title="Vamos começar falando sobre vocêzzzz">
+           <div id="questions" className="pt5">
+           <QuestionChunk index="1" title="Sobre você">
                 <InputField 
                     id = "myCurrentAge"
                     label = "Quantos anos você tem?"
                     handleInput = {this.props.handleInput}
                 />
-                <InputField 
+                <InputField
                     id = "myLifeExpectancy"
                     label = "Você pretende viver até quantos anos?"
                     handleInput = {this.props.handleInput}
                 />
             </QuestionChunk>
-            <QuestionChunk title="Agora, sobre seu dinheiro">
+            <QuestionChunk index="2" title="Sobre seu dinheiro">
             <InputField
                 id = "myCurrentBalance"
                 label = "Quanto você tem hoje para começar a investir"
