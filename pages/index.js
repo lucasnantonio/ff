@@ -22,13 +22,21 @@ class Index extends Component {
             myLifeExpectancy: 100,
          }
          this.handleInput = this.handleInput.bind(this);
+        //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
     handleInput (e) {
+    
         // update state for every input field
         let state = this.state
-        state[e.target.id] = e.target.value
-        this.setState(state)
+        if (e.target.type){
+            state[e.target.id] = e.target.value
+            this.setState(state)
+        } else {
+            state[e.target.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.querySelectorAll('input')[0].value
+            this.setState(state)
+        }
+    
         // calculate retirement age
         this.setState({myRetirementAge : getMyRetirementAge(this.state)})
     }
@@ -37,11 +45,16 @@ class Index extends Component {
         return (
         <div>
             <Header />
-            <div className="flex w-100 vh-100">
+            <div className="flex w-100 vh-100 bg-light-pink dark-blue">
                 <InputContainer {...this.state}
                     handleInput = {this.handleInput}/>
                 <OutPutContainer {...this.state}/>
             </div>
+            <style jsx>{
+                `.bg-light-pink{background-color: #fee0e0}
+                .dark-blue{color: #0148B3}
+                `
+            }</style>
         </div> );
     }
 }

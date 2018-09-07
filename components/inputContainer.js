@@ -1,30 +1,52 @@
 import { Component } from "react";
 import InputField from '../components/inputField'
 import QuestionChunk from '../components/questionChunk'
+import Intro from '../components/intro'
 
 class InputContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { 
+            isIntroShowing: true
+         };
+         this.startApp = this.startApp.bind(this)
+    }
+
+    startApp () {
+        console.log('click')
+        this.setState({
+            isIntroShowing: false
+        })
+        document.getElementById('questions').scrollIntoView({behavior: "smooth", block:"start"})
     }
 
     render() { 
         return ( 
-            <div className="w-100 bg-yellow pa5 overflow-scroll">
-            <h1 className="f1 b mb6">Bem-vindo à melhor calculadora de independência financeira da Internet</h1>
-           <QuestionChunk title="Vamos começar falando sobre você">
-                <InputField 
+            <div className={`w-100 ph5 ${this.state.isIntroShowing ? "overflow-hidden" : "overflow-scroll"}` }>
+            
+            <Intro handleClick={this.startApp}/>
+           
+           <div id="questions" className="pt5">
+           <QuestionChunk index="1" title="Sobre você">
+                <InputField
+                    hasSteppers = "true"
+                    stepperIncrement = "1"
+                    min = "1"
+                    max = "100"
                     id = "myCurrentAge"
                     label = "Quantos anos você tem?"
                     handleInput = {this.props.handleInput}
+                    helperText = {this.props.myCurrentAge > 25 ? "Ainda dá tempo" : "Começando jovem hein!"}
                 />
-                <InputField 
+                <InputField
+                    hasSteppers = "true"
+                    stepperIncrement = "1"
                     id = "myLifeExpectancy"
                     label = "Você pretende viver até quantos anos?"
                     handleInput = {this.props.handleInput}
                 />
             </QuestionChunk>
-            <QuestionChunk title="Agora, sobre seu dinheiro">
+            <QuestionChunk index="2" title="Sobre seu dinheiro">
             <InputField
                 id = "myCurrentBalance"
                 label = "Quanto você tem hoje para começar a investir"
@@ -46,7 +68,14 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             </QuestionChunk>
-
+            </div>
+            <style jsx>
+                {`
+                ::-webkit-scrollbar {
+                    width: 0px;  /* remove scrollbar space */
+                    background: transparent;  /* optional: just make scrollbar invisible */
+                }`}
+            </style>
             </div>
          );
     }

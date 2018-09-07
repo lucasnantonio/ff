@@ -4,7 +4,7 @@ class QuestionChunk extends Component {
     render() { 
         return ( 
             <div className="mb6">
-                <h2 className="f2 b">
+                <h2 className="f3 b black">
                     {this.props.title}
                 </h2> 
                 <div>

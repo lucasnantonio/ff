@@ -3,9 +3,9 @@ import RetirementChart from "../components/RetirementChart";
 
 class OutPutContainer extends Component {
     state = {  }
-    render() {
-        return (
-            <div className="w-100 bg-yellow">
+    render() { 
+        return ( 
+            <div className="w-100">
                 <div>Você vai se aposentar com</div>
                 {this.props.myRetirementAge}
                 {/* {this.props.myCurrentAge} */}
