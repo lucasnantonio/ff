@@ -20,13 +20,27 @@ class Index extends Component {
             myAnnualInterestRate: 0.08,
             myRetirementIncome: 10000,
             myLifeExpectancy: 100,
+            myInvestiments: [
+              {
+                label: 'poupança',
+                rate: 0.030
+              },
+              {
+                label: 'renda fixa',
+                rate: 0.060
+              },
+              {
+                label: 'renda variável',
+                rate: 0.085
+              }
+            ]
          }
          this.handleInput = this.handleInput.bind(this);
         //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
     handleInput (e) {
-    
+
         // update state for every input field
         let state = this.state
         if (e.target.type){
@@ -36,7 +50,7 @@ class Index extends Component {
             state[e.target.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.querySelectorAll('input')[0].value
             this.setState(state)
         }
-    
+
         // calculate retirement age
         this.setState({myRetirementAge : getMyRetirementAge(this.state)})
     }

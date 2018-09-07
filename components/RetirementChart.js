@@ -9,16 +9,26 @@ class RetirementChart extends Component {
         this.chart = null
     }
 
+    getInvestimentData(props) {
+      const { myInvestiments } = props
+
+      return myInvestiments.map((investiment) => {
+        const {label, rate} = investiment
+        return [label, getMyRetirementData(props, rate)]
+      })
+    }
+
     componentDidMount() {
       this.ctx = this.canvas.getContext('2d');
       this.chart = getRetirementChart(this.ctx);
     }
 
     componentWillUpdate(nextProps) {
-      const datasets = [
-        {
-          label: 'POUPANÇA',
-          data: getMyRetirementData(nextProps, 0.03).timeHistory,
+
+      const investimentData = this.getInvestimentData(nextProps)
+
+      const options = {
+        'poupança': {
           backgroundColor: 'rgba(250, 0, 0 ,0.1)',
           pointRadius: 0,
           borderWidth: 1,
@@ -26,20 +36,7 @@ class RetirementChart extends Component {
           borderColor: 'rgba(0, 0, 0, 0.3)',
           lineTension: 0,
         },
-        {
-          label: 'POUPANÇA_P',
-          data: [{
-            x: getMyRetirementData(nextProps, 0.03).retirement.age / 12,
-            y: getMyRetirementData(nextProps, 0.03).retirement.balance,
-          }],
-          pointRadius: 5,
-          borderWidth: 1,
-          pointHoverRadius: 0,
-          borderColor: 'rgba(0, 0, 0, 1)',
-        },
-        {
-          label: 'RENDA FIXA',
-          data: getMyRetirementData(nextProps, 0.065).timeHistory,
+        'renda fixa': {
           backgroundColor: 'rgba(0, 0, 250 ,0.1)',
           pointRadius: 0,
           borderWidth: 1,
@@ -47,19 +44,41 @@ class RetirementChart extends Component {
           borderColor: 'rgba(0, 0, 0, 0.3)',
           lineTension: 0,
         },
-        {
-          label: 'RENDA VARIÁVEL',
-          data: getMyRetirementData(nextProps, 0.1).timeHistory,
+        'renda variável': {
           backgroundColor: 'rgba(0, 250, 0 ,0.1)',
           pointRadius: 0,
           borderWidth: 1,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 0.3)',
           lineTension: 0,
-        },
-      ]
+        }
+      }
 
-      this.chart.data = {datasets: datasets}
+      const linesets = investimentData.map((investiment) => {
+        const [label, data] = investiment
+        return {
+          label: label,
+          data: data.timeHistory,
+          ...options[label]
+        }
+      })
+
+      const pointsets = investimentData.map((investiment) => {
+        const [label, data] = investiment
+        return {
+          label: label,
+          data: [{
+            x: data.retirement.age / 12,
+            y: data.retirement.balance,
+          }],
+          pointRadius: 3,
+          borderWidth: 1,
+          pointHoverRadius: 0,
+          borderColor: 'rgba(0, 0, 0, 1)',
+        }
+      })
+
+      this.chart.data = {datasets: [...linesets, ...pointsets]}
       this.chart.update()
     }
 
