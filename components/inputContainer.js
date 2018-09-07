@@ -1,5 +1,6 @@
 import { Component } from "react";
 import InputField from '../components/inputField'
+import InputTable from '../components/InputTable'
 import QuestionChunk from '../components/questionChunk'
 import Intro from '../components/intro'
 
@@ -68,6 +69,20 @@ class InputContainer extends Component {
                 label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
+            <InputTable
+              id = "lifeEvents"
+              table = {this.props.lifeEvents}
+              fields = {
+                {
+                  label:'',
+                  age: 0,
+                  cost: 0
+                }
+              }
+              handleTableInput = {this.props.handleTableInput}
+              handleAddTableRow = {this.props.handleAddTableRow}
+              handleRemoveTableRow = {this.props.handleRemoveTableRow}
+              />
             </QuestionChunk>
             </div>
             <style jsx>

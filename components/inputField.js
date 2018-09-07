@@ -23,7 +23,7 @@ const currencyConfig = {
 class InputField extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             isFocused : false,
             isEmpty : true,
          };
@@ -43,7 +43,7 @@ class InputField extends Component {
             isFocused : true
         })
     }
-    
+
     handleIncrement (e){
         let input = e.target.parentElement.parentElement.querySelectorAll('input')[0]
         input.stepUp()
@@ -72,7 +72,7 @@ class InputField extends Component {
     }
     }
 
-    render() { 
+    render() {
         return (
             <div className="flex flex-column">
                 <div className={`flex justify-between f4 pv4 ${this.state.isFocused ? "o-100" : "o-50"}`}>
@@ -80,7 +80,7 @@ class InputField extends Component {
                         <label className="gray mw5">{this.props.label}</label>
                     </div>
                     <div className={`flex w-30`}>
-                        {this.props.hasSteppers && 
+                        {this.props.hasSteppers &&
                             <div className="pointer" onClick={this.handleDecrement}>
                             <MinusBtn />
                             </div>
@@ -95,7 +95,7 @@ class InputField extends Component {
                             onFocus= {this.handleFocus}
                             onBlur= {this.handleBlur}
                             id={this.props.id}
-                            type="number" 
+                            type="number"
                             placeholder={this.props.placeholder}
                             onChange={this.handleInput} >
                         </input>
@@ -113,7 +113,6 @@ class InputField extends Component {
                             onChange={this.handleInput} />
                         }
                         </div>
-                       
                         {this.props.hasSteppers && 
                              <div className="pointer" onClick={this.handleIncrement}>
                              <PlusBtn />
@@ -139,5 +138,5 @@ class InputField extends Component {
          );
     }
 }
- 
+
 export default InputField;

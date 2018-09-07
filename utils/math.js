@@ -11,30 +11,30 @@ export function getMyRetirementData (state, aIR) {
   const retirementIncome = parseFloat(state.myRetirementIncome)
   const lifeExpectancy = parseFloat(state.myLifeExpectancy)
   const myCurrentAge = parseFloat(state.myCurrentAge)
+  const lifeEvents = state.lifeEvents
 
   return getRetirementData(mIR, balance, savings, retirementIncome,
-    myCurrentAge * 12, lifeExpectancy * 12)
+    myCurrentAge * 12, lifeExpectancy * 12, lifeEvents)
 }
 
 function getRetirementData(mIR, balance, savings, retirementIncome,
-  currentAge, lifeExpectancy) {
+  currentAge, lifeExpectancy, lifeEvents) {
   /* all variables in months */
   let chartData = []
   let age = currentAge
   let m = 0
 
   const [retirementAge, retirementBalance] = fin.retirementAge(mIR, balance, savings,
-    retirementIncome, currentAge, lifeExpectancy)
+    retirementIncome, currentAge, lifeExpectancy, lifeEvents)
 
-    chartData.push({x: age / 12, y: balance})
+  balance += savings - fin.getLifeEvent(age, lifeEvents)
+  chartData.push({x: age / 12, y: balance})
 
   age += 1
   m += 1
 
-  balance += savings
-
   while (age < retirementAge) {
-    balance = (1 + mIR) * balance + savings
+    balance = (1 + mIR) * balance + savings - fin.getLifeEvent(age, lifeEvents)
 
     chartData.push({x: age / 12, y: balance})
 

@@ -3,6 +3,7 @@ import OutPutContainer from "../components/outPutContainer";
 import Header from "../components/header";
 import React, { Component } from 'react'
 import { toCurrency, getRetirementResults } from '../utils/math'
+import { isNumber } from '../utils/input'
 // import Tachyons from 'tachyons'
 
 class Index extends Component {
@@ -33,9 +34,19 @@ class Index extends Component {
                 rate: 0.085
               }
             ],
+            lifeEvents: [
+              {
+                label: 'viagem',
+                age: 30, // years, not months
+                cost: 100000
+              },
+            ],
             retirementResults: false,
          }
          this.handleInput = this.handleInput.bind(this);
+         this.handleTableInput = this.handleTableInput.bind(this);
+         this.handleAddTableRow = this.handleAddTableRow.bind(this);
+         this.handleRemoveTableRow = this.handleRemoveTableRow.bind(this);
         //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
@@ -69,13 +80,57 @@ class Index extends Component {
         this.setState({retirementResults : getRetirementResults(this.state)})
     }
 
+    handleTableInput = (idx, tableName, table, textField = false) => event => {
+
+      const value = event.target.value;
+      const field = event.target.id;
+
+      if (isNumber(value) || textField) {
+        const updatedTable = table.map((row, pidx) => {
+          if (idx === pidx) {
+            return {
+              ...row,
+              [field]: value,
+            };
+          }
+          return row;
+        });
+        this.setState({ [tableName]: updatedTable });
+        this.setState({retirementResults : getRetirementResults(
+          {...this.state,
+          [tableName] : updatedTable}
+        )}) // fix goHorse
+      }
+    };
+
+    handleAddTableRow = (tableName, fields) => () => {
+
+      this.setState({
+        [tableName]: [...this.state[tableName], fields],
+      });
+    };
+
+    handleRemoveTableRow = (idx, tableName, table) => () => {
+      const updatedTable = table.filter((p, pidx) => idx !== pidx)
+      this.setState({ [tableName]: updatedTable });
+      
+      this.setState({retirementResults : getRetirementResults(
+        {...this.state,
+        [tableName] : updatedTable}
+      )}) // fix goHorse
+    };
+
     render() {
         return (
         <div>
             <Header />
             <div className="flex w-100 vh-100 bg-light-pink dark-blue">
                 <InputContainer {...this.state}
-                    handleInput = {this.handleInput}/>
+                    handleInput = {this.handleInput}
+                    handleTableInput = {this.handleTableInput}
+                    handleAddTableRow = {this.handleAddTableRow}
+                    handleRemoveTableRow = {this.handleRemoveTableRow}
+                />
                 <OutPutContainer {...this.state}/>
             </div>
             <style jsx global>{`
