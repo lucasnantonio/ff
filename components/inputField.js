@@ -70,9 +70,9 @@ class InputField extends Component {
                             <MinusBtn />
                             </div>
                         }
-                        <div className={`bb flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
+                        <div className={`bb w5 flex flex-column justify-center ${this.state.isFocused ? "b--red" : "b--gray"}`}>
                         <input
-                            className="bn bg-transparent f3 mw3 tc"
+                            className="bn bg-transparent f3 tc"
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
