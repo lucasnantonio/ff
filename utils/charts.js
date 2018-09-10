@@ -5,6 +5,13 @@ export function getRetirementChart(ctx) {
     type: 'line',
     data: {},
     options: {
+      hover:{
+        intersect: true,
+        // mode: "y"
+      },
+      tooltips:{
+        // mode: 'y'
+      },
       animation: false,
       scales: {
         xAxes: [
@@ -28,7 +35,6 @@ export function getRetirementChart(ctx) {
           {
             scaleLabel: {
               display: true,
-              // labelString: 'dinheiro',
             },
             ticks:{
               callback: function(value, index, values) {
@@ -39,9 +45,8 @@ export function getRetirementChart(ctx) {
         ],
       },
       legend: {
-        display: true,
+        display: false,
       },
-      
     },
   });
   return RetirementChart;
