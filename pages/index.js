@@ -43,14 +43,9 @@ class Index extends Component {
             ],
             retirementResults: false,
          }
-         this.handleInput = this.handleInput.bind(this);
-         this.handleTableInput = this.handleTableInput.bind(this);
-         this.handleAddTableRow = this.handleAddTableRow.bind(this);
-         this.handleRemoveTableRow = this.handleRemoveTableRow.bind(this);
-        //  this.handleIncrement = this.handleIncrement.bind(this);
     }
 
-    handleInput (e, floatValue, maskedValue) {
+    handleInput = (e, floatValue, maskedValue) => {
 
         //remove picture on first edit
         document.getElementById('chartContainer').scrollIntoView({
