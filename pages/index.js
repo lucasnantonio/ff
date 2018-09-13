@@ -60,7 +60,7 @@ class Index extends Component {
 
         // save state in a variable
         let state = this.state
-        
+
         // check if is special currencyInput
         if(floatValue && maskedValue){
             state[e.target.id] = floatValue
@@ -95,11 +95,11 @@ class Index extends Component {
           }
           return row;
         });
-        this.setState({ [tableName]: updatedTable });
-        this.setState({retirementResults : getRetirementResults(
-          {...this.state,
-          [tableName] : updatedTable}
-        )}) // fix goHorse
+        this.setState(prevState => ({
+          [tableName]: updatedTable,
+          retirementResults: getRetirementResults(
+            {...prevState, [tableName]: updatedTable})
+        }))
       }
     };
 
@@ -112,12 +112,11 @@ class Index extends Component {
 
     handleRemoveTableRow = (idx, tableName, table) => () => {
       const updatedTable = table.filter((p, pidx) => idx !== pidx)
-      this.setState({ [tableName]: updatedTable });
-      
-      this.setState({retirementResults : getRetirementResults(
-        {...this.state,
-        [tableName] : updatedTable}
-      )}) // fix goHorse
+      this.setState(prevState => ({
+        [tableName]: updatedTable,
+        retirementResults: getRetirementResults(
+          {...prevState, [tableName]: updatedTable})
+      }))
     };
 
     render() {
