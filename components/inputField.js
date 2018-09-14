@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputContainer from './inputContainer';
 import InputHelper from './inputHelper'
 import MinusBtn from './MinusBtn'
-import PlusBtn from './plusBtn'
+import PlusBtn from './PlusBtn'
 // import CurrencyInput from 'react-currency-input'
 import IntlCurrencyInput from "react-intl-currency-input"
 
