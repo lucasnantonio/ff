@@ -4,7 +4,6 @@ import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
-// import Tachyons from 'tachyons'
 
 class Index extends Component {
   constructor(props) {
