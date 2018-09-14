@@ -1,6 +1,6 @@
 import InputContainer from "../components/inputContainer";
 import OutPutContainer from "../components/outPutContainer";
-import Header from "../components/header";
+import Header from "../components/Header";
 import React, { Component } from 'react'
 import { toCurrency, getRetirementResults } from '../utils/math'
 import { isNumber } from '../utils/input'
