@@ -117,16 +117,19 @@ class Index extends Component {
         <div>
             <Header />
             <Intro handleClick={this.startApp}/>
-            <div className="flex w-100 vh-100 bg-light-pink dark-blue">
-                <InputContainer {...this.state}
-                    handleInput = {this.handleInput}
-                    handleTableInput = {this.handleTableInput}
-                    handleAddTableRow = {this.handleAddTableRow}
-                    handleRemoveTableRow = {this.handleRemoveTableRow}
-                />
-                <OutPutContainer {...this.state}/>
+            <div className={`bg-red vh-100 ${this.state.isShowingIntro ? 'overflow-hidden' : ''}`}>
+              <InputContainer {...this.state}
+                  handleInput = {this.handleInput}
+                  handleTableInput = {this.handleTableInput}
+                  handleAddTableRow = {this.handleAddTableRow}
+                  handleRemoveTableRow = {this.handleRemoveTableRow}
+                  />
+              <OutPutContainer {...this.state}/>
             </div>
             <style jsx global>{`
+                .mt-negative{
+                  margin-top: -5rem;
+                }
                 input{outline:none}
                 .checkmark{
                     transition: all .2s;
@@ -138,11 +141,6 @@ class Index extends Component {
                     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
                 }
             `}</style>
-            <style jsx>{
-                `.bg-light-pink{background-color: #fee0e0}
-                .dark-blue{color: #0148B3}
-                `
-            }</style>
         </div>);
     }
 }

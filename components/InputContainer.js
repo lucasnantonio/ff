@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
 import QuestionChunk from './QuestionChunk';
-import Intro from './Intro';
 
 class InputContainer extends Component {
   constructor(props) {
@@ -15,14 +14,13 @@ class InputContainer extends Component {
 
   startApp() {
     this.setState({
-      isIntroShowing: false,
     });
-    document.getElementById('questions').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // document.getElementById('questions').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   render() {
     return (
-            <div className={`w-100 ph5 ${this.state.isIntroShowing ? 'overflow-hidden' : 'overflow-scroll'}` }>
+          <div className="w-100">
            <div id="questions" className="pt5">
            <QuestionChunk index="1" title="Sobre você">
                 <InputField
@@ -82,13 +80,6 @@ class InputContainer extends Component {
               />
             </QuestionChunk>
             </div>
-            <style jsx>
-                {`
-                ::-webkit-scrollbar {
-                    width: 0px;  /* remove scrollbar space */
-                    background: transparent;  /* optional: just make scrollbar invisible */
-                }`}
-            </style>
             </div>
     );
   }
