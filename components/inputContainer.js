@@ -1,8 +1,8 @@
 import { Component } from "react";
-import InputField from '../components/inputField'
-import InputTable from '../components/InputTable'
-import QuestionChunk from '../components/questionChunk'
-import Intro from '../components/Intro'
+import InputField from './InputField'
+import InputTable from './InputTable'
+import QuestionChunk from './QuestionChunk'
+import Intro from './Intro'
 
 class InputContainer extends Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import InputContainer from './inputContainer';
-import InputHelper from './inputHelper'
+import InputContainer from './InputContainer';
+import InputHelper from './InputHelper'
 import MinusBtn from './MinusBtn'
 import PlusBtn from './PlusBtn'
 // import CurrencyInput from 'react-currency-input'

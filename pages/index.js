@@ -1,4 +1,4 @@
-import InputContainer from "../components/inputContainer";
+import InputContainer from "../components/InputContainer";
 import OutPutContainer from "../components/OutPutContainer";
 import Header from "../components/Header";
 import React, { Component } from 'react'
