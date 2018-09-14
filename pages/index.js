@@ -1,5 +1,5 @@
 import InputContainer from "../components/inputContainer";
-import OutPutContainer from "../components/outPutContainer";
+import OutPutContainer from "../components/OutPutContainer";
 import Header from "../components/Header";
 import React, { Component } from 'react'
 import { toCurrency, getRetirementResults } from '../utils/math'
