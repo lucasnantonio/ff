@@ -23,9 +23,6 @@ class InputContainer extends Component {
   render() {
     return (
             <div className={`w-100 ph5 ${this.state.isIntroShowing ? 'overflow-hidden' : 'overflow-scroll'}` }>
-
-            <Intro handleClick={this.startApp}/>
-
            <div id="questions" className="pt5">
            <QuestionChunk index="1" title="Sobre você">
                 <InputField

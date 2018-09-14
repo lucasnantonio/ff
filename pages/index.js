@@ -4,6 +4,7 @@ import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
+import Intro from '../components/Intro';
 
 class Index extends Component {
   constructor(props) {
@@ -115,6 +116,7 @@ class Index extends Component {
       return (
         <div>
             <Header />
+            <Intro handleClick={this.startApp}/>
             <div className="flex w-100 vh-100 bg-light-pink dark-blue">
                 <InputContainer {...this.state}
                     handleInput = {this.handleInput}
