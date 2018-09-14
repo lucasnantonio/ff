@@ -1,18 +1,20 @@
-import { Component } from 'react'
+import React, { Component } from 'react';
+
 class QuestionChunk extends Component {
-    state = {  }
-    render() { 
-        return ( 
+    state = { }
+
+    render() {
+      return (
             <div className="mb6">
                 <h2 className="f3 b black">
                     {this.props.title}
-                </h2> 
+                </h2>
                 <div>
                     {this.props.children}
                 </div>
             </div>
-         );
+      );
     }
 }
- 
+
 export default QuestionChunk;

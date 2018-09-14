@@ -1,28 +1,28 @@
-import { Component } from "react";
-import InputField from '../components/inputField'
-import InputTable from '../components/InputTable'
-import QuestionChunk from '../components/questionChunk'
-import Intro from '../components/intro'
+import React, { Component } from 'react';
+import InputField from './InputField';
+import InputTable from './InputTable';
+import QuestionChunk from './QuestionChunk';
+import Intro from './Intro';
 
 class InputContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isIntroShowing: true
-         };
-         this.startApp = this.startApp.bind(this)
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isIntroShowing: true,
+    };
+    this.startApp = this.startApp.bind(this);
+  }
 
-    startApp () {
-        this.setState({
-            isIntroShowing: false
-        })
-        document.getElementById('questions').scrollIntoView({behavior: "smooth", block:"start"})
-    }
+  startApp() {
+    this.setState({
+      isIntroShowing: false,
+    });
+    document.getElementById('questions').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-    render() {
-        return (
-            <div className={`w-100 ph5 ${this.state.isIntroShowing ? "overflow-hidden" : "overflow-scroll"}` }>
+  render() {
+    return (
+            <div className={`w-100 ph5 ${this.state.isIntroShowing ? 'overflow-hidden' : 'overflow-scroll'}` }>
 
             <Intro handleClick={this.startApp}/>
 
@@ -38,7 +38,7 @@ class InputContainer extends Component {
                     id = "myCurrentAge"
                     label = "Quantos anos você tem?"
                     handleInput = {this.props.handleInput}
-                    helperText = {this.props.myCurrentAge > 25 ? "Ainda dá tempo" : "Começando jovem hein!"}
+                    helperText = {this.props.myCurrentAge > 25 ? 'Ainda dá tempo' : 'Começando jovem hein!'}
                 />
                 <InputField
                     isCurrency = "false"
@@ -74,9 +74,9 @@ class InputContainer extends Component {
               table = {this.props.lifeEvents}
               fields = {
                 {
-                  label:'',
+                  label: '',
                   age: 0,
-                  cost: 0
+                  cost: 0,
                 }
               }
               handleTableInput = {this.props.handleTableInput}
@@ -93,8 +93,8 @@ class InputContainer extends Component {
                 }`}
             </style>
             </div>
-         );
-    }
+    );
+  }
 }
 
 export default InputContainer;
