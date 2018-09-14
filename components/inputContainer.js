@@ -2,7 +2,7 @@ import { Component } from "react";
 import InputField from '../components/inputField'
 import InputTable from '../components/InputTable'
 import QuestionChunk from '../components/questionChunk'
-import Intro from '../components/intro'
+import Intro from '../components/Intro'
 
 class InputContainer extends Component {
     constructor(props) {
