@@ -205,7 +205,7 @@ class Index extends Component {
               .mt-negative{
                 margin-top: -5rem;
               }
-              input{outline:none}
+              input{outline:none; caret-color: #2ea776; caret-width: 2px}
               .checkmark{
                   transition: all .2s;
               }

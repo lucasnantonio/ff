@@ -44,16 +44,16 @@ class InputContainer extends Component {
                 label = "Quanto você consegue guardar todo mês?"
                 handleInput = {this.props.handleInput}
             />
+            <InputField
+                isExpanded = {this.props.isExpanded}
+                id = "myRetirementIncome"
+                label = "Quanto você quer tirar mês ao se aposentar?"
+                handleInput = {this.props.handleInput}
+            />
             <MultiSelect
               label="Onde você guarda seu dinheiro hoje?"
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}
-            />
-            <InputField
-                isExpanded = {this.props.isExpanded}
-                id = "myRetirementIncome"
-                label = "Qual será o seu custo de vida ao se aposentar?"
-                handleInput = {this.props.handleInput}
             />
             {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
               <div className="self-end mb5">
