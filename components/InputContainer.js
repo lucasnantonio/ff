@@ -5,8 +5,8 @@ import InputTable from './InputTable';
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className='flex'>
-        <div className=''>
+      <div id='inputContainer' className='flex w-100'>
+        <div className='w-100'>
             <InputField
                 isCurrency = "false"
                 value = {this.props.myCurrentAge}
@@ -62,19 +62,22 @@ class InputContainer extends Component {
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
             />
         </div>
-        <div id='buttonWrapper' className={`flex flex-column center vh-100 ${this.props.isExpanded ? 'justify-end pb5' : 'justify-start mt5'} `}>
+        <div id='buttonWrapper' className='flex flex-column relative w-100'>
           <button
-            id="startButton"
-            className="ph4 pv3 h3 bg-green white b ttu pointer bn"
+            className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute ${this.props.isExpanded ? 'absolute-bottom' : 'absolute-top'}`}
             onClick={!this.props.isExpanded ? this.props.handleStartApp : this.props.handleShowCalculation}>
             {!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}
           </button>
         </div>
         <style jsx>
             {`
-              #startButton{
-                position:absolute;
+              .absolute-bottom{
                 bottom:4rem;
+                right: 0;
+              }
+              .absolute-top{
+                right: 0;
+                top: 4rem;
               }
             `}
         </style>

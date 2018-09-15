@@ -122,8 +122,13 @@ class Index extends Component {
           <Header />
           <div className='vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro}/>
-            <div id='inputContainerWrapper' className={`bg-white ph7 ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'h-100'}`}>
-              <InputContainer {...this.state}
+            <div id='inputContainerWrapper' 
+              className={`bg-white flex flex-column justify-center center items-center ph6
+                ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'h-100'}
+                ${this.state.isShowingCalculation ? 'w-50' : 'w-100'}
+                `}>
+              <InputContainer
+                  {...this.state}
                   isShowingCalculation = {this.state.isShowingCalculation}
                   isExpanded = {!this.state.isShowingIntro}
                   handleStartApp = {this.startApp}
@@ -153,7 +158,7 @@ class Index extends Component {
                   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
               }
               #inputContainerWrapper{
-                transition: .55s height Ease-in-out
+                transition: height .55s ease-in-out, width .55s ease-in-out;
               }
           `}</style>
       </div>);
