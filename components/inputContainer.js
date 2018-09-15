@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
-import Logo from "./Logo";
+import Logo from './Logo';
+import QuestionChunk from './QuestionChunk';
 
 class InputContainer extends Component {
   render() {
     return (
       <div id='inputContainer' className='flex w-100'>
         <div className='w-100'>
-            {this.props.isExpanded && 
-            <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
+            {this.props.isExpanded
+            && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
               <Logo />
             </div>
             }
@@ -25,15 +26,6 @@ class InputContainer extends Component {
                 label = "Quantos anos você tem?"
                 handleInput = {this.props.handleInput}
                 helperText = {this.props.myCurrentAge > 25 ? 'Ainda dá tempo' : 'Começando jovem hein!'}
-            />
-            <InputField
-                isCurrency = "false"
-                value = {this.props.myLifeExpectancy}
-                hasSteppers = "true"
-                stepperIncrement = "1"
-                id = "myLifeExpectancy"
-                label = "Você pretende viver até quantos anos?"
-                handleInput = {this.props.handleInput}
             />
             <InputField
                 isCurrency = "true"
@@ -53,6 +45,18 @@ class InputContainer extends Component {
                 label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
+            <QuestionChunk
+              title="Opções avançadas"
+            >
+            <InputField
+                isCurrency = "false"
+                value = {this.props.myLifeExpectancy}
+                hasSteppers = "true"
+                stepperIncrement = "1"
+                id = "myLifeExpectancy"
+                label = "Você pretende viver até quantos anos?"
+                handleInput = {this.props.handleInput}
+            />
             <InputTable
               id = "lifeEvents"
               table = {this.props.lifeEvents}
@@ -67,6 +71,7 @@ class InputContainer extends Component {
               handleAddTableRow = {this.props.handleAddTableRow}
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
             />
+            </QuestionChunk>
         </div>
       </div>
     );
