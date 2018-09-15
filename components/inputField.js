@@ -72,8 +72,8 @@ class InputField extends Component {
   render() {
     return (
             <div className="flex flex-column">
-                <div className={`flex justify-between f4 pv4 ${this.state.isFocused ? 'o-100' : 'o-50'}`}>
-                    <div className="flex justify-start self-start w-70">
+                <div className='flex justify-between f4 pv5 o-100 bb b--near-white'>
+                    <div className="flex justify-start self-center w-70">
                         <label className="gray mw5">{this.props.label}</label>
                     </div>
                     <div className={'flex w-30'}>
@@ -82,7 +82,7 @@ class InputField extends Component {
                             <MinusBtn />
                             </div>
                         }
-                        <div className={`bb w-100 flex flex-column justify-center ${this.state.isFocused ? 'b--gray' : 'b--black-20'}`}>
+                        <div className={`bb w-100 flex flex-column justify-center pv2 h2 ${this.state.isFocused ? 'b--gray' : 'b--black-20'}`}>
                        {this.props.isCurrency === 'false'
                          ? <input
                             value={this.props.value}
