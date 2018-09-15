@@ -15,6 +15,7 @@ class InputContainer extends Component {
             </div>
             }
             <InputField
+                isExpanded = {this.props.isExpanded}
                 isCurrency = "false"
                 value = {this.props.myCurrentAge}
                 placeholder="26"
@@ -28,6 +29,7 @@ class InputContainer extends Component {
                 helperText = {this.props.myCurrentAge > 25 ? 'Ainda dá tempo' : 'Começando jovem hein!'}
             />
             <InputField
+                isExpanded = {this.props.isExpanded}
                 isCurrency = "true"
                 value = {this.props.myCurrentBalance}
                 id = "myCurrentBalance"
@@ -35,12 +37,14 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
               />
             <InputField
+                isExpanded = {this.props.isExpanded}
                 value={this.props.myCurrentMonthlySavings}
                 id = "myCurrentMonthlySavings"
                 label = "Quanto você consegue guardar todo mês?"
                 handleInput = {this.props.handleInput}
             />
             <InputField
+                isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
@@ -49,6 +53,7 @@ class InputContainer extends Component {
               title="Opções avançadas"
             >
             <InputField
+                isExpanded = {this.props.isExpanded}
                 isCurrency = "false"
                 value = {this.props.myLifeExpectancy}
                 hasSteppers = "true"
