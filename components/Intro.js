@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import Logo from './Logo';
+import NavBar from './Navbar';
 
 class Intro extends Component {
   state = {
@@ -17,13 +18,16 @@ class Intro extends Component {
   }
 
   render() {
-    return (<div id="intro" className={`${this.props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 justify-between center items-center bg-offwhite tc relative`}>
-    <div className="flex z-max flex-column items-center justify-center w-100 h-100">
-            <div className="mw6 mb4">
+    return (<div id="intro" className={`${this.props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 bg-offwhite relative`}>
+    <div className="flex z-max flex-column items-center justify-between w-100 h-100">
+          <NavBar />
+          <div className="flex flex-column center justify-center items-center h-100">
+            <div className="mb2 mw7 w-70">
                 <Logo />
             </div>
-            <h2 className="f2 fw1 measure-narrow gray">Calcule sua independência financeira</h2>
-            <h3 className="f5 measure-narrow gray mb5">Descubra quando você vai poder mandar tudo à merda!</h3>
+            <h2 className="f2 fw1 measure-narrow gray tc">Calcule sua independência financeira</h2>
+            <h3 className="f5 measure-narrow gray mb5 tc">Descubra quando você vai poder mandar tudo à merda!</h3>
+        </div>
         </div>
         {this.state.isShowingParticles
         && <Particles
