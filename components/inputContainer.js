@@ -17,7 +17,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id='inputContainer' className={`flex ${ !this.state.isExpanded ? 'h5 overflow-hidden' : 'vh-100'}`}>
+      <div id='inputContainer' className={`flex ${ !this.state.isExpanded ? 'h5 overflow-y-hidden' : 'vh-100'}`}>
         <div className='flex flex-column'>
           <QuestionChunk index="1" title="">
             <InputField

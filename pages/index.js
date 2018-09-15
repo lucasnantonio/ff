@@ -117,7 +117,7 @@ class Index extends Component {
         <div>
             <Header />
             <div className='vh-100 flex flex-column overflow-hidden'>
-              <Intro handleClick={this.startApp}/>
+              <Intro />
               <div className={`bg-white ph7 ${this.state.isShowingIntro ? 'overflow-hidden' : ''}`}>
                 <InputContainer {...this.state}
                     handleInput = {this.handleInput}
