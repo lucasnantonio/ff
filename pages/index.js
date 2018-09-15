@@ -147,7 +147,7 @@ class Index extends Component {
                   />
               </div>
               <div id="resultsWrapper" 
-                  className={`flex flex-column w-100 center items-center h-100 justify-center relative
+                  className={`flex flex-column w-100 center items-center  justify-center relative h-100
                     ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
                   `}>
                 {this.state.isShowingIntro
