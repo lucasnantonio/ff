@@ -3,6 +3,7 @@ import IntlCurrencyInput from 'react-intl-currency-input';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel'
+import InputFieldWrapper from './InputFieldWrapper'
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -72,8 +73,7 @@ class InputField extends Component {
 
   render() {
     return (
-            <div className="flex flex-column h-100 justify-center bb b--near-white h5 pv5">
-                <div className={'flex justify-between f4 o-100'}>
+            <InputFieldWrapper>
                     <InputLabel label={this.props.label}/>
                     <div className={'flex w-30 items-center'}>
                         {this.props.hasSteppers
@@ -114,7 +114,6 @@ class InputField extends Component {
                              </div>
                         }
                     </div>
-                </div>
                 <style jsx>{`
                     input{outline:none}
                     .checkmark{
@@ -127,8 +126,7 @@ class InputField extends Component {
                         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
                     }
                 `}</style>
-            </div>
-
+</InputFieldWrapper>
     );
   }
 }

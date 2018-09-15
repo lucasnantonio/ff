@@ -4,6 +4,7 @@ import InputTable from './InputTable';
 import Logo from './Logo';
 import QuestionChunk from './QuestionChunk';
 import Button from './Button';
+import MultiSelect from './MultiSelect';
 
 class InputContainer extends Component {
   render() {
@@ -42,6 +43,9 @@ class InputContainer extends Component {
                 id = "myCurrentMonthlySavings"
                 label = "Quanto você consegue guardar todo mês?"
                 handleInput = {this.props.handleInput}
+            />
+            <MultiSelect
+              label="Onde você guarda seu dinheiro hoje?"
             />
             <InputField
                 isExpanded = {this.props.isExpanded}
