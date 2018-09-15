@@ -8,8 +8,8 @@ const MultiSelect = props => (
             <InputLabel label={props.label} />
             <div className="flex items-center">
             {props.options.map((item, index) => (<MultiSelectOption
-                isSelected = {item.isSelected}
-                index = {index}
+                isSelected={item.isSelected}
+                index={index}
                 handleClick={props.handleClick}
                 label={item.label}
                 key={index}/>))
