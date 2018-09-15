@@ -47,6 +47,7 @@ class InputContainer extends Component {
             <MultiSelect
               label="Onde você guarda seu dinheiro hoje?"
               options={this.props.myInvestments}
+              handleClick={this.props.handleInvestmentSelector}
             />
             <InputField
                 // hasSteppers = 'true'

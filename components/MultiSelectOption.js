@@ -18,10 +18,11 @@ class MultiSelectOption extends Component {
 
   render() {
     return (<div
+            onClick={e => this.props.handleClick()}
             onMouseLeave={this.handleMouseLeave}
             onMouseEnter={this.handleMouseEnter}
             className={`pointer f5 pv2 ph3 ml2 br-pill ${this.state.isHovered ? 'bg-near-white' : 'bg-white'}`}
-            key={this.props.key}>{this.props.label}</div>);
+            >{this.props.label}</div>);
   }
 }
 

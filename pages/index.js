@@ -89,6 +89,11 @@ class Index extends Component {
     this.updateChart();
   }
 
+  handleInvestmentSelector = (e) => {
+    // console.log('aa')
+    console.log(e);
+  }
+
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
     const { value } = event.target;
     const field = event.target.id;
@@ -147,6 +152,7 @@ class Index extends Component {
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}
                   handleRemoveTableRow = {this.handleRemoveTableRow}
+                  handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
               </div>
               <div id="resultsWrapper"
