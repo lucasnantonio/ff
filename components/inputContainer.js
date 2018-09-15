@@ -7,8 +7,7 @@ class InputContainer extends Component {
   render() {
     return (
       <div id='inputContainer' className={`flex ${!this.props.isExpanded ? 'h5 overflow-y-hidden' : 'vh-100'}`}>
-        <div className='flex flex-column'>
-          <QuestionChunk index="1" title="">
+        <div className=''>
             <InputField
                 isCurrency = "false"
                 value = {this.props.myCurrentAge}
@@ -31,8 +30,6 @@ class InputContainer extends Component {
                 label = "Você pretende viver até quantos anos?"
                 handleInput = {this.props.handleInput}
             />
-          </QuestionChunk>
-          <QuestionChunk index="2" title="Sobre seu dinheiro">
             <InputField
                 isCurrency = "true"
                 value = {this.props.myCurrentBalance}
@@ -65,15 +62,14 @@ class InputContainer extends Component {
               handleAddTableRow = {this.props.handleAddTableRow}
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
             />
-          </QuestionChunk>
         </div>
-        <div className="flex flex-column justify-start center">
-          <button className="ph4 pv3 h3 mt5 bg-green white b ttu pointer bn" onClick={this.props.handleStartApp}>COMEÇAR</button>
+        <div className={`flex flex-column center ${this.props.isExpanded ? 'justify-end mb5' : 'justify-start mt5'} `}>
+          <button className="ph4 pv3 h3 bg-green white b ttu pointer bn" onClick={this.props.handleStartApp}>{this.props.isExpandded ? 'COMEÇAR' : 'calcular'}</button>
         </div>
         <style jsx>
               {`
               #inputContainer{
-                transition: .35s height
+                transition: .55s height Ease-in-out
               }
               `}
         </style>

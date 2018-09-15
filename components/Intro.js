@@ -11,7 +11,7 @@ const Intro = props => (
     {`
         .h0{height:0}
         .bg-offwhite { background-color: #f8f4ef }
-        #intro { transition: all .2s }
+        #intro { transition: all .5s }
 
     `}
 </style>

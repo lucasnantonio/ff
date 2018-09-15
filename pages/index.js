@@ -126,6 +126,7 @@ class Index extends Component {
             <Intro isShowing={this.state.isShowingIntro}/>
             <div className={`bg-white ph7 ${this.state.isShowingIntro ? 'overflow-hidden' : ''}`}>
               <InputContainer {...this.state}
+                  isExpanded = {!this.state.isShowingIntro}
                   handleStartApp = {this.startApp}
                   handleInput = {this.handleInput}
                   handleTableInput = {this.handleTableInput}
