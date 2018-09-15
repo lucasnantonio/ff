@@ -46,19 +46,19 @@ class Index extends Component {
     };
   }
 
-  startApp = () => {
-    this.setState({ isShowingIntro: false });
-    // calculate retirement age
-    this.setState({ retirementResults: getRetirementResults(this.state) });
-  }
-
   updateChart = () => {
     this.setState({ retirementResults: getRetirementResults(this.state) });
   }
 
+  startApp = () => {
+    this.setState({ isShowingIntro: false });
+    // calculate retirement age
+    this.updateChart()
+  }
+
   showFirstCalculation = () => {
     this.setState({ isShowingCalculation: true });
-    this.setState({ retirementResults: getRetirementResults(this.state) });
+    this.updateChart()
   }
 
   handleInput = (e, floatValue, maskedValue) => {
@@ -77,8 +77,8 @@ class Index extends Component {
       state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value;
       this.setState(state);
     }
-    // calculate retirement age
-    this.setState({ retirementResults: getRetirementResults(this.state) });
+
+    this.updateChart();
   }
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
