@@ -8,8 +8,7 @@ import Button from './Button';
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className='flex w-100'>
-        <div className='w-100'>
+      <div id='inputContainer' className={`w-100 h-100 ${this.props.isExpanded && 'flex flex-column'}`}>
             {this.props.isExpanded
             && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
               <Logo />
@@ -51,7 +50,9 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
+              <div className="self-end mv5">
               <Button label="Calcular" onClick={this.props.handleShowCalculation}/>
+              </div>
             }
             {this.props.isShowingCalculation && 
             <QuestionChunk
@@ -83,7 +84,6 @@ class InputContainer extends Component {
             />
             </QuestionChunk>
             }
-        </div>
       </div>
     );
   }

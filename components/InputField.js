@@ -71,10 +71,10 @@ class InputField extends Component {
 
   render() {
     return (
-            <div className="flex flex-column">
-                <div className={`flex justify-between f4 o-100 bb b--near-white ${!this.props.isExpanded ? 'pv5' : 'pv4'}`}>
+            <div className="flex flex-column h-100 mr4 justify-center bb b--near-white h5 pv5">
+                <div className={'flex justify-between f4 o-100'}>
                     <div className="flex justify-start self-center w-70 noSelect">
-                        <label className="gray mw5">{this.props.label}</label>
+                        <label className="gray mw5 lh-copy">{this.props.label}</label>
                     </div>
                     <div className={'flex w-30 items-center'}>
                         {this.props.hasSteppers
