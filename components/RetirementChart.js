@@ -43,8 +43,8 @@ class RetirementChart extends Component {
         }
       }
 
-      const linesets = retirementResults.map((investiment) => {
-        const [label, data] = investiment
+      const linesets = retirementResults.map((investment) => {
+        const [label, data] = investment
         return {
           label: label,
           data: data.timeHistory,
@@ -52,8 +52,8 @@ class RetirementChart extends Component {
         }
       })
 
-      const pointsets = retirementResults.map((investiment) => {
-        const [label, data] = investiment
+      const pointsets = retirementResults.map((investment) => {
+        const [label, data] = investment
         return {
           label: label,
           data: [{

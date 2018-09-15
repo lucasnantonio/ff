@@ -22,18 +22,21 @@ class Index extends Component {
       myAnnualInterestRate: 0.08,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
-      myInvestiments: [
+      myInvestments: [
         {
           label: 'poupança',
           rate: 0.030,
+          isSelected: false,
         },
         {
           label: 'renda fixa',
           rate: 0.060,
+          isSelected: false,
         },
         {
           label: 'renda variável',
           rate: 0.085,
+          isSelected: false,
         },
       ],
       lifeEvents: [
@@ -146,7 +149,7 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
               </div>
-              <div id="resultsWrapper" 
+              <div id="resultsWrapper"
                   className={`flex flex-column w-100 center items-center  justify-center relative h-100
                     ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
                   `}>

@@ -14,7 +14,8 @@ class MultiSelect extends Component {
             <InputLabel label={this.props.label} />
             <div className="flex">
                 {this.props.options.map((item, index) => <div 
-                    className={`pointer f5 pa2 bg-near-white br-pill`} key={index}>{item}</div>)}
+                    className={`pointer f5 pa2 bg-near-white br-pill`} key={index}>{item.label}</div>)
+                    }
             </div>
         </InputFieldWrapper>
     );

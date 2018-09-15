@@ -29,8 +29,8 @@ class RetirementTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {retirementResults.map((investiment, id) => {
-            const [label, results] = investiment
+          {retirementResults.map((investment, id) => {
+            const [label, results] = investment
             const [y, m] = this.formatAge(results.retirement.age )
             return (
               <tr key={id}>
