@@ -3,6 +3,7 @@ import InputField from './InputField';
 import InputTable from './InputTable';
 import Logo from './Logo';
 import QuestionChunk from './QuestionChunk';
+import Button from './Button';
 
 class InputContainer extends Component {
   render() {
@@ -49,6 +50,10 @@ class InputContainer extends Component {
                 label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
+            {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
+              <Button label="Calcular" onClick={this.props.handleShowCalculation}/>
+            }
+            {this.props.isShowingCalculation && 
             <QuestionChunk
               title="Opções avançadas"
             >
@@ -77,6 +82,7 @@ class InputContainer extends Component {
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
             />
             </QuestionChunk>
+            }
         </div>
       </div>
     );

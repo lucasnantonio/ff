@@ -3,6 +3,7 @@ import InputContainer from '../components/InputContainer';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
+import Button from '../components/Button';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -147,25 +148,10 @@ class Index extends Component {
               </div>
               <div id="resultsWrapper" className='flex flex-column w-100 relative'>
                 {this.state.isShowingIntro
-                  && <button
-                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6 br-pill grow
-                  ${this.state.isShowingCalculation ? 'dn' : ''} 
-                  ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
-                  onClick={this.startApp}>
-                    {this.state.isShowingIntro ? 'Começar' : 'calcular'}
-                  </button>
+                  && <Button label='começar'onClick={this.startApp} />
                 }
                 {!this.state.isShowingIntro && !this.state.isShowingCalculation
                 && <div className="flex flex-column justify-between bg-near-white h-100">
-                  <div className="bg-yellow">
-                    <button
-                    className='ph4 pv3 h3 bg-green white b ttu pointer bn absolute mt6 mr6'
-                    onClick={this.showFirstCalculation}>
-                      calcular
-                    </button>
-                  </div>
-                  <div>
-                  </div>
                 </div>
                 }
                 {this.state.isShowingCalculation
