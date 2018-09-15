@@ -134,6 +134,7 @@ class Index extends Component {
               <div id="formWrapper" className="flex flex-column w-100 pl6 pr5 h-100">
               <InputContainer
                   {...this.state}
+                  handleBack = {this.handleBack}
                   isShowingCalculation = {this.state.isShowingCalculation}
                   isExpanded = {!this.state.isShowingIntro}
                   handleStartApp = {this.startApp}
@@ -155,9 +156,8 @@ class Index extends Component {
                   </button>
                 }
                 {!this.state.isShowingIntro && !this.state.isShowingCalculation
-                && <div className="flex flex-column justify-between bg-red h-100">
+                && <div className="flex flex-column justify-between bg-near-white h-100">
                   <div className="bg-yellow">
-                  <button className='absolute' onClick={this.handleBack}>voltar</button>
                     <button
                     className='ph4 pv3 h3 bg-green white b ttu pointer bn absolute mt6 mr6'
                     onClick={this.showFirstCalculation}>

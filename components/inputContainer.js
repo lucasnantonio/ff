@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
+import Logo from "./Logo";
 
 class InputContainer extends Component {
   render() {
     return (
       <div id='inputContainer' className='flex w-100'>
         <div className='w-100'>
+            {this.props.isExpanded && 
+            <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
+              <Logo />
+            </div>
+            }
             <InputField
                 isCurrency = "false"
                 value = {this.props.myCurrentAge}
