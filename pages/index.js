@@ -165,7 +165,7 @@ class Index extends Component {
                     ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
                   `}>
                 {this.state.isShowingIntro
-                  && <Button label='começar'onClick={this.startApp} />
+                  && <Button isEnabled={true} label='começar'onClick={this.startApp} />
                 }
                 {this.state.isShowingCalculation
                 && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>

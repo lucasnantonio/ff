@@ -85,7 +85,7 @@ class InputField extends Component {
                        {this.props.isCurrency === 'false'
                          ? <input
                             value={this.props.value}
-                            className="bn w-100 bg-transparent f3 tc"
+                            className="bn w-100 bg-transparent f4 tc"
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
@@ -96,7 +96,7 @@ class InputField extends Component {
                             onChange={this.handleInput} >
                         </input>
                          : <IntlCurrencyInput
-                            className="bn w-100 bg-transparent f3 tr"
+                            className="bn w-100 bg-transparent f4 tr"
                             value={this.props.value}
                             min={this.props.min}
                             max={this.props.max}

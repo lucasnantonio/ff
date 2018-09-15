@@ -54,14 +54,18 @@ class InputContainer extends Component {
               label="Onde você guarda seu dinheiro hoje?"
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}
+              hiddenBorder={true}
             />
-            {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
-              <div className="self-end mb5">
-              <Button label="Calcular" onClick={this.props.handleShowCalculation}/>
+            {!this.props.isShowingCalculation && !this.props.isShowingIntro
+              && <div className="self-end mb5">
+              <Button
+                isEnabled={this.props.myInvestments.filter(item => item.isSelected).length > 0}
+                label="Calcular"
+                onClick={this.props.handleShowCalculation}/>
               </div>
             }
-            {this.props.isShowingCalculation && 
-            <QuestionChunk
+            {this.props.isShowingCalculation
+            && <QuestionChunk
               title="Opções avançadas"
             >
             <InputField
