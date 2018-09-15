@@ -62,25 +62,6 @@ class InputContainer extends Component {
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
             />
         </div>
-        <div id='buttonWrapper' className='flex flex-column relative w-100'>
-          <button
-            className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute ${this.props.isExpanded ? 'absolute-bottom' : 'absolute-top'}`}
-            onClick={!this.props.isExpanded ? this.props.handleStartApp : this.props.handleShowCalculation}>
-            {!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}
-          </button>
-        </div>
-        <style jsx>
-            {`
-              .absolute-bottom{
-                bottom:4rem;
-                right: 0;
-              }
-              .absolute-top{
-                right: 0;
-                top: 4rem;
-              }
-            `}
-        </style>
       </div>
     );
   }

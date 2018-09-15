@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import InputContainer from '../components/InputContainer';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
+import Intro from '../components/Intro';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
-import Intro from '../components/Intro';
 
 class Index extends Component {
   constructor(props) {
@@ -120,9 +120,34 @@ class Index extends Component {
     return (
       <div>
           <Header />
-          <div className='vh-100 flex flex-column overflow-hidden'>
+          <div id="pageWrapper" className='vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro}/>
-            <div id='inputContainerWrapper' 
+            <div id="bottomWrapper" className={`bg-white flex ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-scroll h-100'}`}>
+              <div id="formWrapper" className="flex flex-column w-100 pl6 pr5">
+              <InputContainer
+                  {...this.state}
+                  isShowingCalculation = {this.state.isShowingCalculation}
+                  isExpanded = {!this.state.isShowingIntro}
+                  handleStartApp = {this.startApp}
+                  handleShowCalculation = {this.showFirstCalculation}
+                  handleInput = {this.handleInput}
+                  handleTableInput = {this.handleTableInput}
+                  handleAddTableRow = {this.handleAddTableRow}
+                  handleRemoveTableRow = {this.handleRemoveTableRow}
+                  />
+              </div>
+              <div id="resultsWrapper" className={`flex flex-column w-100 relative pr6 ${this.state.isShowingCalculation && 'bg-near-white'}`}>
+                <button
+                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6 ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
+                  onClick={this.state.isShowingIntro ? this.startApp : this.showFirstCalculation}>
+                  {this.state.isShowingIntro ? 'Começar' : 'calcular'}
+                </button>
+                <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100' : 'dn'}`}>
+                  <OutPutContainer {...this.state}/>
+                </div>
+              </div>
+            </div>
+            {/* <div id='bottomWrapper'
               className={`bg-white flex flex-column justify-center center items-center ph6
                 ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'h-100'}
                 ${this.state.isShowingCalculation ? 'w-50' : 'w-100'}
@@ -138,12 +163,31 @@ class Index extends Component {
                   handleAddTableRow = {this.handleAddTableRow}
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
-            </div>
-          </div>
-          <div className='dn'>
-            <OutPutContainer {...this.state}/>
+                <div id='buttonWrapper' className='flex flex-column relative w-100'>
+                  <button
+                    className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute ${this.props.isExpanded ? 'absolute-bottom' : 'absolute-top'}`}
+                    onClick={!this.props.isExpanded ? this.props.handleStartApp : this.props.handleShowCalculation}>
+                    {!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}
+                  </button>
+                </div>
+                <OutPutContainer {...this.state}/>
+            </div> */}
           </div>
           <style jsx global>{`
+              .showing{
+                opacity: 1;
+              }
+              .hidden{
+                opacity: 0; 
+              }
+              .absolute-bottom{
+                bottom:4rem;
+                right: 0;
+              }
+              .absolute-top{
+                right: 0;
+                top: 4rem;
+              }
               .mt-negative{
                 margin-top: -5rem;
               }
@@ -157,7 +201,7 @@ class Index extends Component {
                   -webkit-appearance: none;
                   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
               }
-              #inputContainerWrapper{
+              #bottomWrapper{
                 transition: height .55s ease-in-out, width .55s ease-in-out;
               }
           `}</style>

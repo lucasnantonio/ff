@@ -9,7 +9,7 @@ class OutPutContainer extends Component {
 
     render() {
       return (
-            <div className='w-100 ph5'>
+            <div className='flex ph5'>
               <div className="vh-100 flex flex-column justify-center" id="chartContainer">
                 <RetirementChart retirementResults={this.props.retirementResults}/>
                 <RetirementTable retirementResults={this.props.retirementResults}/>
