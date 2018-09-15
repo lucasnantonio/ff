@@ -1,14 +1,18 @@
 import React from 'react';
 import Particles from 'react-particles-js';
+import Logo from './Logo';
 
 const Intro = props => (
-<div id="intro" className={`${props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 justify-between center items-center bg-offwhite tc relative`}>    
+<div id="intro" className={`${props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 justify-between center items-center bg-offwhite tc relative`}>
 <div className="flex z-max flex-column items-center justify-center w-100 h-100">
-        <h1 className="b f2 lh-solid">Quero Me  <br />Aposentar</h1>
-        <h2 className="f3 fw1 measure-narrow">Calcule sua independência financeira</h2>
-        <h3 className="f4 measure-narrow gray mb5">Descubra quando você vai poder mandar tudo à merda!</h3>
+
+        <div className="mw6 mb4">
+            <Logo />
+        </div>
+        <h2 className="f2 fw1 measure-narrow gray">Calcule sua independência financeira</h2>
+        <h3 className="f5 measure-narrow gray mb5">Descubra quando você vai poder mandar tudo à merda!</h3>
     </div>
-<Particles
+    <Particles
     className="absolute h-100 w-100"
         params={{
           particles: {
@@ -19,21 +23,21 @@ const Intro = props => (
               value: 1,
               random: false,
             },
-            color: { value: '#edad63' },
+            color: { value: '#f5c83f' },
             number: {
-              value: 6,
+              value: 1.5,
               density: {
-                enable: false,
+                enable: true,
               },
             },
             shape: {
               stroke: {
-                width: 14,
-                color: '#DC9840',
+                width: 48,
+                color: '#f5d46a',
               },
             },
             size: {
-              value: 18,
+              value: 54,
               random: false,
               anim: {
                 speed: 4,
@@ -44,9 +48,9 @@ const Intro = props => (
             },
             move: {
             //   random: true,
-              speed: 5,
+              speed: 1,
               direction: 'bottom',
-              straight: true,
+              straight: false,
               out_mode: 'out',
             },
           },

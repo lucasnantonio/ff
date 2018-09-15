@@ -53,12 +53,12 @@ class Index extends Component {
   startApp = () => {
     this.setState({ isShowingIntro: false });
     // calculate retirement age
-    this.updateChart()
+    this.updateChart();
   }
 
   showFirstCalculation = () => {
     this.setState({ isShowingCalculation: true });
-    this.updateChart()
+    this.updateChart();
   }
 
   handleBack = () => {
@@ -145,17 +145,17 @@ class Index extends Component {
                   />
               </div>
               <div id="resultsWrapper" className='flex flex-column w-100 relative'>
-                {this.state.isShowingIntro &&
-                  <button
-                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6
+                {this.state.isShowingIntro
+                  && <button
+                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6 br-pill grow
                   ${this.state.isShowingCalculation ? 'dn' : ''} 
                   ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
                   onClick={this.startApp}>
                     {this.state.isShowingIntro ? 'Começar' : 'calcular'}
                   </button>
                 }
-                {!this.state.isShowingIntro && !this.state.isShowingCalculation &&
-                <div className="flex flex-column justify-between bg-red h-100">
+                {!this.state.isShowingIntro && !this.state.isShowingCalculation
+                && <div className="flex flex-column justify-between bg-red h-100">
                   <div className="bg-yellow">
                   <button className='absolute' onClick={this.handleBack}>voltar</button>
                     <button
@@ -168,8 +168,8 @@ class Index extends Component {
                   </div>
                 </div>
                 }
-                {this.state.isShowingCalculation &&
-                <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
+                {this.state.isShowingCalculation
+                && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
                   <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
                 </div>
                 }
