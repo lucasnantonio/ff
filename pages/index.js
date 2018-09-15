@@ -52,8 +52,13 @@ class Index extends Component {
     this.setState({ retirementResults: getRetirementResults(this.state) });
   }
 
+  updateChart = () => {
+    this.setState({ retirementResults: getRetirementResults(this.state) });
+  }
+
   showFirstCalculation = () => {
     this.setState({ isShowingCalculation: true });
+    this.setState({ retirementResults: getRetirementResults(this.state) });
   }
 
   handleInput = (e, floatValue, maskedValue) => {
@@ -135,17 +140,30 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
               </div>
-              <div id="resultsWrapper" className={`flex flex-column w-100 pr6 relative ${this.state.isShowingCalculation && 'bg-near-white'}`}>
-                <button
+              <div id="resultsWrapper" className='flex flex-column w-100 relative'>
+                {this.state.isShowingIntro &&
+                  <button
                   className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6
-                    ${this.state.isShowingCalculation ? 'dn' : ''} 
-                    ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
-                  onClick={this.state.isShowingIntro ? this.startApp : this.showFirstCalculation}>
-                  {this.state.isShowingIntro ? 'Começar' : 'calcular'}
-                </button>
-                <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
-                  <OutPutContainer {...this.state}/>
+                  ${this.state.isShowingCalculation ? 'dn' : ''} 
+                  ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
+                  onClick={this.startApp}>
+                    {this.state.isShowingIntro ? 'Começar' : 'calcular'}
+                  </button>
+                }
+                {!this.state.isShowingIntro && !this.state.isShowingCalculation &&
+                <div className="h-100 bg-red flex flex-column justify-center center">
+                  <button
+                  className='ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6'
+                  onClick={this.showFirstCalculation}>
+                    calcular
+                  </button>
                 </div>
+                }
+                {this.state.isShowingCalculation &&
+                <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
+                  <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
+                </div>
+                }
               </div>
             </div>
           </div>
