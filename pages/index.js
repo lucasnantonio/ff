@@ -146,7 +146,10 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
               </div>
-              <div id="resultsWrapper" className='flex flex-column w-100 center items-center h-100 justify-center relative bg-near-white'>
+              <div id="resultsWrapper" 
+                  className={`flex flex-column w-100 center items-center h-100 justify-center relative
+                    ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
+                  `}>
                 {this.state.isShowingIntro
                   && <Button label='começar'onClick={this.startApp} />
                 }
