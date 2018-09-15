@@ -89,9 +89,13 @@ class Index extends Component {
     this.updateChart();
   }
 
-  handleInvestmentSelector = (e) => {
-    // console.log('aa')
-    console.log(e);
+  handleInvestmentSelector = (e, index) => {
+    const investmentsState = this.state.myInvestments;
+    const ressetedInvestment = investmentsState.map((item, itemIndex) => ({
+      ...item,
+      isSelected: index === itemIndex,
+    }));
+    this.setState({ myInvestments: ressetedInvestment });
   }
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
