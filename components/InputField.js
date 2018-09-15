@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
+import InputLabel from './InputLabel'
+import InputFieldWrapper from './InputFieldWrapper'
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -71,12 +73,9 @@ class InputField extends Component {
 
   render() {
     return (
-            <div className="flex flex-column h-100 mr4 justify-center bb b--near-white h5 pv5">
-                <div className={'flex justify-between f4 o-100'}>
-                    <div className="flex justify-start self-center w-70 noSelect">
-                        <label className="gray mw5 lh-copy">{this.props.label}</label>
-                    </div>
-                    <div className={'flex w-30 items-center'}>
+            <InputFieldWrapper>
+                    <InputLabel label={this.props.label}/>
+                    <div className={'flex items-center'}>
                         {this.props.hasSteppers
                             && <div className="pointer flex items-center" onClick={this.handleDecrement}>
                             <MinusBtn />
@@ -97,7 +96,7 @@ class InputField extends Component {
                             onChange={this.handleInput} >
                         </input>
                          : <IntlCurrencyInput
-                            className="bn w-100 bg-transparent f3 tc"
+                            className="bn w-100 bg-transparent f3 tr"
                             value={this.props.value}
                             min={this.props.min}
                             max={this.props.max}
@@ -115,7 +114,6 @@ class InputField extends Component {
                              </div>
                         }
                     </div>
-                </div>
                 <style jsx>{`
                     input{outline:none}
                     .checkmark{
@@ -128,8 +126,7 @@ class InputField extends Component {
                         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
                     }
                 `}</style>
-            </div>
-
+</InputFieldWrapper>
     );
   }
 }

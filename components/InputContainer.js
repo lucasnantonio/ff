@@ -4,6 +4,7 @@ import InputTable from './InputTable';
 import Logo from './Logo';
 import QuestionChunk from './QuestionChunk';
 import Button from './Button';
+import MultiSelect from './MultiSelect';
 
 class InputContainer extends Component {
   render() {
@@ -43,14 +44,21 @@ class InputContainer extends Component {
                 label = "Quanto você consegue guardar todo mês?"
                 handleInput = {this.props.handleInput}
             />
+            <MultiSelect
+              label="Onde você guarda seu dinheiro hoje?"
+              options={this.props.myInvestments}
+              handleClick={this.props.handleInvestmentSelector}
+            />
             <InputField
+                // hasSteppers = 'true'
+                // stepperIncrement = '1000'
                 isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
             {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
-              <div className="self-end mv5">
+              <div className="self-end mb5">
               <Button label="Calcular" onClick={this.props.handleShowCalculation}/>
               </div>
             }

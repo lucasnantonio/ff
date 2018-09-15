@@ -22,18 +22,21 @@ class Index extends Component {
       myAnnualInterestRate: 0.08,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
-      myInvestiments: [
+      myInvestments: [
         {
           label: 'poupança',
           rate: 0.030,
+          isSelected: false,
         },
         {
           label: 'renda fixa',
           rate: 0.060,
+          isSelected: false,
         },
         {
           label: 'renda variável',
           rate: 0.085,
+          isSelected: false,
         },
       ],
       lifeEvents: [
@@ -84,6 +87,15 @@ class Index extends Component {
     }
 
     this.updateChart();
+  }
+
+  handleInvestmentSelector = (e, index) => {
+    const investmentsState = this.state.myInvestments;
+    const ressetedInvestment = investmentsState.map((item, itemIndex) => ({
+      ...item,
+      isSelected: index === itemIndex,
+    }));
+    this.setState({ myInvestments: ressetedInvestment });
   }
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
@@ -144,9 +156,10 @@ class Index extends Component {
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}
                   handleRemoveTableRow = {this.handleRemoveTableRow}
+                  handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
               </div>
-              <div id="resultsWrapper" 
+              <div id="resultsWrapper"
                   className={`flex flex-column w-100 center items-center  justify-center relative h-100
                     ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
                   `}>

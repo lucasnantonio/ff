@@ -9,7 +9,7 @@ class Button extends Component {
   render() {
     return (
             <button
-                className='ph4 pv3 h3 bg-green white b ttu pointer bn mr6 br-pill grow'
+                className='ph4 pv3 h3 bg-green white b ttu pointer bn br-pill grow'
                 onClick={this.props.onClick}
             >
                 {this.props.label}
