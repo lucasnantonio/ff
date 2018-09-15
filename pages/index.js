@@ -57,7 +57,6 @@ class Index extends Component {
   }
 
   handleInput = (e, floatValue, maskedValue) => {
-
     // save state in a variable
     const { state } = this;
 
@@ -115,7 +114,7 @@ class Index extends Component {
       ),
     }));
   };
-  
+
   render() {
     return (
       <div>
@@ -138,7 +137,9 @@ class Index extends Component {
               </div>
               <div id="resultsWrapper" className={`flex flex-column w-100 relative pr6 ${this.state.isShowingCalculation && 'bg-near-white'}`}>
                 <button
-                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6 ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
+                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6
+                    ${this.state.isShowingCalculation ? 'dn' : ''} 
+                    ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
                   onClick={this.state.isShowingIntro ? this.startApp : this.showFirstCalculation}>
                   {this.state.isShowingIntro ? 'Começar' : 'calcular'}
                 </button>
