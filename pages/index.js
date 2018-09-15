@@ -116,14 +116,18 @@ class Index extends Component {
       return (
         <div>
             <Header />
-            <Intro handleClick={this.startApp}/>
-            <div className={`bg-red vh-100 ${this.state.isShowingIntro ? 'overflow-hidden' : ''}`}>
-              <InputContainer {...this.state}
-                  handleInput = {this.handleInput}
-                  handleTableInput = {this.handleTableInput}
-                  handleAddTableRow = {this.handleAddTableRow}
-                  handleRemoveTableRow = {this.handleRemoveTableRow}
-                  />
+            <div className='vh-100 flex flex-column overflow-hidden'>
+              <Intro handleClick={this.startApp}/>
+              <div className={`bg-white ph7 ${this.state.isShowingIntro ? 'overflow-hidden' : ''}`}>
+                <InputContainer {...this.state}
+                    handleInput = {this.handleInput}
+                    handleTableInput = {this.handleTableInput}
+                    handleAddTableRow = {this.handleAddTableRow}
+                    handleRemoveTableRow = {this.handleRemoveTableRow}
+                    />
+              </div>
+            </div>
+            <div className='dn'>
               <OutPutContainer {...this.state}/>
             </div>
             <style jsx global>{`

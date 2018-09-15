@@ -6,9 +6,7 @@ import QuestionChunk from './QuestionChunk';
 class InputContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isIntroShowing: true,
-    };
+    this.state = {};
     this.startApp = this.startApp.bind(this);
   }
 
@@ -20,9 +18,9 @@ class InputContainer extends Component {
 
   render() {
     return (
-          <div className="w-100">
-           <div id="questions" className="pt5">
-           <QuestionChunk index="1" title="Sobre você">
+          <div className={`w-70 ${this.props.isShowingIntro ? 'h5 debug overflow-hidden' : 'bg-blue'}`}>
+           <div id="questions" className="">
+           <QuestionChunk index="1" title="">
                 <InputField
                     isCurrency = "false"
                     value = {this.props.myCurrentAge}
