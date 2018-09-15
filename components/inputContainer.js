@@ -64,7 +64,7 @@ class InputContainer extends Component {
             />
         </div>
         <div className={`flex flex-column center ${this.props.isExpanded ? 'justify-end mb5' : 'justify-start mt5'} `}>
-          <button className="ph4 pv3 h3 bg-green white b ttu pointer bn" onClick={this.props.handleStartApp}>{this.props.isExpandded ? 'COMEÇAR' : 'calcular'}</button>
+          <button className="ph4 pv3 h3 bg-green white b ttu pointer bn" onClick={this.props.handleStartApp}>{!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}</button>
         </div>
         <style jsx>
               {`

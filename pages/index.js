@@ -52,12 +52,7 @@ class Index extends Component {
   }
 
   handleInput = (e, floatValue, maskedValue) => {
-    // remove picture on first edit
-    document.getElementById('chartContainer').scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-
+    
     // save state in a variable
     const { state } = this;
 
@@ -73,8 +68,6 @@ class Index extends Component {
       state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value;
       this.setState(state);
     }
-
-
     // calculate retirement age
     this.setState({ retirementResults: getRetirementResults(this.state) });
   }
