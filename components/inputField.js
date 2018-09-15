@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
+import InputLabel from './InputLabel'
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -73,9 +74,7 @@ class InputField extends Component {
     return (
             <div className="flex flex-column h-100 justify-center bb b--near-white h5 pv5">
                 <div className={'flex justify-between f4 o-100'}>
-                    <div className="flex justify-start self-center w-70 noSelect">
-                        <label className="gray mw5 lh-copy">{this.props.label}</label>
-                    </div>
+                    <InputLabel label={this.props.label}/>
                     <div className={'flex w-30 items-center'}>
                         {this.props.hasSteppers
                             && <div className="pointer flex items-center" onClick={this.handleDecrement}>

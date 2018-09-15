@@ -5,8 +5,8 @@ class QuestionChunk extends Component {
 
     render() {
       return (
-            <div className="mb6">
-                {this.props.title && <h2 className="f3 b black">{this.props.title}</h2>}
+            <div className="mt5">
+                {this.props.title && <h2 className="f5 b black">{this.props.title}</h2>}
                 <div>
                     {this.props.children}
                 </div>
