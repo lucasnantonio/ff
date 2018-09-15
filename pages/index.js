@@ -121,8 +121,8 @@ class Index extends Component {
           <Header />
           <div id="pageWrapper" className='vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro}/>
-            <div id="bottomWrapper" className={`bg-white flex ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-scroll h-100'}`}>
-              <div id="formWrapper" className="flex flex-column w-100 pl6 pr5">
+            <div id="bottomWrapper" className={`bg-white flex ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-scroll vh-100'}`}>
+              <div id="formWrapper" className="flex flex-column w-100 pl6 pr5 h-100">
               <InputContainer
                   {...this.state}
                   isShowingCalculation = {this.state.isShowingCalculation}
@@ -135,7 +135,7 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
               </div>
-              <div id="resultsWrapper" className={`flex flex-column w-100 relative pr6 ${this.state.isShowingCalculation && 'bg-near-white'}`}>
+              <div id="resultsWrapper" className={`flex flex-column w-100 pr6 relative ${this.state.isShowingCalculation && 'bg-near-white'}`}>
                 <button
                   className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6
                     ${this.state.isShowingCalculation ? 'dn' : ''} 
@@ -143,36 +143,11 @@ class Index extends Component {
                   onClick={this.state.isShowingIntro ? this.startApp : this.showFirstCalculation}>
                   {this.state.isShowingIntro ? 'Começar' : 'calcular'}
                 </button>
-                <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100' : 'dn'}`}>
+                <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
                   <OutPutContainer {...this.state}/>
                 </div>
               </div>
             </div>
-            {/* <div id='bottomWrapper'
-              className={`bg-white flex flex-column justify-center center items-center ph6
-                ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'h-100'}
-                ${this.state.isShowingCalculation ? 'w-50' : 'w-100'}
-                `}>
-              <InputContainer
-                  {...this.state}
-                  isShowingCalculation = {this.state.isShowingCalculation}
-                  isExpanded = {!this.state.isShowingIntro}
-                  handleStartApp = {this.startApp}
-                  handleShowCalculation = {this.showFirstCalculation}
-                  handleInput = {this.handleInput}
-                  handleTableInput = {this.handleTableInput}
-                  handleAddTableRow = {this.handleAddTableRow}
-                  handleRemoveTableRow = {this.handleRemoveTableRow}
-                  />
-                <div id='buttonWrapper' className='flex flex-column relative w-100'>
-                  <button
-                    className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute ${this.props.isExpanded ? 'absolute-bottom' : 'absolute-top'}`}
-                    onClick={!this.props.isExpanded ? this.props.handleStartApp : this.props.handleShowCalculation}>
-                    {!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}
-                  </button>
-                </div>
-                <OutPutContainer {...this.state}/>
-            </div> */}
           </div>
           <style jsx global>{`
               .showing{
