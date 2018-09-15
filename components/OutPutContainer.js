@@ -10,7 +10,7 @@ class OutPutContainer extends Component {
 
   render() {
     return (
-            <div className='flex ph5 pt5'>
+            <div className='flex ph5 pt6'>
               <div className="" id="chartContainer">
                 <RetirementSummary myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
                 <RetirementChart myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
