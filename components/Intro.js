@@ -9,7 +9,9 @@ class Intro extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state !== nextState) { return true ;}
+    if (this.state !== nextState) {
+      return true;
+    }
     return (!nextProps.isShowing === this.props.isShowing && this.state === nextState);
   }
 
@@ -90,7 +92,7 @@ class Intro extends Component {
             .h0{height:0}
             .bg-offwhite { background-color: #f8f4ef }
             #intro { transition: all .5s }
-            
+
             `}
         </style>
     </div>);
