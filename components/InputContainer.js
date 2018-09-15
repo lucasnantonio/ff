@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
-import QuestionChunk from './QuestionChunk';
 
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className={`flex ${!this.props.isExpanded ? 'h5 overflow-y-hidden' : 'vh-100'}`}>
+      <div id='inputContainer' className='flex'>
         <div className=''>
             <InputField
                 isCurrency = "false"
@@ -63,15 +62,21 @@ class InputContainer extends Component {
               handleRemoveTableRow = {this.props.handleRemoveTableRow}
             />
         </div>
-        <div className={`flex flex-column center ${this.props.isExpanded ? 'justify-end mb5' : 'justify-start mt5'} `}>
-          <button className="ph4 pv3 h3 bg-green white b ttu pointer bn" onClick={this.props.handleStartApp}>{!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}</button>
+        <div id='buttonWrapper' className={`flex flex-column center vh-100 ${this.props.isExpanded ? 'justify-end pb5' : 'justify-start mt5'} `}>
+          <button
+            id="startButton"
+            className="ph4 pv3 h3 bg-green white b ttu pointer bn"
+            onClick={!this.props.isExpanded ? this.props.handleStartApp : this.props.handleShowCalculation}>
+            {!this.props.isExpanded ? 'COMEÇAR' : 'calcular'}
+          </button>
         </div>
         <style jsx>
-              {`
-              #inputContainer{
-                transition: .55s height Ease-in-out
+            {`
+              #startButton{
+                position:absolute;
+                bottom:4rem;
               }
-              `}
+            `}
         </style>
       </div>
     );

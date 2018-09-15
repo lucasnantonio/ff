@@ -11,6 +11,7 @@ class Index extends Component {
     super(props);
     this.state = {
       isShowingIntro: true,
+      isShowingCalculation: false,
       myCurrentIncome: 10000,
       myCurrentBalance: 100000,
       myCurrentAge: 26,
@@ -51,8 +52,12 @@ class Index extends Component {
     this.setState({ retirementResults: getRetirementResults(this.state) });
   }
 
+  showFirstCalculation = () => {
+    this.setState({ isShowingCalculation: true });
+  }
+
   handleInput = (e, floatValue, maskedValue) => {
-    
+
     // save state in a variable
     const { state } = this;
 
@@ -117,10 +122,12 @@ class Index extends Component {
           <Header />
           <div className='vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro}/>
-            <div className={`bg-white ph7 ${this.state.isShowingIntro ? 'overflow-hidden' : ''}`}>
+            <div id='inputContainerWrapper' className={`bg-white ph7 ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'h-100'}`}>
               <InputContainer {...this.state}
+                  isShowingCalculation = {this.state.isShowingCalculation}
                   isExpanded = {!this.state.isShowingIntro}
                   handleStartApp = {this.startApp}
+                  handleShowCalculation = {this.showFirstCalculation}
                   handleInput = {this.handleInput}
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}
@@ -144,6 +151,9 @@ class Index extends Component {
                   /* display: none; <- Crashes Chrome on hover */
                   -webkit-appearance: none;
                   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+              }
+              #inputContainerWrapper{
+                transition: .55s height Ease-in-out
               }
           `}</style>
       </div>);
