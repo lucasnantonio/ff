@@ -71,18 +71,18 @@ class InputField extends Component {
 
   render() {
     return (
-            <div className="flex flex-column">
-                <div className='flex justify-between f4 pv5 o-100 bb b--near-white'>
-                    <div className="flex justify-start self-center w-70">
-                        <label className="gray mw5">{this.props.label}</label>
+            <div className="flex flex-column h-100 mr4 justify-center bb b--near-white h5 pv5">
+                <div className={'flex justify-between f4 o-100'}>
+                    <div className="flex justify-start self-center w-70 noSelect">
+                        <label className="gray mw5 lh-copy">{this.props.label}</label>
                     </div>
-                    <div className={'flex w-30'}>
+                    <div className={'flex w-30 items-center'}>
                         {this.props.hasSteppers
-                            && <div className="pointer" onClick={this.handleDecrement}>
+                            && <div className="pointer flex items-center" onClick={this.handleDecrement}>
                             <MinusBtn />
                             </div>
                         }
-                        <div className={`bb w-100 flex flex-column justify-center pv2 h2 ${this.state.isFocused ? 'b--gray' : 'b--black-20'}`}>
+                        <div className={'bn w-100 flex flex-column justify-center pv2 h2'}>
                        {this.props.isCurrency === 'false'
                          ? <input
                             value={this.props.value}
@@ -110,7 +110,7 @@ class InputField extends Component {
                         }
                         </div>
                         {this.props.hasSteppers
-                             && <div className="pointer" onClick={this.handleIncrement}>
+                             && <div className="pointer flex items-center" onClick={this.handleIncrement}>
                              <PlusBtn />
                              </div>
                         }

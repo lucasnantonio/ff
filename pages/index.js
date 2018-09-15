@@ -3,6 +3,7 @@ import InputContainer from '../components/InputContainer';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
+import Button from '../components/Button';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -128,12 +129,13 @@ class Index extends Component {
     return (
       <div>
           <Header />
-          <div id="pageWrapper" className='vh-100 flex flex-column overflow-hidden'>
+          <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro}/>
-            <div id="bottomWrapper" className={`bg-white flex ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-scroll vh-100'}`}>
+            <div id="bottomWrapper" className={`bg-white flex z-max ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-hidden vh-100'} ${this.state.isShowingCalculation ? 'overflow-scroll' : ''}`}>
               <div id="formWrapper" className="flex flex-column w-100 pl6 pr5 h-100">
               <InputContainer
                   {...this.state}
+                  handleBack = {this.handleBack}
                   isShowingCalculation = {this.state.isShowingCalculation}
                   isExpanded = {!this.state.isShowingIntro}
                   handleStartApp = {this.startApp}
@@ -144,29 +146,12 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
               </div>
-              <div id="resultsWrapper" className='flex flex-column w-100 relative'>
+              <div id="resultsWrapper" 
+                  className={`flex flex-column w-100 center items-center  justify-center relative h-100
+                    ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
+                  `}>
                 {this.state.isShowingIntro
-                  && <button
-                  className={`ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6 br-pill grow
-                  ${this.state.isShowingCalculation ? 'dn' : ''} 
-                  ${!this.state.isShowingIntro ? 'absolute-bottom' : 'absolute-top'}`}
-                  onClick={this.startApp}>
-                    {this.state.isShowingIntro ? 'Começar' : 'calcular'}
-                  </button>
-                }
-                {!this.state.isShowingIntro && !this.state.isShowingCalculation
-                && <div className="flex flex-column justify-between bg-red h-100">
-                  <div className="bg-yellow">
-                  <button className='absolute' onClick={this.handleBack}>voltar</button>
-                    <button
-                    className='ph4 pv3 h3 bg-green white b ttu pointer bn absolute mt6 mr6'
-                    onClick={this.showFirstCalculation}>
-                      calcular
-                    </button>
-                  </div>
-                  <div>
-                  </div>
-                </div>
+                  && <Button label='começar'onClick={this.startApp} />
                 }
                 {this.state.isShowingCalculation
                 && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
@@ -177,6 +162,18 @@ class Index extends Component {
             </div>
           </div>
           <style jsx global>{`
+            ::selection{
+              color:white;
+              background-color:#2ea776;
+            }
+                .noSelect {
+                  -webkit-touch-callout: none;
+                  -webkit-user-select: none;
+                  -khtml-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+              }
               .showing{
                 opacity: 1;
               }
