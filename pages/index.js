@@ -61,6 +61,10 @@ class Index extends Component {
     this.updateChart()
   }
 
+  handleBack = () => {
+    this.setState({ isShowingCalculation: false, isShowingIntro: true });
+  }
+
   handleInput = (e, floatValue, maskedValue) => {
     // save state in a variable
     const { state } = this;
@@ -151,12 +155,17 @@ class Index extends Component {
                   </button>
                 }
                 {!this.state.isShowingIntro && !this.state.isShowingCalculation &&
-                <div className="h-100 bg-red flex flex-column justify-center center">
-                  <button
-                  className='ph4 pv3 h3 bg-green white b ttu pointer bn absolute mr6'
-                  onClick={this.showFirstCalculation}>
-                    calcular
-                  </button>
+                <div className="flex flex-column justify-between bg-red h-100">
+                  <div className="bg-yellow">
+                  <button className='absolute' onClick={this.handleBack}>voltar</button>
+                    <button
+                    className='ph4 pv3 h3 bg-green white b ttu pointer bn absolute mt6 mr6'
+                    onClick={this.showFirstCalculation}>
+                      calcular
+                    </button>
+                  </div>
+                  <div>
+                  </div>
                 </div>
                 }
                 {this.state.isShowingCalculation &&
