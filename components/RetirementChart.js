@@ -43,13 +43,16 @@ class RetirementChart extends Component {
       },
     };
 
-    const linesets = retirementResults.map((investment) => {
-      const [label, data] = investment;
-      return {
-        label,
-        data: data.timeHistory,
-        ...options[label],
-      };
+    const linesets = retirementResults.map((investment, index) => {
+      if (this.props.myInvestments[index].isSelected) {
+        const [label, data] = investment;
+        return {
+          label,
+          data: data.timeHistory,
+          ...options[label],
+        };
+      }
+      return {};
     });
 
     const pointsets = retirementResults.map((investment) => {
