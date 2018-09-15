@@ -3,10 +3,17 @@ import Particles from 'react-particles-js';
 import Logo from './Logo';
 
 class Intro extends Component {
-  state = { }
+  state = {
+    isShowingParticles: false,
+  }
 
-  shouldComponentUpdate(nextProps) {
-    return (!nextProps.isShowing === this.props.isShowing); // equals() is your implementation
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state !== nextState) { return true ;}
+    return (!nextProps.isShowing === this.props.isShowing && this.state === nextState);
+  }
+
+  componentDidMount() {
+    this.setState({ isShowingParticles: true });
   }
 
   render() {
@@ -18,8 +25,11 @@ class Intro extends Component {
             <h2 className="f2 fw1 measure-narrow gray">Calcule sua independência financeira</h2>
             <h3 className="f5 measure-narrow gray mb5">Descubra quando você vai poder mandar tudo à merda!</h3>
         </div>
-        <Particles
-        className="absolute h-100 w-100"
+        {this.state.isShowingParticles
+        && <Particles
+        className="absolute"
+            width="100vw"
+            height="100vh"
             params={{
               particles: {
                 opacity: {
@@ -70,6 +80,7 @@ class Intro extends Component {
               },
             }}
         />
+      }
         <style jsx>
             {`
             .h0{height:0}

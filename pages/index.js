@@ -129,9 +129,9 @@ class Index extends Component {
     return (
       <div>
           <Header />
-          <div id="pageWrapper" className='vh-100 flex flex-column overflow-hidden'>
+          <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro}/>
-            <div id="bottomWrapper" className={`bg-white flex ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-hidden vh-100'} ${this.state.isShowingCalculation ? 'overflow-scroll' : ''}`}>
+            <div id="bottomWrapper" className={`bg-white flex z-max ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-hidden vh-100'} ${this.state.isShowingCalculation ? 'overflow-scroll' : ''}`}>
               <div id="formWrapper" className="flex flex-column w-100 pl6 pr5 h-100">
               <InputContainer
                   {...this.state}
