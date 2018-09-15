@@ -13,7 +13,7 @@ class RetirementChart extends Component {
     this.chart = getRetirementChart(this.ctx);
   }
 
-  componentWillUpdate(nextProps) {
+  componentDidUpdate(nextProps) {
     const { retirementResults } = nextProps;
 
     const options = {

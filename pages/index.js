@@ -4,7 +4,7 @@ import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Button from '../components/Button';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -191,7 +191,7 @@ class Index extends Component {
                 opacity: 1;
               }
               .hidden{
-                opacity: 0; 
+                opacity: 0;
               }
               .absolute-bottom{
                 bottom:4rem;
