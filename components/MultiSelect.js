@@ -4,7 +4,7 @@ import InputFieldWrapper from './InputFieldWrapper';
 import MultiSelectOption from './MultiSelectOption';
 
 const MultiSelect = props => (
-        <InputFieldWrapper hiddenBorder={props.hiddenBorder}>
+        <InputFieldWrapper isShowingCalculation={props.isShowingCalculation} hiddenBorder={props.hiddenBorder}>
             <InputLabel label={props.label} />
             <div className="flex items-center">
             {props.options.map((item, index) => (<MultiSelectOption

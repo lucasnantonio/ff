@@ -73,7 +73,9 @@ class InputField extends Component {
 
   render() {
     return (
-            <InputFieldWrapper>
+            <InputFieldWrapper
+              isShowingCalculation={this.props.isShowingCalculation}
+            >
                     <InputLabel label={this.props.label}/>
                     <div className={'flex items-center'}>
                         {this.props.hasSteppers

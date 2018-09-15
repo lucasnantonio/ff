@@ -9,13 +9,14 @@ import MultiSelect from './MultiSelect';
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className={`w-100 h-100 ${this.props.isExpanded && 'flex flex-column'}`}>
+      <div id='inputContainer' className={`w-100 h-100 ${this.props.isExpanded && !this.props.isShowingCalculation && 'flex flex-column'}`}>
             {this.props.isExpanded
             && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
               <Logo />
             </div>
             }
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 isCurrency = "false"
                 value = {this.props.myCurrentAge}
@@ -30,6 +31,7 @@ class InputContainer extends Component {
                 helperText = {this.props.myCurrentAge > 25 ? 'Ainda dá tempo' : 'Começando jovem hein!'}
             />
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 isCurrency = "true"
                 value = {this.props.myCurrentBalance}
@@ -38,6 +40,7 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
               />
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 value={this.props.myCurrentMonthlySavings}
                 id = "myCurrentMonthlySavings"
@@ -45,12 +48,14 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Quanto você quer tirar mês ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
             <MultiSelect
+              isShowingCalculation = {this.props.isShowingCalculation}
               label="Onde você guarda seu dinheiro hoje?"
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}

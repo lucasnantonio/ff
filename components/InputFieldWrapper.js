@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InputFieldWrapper = props => (
-    <div className={`flex h-100 justify-between h5 pv4 ${!props.hiddenBorder === true && 'bb b--near-white'}`}>
+    <div className={`flex justify-between pv4 ${!props.hiddenBorder === true && 'bb b--near-white'} ${!props.isShowingCalculation && 'h-100'}`}>
         {props.children}
     </div>
 );

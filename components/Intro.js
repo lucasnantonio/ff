@@ -22,7 +22,7 @@ class Intro extends Component {
     <div className="flex z-max flex-column items-center justify-between w-100 h-100">
           <NavBar />
           <div className="flex flex-column center justify-center items-center h-100">
-            <div className="mb2 mw7 w-70">
+            <div className="mb2 mw7 w-50">
                 <Logo />
             </div>
             <h2 className="f2 fw1 measure-narrow gray tc">Calcule sua independência financeira</h2>

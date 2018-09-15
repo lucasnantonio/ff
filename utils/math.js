@@ -1,7 +1,7 @@
 import * as fin from './finance';
 
 export function toCurrency(value) {
-  return ('R$ ' + Number(value).toFixed(2));
+  return (`R$ ${Number(value).toFixed(2)}`);
 }
 
 export function getMyRetirementData(state, aIR) {
@@ -67,4 +67,10 @@ export function getRetirementResults(state) {
     const { label, rate } = investment;
     return [label, getMyRetirementData(state, rate)];
   });
+}
+
+export function formatAge(ageInMonths) {
+  const y = parseInt(ageInMonths / 12);
+  const m = parseInt((ageInMonths / 12) % y * 12);
+  return [y, m];
 }

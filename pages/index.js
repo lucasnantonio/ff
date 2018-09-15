@@ -19,7 +19,6 @@ class Index extends Component {
       myCurrentAge: 26,
       myCurrentMonthlySavings: 1500,
       myCurrentLifestyleCost: 3000,
-      myRetirementAge: 0,
       myAnnualInterestRate: 0.08,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
