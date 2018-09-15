@@ -4,25 +4,15 @@ import InputTable from './InputTable';
 import QuestionChunk from './QuestionChunk';
 
 class InputContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isExpanded: false };
-    this.startApp = this.startApp.bind(this);
-  }
-
-  startApp = () => {
-    console.log('startapp')
-    this.setState({ isExpanded: true });
-  }
-
   render() {
     return (
-      <div id='inputContainer' className={`flex ${ !this.state.isExpanded ? 'h5 overflow-y-hidden' : 'vh-100'}`}>
+      <div id='inputContainer' className={`flex ${!this.props.isExpanded ? 'h5 overflow-y-hidden' : 'vh-100'}`}>
         <div className='flex flex-column'>
           <QuestionChunk index="1" title="">
             <InputField
                 isCurrency = "false"
-                value = {this.props.myCurrentAge}
+                // value = {this.props.myCurrentAge}
+                placeholder="26"
                 hasSteppers = "true"
                 stepperIncrement = "1"
                 min = "1"
@@ -78,7 +68,7 @@ class InputContainer extends Component {
           </QuestionChunk>
         </div>
         <div className="flex flex-column justify-start center">
-          <button className="ph4 pv3 h3 mt5 bg-green white b ttu pointer bn" onClick={this.startApp}>COMEÇAR</button>
+          <button className="ph4 pv3 h3 mt5 bg-green white b ttu pointer bn" onClick={this.props.handleStartApp}>COMEÇAR</button>
         </div>
         <style jsx>
               {`
