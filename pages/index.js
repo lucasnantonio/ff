@@ -177,6 +177,14 @@ class Index extends Component {
             </div>
           </div>
           <style jsx global>{`
+                .noSelect {
+                  -webkit-touch-callout: none;
+                  -webkit-user-select: none;
+                  -khtml-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+              }
               .showing{
                 opacity: 1;
               }
