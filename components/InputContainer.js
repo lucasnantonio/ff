@@ -46,15 +46,22 @@ class InputContainer extends Component {
             />
             <MultiSelect
               label="Onde você guarda seu dinheiro hoje?"
+              options={[
+                "poupança",
+                "renda fixa",
+                "renda variável"
+              ]}
             />
             <InputField
+                // hasSteppers = 'true'
+                // stepperIncrement = '1000'
                 isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Qual será o seu custo de vida ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
             {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
-              <div className="self-end mv5">
+              <div className="self-end mb5">
               <Button label="Calcular" onClick={this.props.handleShowCalculation}/>
               </div>
             }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InputLabel = props => (
-    <div className="flex justify-start self-center w-70 noSelect">
+    <div className="flex justify-start self-center noSelect">
         <label className="gray mw5 lh-copy">{props.label}</label>
     </div>);
 

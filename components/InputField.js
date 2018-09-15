@@ -75,7 +75,7 @@ class InputField extends Component {
     return (
             <InputFieldWrapper>
                     <InputLabel label={this.props.label}/>
-                    <div className={'flex w-30 items-center'}>
+                    <div className={'flex items-center'}>
                         {this.props.hasSteppers
                             && <div className="pointer flex items-center" onClick={this.handleDecrement}>
                             <MinusBtn />
@@ -96,7 +96,7 @@ class InputField extends Component {
                             onChange={this.handleInput} >
                         </input>
                          : <IntlCurrencyInput
-                            className="bn w-100 bg-transparent f3 tc"
+                            className="bn w-100 bg-transparent f3 tr"
                             value={this.props.value}
                             min={this.props.min}
                             max={this.props.max}
