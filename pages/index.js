@@ -47,6 +47,8 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
+    // calculate retirement age
+    this.setState({ retirementResults: getRetirementResults(this.state) });
   }
 
   handleInput = (e, floatValue, maskedValue) => {

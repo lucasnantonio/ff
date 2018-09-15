@@ -11,7 +11,7 @@ class InputContainer extends Component {
           <QuestionChunk index="1" title="">
             <InputField
                 isCurrency = "false"
-                // value = {this.props.myCurrentAge}
+                value = {this.props.myCurrentAge}
                 placeholder="26"
                 hasSteppers = "true"
                 stepperIncrement = "1"
@@ -73,7 +73,7 @@ class InputContainer extends Component {
         <style jsx>
               {`
               #inputContainer{
-                transition: .2s height
+                transition: .35s height
               }
               `}
         </style>
