@@ -146,13 +146,9 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   />
               </div>
-              <div id="resultsWrapper" className='flex flex-column w-100 relative'>
+              <div id="resultsWrapper" className='flex flex-column w-100 center items-center h-100 justify-center relative bg-near-white'>
                 {this.state.isShowingIntro
                   && <Button label='começar'onClick={this.startApp} />
-                }
-                {!this.state.isShowingIntro && !this.state.isShowingCalculation
-                && <div className="flex flex-column justify-between bg-near-white h-100">
-                </div>
                 }
                 {this.state.isShowingCalculation
                 && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
@@ -163,6 +159,10 @@ class Index extends Component {
             </div>
           </div>
           <style jsx global>{`
+            ::selection{
+              color:white;
+              background-color:#2ea776;
+            }
                 .noSelect {
                   -webkit-touch-callout: none;
                   -webkit-user-select: none;
