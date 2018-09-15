@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import Logo from './Logo';
+import NavBar from './Navbar';
 
 class Intro extends Component {
   state = {
@@ -19,6 +20,7 @@ class Intro extends Component {
   render() {
     return (<div id="intro" className={`${this.props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 justify-between center items-center bg-offwhite tc relative`}>
     <div className="flex z-max flex-column items-center justify-center w-100 h-100">
+          <NavBar />
             <div className="mw6 mb4">
                 <Logo />
             </div>

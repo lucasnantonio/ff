@@ -50,8 +50,6 @@ class InputContainer extends Component {
               handleClick={this.props.handleInvestmentSelector}
             />
             <InputField
-                // hasSteppers = 'true'
-                // stepperIncrement = '1000'
                 isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Qual será o seu custo de vida ao se aposentar?"

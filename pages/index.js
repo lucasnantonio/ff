@@ -4,6 +4,7 @@ import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Button from '../components/Button';
+import Navbar from '../components/Navbar'
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -142,7 +143,7 @@ class Index extends Component {
       <div>
           <Header />
           <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
-            <Intro isShowing={this.state.isShowingIntro}/>
+            <Intro isShowing={this.state.isShowingIntro} />
             <div id="bottomWrapper" className={`bg-white flex z-max ${this.state.isShowingIntro ? 'overflow-hidden h5' : 'overflow-hidden vh-100'} ${this.state.isShowingCalculation ? 'overflow-scroll' : ''}`}>
               <div id="formWrapper" className="flex flex-column w-100 pl6 pr5 h-100">
               <InputContainer
