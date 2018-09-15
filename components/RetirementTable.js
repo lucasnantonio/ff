@@ -1,22 +1,17 @@
-import { Component } from "react";
+import React, { Component } from 'react';
+import { formatAge } from '../utils/math';
 
 class RetirementTable extends Component {
   constructor(props) {
-      super(props);
-      this.state = {  };
-  }
-
-  formatAge(ageInMonths) {
-    const y = parseInt(ageInMonths / 12)
-    const m = parseInt((ageInMonths / 12) % y * 12)
-    return [y, m]
+    super(props);
+    this.state = { };
   }
 
   render() {
-    const { retirementResults } = this.props
+    const { retirementResults } = this.props;
 
     if (!retirementResults) {
-      return null
+      return null;
     }
 
     return (
@@ -30,19 +25,19 @@ class RetirementTable extends Component {
         </thead>
         <tbody>
           {retirementResults.map((investment, id) => {
-            const [label, results] = investment
-            const [y, m] = this.formatAge(results.retirement.age )
+            const [label, results] = investment;
+            const [y, m] = formatAge(results.retirement.age);
             return (
               <tr key={id}>
                 <td>{label}</td>
                 <td>{`${y} anos e ${m} meses`}</td>
                 <td>{`R$ ${results.retirement.balance.toFixed(0)}`}</td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
-    )
+    );
   }
 }
 

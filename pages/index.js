@@ -19,7 +19,6 @@ class Index extends Component {
       myCurrentAge: 26,
       myCurrentMonthlySavings: 1500,
       myCurrentLifestyleCost: 3000,
-      myRetirementAge: 0,
       myAnnualInterestRate: 0.08,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
@@ -165,7 +164,7 @@ class Index extends Component {
                     ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
                   `}>
                 {this.state.isShowingIntro
-                  && <Button label='começar'onClick={this.startApp} />
+                  && <Button isEnabled={true} label='começar'onClick={this.startApp} />
                 }
                 {this.state.isShowingCalculation
                 && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>

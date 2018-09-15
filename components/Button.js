@@ -9,8 +9,8 @@ class Button extends Component {
   render() {
     return (
             <button
-                className='ph4 pv3 h3 bg-green white b ttu pointer bn br-pill grow'
-                onClick={this.props.onClick}
+                className={ `${this.props.isEnabled ? 'bg-green grow pointer' : 'bg-light-gray'} ph4 pv3 h3 white b ttu  bn br-pill`}
+                onClick={this.props.isEnabled && this.props.onClick}
             >
                 {this.props.label}
             </button>
