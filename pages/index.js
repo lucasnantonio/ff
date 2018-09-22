@@ -72,7 +72,7 @@ class Index extends Component {
     // save state in a variable
     const { state } = this;
 
-    // check if is special currencyInput
+    // check if is currencyInput
     if (floatValue && maskedValue) {
       state[e.target.id] = floatValue;
       this.setState(state);

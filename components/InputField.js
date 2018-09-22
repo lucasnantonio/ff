@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
-import InputLabel from './InputLabel'
-import InputFieldWrapper from './InputFieldWrapper'
+import InputLabel from './InputLabel';
+import InputFieldWrapper from './InputFieldWrapper';
 
 const currencyConfig = {
   locale: 'pt-BR',

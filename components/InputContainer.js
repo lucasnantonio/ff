@@ -28,7 +28,6 @@ class InputContainer extends Component {
                 id = "myCurrentAge"
                 label = "Quantos anos você tem?"
                 handleInput = {this.props.handleInput}
-                helperText = {this.props.myCurrentAge > 25 ? 'Ainda dá tempo' : 'Começando jovem hein!'}
             />
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}
@@ -83,6 +82,22 @@ class InputContainer extends Component {
                 label = "Você pretende viver até quantos anos?"
                 handleInput = {this.props.handleInput}
             />
+            <InputField
+                isExpanded = {this.props.isExpanded}
+                isCurrency = "false"
+                value = {this.props.myAnnualInterestRate}
+                hasSteppers = "true"
+                stepperIncrement = "0.01"
+                id = "myAnnualInterestRate"
+                label = "Rendimento anual da carteira"
+                handleInput = {this.props.handleInput}
+            />
+            </QuestionChunk>
+            }
+            {this.props.isShowingCalculation
+            && <QuestionChunk
+              title="Gastos planejados"
+            >
             <InputTable
               id = "lifeEvents"
               table = {this.props.lifeEvents}
