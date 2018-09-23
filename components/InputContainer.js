@@ -48,6 +48,7 @@ class InputContainer extends Component {
             />
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}
+                value={this.props.myRetirementIncome}
                 isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Quanto você quer tirar mês ao se aposentar?"
@@ -88,7 +89,6 @@ class InputContainer extends Component {
               isExpanded = {this.props.isExpanded}
               isCurrency = "false"
               value = {item.rate}
-              hasSteppers = "false"
               id = {item.label}
               label = {`Rendimento anual da ${item.label}`}
               handleInput = {this.props.handleInput}
