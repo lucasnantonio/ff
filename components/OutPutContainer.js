@@ -21,6 +21,7 @@ class OutPutContainer extends Component {
                   myInvestments={this.props.myInvestments}
                   retirementResults={this.props.retirementResults}/>
                 <RetirementChart
+                  lifeEvents={this.props.lifeEvents}
                   myInvestments={this.props.myInvestments}
                   retirementResults={this.props.retirementResults}/>
               </React.Fragment>

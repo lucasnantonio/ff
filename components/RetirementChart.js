@@ -21,6 +21,7 @@ class RetirementChart extends Component {
 
   componentDidUpdate(nextProps) {
     const { retirementResults } = nextProps;
+    console.log(nextProps)
 
     const linesets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
