@@ -1,6 +1,6 @@
 import Chart from 'chart.js';
 
-export function getRetirementChart(ctx) {
+export default function getRetirementChart(ctx) {
   const RetirementChart = new Chart(ctx, {
     type: 'line',
     data: {},

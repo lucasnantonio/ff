@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getRetirementChart } from '../utils/charts';
+import getRetirementChart from '../utils/charts';
 
 class RetirementChart extends Component {
   constructor(props) {
