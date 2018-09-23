@@ -14,8 +14,8 @@ class RetirementSummary extends Component {
       const [y, m] = formatAge(age);
       return (
         <div className="w-100 bg-green center white tc ph6 pt6 pb2">
-        <h2 className="f5 mb2">Eu vou me aposentar com</h2>
-        <h3 className="mv0 f1 tracked-tight b lh-solid"> {y} anos e <br /> {m} meses
+        <h2 className="f3 mb2">Eu vou me aposentar com</h2>
+        <h3 className="mv0 f1 tracked-tight b lh-solid"> {y} anos
         </h3>
     </div>);
     }
