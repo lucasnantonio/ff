@@ -83,6 +83,7 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             { this.props.myInvestments.map((item, index) => (<InputField
+              dataType = 'rate'
               key={index}
               isExpanded = {this.props.isExpanded}
               isCurrency = "false"

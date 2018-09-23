@@ -86,6 +86,7 @@ class InputField extends Component {
                         <div className={'bn w-100 flex flex-column justify-center pv2 h2'}>
                        {this.props.isCurrency === 'false'
                          ? <input
+                            data-type={this.props.dataType}
                             value={this.props.value}
                             className="bn w-100 bg-transparent f4 tc"
                             min={this.props.min}
