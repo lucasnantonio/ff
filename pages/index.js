@@ -155,9 +155,13 @@ class Index extends Component {
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
                   {this.state.isShowingIntro
-                    && <Button isEnabled={true} label='começar'onClick={this.startApp} />
+                    && <div className='w-100 flex items-center justify-end pr5'>
+                      <Button isEnabled={true} label='começar'onClick={this.startApp} />
+                    </div>
                   }
-                <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
+                  {!this.state.isShowingIntro
+                    && <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
+                  }
             </div>
           </div>
           <style jsx global>{`
