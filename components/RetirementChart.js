@@ -88,7 +88,7 @@ class RetirementChart extends Component {
 
   render() {
     return (
-      <div className="relative w-100 h-100">
+      <div className="relative w-100 h-100 bg-green pa5">
         <canvas
           ref={(canvas) => {
             this.canvas = canvas;
