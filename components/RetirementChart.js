@@ -14,6 +14,8 @@ class RetirementChart extends Component {
     return retirementIcon;
   }
 
+  retirementIcon = this.getIcon()
+
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
@@ -48,7 +50,7 @@ class RetirementChart extends Component {
             x: data.retirement.age / 12,
             y: data.retirement.balance,
           }],
-          pointStyle: this.getIcon(),
+          pointStyle: this.retirementIcon,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         };
