@@ -82,16 +82,17 @@ class InputContainer extends Component {
                 label = "Você pretende viver até quantos anos?"
                 handleInput = {this.props.handleInput}
             />
-            <InputField
-                isExpanded = {this.props.isExpanded}
-                isCurrency = "false"
-                value = {this.props.myAnnualInterestRate}
-                hasSteppers = "true"
-                stepperIncrement = "0.01"
-                id = "myAnnualInterestRate"
-                label = "Rendimento anual da carteira"
-                handleInput = {this.props.handleInput}
-            />
+            { this.props.myInvestments.map((item, index) => (<InputField
+              key={index}
+              isExpanded = {this.props.isExpanded}
+              isCurrency = "false"
+              value = {item.rate}
+              hasSteppers = "false"
+              id = {item.label}
+              label = {`Rendimento anual da ${item.label}`}
+              handleInput = {this.props.handleInput}
+              />))
+            }
             </QuestionChunk>
             }
             {this.props.isShowingCalculation
