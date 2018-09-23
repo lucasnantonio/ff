@@ -5,12 +5,16 @@ export function getRetirementChart(ctx) {
     type: 'line',
     data: {},
     options: {
-      hover:{
+      backgroundColor: 'rgba(0, 0, 250 ,0.1)',
+      pointRadius: 0,
+      borderWidth: 1,
+      pointHoverRadius: 0,
+      borderColor: 'rgba(0, 0, 0, 0.3)',
+      lineTension: 0,
+      hover: {
         intersect: true,
-        // mode: "y"
       },
-      tooltips:{
-        // mode: 'y'
+      tooltips: {
       },
       animation: false,
       scales: {
@@ -23,12 +27,12 @@ export function getRetirementChart(ctx) {
               labelString: 'idade (anos)',
             },
             ticks: {
-                min: 0,
-                suggestedMax: 100, // maximum value, unless there is a bigger value.
+              min: 0,
+              suggestedMax: 100, // maximum value, unless there is a bigger value.
             },
-            gridLines:{
-              display: false
-            }
+            gridLines: {
+              display: false,
+            },
           },
         ],
         yAxes: [
@@ -36,11 +40,11 @@ export function getRetirementChart(ctx) {
             scaleLabel: {
               display: true,
             },
-            ticks:{
-              callback: function(value, index, values) {
-                return 'R$' + (value/1000 < 1000 ? value/1000 + 'mil' : value/1000000 + 'MM');
+            ticks: {
+              callback(value, index, values) {
+                return `R$${value / 1000 < 1000 ? `${value / 1000}mil` : `${value / 1000000}MM`}`;
               },
-            }
+            },
           },
         ],
       },

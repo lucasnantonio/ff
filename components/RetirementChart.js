@@ -26,38 +26,12 @@ class RetirementChart extends Component {
   componentDidUpdate(nextProps) {
     const { retirementResults } = nextProps;
 
-    const options = {
-      poupança: {
-        backgroundColor: 'rgba(0,0,0,0)',
-        pointRadius: 0,
-        borderColor: 'rgba(46, 167, 118, 1.0)',
-        borderWidth: 3,
-      },
-      'renda fixa': {
-        backgroundColor: 'rgba(0, 0, 250 ,0.1)',
-        pointRadius: 0,
-        borderWidth: 1,
-        pointHoverRadius: 0,
-        borderColor: 'rgba(0, 0, 0, 0.3)',
-        lineTension: 0,
-      },
-      'renda variável': {
-        backgroundColor: 'rgba(0, 250, 0 ,0.1)',
-        pointRadius: 0,
-        borderWidth: 1,
-        pointHoverRadius: 0,
-        borderColor: 'rgba(0, 0, 0, 0.3)',
-        lineTension: 0,
-      },
-    };
-
     const linesets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
         return {
           label,
           data: data.timeHistory,
-          ...options[label],
         };
       }
       return {};
