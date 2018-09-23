@@ -39,9 +39,6 @@ class Index extends Component {
       ],
       lifeEvents: [
         {
-          label: 'viagem',
-          age: 30, // years, not months
-          cost: 100000,
         },
       ],
       retirementResults: false,
