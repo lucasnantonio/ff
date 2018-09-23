@@ -11,10 +11,6 @@ class RetirementChart extends Component {
   getIcon = () => {
     const retirementIcon = new Image();
     retirementIcon.src = '../static/retirement-icon.svg';
-    // retirementIcon.width = '50';
-    // retirementIcon.height = '84';
-    // retirementIcon.style.marginBottom = '50px';
-    // retirementIcon.style.paddingBottom = '50px';
     return retirementIcon;
   }
 
@@ -70,8 +66,6 @@ class RetirementChart extends Component {
           ref={(canvas) => {
             this.canvas = canvas;
           }}
-          // width="4"
-          // height="3"
         />
       </div>
     );

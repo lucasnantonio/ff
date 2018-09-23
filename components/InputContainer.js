@@ -12,7 +12,7 @@ class InputContainer extends Component {
       <div id='inputContainer' className={`h-100 pl5 pr5
                                           ${this.props.isExpanded
                                             && this.props.isShowingCalculation
-        ? 'w-50' : 'w-100'}
+        ? 'w-50 pb6' : 'w-100'}
                                             ${this.props.isExpanded
                                             && !this.props.isShowingCalculation
                                             && 'flex flex-column'}`}>
