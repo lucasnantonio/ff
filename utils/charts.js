@@ -1,4 +1,5 @@
 import Chart from 'chart.js';
+import toCurrency from './math.js'
 
 Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,.4)';
 Chart.defaults.global.defaultFontFamily = 'Poppins, system-ui';
@@ -20,6 +21,15 @@ export default function getRetirementChart(ctx) {
       tooltips: {
         mode: 'index',
         intersect: false,
+        backgroundColor: '#000',
+        displayColors: false,
+        xPadding: 20,
+        yPadding: 20,
+        bodySpacing: 10,
+        callbacks: {
+          title: tooltipItem => `${Math.floor(tooltipItem[0].xLabel)} anos`,
+          label: tooltipItem => `R$ ${parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString('pt-br')}`,
+        },
       },
       animation: false,
       scales: {
