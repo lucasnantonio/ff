@@ -11,14 +11,13 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // myCurrentIncome: 10000,
+      // myCurrentLifestyleCost: 3000,
       isShowingIntro: true,
       isShowingCalculation: false,
-      myCurrentIncome: 10000,
       myCurrentBalance: 5000,
       myCurrentAge: 24,
       myCurrentMonthlySavings: 500,
-      myCurrentLifestyleCost: 3000,
-      myAnnualInterestRate: 0.08,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
       myInvestments: [
