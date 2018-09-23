@@ -99,7 +99,6 @@ class InputField extends Component {
                         </input>
                          : <IntlCurrencyInput
                             className="bn w-100 bg-transparent f4 tr"
-                            value={this.props.value}
                             defaultValue={this.props.value}
                             min={this.props.min}
                             max={this.props.max}
