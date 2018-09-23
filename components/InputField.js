@@ -83,12 +83,14 @@ class InputField extends Component {
                             <MinusBtn />
                             </div>
                         }
-                        <div className={'bn w-100 flex flex-column justify-center pv2 h2'}>
+                        <div className={'bn w-100 flex flex-column justify-center pv2'}>
                        {this.props.isCurrency === 'false'
-                         ? <input
+                         ? (
+                         <div className="flex items-center">
+                           <input
                             data-type={this.props.dataType}
-                            value={this.props.value}
-                            className="bn w-100 bg-transparent f4 tc"
+                            value={ this.props.value }
+                            className={`bn w-100 bg-transparent f4 ${this.props.isPercentage ? 'tr' : 'tc'}`}
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
@@ -97,7 +99,12 @@ class InputField extends Component {
                             type="number"
                             placeholder={this.props.placeholder}
                             onChange={this.handleInput} >
-                        </input>
+                          </input>
+                          {this.props.isPercentage
+                            && <div className="nowrap">% ao ano</div>
+                          }
+                        </div>
+                         )
                          : <IntlCurrencyInput
                             className="bn w-100 bg-transparent f4 tr"
                             defaultValue={this.props.value}

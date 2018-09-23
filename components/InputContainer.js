@@ -79,12 +79,15 @@ class InputContainer extends Component {
                 value = {this.props.myLifeExpectancy}
                 hasSteppers = "true"
                 stepperIncrement = "1"
+                min = "1"
+                max = "100"
                 id = "myLifeExpectancy"
                 label = "Você pretende viver até quantos anos?"
                 handleInput = {this.props.handleInput}
             />
             { this.props.myInvestments.map((item, index) => (<InputField
               dataType = 'rate'
+              isPercentage
               key={index}
               isExpanded = {this.props.isExpanded}
               isCurrency = "false"

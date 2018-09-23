@@ -65,7 +65,7 @@ export function getRetirementResults(state) {
 
   return myInvestments.map((investment) => {
     const { label, rate } = investment;
-    return [label, getMyRetirementData(state, parseFloat(rate))];
+    return [label, getMyRetirementData(state, parseFloat(rate) / 100)];
   });
 }
 
