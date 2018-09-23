@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RetirementChart from './RetirementChart';
-import RetirementTable from './RetirementTable';
 import RetirementSummary from './RetirementSummary';
+import Button from './Button';
 
 class OutPutContainer extends Component {
   componentDidMount() {
@@ -10,15 +10,23 @@ class OutPutContainer extends Component {
 
   render() {
     return (
-            <div className='flex'>
-              <div className="w-100" id="chartContainer">
-                <RetirementSummary myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
-                <div className='ph5'>
-                  <RetirementChart myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
-                  <RetirementTable retirementResults={this.props.retirementResults}/>
-                </div>
-              </div>
-            </div>
+      <div id="resultsWrapper"
+        className={`flex flex-column center items-center justify-center
+                    ${this.props.isShowingIntro ? 'bg-white h-100' : 'bg-near-white vh-100'}
+                    ${!this.props.isShowingIntro && this.props.isShowingCalculation ? 'fixed r0 w-50' : 'w-100 dn'}
+                  `}>
+            {!this.props.isShowingIntro && this.props.isShowingCalculation
+            && <React.Fragment>
+                <RetirementSummary
+                  myInvestments={this.props.myInvestments}
+                  retirementResults={this.props.retirementResults}/>
+                <RetirementChart
+                  lifeEvents={this.props.lifeEvents}
+                  myInvestments={this.props.myInvestments}
+                  retirementResults={this.props.retirementResults}/>
+              </React.Fragment>
+            }
+      </div>
     );
   }
 }

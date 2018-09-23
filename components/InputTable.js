@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 
 class InputTable extends Component {
-    constructor(props) {
-        super(props);
-    }
+  render() {
+    const {
+      id,
+      table,
+      fields,
+      handleTableInput,
+      handleAddTableRow,
+      handleRemoveTableRow,
+    } = this.props;
 
-    render() {
-      const {
-        id,
-        table,
-        fields,
-        handleTableInput,
-        handleAddTableRow,
-        handleRemoveTableRow,
-      } = this.props
-
-        return (
+    return (
             <table>
               <thead>
                 <tr>
@@ -26,17 +22,16 @@ class InputTable extends Component {
                 </tr>
               </thead>
               <tbody>
-                {table.map((row, rowId) => {
-                  return (
+                {table.map((row, rowId) => (
                     <tr key={rowId}>
                       <td>
                         <button
                           onClick={handleRemoveTableRow(rowId, id, table)}
-                        >{"-"}</button>
+                        >{'-'}</button>
                       </td>
                       <td>
                         <input
-                          style={{width: 100}}
+                          style={{ width: 100 }}
                           id="label"
                           type="text"
                           value={row.label}
@@ -45,7 +40,7 @@ class InputTable extends Component {
                       </td>
                       <td>
                         <input
-                          style={{width: 100}}
+                          style={{ width: 100 }}
                           id="age"
                           type="number"
                           value={row.age}
@@ -54,7 +49,7 @@ class InputTable extends Component {
                       </td>
                       <td>
                         <input
-                          style={{width: 100}}
+                          style={{ width: 100 }}
                           id="cost"
                           type="number"
                           step="10000"
@@ -63,13 +58,12 @@ class InputTable extends Component {
                           />
                       </td>
                     </tr>
-                  )
-                })}
+                ))}
                 <tr>
                   <td>
                     <button
                       onClick={handleAddTableRow(id, fields)}
-                    >{"+"}</button>
+                    >{'+'}</button>
                   </td>
                 </tr>
 
@@ -77,8 +71,8 @@ class InputTable extends Component {
 
             </table>
 
-         );
-    }
+    );
+  }
 }
 
 export default InputTable;

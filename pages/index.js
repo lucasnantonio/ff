@@ -11,38 +11,34 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // myCurrentIncome: 10000,
+      // myCurrentLifestyleCost: 3000,
       isShowingIntro: true,
       isShowingCalculation: false,
-      myCurrentIncome: 10000,
-      myCurrentBalance: 100000,
-      myCurrentAge: 26,
-      myCurrentMonthlySavings: 1500,
-      myCurrentLifestyleCost: 3000,
-      myAnnualInterestRate: 0.08,
+      myCurrentBalance: 5000,
+      myCurrentAge: 24,
+      myCurrentMonthlySavings: 500,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
       myInvestments: [
         {
           label: 'poupança',
-          rate: 0.030,
+          rate: 3,
           isSelected: false,
         },
         {
           label: 'renda fixa',
-          rate: 0.060,
+          rate: 6,
           isSelected: false,
         },
         {
           label: 'renda variável',
-          rate: 0.085,
+          rate: 8.5,
           isSelected: false,
         },
       ],
       lifeEvents: [
         {
-          label: 'viagem',
-          age: 30, // years, not months
-          cost: 100000,
         },
       ],
       retirementResults: false,
@@ -55,7 +51,6 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    // calculate retirement age
     this.updateChart();
   }
 
@@ -69,18 +64,16 @@ class Index extends Component {
   }
 
   handleInput = (e, floatValue, maskedValue) => {
-    // save state in a variable
     const { state } = this;
-
-    // check if is currencyInput
-    if (floatValue && maskedValue) {
+    if (floatValue && maskedValue) { // if is currencyInput
       state[e.target.id] = floatValue;
       this.setState(state);
-    } else if (e.target.type) {
-      // update state for every input field
+    } else if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
       state[e.target.id] = e.target.value;
       this.setState(state);
-    } else {
+    } else if (e.target.dataset.type === 'rate') { // check if is investment rate input
+      state.myInvestments.filter(item => item.label === e.target.id)[0].rate = e.target.value;
+    } else { // if user is using buttons
       state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value;
       this.setState(state);
     }
@@ -147,7 +140,6 @@ class Index extends Component {
                 bg-white flex z-max 
                 ${this.state.isShowingIntro ? 'h5' : ''} 
                 ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
-              <div id="formWrapper" className="flex flex-column w-100 pl5 pr5 h-100">
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}
@@ -161,24 +153,20 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
-              </div>
-              <div id="resultsWrapper"
-                  className={`flex flex-column w-100 center items-center  justify-center relative h-100
-                    ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
-                    ${!this.state.isShowingIntro && this.state.isShowingCalculation ? 'pb6' : ''}
-                  `}>
-                {this.state.isShowingIntro
-                  && <Button isEnabled={true} label='começar'onClick={this.startApp} />
-                }
-                {this.state.isShowingCalculation
-                && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
-                  <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
-                </div>
-                }
-              </div>
+                  {this.state.isShowingIntro
+                    && <div className='w-100 flex items-center justify-end pr5'>
+                      <Button isEnabled={true} label='começar'onClick={this.startApp} />
+                    </div>
+                  }
+                  {!this.state.isShowingIntro
+                    && <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
+                  }
             </div>
           </div>
           <style jsx global>{`
+            .r0{
+              right:0;
+            }
             ::selection{
               color:white;
               background-color:#2ea776;
