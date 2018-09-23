@@ -141,7 +141,6 @@ class Index extends Component {
                 bg-white flex z-max 
                 ${this.state.isShowingIntro ? 'h5' : ''} 
                 ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
-              
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}
@@ -155,20 +154,10 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
-              <div id="resultsWrapper"
-                  className={`flex flex-column center items-center justify-center 
-                    ${this.state.isShowingIntro ? 'bg-white h-100' : 'bg-near-white vh-100'}
-                    ${!this.state.isShowingIntro && this.state.isShowingCalculation ? 'pb6 fixed r0 w-50' : 'w-100'}
-                  `}>
-                {this.state.isShowingIntro
-                  && <Button isEnabled={true} label='começar'onClick={this.startApp} />
-                }
-                {this.state.isShowingCalculation
-                && <div className={`${this.state.isShowingCalculation ? 'flex flex-column w-100 h-100' : 'dn'}`}>
-                  <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
-                </div>
-                }
-              </div>
+                  {this.state.isShowingIntro
+                    && <Button isEnabled={true} label='começar'onClick={this.startApp} />
+                  }
+                <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
             </div>
           </div>
           <style jsx global>{`
