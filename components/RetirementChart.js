@@ -82,7 +82,7 @@ class RetirementChart extends Component {
       return {};
     });
 
-    this.chart.data = { datasets: [...linesets, ...pointsets] };
+    this.chart.data = { datasets: [...pointsets, ...linesets] };
     this.chart.update();
   }
 
