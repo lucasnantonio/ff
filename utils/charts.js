@@ -1,5 +1,8 @@
 import Chart from 'chart.js';
 
+Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,.4)';
+Chart.defaults.global.defaultFontFamily = 'Poppins, system-ui';
+
 export default function getRetirementChart(ctx) {
   const RetirementChart = new Chart(ctx, {
     type: 'line',
@@ -7,13 +10,16 @@ export default function getRetirementChart(ctx) {
     options: {
       layout: {
         padding: {
-          top: 50
-        }
+          top: 50,
+        },
       },
       hover: {
-        intersect: true,
+        intersect: false,
+        axis: 'x',
       },
       tooltips: {
+        mode: 'index',
+        intersect: false,
       },
       animation: false,
       scales: {
