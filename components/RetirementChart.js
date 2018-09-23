@@ -32,6 +32,11 @@ class RetirementChart extends Component {
         return {
           label,
           data: data.timeHistory,
+          backgroundColor: 'rgba(0, 0, 0 ,0.1)',
+          pointRadius: 0,
+          borderWidth: 3,
+          borderColor: 'rgba(255, 255, 255, 1)',
+          lineTension: 0,
         };
       }
       return {};
@@ -47,8 +52,6 @@ class RetirementChart extends Component {
             y: data.retirement.balance,
           }],
           pointStyle: this.getIcon(),
-          pointRadius: 3,
-          borderWidth: 1,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         };

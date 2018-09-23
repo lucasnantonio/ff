@@ -5,12 +5,11 @@ export function getRetirementChart(ctx) {
     type: 'line',
     data: {},
     options: {
-      backgroundColor: 'rgba(0, 0, 250 ,0.1)',
-      pointRadius: 0,
-      borderWidth: 1,
-      pointHoverRadius: 0,
-      borderColor: 'rgba(0, 0, 0, 0.3)',
-      lineTension: 0,
+      layout: {
+        padding: {
+          top: 50
+        }
+      },
       hover: {
         intersect: true,
       },
