@@ -28,10 +28,10 @@ class RetirementChart extends Component {
 
     const options = {
       poupança: {
-        backgroundColor: 'rgba(59, 165, 120, .5)',
+        backgroundColor: 'rgba(0,0,0,0)',
         pointRadius: 0,
-        borderColor: '#2ea776',
-        borderWidth: 0.1,
+        borderColor: 'rgba(46, 167, 118, 1.0)',
+        borderWidth: 3,
       },
       'renda fixa': {
         backgroundColor: 'rgba(0, 0, 250 ,0.1)',
