@@ -13,14 +13,18 @@ class OutPutContainer extends Component {
       <div id="resultsWrapper"
         className={`flex flex-column center items-center justify-center
                     ${this.props.isShowingIntro ? 'bg-white h-100' : 'bg-near-white vh-100'}
-                    ${!this.props.isShowingIntro && this.props.isShowingCalculation ? 'fixed r0 w-50' : 'w-100'}
+                    ${!this.props.isShowingIntro && this.props.isShowingCalculation ? 'fixed r0 w-50' : 'w-100 dn'}
                   `}>
-        {this.props.isShowingCalculation
-        && <div className={`${this.props.isShowingCalculation ? '' : 'dn'}`}>
-            <RetirementSummary myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
-            <RetirementChart myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
-        </div>
-        }
+            {!this.props.isShowingIntro && this.props.isShowingCalculation
+            && <React.Fragment>
+                <RetirementSummary
+                  myInvestments={this.props.myInvestments}
+                  retirementResults={this.props.retirementResults}/>
+                <RetirementChart
+                  myInvestments={this.props.myInvestments}
+                  retirementResults={this.props.retirementResults}/>
+              </React.Fragment>
+            }
       </div>
     );
   }

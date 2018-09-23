@@ -51,7 +51,6 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    // calculate retirement age
     this.updateChart();
   }
 
