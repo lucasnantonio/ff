@@ -141,7 +141,7 @@ class Index extends Component {
                 bg-white flex z-max 
                 ${this.state.isShowingIntro ? 'h5' : ''} 
                 ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
-              <div id="formWrapper" className="flex flex-column w-100 pl5 pr5 h-100">
+              
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}
@@ -155,11 +155,10 @@ class Index extends Component {
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
-              </div>
               <div id="resultsWrapper"
-                  className={`flex flex-column w-100 center items-center  justify-center relative h-100
-                    ${this.state.isShowingIntro ? 'bg-white' : 'bg-near-white'}
-                    ${!this.state.isShowingIntro && this.state.isShowingCalculation ? 'pb6' : ''}
+                  className={`flex flex-column center items-center justify-center 
+                    ${this.state.isShowingIntro ? 'bg-white h-100' : 'bg-near-white vh-100'}
+                    ${!this.state.isShowingIntro && this.state.isShowingCalculation ? 'pb6 fixed r0 w-50' : 'w-100'}
                   `}>
                 {this.state.isShowingIntro
                   && <Button isEnabled={true} label='começar'onClick={this.startApp} />
@@ -173,6 +172,9 @@ class Index extends Component {
             </div>
           </div>
           <style jsx global>{`
+            .r0{
+              right:0;
+            }
             ::selection{
               color:white;
               background-color:#2ea776;

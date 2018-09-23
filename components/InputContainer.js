@@ -9,11 +9,17 @@ import MultiSelect from './MultiSelect';
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className={`w-100 h-100 ${this.props.isExpanded && !this.props.isShowingCalculation && 'flex flex-column'}`}>
-            {this.props.isExpanded
-            && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
-              <Logo />
-            </div>
+      <div id='inputContainer' className={`h-100 pl5 pr5
+                                          ${this.props.isExpanded
+                                            && this.props.isShowingCalculation
+        ? 'w-50' : 'w-100'}
+                                            ${this.props.isExpanded
+                                            && !this.props.isShowingCalculation
+                                            && 'flex flex-column'}`}>
+        {this.props.isExpanded
+        && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
+          <Logo />
+        </div>
             }
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}
