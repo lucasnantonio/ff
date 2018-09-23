@@ -10,11 +10,11 @@ class RetirementChart extends Component {
 
   getIcon = () => {
     const retirementIcon = new Image();
-    retirementIcon.src = 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/129/beach-with-umbrella_1f3d6.png';
-    retirementIcon.width = '30';
-    retirementIcon.height = '30';
-    retirementIcon.style.marginBottom = '50px';
-    retirementIcon.style.paddingBottom = '50px';
+    retirementIcon.src = '../static/retirement-icon.svg';
+    // retirementIcon.width = '50';
+    // retirementIcon.height = '84';
+    // retirementIcon.style.marginBottom = '50px';
+    // retirementIcon.style.paddingBottom = '50px';
     return retirementIcon;
   }
 
