@@ -15,7 +15,6 @@ class OutPutContainer extends Component {
                 <RetirementSummary myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
                 <div className='ph5'>
                   <RetirementChart myInvestments={this.props.myInvestments} retirementResults={this.props.retirementResults}/>
-                  <RetirementTable retirementResults={this.props.retirementResults}/>
                 </div>
               </div>
             </div>
