@@ -9,13 +9,20 @@ import MultiSelect from './MultiSelect';
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className={`w-100 h-100 ${this.props.isExpanded && 'flex flex-column'}`}>
-            {this.props.isExpanded
-            && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
-              <Logo />
-            </div>
+      <div id='inputContainer' className={`h-100 pl5 pr5
+                                          ${this.props.isExpanded
+                                            && this.props.isShowingCalculation
+        ? 'w-50 pb6' : 'w-100'}
+                                            ${this.props.isExpanded
+                                            && !this.props.isShowingCalculation
+                                            && 'flex flex-column'}`}>
+        {this.props.isExpanded
+        && <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
+          <Logo />
+        </div>
             }
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 isCurrency = "false"
                 value = {this.props.myCurrentAge}
@@ -27,9 +34,9 @@ class InputContainer extends Component {
                 id = "myCurrentAge"
                 label = "Quantos anos você tem?"
                 handleInput = {this.props.handleInput}
-                helperText = {this.props.myCurrentAge > 25 ? 'Ainda dá tempo' : 'Começando jovem hein!'}
             />
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 isCurrency = "true"
                 value = {this.props.myCurrentBalance}
@@ -38,6 +45,7 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
               />
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
                 value={this.props.myCurrentMonthlySavings}
                 id = "myCurrentMonthlySavings"
@@ -45,23 +53,30 @@ class InputContainer extends Component {
                 handleInput = {this.props.handleInput}
             />
             <InputField
+                isShowingCalculation = {this.props.isShowingCalculation}
+                value={this.props.myRetirementIncome}
                 isExpanded = {this.props.isExpanded}
                 id = "myRetirementIncome"
                 label = "Quanto você quer tirar mês ao se aposentar?"
                 handleInput = {this.props.handleInput}
             />
             <MultiSelect
+              isShowingCalculation = {this.props.isShowingCalculation}
               label="Onde você guarda seu dinheiro hoje?"
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}
+              hiddenBorder={true}
             />
-            {!this.props.isShowingCalculation && !this.props.isShowingIntro &&
-              <div className="self-end mb5">
-              <Button label="Calcular" onClick={this.props.handleShowCalculation}/>
+            {!this.props.isShowingCalculation && !this.props.isShowingIntro
+              && <div className="self-end mb5">
+              <Button
+                isEnabled={this.props.myInvestments.filter(item => item.isSelected).length > 0}
+                label="Calcular"
+                onClick={this.props.handleShowCalculation}/>
               </div>
             }
-            {this.props.isShowingCalculation && 
-            <QuestionChunk
+            {this.props.isShowingCalculation
+            && <QuestionChunk
               title="Opções avançadas"
             >
             <InputField
@@ -70,10 +85,30 @@ class InputContainer extends Component {
                 value = {this.props.myLifeExpectancy}
                 hasSteppers = "true"
                 stepperIncrement = "1"
+                min = "1"
+                max = "100"
                 id = "myLifeExpectancy"
                 label = "Você pretende viver até quantos anos?"
                 handleInput = {this.props.handleInput}
             />
+            { this.props.myInvestments.map((item, index) => (<InputField
+              dataType = 'rate'
+              isPercentage
+              key={index}
+              isExpanded = {this.props.isExpanded}
+              isCurrency = "false"
+              value = {item.rate}
+              id = {item.label}
+              label = {`Rendimento anual da ${item.label}`}
+              handleInput = {this.props.handleInput}
+              />))
+            }
+            </QuestionChunk>
+            }
+            {this.props.isShowingCalculation
+            && <QuestionChunk
+              title="Gastos planejados"
+            >
             <InputTable
               id = "lifeEvents"
               table = {this.props.lifeEvents}

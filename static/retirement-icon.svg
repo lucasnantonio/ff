@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="118px" viewBox="0 0 50 118" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="25.5" cy="25.5" r="19.5"></circle>
+        <polygon id="Rectangle" fill="#FFFFFF" points="25.1912823 29 35.3825647 39.1912823 25.1912823 49.3825647 15 39.1912823"></polygon>
+        <text id="🏖" font-family="AppleColorEmoji, Apple Color Emoji" font-size="24" font-weight="normal" fill="#222222">
+            <tspan x="14" y="35">🏖</tspan>
+        </text>
+    </g>
+</svg>

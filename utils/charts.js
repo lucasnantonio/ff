@@ -1,16 +1,35 @@
 import Chart from 'chart.js';
+import toCurrency from './math.js'
 
-export function getRetirementChart(ctx) {
+Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,.4)';
+Chart.defaults.global.defaultFontFamily = 'Poppins, system-ui';
+
+export default function getRetirementChart(ctx) {
   const RetirementChart = new Chart(ctx, {
     type: 'line',
     data: {},
     options: {
-      hover:{
-        intersect: true,
-        // mode: "y"
+      layout: {
+        padding: {
+          top: 50,
+        },
       },
-      tooltips:{
-        // mode: 'y'
+      hover: {
+        intersect: false,
+        axis: 'x',
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+        backgroundColor: '#000',
+        displayColors: false,
+        xPadding: 20,
+        yPadding: 20,
+        bodySpacing: 10,
+        callbacks: {
+          title: tooltipItem => `${Math.floor(tooltipItem[0].xLabel)} anos`,
+          label: tooltipItem => `R$ ${parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString('pt-br')}`,
+        },
       },
       animation: false,
       scales: {
@@ -23,12 +42,12 @@ export function getRetirementChart(ctx) {
               labelString: 'idade (anos)',
             },
             ticks: {
-                min: 0,
-                suggestedMax: 100, // maximum value, unless there is a bigger value.
+              min: 0,
+              suggestedMax: 100, // maximum value, unless there is a bigger value.
             },
-            gridLines:{
-              display: false
-            }
+            gridLines: {
+              display: false,
+            },
           },
         ],
         yAxes: [
@@ -36,11 +55,11 @@ export function getRetirementChart(ctx) {
             scaleLabel: {
               display: true,
             },
-            ticks:{
-              callback: function(value, index, values) {
-                return 'R$' + (value/1000 < 1000 ? value/1000 + 'mil' : value/1000000 + 'MM');
+            ticks: {
+              callback(value, index, values) {
+                return `R$${value / 1000 < 1000 ? `${value / 1000}mil` : `${value / 1000000}MM`}`;
               },
-            }
+            },
           },
         ],
       },

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
-import InputLabel from './InputLabel'
-import InputFieldWrapper from './InputFieldWrapper'
+import InputLabel from './InputLabel';
+import InputFieldWrapper from './InputFieldWrapper';
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -73,7 +73,9 @@ class InputField extends Component {
 
   render() {
     return (
-            <InputFieldWrapper>
+            <InputFieldWrapper
+              isShowingCalculation={this.props.isShowingCalculation}
+            >
                     <InputLabel label={this.props.label}/>
                     <div className={'flex items-center'}>
                         {this.props.hasSteppers
@@ -81,11 +83,14 @@ class InputField extends Component {
                             <MinusBtn />
                             </div>
                         }
-                        <div className={'bn w-100 flex flex-column justify-center pv2 h2'}>
+                        <div className={'bn w-100 flex flex-column justify-center pv2'}>
                        {this.props.isCurrency === 'false'
-                         ? <input
-                            value={this.props.value}
-                            className="bn w-100 bg-transparent f3 tc"
+                         ? (
+                         <div className="flex items-center">
+                           <input
+                            data-type={this.props.dataType}
+                            value={ this.props.value }
+                            className={`bn w-100 bg-transparent f4 ${this.props.isPercentage ? 'tr' : 'tc'}`}
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
@@ -94,10 +99,15 @@ class InputField extends Component {
                             type="number"
                             placeholder={this.props.placeholder}
                             onChange={this.handleInput} >
-                        </input>
+                          </input>
+                          {this.props.isPercentage
+                            && <div className="nowrap">% ao ano</div>
+                          }
+                        </div>
+                         )
                          : <IntlCurrencyInput
-                            className="bn w-100 bg-transparent f3 tr"
-                            value={this.props.value}
+                            className="bn w-100 bg-transparent f4 tr"
+                            defaultValue={this.props.value}
                             min={this.props.min}
                             max={this.props.max}
                             onFocus= {this.handleFocus}
