@@ -1,6 +1,7 @@
 # financial freedom
 
-An app that calculates when you will be ablt to retire based on personal data.
+An app that calculates when you will be able to retire.
 Built with Next.js and Chart.js
 
+## Running locally
 `npm run dev` serves to *localhost:3000*
