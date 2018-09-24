@@ -17,11 +17,14 @@ class RetirementChart extends Component {
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
-    this.componentDidUpdate(this.props)
+    this.updateChart(this.props.retirementResults);
   }
 
-  componentDidUpdate(nextProps) {
-    const { retirementResults } = nextProps;
+  componentDidUpdate() {
+    this.updateChart(this.props.retirementResults);
+  }
+
+  updateChart(retirementResults) {
     const linesets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
