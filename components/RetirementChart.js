@@ -4,24 +4,32 @@ import getRetirementChart from '../utils/charts';
 class RetirementChart extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = { icon: 'circle' };
     this.chart = null;
   }
 
-  getIcon = () => {
-    const retirementIcon = new Image();
-    retirementIcon.src = '../static/retirement-icon.svg';
-    return retirementIcon;
+  loadIcon = async () => {
+    const retirementIcon = await new Promise((resolve, reject) => {
+      const retirementImage = new Image();
+      retirementImage.onload = () => resolve(retirementImage);
+      retirementImage.onerror = () => reject(retirementImage);
+      retirementImage.src = '../static/retirement-icon.svg';
+    });
+    this.setState({ icon: retirementIcon });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
-    this.componentDidUpdate(this.props)
+    await this.loadIcon();
+    this.updateChart(this.props.retirementResults);
   }
 
-  componentDidUpdate(nextProps) {
-    const { retirementResults } = nextProps;
+  componentDidUpdate() {
+    this.updateChart(this.props.retirementResults);
+  }
+
+  updateChart(retirementResults) {
     const linesets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
@@ -41,13 +49,14 @@ class RetirementChart extends Component {
     const pointsets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
+
         return {
           label,
           data: [{
             x: data.retirement.age / 12,
             y: data.retirement.balance,
           }],
-          pointStyle: this.getIcon(),
+          pointStyle: this.state.icon,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         };
