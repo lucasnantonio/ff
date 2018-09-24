@@ -19,6 +19,7 @@ class RetirementChart extends Component {
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
+    this.componentDidUpdate(this.props)
   }
 
   componentDidUpdate(nextProps) {
