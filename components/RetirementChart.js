@@ -44,13 +44,14 @@ class RetirementChart extends Component {
     const pointsets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
+        const retirementIcon = this.getIcon();
         return {
           label,
           data: [{
             x: data.retirement.age / 12,
             y: data.retirement.balance,
           }],
-          pointStyle: this.getIcon(),
+          pointStyle: retirementIcon,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         };
