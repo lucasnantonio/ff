@@ -14,8 +14,6 @@ class RetirementChart extends Component {
     return retirementIcon;
   }
 
-  retirementIcon = this.getIcon()
-
   componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
@@ -24,8 +22,6 @@ class RetirementChart extends Component {
 
   componentDidUpdate(nextProps) {
     const { retirementResults } = nextProps;
-    console.log(nextProps)
-
     const linesets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
@@ -51,7 +47,7 @@ class RetirementChart extends Component {
             x: data.retirement.age / 12,
             y: data.retirement.balance,
           }],
-          pointStyle: this.retirementIcon,
+          pointStyle: this.getIcon(),
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         };
