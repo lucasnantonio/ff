@@ -154,7 +154,7 @@ class Index extends Component {
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
                   {this.state.isShowingIntro
-                    && <div className='w-100 flex items-center justify-end pr5'>
+                    && <div className='w-100 flex-l dn items-center justify-end pr5'>
                       <Button isEnabled={true} label='começar'onClick={this.startApp} />
                     </div>
                   }
