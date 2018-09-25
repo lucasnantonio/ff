@@ -1,19 +1,13 @@
 import React from 'react';
+import Head from 'next/head';
 
 const Header = () => (
-        <header>
-            <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+        <Head>
+            <title>FF</title>
             <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,700,900" rel="stylesheet"></link>
-            <style jsx global>
-                {`
-                    body *{
-                        // font-family: 'Rubik', sans-serif;
-                        font-family: 'Poppins', sans-serif;
-                        font-weight: 100;
-                    }
-                `}
-            </style>
-        </header>
+            <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+
+        </Head>
 );
 
 export default Header;
