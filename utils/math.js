@@ -4,23 +4,12 @@ export function toCurrency(value) {
   return (`R$ ${Number(value).toFixed(2)}`);
 }
 
-export function getMyRetirementData(state, aIR) {
-  const mIR = fin.annualToMonthly(aIR);
-  const balance = parseFloat(state.myCurrentBalance);
-  const savings = parseFloat(state.myCurrentMonthlySavings);
-  const retirementIncome = parseFloat(state.myRetirementIncome);
-  const lifeExpectancy = parseFloat(state.myLifeExpectancy);
-  const myCurrentAge = parseFloat(state.myCurrentAge);
-  const lifeEvents = state.lifeEvents;
-
-  return getRetirementData(mIR, balance, savings, retirementIncome,
-    myCurrentAge * 12, lifeExpectancy * 12, lifeEvents);
-}
-
-function getRetirementData(mIR, balance, savings, retirementIncome,
+function getRetirementData(mIR, currentBalance, savings, retirementIncome,
   currentAge, lifeExpectancy, lifeEvents) {
   /* all variables in months */
   const chartData = [];
+
+  let balance = currentBalance;
   let age = currentAge;
   let m = 0;
 
@@ -61,11 +50,29 @@ function getRetirementData(mIR, balance, savings, retirementIncome,
 }
 
 export function getRetirementResults(state) {
-  const { myInvestments } = state;
+  const { myInvestments, lifeEvents } = state;
+
+  const currentBalance = parseFloat(state.myCurrentBalance);
+  const savings = parseFloat(state.myCurrentMonthlySavings);
+  const retirementIncome = parseFloat(state.myRetirementIncome);
+  const lifeExpectancy = parseFloat(state.myLifeExpectancy);
+  const myCurrentAge = parseFloat(state.myCurrentAge);
 
   return myInvestments.map((investment) => {
     const { label, rate } = investment;
-    return [label, getMyRetirementData(state, parseFloat(rate) / 100)];
+
+    return [
+      label,
+      getRetirementData(
+        fin.annualToMonthly(parseFloat(rate)) / 100,
+        currentBalance,
+        savings,
+        retirementIncome,
+        myCurrentAge * 12,
+        lifeExpectancy * 12,
+        lifeEvents,
+      ),
+    ];
   });
 }
 
