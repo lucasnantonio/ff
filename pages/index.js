@@ -139,7 +139,7 @@ class Index extends Component {
               className={`
                 bg-white flex z-max 
                 ${this.state.isShowingIntro ? 'h5' : ''} 
-                ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
+                ${this.state.isShowingCalculation ? 'overflow-scroll flex-row-l flex-column' : 'overflow-hidden'}`}>
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}
@@ -154,7 +154,7 @@ class Index extends Component {
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   />
                   {this.state.isShowingIntro
-                    && <div className='w-100 flex items-center justify-end pr5'>
+                    && <div className='w-100 flex-l dn items-center justify-end pr5'>
                       <Button isEnabled={true} label='começar'onClick={this.startApp} />
                     </div>
                   }
@@ -164,6 +164,11 @@ class Index extends Component {
             </div>
           </div>
           <style jsx global>{`
+              body *{
+                font-family: 'Poppins', sans-serif;
+                font-weight: 100;
+                font-size: 14px;
+            }
             .r0{
               right:0;
             }

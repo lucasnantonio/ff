@@ -13,7 +13,7 @@ class OutPutContainer extends Component {
       <div id="resultsWrapper"
         className={`flex flex-column center items-center justify-center
                     ${this.props.isShowingIntro ? 'bg-white h-100' : 'bg-near-white vh-100'}
-                    ${!this.props.isShowingIntro && this.props.isShowingCalculation ? 'fixed r0 w-50' : 'w-100 dn'}
+                    ${!this.props.isShowingIntro && this.props.isShowingCalculation ? 'fixed-l r0 w-50-l w-100' : 'w-100 dn'}
                   `}>
             {!this.props.isShowingIntro && this.props.isShowingCalculation
             && <React.Fragment>
