@@ -8,24 +8,38 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
   currentAge, lifeExpectancy, lifeEvents) {
   /* all variables in months */
   const chartData = [];
+  const events = [];
 
   let balance = currentBalance;
   let age = currentAge;
   let m = 0;
+  let eventCost = 0;
 
   const [retirementAge, retirementBalance] = fin.retirementAge(mIR, balance, savings,
     retirementIncome, currentAge, lifeExpectancy, lifeEvents);
 
-  balance += savings - fin.getLifeEvent(age, lifeEvents);
+  balance += savings;
   chartData.push({ x: age / 12, y: balance });
+
+  eventCost = fin.getLifeEvent(age, lifeEvents);
+  if (eventCost > 0) {
+    balance -= fin.getLifeEvent(age, lifeEvents);
+    chartData.push({ x: age / 12, y: balance });
+  }
 
   age += 1;
   m += 1;
 
   while (age < retirementAge) {
-    balance = (1 + mIR) * balance + savings - fin.getLifeEvent(age, lifeEvents);
-
+    balance = (1 + mIR) * balance + savings;
     chartData.push({ x: age / 12, y: balance });
+
+    eventCost = fin.getLifeEvent(age, lifeEvents);
+    if (eventCost > 0) {
+      events.push({ age: age / 12, balance });
+      balance -= fin.getLifeEvent(age, lifeEvents);
+      chartData.push({ x: age / 12, y: balance });
+    }
 
     age += 1;
     m += 1;
@@ -46,6 +60,7 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
       age: retirementAge,
       balance: retirementBalance,
     },
+    events,
   };
 }
 

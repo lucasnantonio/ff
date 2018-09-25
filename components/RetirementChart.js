@@ -4,24 +4,28 @@ import getRetirementChart from '../utils/charts';
 class RetirementChart extends Component {
   constructor(props) {
     super(props);
-    this.state = { icon: 'circle' };
+    this.state = {
+      retirementIcon: 'circle',
+      eventIcon: 'circle',
+    };
     this.chart = null;
   }
 
-  loadIcon = async () => {
+  loadIcon = async (retirementIconName, path) => {
     const retirementIcon = await new Promise((resolve, reject) => {
       const retirementImage = new Image();
       retirementImage.onload = () => resolve(retirementImage);
       retirementImage.onerror = () => reject(retirementImage);
-      retirementImage.src = '../static/retirement-icon.svg';
+      retirementImage.src = path;
     });
-    this.setState({ icon: retirementIcon });
+    this.setState({ [retirementIconName]: retirementIcon });
   }
 
   async componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
-    await this.loadIcon();
+    await this.loadIcon('retirementIcon', '../static/retirement-icon.svg');
+    await this.loadIcon('eventIcon', '../static/event-icon.svg');
     this.updateChart(this.props.retirementResults);
   }
 
@@ -49,14 +53,15 @@ class RetirementChart extends Component {
     const pointsets = retirementResults.map((investment, index) => {
       if (this.props.myInvestments[index].isSelected) {
         const [label, data] = investment;
-
         return {
           label,
-          data: [{
-            x: data.retirement.age / 12,
-            y: data.retirement.balance,
-          }],
-          pointStyle: this.state.icon,
+          data: [
+            {
+              x: data.retirement.age / 12,
+              y: data.retirement.balance,
+            },
+          ],
+          pointStyle: this.state.retirementIcon,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         };
@@ -64,7 +69,29 @@ class RetirementChart extends Component {
       return {};
     });
 
-    this.chart.data = { datasets: [...pointsets, ...linesets] };
+    let eventsets;
+
+    retirementResults.map((investment, index) => {
+      if (this.props.myInvestments[index].isSelected) {
+        const [label, data] = investment;
+
+        eventsets = data.events.map(e => ({
+          label,
+          data: [
+            {
+              x: e.age,
+              y: e.balance,
+            },
+          ],
+          pointStyle: this.state.eventIcon,
+          pointHoverRadius: 0,
+          borderColor: 'rgba(0, 0, 0, 1)',
+        }));
+      }
+      return {};
+    });
+
+    this.chart.data = { datasets: [...pointsets, ...eventsets, ...linesets] };
     this.chart.update();
   }
 
