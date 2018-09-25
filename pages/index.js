@@ -139,7 +139,7 @@ class Index extends Component {
               className={`
                 bg-white flex z-max 
                 ${this.state.isShowingIntro ? 'h5' : ''} 
-                ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
+                ${this.state.isShowingCalculation ? 'overflow-scroll flex-row-l flex-column' : 'overflow-hidden'}`}>
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}
@@ -167,6 +167,7 @@ class Index extends Component {
               body *{
                 font-family: 'Poppins', sans-serif;
                 font-weight: 100;
+                font-size: 14px;
             }
             .r0{
               right:0;
