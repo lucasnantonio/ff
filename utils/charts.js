@@ -11,6 +11,7 @@ export default function getRetirementChart(ctx) {
       datasets: {},
     },
     options: {
+      maintainAspectRatio: false,
       layout: {
         padding: {
           top: 50,
