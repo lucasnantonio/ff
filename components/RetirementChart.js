@@ -45,7 +45,7 @@ class RetirementChart extends Component {
       (investment, index) => !this.props.myInvestments[index].isSelected,
     );
 
-    const linesets = {
+    const selectedInvestmentSet = {
       label,
       data: investmentData.timeHistory,
       backgroundColor: 'rgba(0, 0, 0 ,0.1)',
@@ -56,10 +56,10 @@ class RetirementChart extends Component {
     };
 
     const otherInvestmentsSets = otherInvestments.map((investment) => {
-      const [label, data] = investment;
+      const [otherLabel, otherInvestmentData] = investment;
       return {
-        label,
-        data: data.timeHistory,
+        otherLabel,
+        data: otherInvestmentData.timeHistory,
         backgroundColor: 'rgba(0, 0, 0 ,0)',
         pointRadius: 0,
         borderWidth: 1,
@@ -81,7 +81,7 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     };
 
-    const eventsets = investmentData.events.map(e => ({
+    const eventSets = investmentData.events.map(e => ({
       label,
       data: [
         {
@@ -94,9 +94,16 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     }));
 
-    const minX = Math.min(...linesets.data.map(v => v.x));
+    const minX = Math.min(...selectedInvestmentSet.data.map(v => v.x));
 
-    this.chart.data = { datasets: [retirementPoint, ...eventsets, linesets, ...otherInvestmentsSets] };
+    this.chart.data = {
+      datasets: [
+        retirementPoint,
+        ...eventSets,
+        selectedInvestmentSet,
+        ...otherInvestmentsSets],
+    };
+
     this.chart.options.scales.xAxes[0].ticks.min = minX;
     this.chart.update();
   }
