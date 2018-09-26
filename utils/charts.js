@@ -47,7 +47,7 @@ export default function getRetirementChart(ctx) {
               labelString: 'idade (anos)',
             },
             ticks: {
-              min: 0,
+              min: 24,
               suggestedMax: 100, // maximum value, unless there is a bigger value.
             },
             gridLines: {
