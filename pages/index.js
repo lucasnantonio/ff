@@ -143,7 +143,11 @@ class Index extends Component {
     );
 
     this.setState({ myInvestments: reseted });
-    this.updateChart();
+    this.setState(prevState => ({
+      retirementResults: getRetirementResults(
+        { ...prevState, myInvestments: reseted },
+      ),
+    }));
   }
 
   render() {
