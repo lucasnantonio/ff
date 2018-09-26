@@ -6,7 +6,8 @@ class RetirementChart extends Component {
     super(props);
     this.state = {
       retirementIcon: 'circle',
-      eventIcon: 'circle',
+      eventValidIcon: 'circle',
+      eventNotValidIcon: 'circle',
     };
     this.chart = null;
   }
@@ -25,7 +26,8 @@ class RetirementChart extends Component {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
     await this.loadIcon('retirementIcon', '../static/retirement-icon.svg');
-    await this.loadIcon('eventIcon', '../static/event-icon.svg');
+    await this.loadIcon('eventValidIcon', '../static/event-icon.svg');
+    await this.loadIcon('eventNotValidIcon', '../static/event-not-valid-icon.svg');
     this.updateChart(this.props.retirementResults);
   }
 
@@ -83,7 +85,7 @@ class RetirementChart extends Component {
               y: e.balance,
             },
           ],
-          pointStyle: this.state.eventIcon,
+          pointStyle: e.valid ? this.state.eventValidIcon : this.state.eventNotValidIcon,
           pointHoverRadius: 0,
           borderColor: 'rgba(0, 0, 0, 1)',
         }));

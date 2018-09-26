@@ -23,8 +23,17 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
 
   eventCost = fin.getLifeEvent(age, lifeEvents);
   if (eventCost > 0) {
-    balance -= fin.getLifeEvent(age, lifeEvents);
-    chartData.push({ x: age / 12, y: balance });
+    if (eventCost > balance) {
+      events.push({
+        age: age / 12, balance, valid: false, obs: 'Dinheiro insuficiente. Evento Ignorado.',
+      });
+    } else {
+      events.push({
+        age: age / 12, balance, valid: true, obs: '',
+      });
+      balance -= fin.getLifeEvent(age, lifeEvents);
+      chartData.push({ x: age / 12, y: balance });
+    }
   }
 
   age += 1;
@@ -36,9 +45,17 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
 
     eventCost = fin.getLifeEvent(age, lifeEvents);
     if (eventCost > 0) {
-      events.push({ age: age / 12, balance });
-      balance -= fin.getLifeEvent(age, lifeEvents);
-      chartData.push({ x: age / 12, y: balance });
+      if (eventCost > balance) {
+        events.push({
+          age: age / 12, balance, valid: false, obs: 'Dinheiro insuficiente. Evento Ignorado.',
+        });
+      } else {
+        events.push({
+          age: age / 12, balance, valid: true, obs: '',
+        });
+        balance -= fin.getLifeEvent(age, lifeEvents);
+        chartData.push({ x: age / 12, y: balance });
+      }
     }
 
     age += 1;
