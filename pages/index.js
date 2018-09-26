@@ -129,6 +129,27 @@ class Index extends Component {
     }));
   };
 
+  handleResetRates = () => {
+    const { myInvestments } = this.state;
+
+    const rates = {
+      poupança: 3,
+      'renda fixa': 6,
+      'renda variável': 8.5,
+    };
+
+    const reseted = myInvestments.map(
+      investment => ({ ...investment, rate: rates[investment.label] }),
+    );
+
+    this.setState({ myInvestments: reseted });
+    this.setState(prevState => ({
+      retirementResults: getRetirementResults(
+        { ...prevState, myInvestments: reseted },
+      ),
+    }));
+  }
+
   render() {
     return (
       <div>
@@ -137,8 +158,8 @@ class Index extends Component {
             <Intro isShowing={this.state.isShowingIntro} />
             <div id="bottomWrapper"
               className={`
-                bg-white flex z-max 
-                ${this.state.isShowingIntro ? 'h5' : ''} 
+                bg-white flex z-max
+                ${this.state.isShowingIntro ? 'h5' : ''}
                 ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
               <InputContainer
                   {...this.state}
@@ -147,6 +168,7 @@ class Index extends Component {
                   isExpanded = {!this.state.isShowingIntro}
                   handleStartApp = {this.startApp}
                   handleShowCalculation = {this.showFirstCalculation}
+                  handleResetRates = {this.handleResetRates}
                   handleInput = {this.handleInput}
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}

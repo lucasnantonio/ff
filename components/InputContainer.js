@@ -103,6 +103,11 @@ class InputContainer extends Component {
               handleInput = {this.props.handleInput}
               />))
             }
+
+            <button
+              style={{ width: '100%' }}
+              onClick={this.props.handleResetRates}>Reset taxas</button>
+
             </QuestionChunk>
             }
             {this.props.isShowingCalculation
