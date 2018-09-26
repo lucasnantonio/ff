@@ -36,9 +36,14 @@ class RetirementChart extends Component {
   }
 
   updateChart(retirementResults) {
+    // selected investment
     const [label, investmentData] = retirementResults.filter(
       (investment, index) => this.props.myInvestments[index].isSelected,
     )[0];
+
+    const otherInvestments = retirementResults.filter(
+      (investment, index) => !this.props.myInvestments[index].isSelected,
+    );
 
     const linesets = {
       label,
@@ -49,6 +54,19 @@ class RetirementChart extends Component {
       borderColor: 'rgba(255, 255, 255, 1)',
       lineTension: 0,
     };
+
+    const otherInvestmentsSets = otherInvestments.map((investment) => {
+      const [label, data] = investment;
+      return {
+        label,
+        data: data.timeHistory,
+        backgroundColor: 'rgba(0, 0, 0 ,0)',
+        pointRadius: 0,
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.5)',
+        lineTension: 0,
+      };
+    });
 
     const retirementPoint = {
       label,
@@ -78,7 +96,7 @@ class RetirementChart extends Component {
 
     const minX = Math.min(...linesets.data.map(v => v.x));
 
-    this.chart.data = { datasets: [retirementPoint, ...eventsets, linesets] };
+    this.chart.data = { datasets: [retirementPoint, ...eventsets, linesets, ...otherInvestmentsSets] };
     this.chart.options.scales.xAxes[0].ticks.min = minX;
     this.chart.update();
   }
