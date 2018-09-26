@@ -36,64 +36,50 @@ class RetirementChart extends Component {
   }
 
   updateChart(retirementResults) {
-    const linesets = retirementResults.map((investment, index) => {
-      if (this.props.myInvestments[index].isSelected) {
-        const [label, data] = investment;
-        return {
-          label,
-          data: data.timeHistory,
-          backgroundColor: 'rgba(0, 0, 0 ,0.1)',
-          pointRadius: 0,
-          borderWidth: 3,
-          borderColor: 'rgba(255, 255, 255, 1)',
-          lineTension: 0,
-        };
-      }
-      return {};
-    });
+    const [label, investmentData] = retirementResults.filter(
+      (investment, index) => this.props.myInvestments[index].isSelected,
+    )[0];
 
-    const pointsets = retirementResults.map((investment, index) => {
-      if (this.props.myInvestments[index].isSelected) {
-        const [label, data] = investment;
-        return {
-          label,
-          data: [
-            {
-              x: data.retirement.age / 12,
-              y: data.retirement.balance,
-            },
-          ],
-          pointStyle: this.state.retirementIcon,
-          pointHoverRadius: 0,
-          borderColor: 'rgba(0, 0, 0, 1)',
-        };
-      }
-      return {};
-    });
+    const linesets = {
+      label,
+      data: investmentData.timeHistory,
+      backgroundColor: 'rgba(0, 0, 0 ,0.1)',
+      pointRadius: 0,
+      borderWidth: 3,
+      borderColor: 'rgba(255, 255, 255, 1)',
+      lineTension: 0,
+    };
 
-    let eventsets;
+    const retirementPoint = {
+      label,
+      data: [
+        {
+          x: investmentData.retirement.age / 12,
+          y: investmentData.retirement.balance,
+        },
+      ],
+      pointStyle: this.state.retirementIcon,
+      pointHoverRadius: 0,
+      borderColor: 'rgba(0, 0, 0, 1)',
+    };
 
-    retirementResults.map((investment, index) => {
-      if (this.props.myInvestments[index].isSelected) {
-        const [label, data] = investment;
+    const eventsets = investmentData.events.map(e => ({
+      label,
+      data: [
+        {
+          x: e.age,
+          y: e.balance,
+        },
+      ],
+      pointStyle: e.valid ? this.state.eventValidIcon : this.state.eventNotValidIcon,
+      pointHoverRadius: 0,
+      borderColor: 'rgba(0, 0, 0, 1)',
+    }));
 
-        eventsets = data.events.map(e => ({
-          label,
-          data: [
-            {
-              x: e.age,
-              y: e.balance,
-            },
-          ],
-          pointStyle: e.valid ? this.state.eventValidIcon : this.state.eventNotValidIcon,
-          pointHoverRadius: 0,
-          borderColor: 'rgba(0, 0, 0, 1)',
-        }));
-      }
-      return {};
-    });
+    const minX = Math.min(...linesets.data.map(v => v.x));
 
-    this.chart.data = { datasets: [...pointsets, ...eventsets, ...linesets] };
+    this.chart.data = { datasets: [retirementPoint, ...eventsets, linesets] };
+    this.chart.options.scales.xAxes[0].ticks.min = minX;
     this.chart.update();
   }
 
