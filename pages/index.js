@@ -143,6 +143,7 @@ class Index extends Component {
     );
 
     this.setState({ myInvestments: reseted });
+    this.updateChart();
   }
 
   render() {

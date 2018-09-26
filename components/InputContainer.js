@@ -104,10 +104,9 @@ class InputContainer extends Component {
               />))
             }
 
-            <Button
-            	isEnabled
-            	label="Resetar taxas"
-            	onClick={this.props.handleResetRates}/>
+            <button
+              style={{ width: '100%' }}
+              onClick={this.props.handleResetRates}>Reset taxas</button>
 
             </QuestionChunk>
             }
