@@ -6,10 +6,20 @@ class InputTable extends Component {
       id,
       table,
       fields,
+      myInvestments,
+      retirementResults,
       handleTableInput,
       handleAddTableRow,
       handleRemoveTableRow,
     } = this.props;
+
+    const selectedInvestmentLabel = myInvestments.filter(
+      investment => investment.isSelected,
+    )[0].label;
+
+    const { events } = retirementResults.filter(
+      investment => investment[0] === selectedInvestmentLabel,
+    )[0][1];
 
     return (
             <table>
@@ -19,6 +29,7 @@ class InputTable extends Component {
                   <td>evento</td>
                   <td>idade</td>
                   <td>valor</td>
+                  <td></td>
                 </tr>
               </thead>
               <tbody>
@@ -56,6 +67,9 @@ class InputTable extends Component {
                           value={row.cost}
                           onChange={handleTableInput(rowId, id, table)}
                           />
+                      </td>
+                      <td>
+                        {events.length > rowId ? events[rowId].obs : ''}
                       </td>
                     </tr>
                 ))}

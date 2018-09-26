@@ -1,5 +1,5 @@
 export function annualToMonthly(annualRate) {
-  return (1 + annualRate) ** (1 / 12) - 1
+  return (1 + annualRate) ** (1 / 12) - 1;
 }
 
 function NPER(rate, payment, present, future, type) {
@@ -13,47 +13,59 @@ function NPER(rate, payment, present, future, type) {
   rate = eval(rate);
 
   // Return number of periods
-  var num = payment * (1 + rate * type) - future * rate;
-  var den = (present * rate + payment * (1 + rate * type));
+  const num = payment * (1 + rate * type) - future * rate;
+  const den = (present * rate + payment * (1 + rate * type));
   return Math.log(num / den) / Math.log(1 + rate);
 }
 
 export function getLifeEvent(age, lifeEvents) {
   for (const e of lifeEvents) {
     if (parseFloat(e.age) * 12 === age) {
-      return parseFloat(e.cost)
+      return parseFloat(e.cost);
     }
   }
-  return 0
+  return 0;
 }
 
 export function retirementAge(iR, balance, savings, retirementIncome,
-  currentAge, lifeExpectancy, lifeEvents=[]) {
+  currentAge, lifeExpectancy, lifeEvents = []) {
   /* all variables must be in the same time unit (montly, annual, ...) */
-  let t = 0
-  let retirementAge = currentAge
-  balance += savings - getLifeEvent(retirementAge, lifeEvents)
+  let t = 0;
+  let retirementAge = currentAge;
+  let eventCost = 0;
 
-
-  const nper = NPER(iR, -retirementIncome, balance)
-  if (isNaN(nper) || retirementAge + nper >= lifeExpectancy) {
-    return [retirementAge + 1, balance]
+  balance += savings;
+  eventCost = getLifeEvent(retirementAge, lifeEvents);
+  if (eventCost < balance) {
+    balance -= eventCost;
   }
 
-  t += 1
-  retirementAge += 1
+
+  const nper = NPER(iR, -retirementIncome, balance);
+  if (isNaN(nper) || retirementAge + nper >= lifeExpectancy) {
+    return [retirementAge + 1, balance];
+  }
+
+  t += 1;
+  retirementAge += 1;
 
   while (true) {
-    balance = (1 + iR) * balance + savings - getLifeEvent(retirementAge, lifeEvents)
-    const nper = NPER(iR, -retirementIncome, balance)
+    balance = (1 + iR) * balance + savings;
+    eventCost = getLifeEvent(retirementAge, lifeEvents);
 
-    if (isNaN(nper) || retirementAge + (nper > 0 ? nper : 0) >= lifeExpectancy) {
-      return [retirementAge + 1, balance]
+    if (eventCost < balance) {
+      balance -= eventCost;
     }
 
-    t += 1
-    retirementAge += 1
+    const nper = NPER(iR, -retirementIncome, balance);
+
+    if (isNaN(nper) || retirementAge + (nper > 0 ? nper : 0) >= lifeExpectancy) {
+      return [retirementAge + 1, balance];
+    }
+
+    t += 1;
+    retirementAge += 1;
   }
 
-  return [null, null]
+  return [null, null];
 }

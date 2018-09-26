@@ -1,5 +1,5 @@
 import Chart from 'chart.js';
-import toCurrency from './math.js'
+import toCurrency from './math.js';
 
 Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,.4)';
 Chart.defaults.global.defaultFontFamily = 'Poppins, system-ui';
@@ -7,8 +7,11 @@ Chart.defaults.global.defaultFontFamily = 'Poppins, system-ui';
 export default function getRetirementChart(ctx) {
   const RetirementChart = new Chart(ctx, {
     type: 'line',
-    data: {},
+    data: {
+      datasets: {},
+    },
     options: {
+      maintainAspectRatio: false,
       layout: {
         padding: {
           top: 50,
@@ -31,7 +34,10 @@ export default function getRetirementChart(ctx) {
           label: tooltipItem => `R$ ${parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString('pt-br')}`,
         },
       },
-      animation: false,
+      animation: {
+        duration: 0, // in milliseconds
+        scale: false,
+      },
       scales: {
         xAxes: [
           {
@@ -42,7 +48,7 @@ export default function getRetirementChart(ctx) {
               labelString: 'idade (anos)',
             },
             ticks: {
-              min: 0,
+              min: 24,
               suggestedMax: 100, // maximum value, unless there is a bigger value.
             },
             gridLines: {

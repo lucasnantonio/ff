@@ -4,24 +4,30 @@ import getRetirementChart from '../utils/charts';
 class RetirementChart extends Component {
   constructor(props) {
     super(props);
-    this.state = { icon: 'circle' };
+    this.state = {
+      retirementIcon: 'circle',
+      eventValidIcon: 'circle',
+      eventNotValidIcon: 'circle',
+    };
     this.chart = null;
   }
 
-  loadIcon = async () => {
+  loadIcon = async (retirementIconName, path) => {
     const retirementIcon = await new Promise((resolve, reject) => {
       const retirementImage = new Image();
       retirementImage.onload = () => resolve(retirementImage);
       retirementImage.onerror = () => reject(retirementImage);
-      retirementImage.src = '../static/retirement-icon.svg';
+      retirementImage.src = path;
     });
-    this.setState({ icon: retirementIcon });
+    this.setState({ [retirementIconName]: retirementIcon });
   }
 
   async componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx);
-    await this.loadIcon();
+    await this.loadIcon('retirementIcon', '../static/retirement-icon.svg');
+    await this.loadIcon('eventValidIcon', '../static/event-icon.svg');
+    await this.loadIcon('eventNotValidIcon', '../static/event-not-valid-icon.svg');
     this.updateChart(this.props.retirementResults);
   }
 
@@ -30,41 +36,75 @@ class RetirementChart extends Component {
   }
 
   updateChart(retirementResults) {
-    const linesets = retirementResults.map((investment, index) => {
-      if (this.props.myInvestments[index].isSelected) {
-        const [label, data] = investment;
-        return {
-          label,
-          data: data.timeHistory,
-          backgroundColor: 'rgba(0, 0, 0 ,0.1)',
-          pointRadius: 0,
-          borderWidth: 3,
-          borderColor: 'rgba(255, 255, 255, 1)',
-          lineTension: 0,
-        };
-      }
-      return {};
+    // selected investment
+    const [label, investmentData] = retirementResults.filter(
+      (investment, index) => this.props.myInvestments[index].isSelected,
+    )[0];
+
+    const otherInvestments = retirementResults.filter(
+      (investment, index) => !this.props.myInvestments[index].isSelected,
+    );
+
+    const selectedInvestmentSet = {
+      label,
+      data: investmentData.timeHistory,
+      backgroundColor: 'rgba(0, 0, 0 ,0.1)',
+      pointRadius: 0,
+      borderWidth: 3,
+      borderColor: 'rgba(255, 255, 255, 1)',
+      lineTension: 0,
+    };
+
+    const otherInvestmentsSets = otherInvestments.map((investment) => {
+      const [otherLabel, otherInvestmentData] = investment;
+      return {
+        otherLabel,
+        data: otherInvestmentData.timeHistory,
+        backgroundColor: 'rgba(0, 0, 0 ,0)',
+        pointRadius: 0,
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.5)',
+        lineTension: 0,
+      };
     });
 
-    const pointsets = retirementResults.map((investment, index) => {
-      if (this.props.myInvestments[index].isSelected) {
-        const [label, data] = investment;
+    const retirementPoint = {
+      label,
+      data: [
+        {
+          x: investmentData.retirement.age / 12,
+          y: investmentData.retirement.balance,
+        },
+      ],
+      pointStyle: this.state.retirementIcon,
+      pointHoverRadius: 0,
+      borderColor: 'rgba(0, 0, 0, 1)',
+    };
 
-        return {
-          label,
-          data: [{
-            x: data.retirement.age / 12,
-            y: data.retirement.balance,
-          }],
-          pointStyle: this.state.icon,
-          pointHoverRadius: 0,
-          borderColor: 'rgba(0, 0, 0, 1)',
-        };
-      }
-      return {};
-    });
+    const eventSets = investmentData.events.map(e => ({
+      label,
+      data: [
+        {
+          x: e.age,
+          y: e.balance,
+        },
+      ],
+      pointStyle: e.valid ? this.state.eventValidIcon : this.state.eventNotValidIcon,
+      pointHoverRadius: 0,
+      borderColor: 'rgba(0, 0, 0, 1)',
+    }));
 
-    this.chart.data = { datasets: [...pointsets, ...linesets] };
+    const minX = Math.min(...selectedInvestmentSet.data.map(v => v.x));
+
+    this.chart.data = {
+      datasets: [
+        retirementPoint,
+        ...eventSets,
+        selectedInvestmentSet,
+        ...otherInvestmentsSets],
+    };
+
+    this.chart.options.scales.xAxes[0].ticks.min = minX;
     this.chart.update();
   }
 
