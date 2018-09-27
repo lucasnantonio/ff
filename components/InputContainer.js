@@ -21,6 +21,7 @@ class InputContainer extends Component {
           <Logo />
         </div>
             }
+            <div className="h-100-ns h-50">
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
@@ -34,7 +35,18 @@ class InputContainer extends Component {
                 id = "myCurrentAge"
                 label = "Quantos anos você tem?"
                 handleInput = {this.props.handleInput}
-            />
+                />
+            </div>
+            <div 
+            className={` ${this.props.isShowingIntro ? 'flex' : 'dn'} dn-ns  justify-center`}
+            >
+            <Button
+              isFullWidth
+              isEnabled
+              label="Começar"
+              onClick = {this.props.startApp}
+              />
+            </div>
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}
                 isExpanded = {this.props.isExpanded}
