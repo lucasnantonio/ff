@@ -158,15 +158,9 @@ class Index extends Component {
             <Intro isShowing={this.state.isShowingIntro} />
             <div id="bottomWrapper"
               className={`
-<<<<<<< HEAD
                 bg-white flex z-max 
                 ${this.state.isShowingIntro ? 'h5' : ''} 
                 ${this.state.isShowingCalculation ? 'overflow-scroll flex-row-l flex-column' : 'overflow-hidden'}`}>
-=======
-                bg-white flex z-max
-                ${this.state.isShowingIntro ? 'h5' : ''}
-                ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
->>>>>>> master
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}
