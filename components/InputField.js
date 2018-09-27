@@ -77,7 +77,7 @@ class InputField extends Component {
               isShowingCalculation={this.props.isShowingCalculation}
             >
                     <InputLabel label={this.props.label}/>
-                    <div className={'flex items-center'}>
+                    <div className={'flex items-center w-100 mw5'}>
                         {this.props.hasSteppers
                             && <div className="pointer flex items-center" onClick={this.handleDecrement}>
                             <MinusBtn />

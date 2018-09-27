@@ -186,10 +186,12 @@ class Index extends Component {
             </div>
           </div>
           <style jsx global>{`
+              html{
+                font-size: 14px;
+              }
               body *{
                 font-family: 'Poppins', sans-serif;
                 font-weight: 100;
-                font-size: 14px;
             }
             .r0{
               right:0;
