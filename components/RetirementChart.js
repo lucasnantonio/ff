@@ -5,11 +5,16 @@ class RetirementChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      cursorX: 50,
       retirementIcon: 'circle',
       eventValidIcon: 'circle',
       eventNotValidIcon: 'circle',
     };
     this.chart = null;
+  }
+
+  handleHover = (cursorX) => {
+    this.setState({ cursorX });
   }
 
   loadIcon = async (retirementIconName, path) => {
@@ -24,7 +29,7 @@ class RetirementChart extends Component {
 
   async componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
-    this.chart = getRetirementChart(this.ctx);
+    this.chart = getRetirementChart(this.ctx, this.handleHover);
     await this.loadIcon('retirementIcon', '../static/retirement-icon.svg');
     await this.loadIcon('eventValidIcon', '../static/event-icon.svg');
     await this.loadIcon('eventNotValidIcon', '../static/event-not-valid-icon.svg');
@@ -53,18 +58,20 @@ class RetirementChart extends Component {
       borderWidth: 3,
       borderColor: 'rgba(255, 255, 255, 1)',
       lineTension: 0,
+      pointHitRadius: 0.1,
     };
 
     const otherInvestmentsSets = otherInvestments.map((investment) => {
       const [otherLabel, otherInvestmentData] = investment;
       return {
-        otherLabel,
+        label: otherLabel,
         data: otherInvestmentData.timeHistory,
         backgroundColor: 'rgba(0, 0, 0 ,0)',
         pointRadius: 0,
         borderWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.5)',
         lineTension: 0,
+        pointHitRadius: 0.1,
       };
     });
 
@@ -94,14 +101,34 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     }));
 
+    const verticalLine = {
+      label: 'verticalLine',
+      data: [
+        {
+          x: this.state.cursorX,
+          y: this.chart.scales['y-axis-0'].max,
+        },
+        {
+          x: this.state.cursorX,
+          y: this.chart.scales['y-axis-0'].min,
+        },
+      ],
+      borderColor: 'rgba(255, 255, 255, 1)',
+      borderWidth: 3,
+      pointRadius: 0,
+      pointHitRadius: 0,
+    };
+
     const minX = Math.min(...selectedInvestmentSet.data.map(v => v.x));
 
     this.chart.data = {
       datasets: [
         retirementPoint,
         ...eventSets,
+        verticalLine,
         selectedInvestmentSet,
-        ...otherInvestmentsSets],
+        ...otherInvestmentsSets,
+      ],
     };
 
     this.chart.options.scales.xAxes[0].ticks.min = minX;
