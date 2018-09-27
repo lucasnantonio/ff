@@ -114,7 +114,7 @@ class RetirementChart extends Component {
         },
       ],
       borderColor: 'rgba(255, 255, 255, 1)',
-      borderWidth: 3,
+      borderWidth: 1,
       pointRadius: 0,
       pointHitRadius: 0,
     };
