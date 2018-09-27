@@ -96,7 +96,7 @@ export function getRetirementResults(state) {
     return [
       label,
       getRetirementData(
-        fin.annualToMonthly(parseFloat(rate)) / 100,
+        fin.annualToMonthly(parseFloat(rate) / 100),
         currentBalance,
         savings,
         retirementIncome,
