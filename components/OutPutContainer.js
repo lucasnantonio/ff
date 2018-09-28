@@ -4,10 +4,6 @@ import RetirementSummary from './RetirementSummary';
 import Button from './Button';
 
 class OutPutContainer extends Component {
-  componentDidMount() {
-    this.props.onComponentDidMount();
-  }
-
   render() {
     return (
       <div id="resultsWrapper"

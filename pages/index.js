@@ -45,18 +45,20 @@ class Index extends Component {
     };
   }
 
-  updateChart = () => {
-    this.setState({ retirementResults: getRetirementResults(this.state) });
+  componentDidUpdate(prevProps, prevState) {
+    const nextRetirementResults = getRetirementResults(this.state);
+    if (JSON.stringify(prevState.retirementResults) !== JSON.stringify(nextRetirementResults)) {
+      // update if results are different
+      this.setState({ retirementResults: nextRetirementResults });
+    }
   }
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    this.updateChart();
   }
 
   showFirstCalculation = () => {
     this.setState({ isShowingCalculation: true });
-    this.updateChart();
   }
 
   handleBack = () => {
@@ -64,21 +66,29 @@ class Index extends Component {
   }
 
   handleInput = (e, floatValue, maskedValue) => {
-    const { state } = this;
-    if (floatValue && maskedValue) { // if is currencyInput
-      state[e.target.id] = floatValue;
-      this.setState(state);
-    } else if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
-      state[e.target.id] = e.target.value;
-      this.setState(state);
-    } else if (e.target.dataset.type === 'rate') { // check if is investment rate input
-      state.myInvestments.filter(item => item.label === e.target.id)[0].rate = e.target.value;
-    } else { // if user is using buttons
-      state[e.target.parentNode.parentNode.querySelectorAll('input')[0].id] = e.target.parentNode.parentNode.querySelectorAll('input')[0].value;
-      this.setState(state);
-    }
+    const { id, value } = e.target;
 
-    this.updateChart();
+    if (floatValue && maskedValue) { // if is currencyInput
+      this.setState({ [id]: floatValue });
+    } else if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
+      this.setState({ [id]: value });
+    } else if (e.target.dataset.type === 'rate') { // check if is investment rate input
+      const updateMyInvestments = this.state.myInvestments.map((item) => {
+        if (item.label === id) {
+          return {
+            ...item,
+            rate: value,
+          };
+        }
+        return item;
+      });
+      this.setState({ myInvestments: updateMyInvestments });
+    } else { // if user is using buttons
+      const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
+      const parentId = parentNode.id;
+      const parentValue = parentNode.value;
+      this.setState({ [parentId]: parentValue });
+    }
   }
 
   handleInvestmentSelector = (e, index) => {
@@ -181,7 +191,7 @@ class Index extends Component {
                     </div>
                   }
                   {!this.state.isShowingIntro
-                    && <OutPutContainer onComponentDidMount={this.updateChart} {...this.state}/>
+                    && <OutPutContainer {...this.state}/>
                   }
             </div>
           </div>
