@@ -27,6 +27,13 @@ class RetirementChart extends Component {
     this.setState({ [retirementIconName]: retirementIcon });
   }
 
+  filterIntegerAge(investmentData) {
+    return investmentData.timeHistory.filter(
+      point => point.x === parseInt(point.x)
+      || point.x === investmentData.retirement.age / 12,
+    );
+  }
+
   async componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx, this.handleHover);
@@ -52,26 +59,26 @@ class RetirementChart extends Component {
 
     const selectedInvestmentSet = {
       label,
-      data: investmentData.timeHistory,
+      data: this.filterIntegerAge(investmentData),
       backgroundColor: 'rgba(0, 0, 0 ,0.1)',
       pointRadius: 0,
       borderWidth: 3,
       borderColor: 'rgba(255, 255, 255, 1)',
       lineTension: 0,
-      pointHitRadius: 0.1,
+      pointHitRadius: 2,
     };
 
     const otherInvestmentsSets = otherInvestments.map((investment) => {
       const [otherLabel, otherInvestmentData] = investment;
       return {
         label: otherLabel,
-        data: otherInvestmentData.timeHistory,
+        data: this.filterIntegerAge(otherInvestmentData),
         backgroundColor: 'rgba(0, 0, 0 ,0)',
         pointRadius: 0,
         borderWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.5)',
         lineTension: 0,
-        pointHitRadius: 0.1,
+        pointHitRadius: 2,
       };
     });
 

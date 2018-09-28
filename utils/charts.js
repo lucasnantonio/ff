@@ -25,11 +25,6 @@ export default function getRetirementChart(ctx, handleHover) {
         xPadding: 20,
         yPadding: 20,
         bodySpacing: 10,
-        /* filter: (tooltipItem, data) => {
-          console.log(tooltipItem);
-          console.log(data);
-          return data.datasets[tooltipItem.datasetIndex].label !== 'verticalLine' ? tooltipItem : null;
-        }, */
         callbacks: {
           title: tooltipItem => `${Math.floor(tooltipItem[0].xLabel)} anos`,
           label: tooltipItem => `R$ ${parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString('pt-br')}`,
