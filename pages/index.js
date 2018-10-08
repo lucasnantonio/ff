@@ -169,11 +169,7 @@ class Index extends Component {
           <Header />
           <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
             <Intro isShowing={this.state.isShowingIntro} />
-            <div id="bottomWrapper"
-              className={`
-                bg-white flex z-max
-                ${this.state.isShowingIntro ? 'h5' : ''}
-                ${this.state.isShowingCalculation ? 'overflow-scroll' : 'overflow-hidden'}`}>
+            <div id="bottomWrapper">
               <InputContainer
                   {...this.state}
                   handleBack = {this.handleBack}

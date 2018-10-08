@@ -39,9 +39,10 @@ class Intro extends Component {
               isShowingCalculation = {this.props.isShowingCalculation}
               isExpanded = {this.props.isExpanded}
       />
-        {this.state.isShowingParticles
-        && <CoinParticles/>
-      }
+        {/* {this.state.isShowingParticles
+        && 
+        <CoinParticles/>
+      } */}
         <style jsx>
             {`
             .h0{height:0}
