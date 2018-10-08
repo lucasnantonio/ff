@@ -47,14 +47,14 @@ class InputField extends Component {
     const input = e.target.parentElement.parentElement.querySelectorAll('input')[0];
     input.stepUp();
     input.focus();
-    this.handleInput(e);
+    this.props.handleInputButtons(e);
   }
 
   handleDecrement(e) {
     const input = e.target.parentElement.parentElement.querySelectorAll('input')[0];
     input.stepDown();
     input.focus();
-    this.handleInput(e);
+    this.props.handleInputButtons(e);
   }
 
   handleBlur(e) {
@@ -84,7 +84,7 @@ class InputField extends Component {
                             </div>
                         }
                         <div className={'bn w-100 flex flex-column justify-center pv2'}>
-                       {this.props.isCurrency === 'false'
+                       {!this.props.isCurrency
                          ? (
                          <div className="flex items-center">
                            <input

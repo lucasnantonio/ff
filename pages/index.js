@@ -11,8 +11,6 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // myCurrentIncome: 10000,
-      // myCurrentLifestyleCost: 3000,
       isShowingIntro: true,
       isShowingCalculation: false,
       myCurrentBalance: 5000,
@@ -65,30 +63,35 @@ class Index extends Component {
     this.setState({ isShowingCalculation: false, isShowingIntro: true });
   }
 
-  handleInput = (e, floatValue, maskedValue) => {
-    const { id, value } = e.target;
+  handleCurrencyInput = (e, floatValue) => {
+    const { id } = e.target;
+    this.setState({ [id]: floatValue });
+  }
 
-    if (floatValue && maskedValue) { // if is currencyInput
-      this.setState({ [id]: floatValue });
-    } else if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
-      this.setState({ [id]: value });
-    } else if (e.target.dataset.type === 'rate') { // check if is investment rate input
-      const updateMyInvestments = this.state.myInvestments.map((item) => {
-        if (item.label === id) {
-          return {
-            ...item,
-            rate: value,
-          };
-        }
-        return item;
-      });
-      this.setState({ myInvestments: updateMyInvestments });
-    } else { // if user is using buttons
-      const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
-      const parentId = parentNode.id;
-      const parentValue = parentNode.value;
-      this.setState({ [parentId]: parentValue });
-    }
+  handleInputButtons = (e) => {
+    const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
+    const parentId = parentNode.id;
+    const parentValue = parentNode.value;
+    this.setState({ [parentId]: parentValue });
+  }
+
+  handleAgeInput = (e) => {
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
+  }
+
+  handleInvestmentRateInput = (e) => {
+    const { id, value } = e.target;
+    const updateMyInvestments = this.state.myInvestments.map((item) => {
+      if (item.label === id) {
+        return {
+          ...item,
+          rate: value,
+        };
+      }
+      return item;
+    });
+    this.setState({ myInvestments: updateMyInvestments });
   }
 
   handleInvestmentSelector = (e, index) => {
@@ -179,11 +182,14 @@ class Index extends Component {
                   handleStartApp = {this.startApp}
                   handleShowCalculation = {this.showFirstCalculation}
                   handleResetRates = {this.handleResetRates}
-                  handleInput = {this.handleInput}
+                  handleAgeInput = {this.handleAgeInput}
+                  handleInputButtons = {this.handleInputButtons}
+                  handleCurrencyInput = {this.handleCurrencyInput}
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   handleInvestmentSelector = {this.handleInvestmentSelector}
+                  handleInvestmentRateInput = {this.handleInvestmentRateInput}
                   />
                   {this.state.isShowingIntro
                     && <div className='w-100 flex items-center justify-end pr5'>
