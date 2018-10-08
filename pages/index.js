@@ -90,11 +90,6 @@ class Index extends Component {
         return item;
       });
       this.setState({ myInvestments: updateMyInvestments });
-    } else { // if user is using buttons
-      const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
-      const parentId = parentNode.id;
-      const parentValue = parentNode.value;
-      this.setState({ [parentId]: parentValue });
     }
   }
 
