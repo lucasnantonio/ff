@@ -21,7 +21,7 @@ class Intro extends Component {
   }
 
   render() {
-    return (<div id="intro" className={`${this.props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 bg-offwhite relative`}>
+    return (<div id="intro" className={'w-100 bg-offwhite relative'}>
     <div className="flex z-max flex-column items-center justify-between w-100 h-100">
       <NavBar />
       <div className="flex flex-column center justify-center items-center h-100">
@@ -33,12 +33,13 @@ class Intro extends Component {
       </div>
     </div>
     <IntroQuestion
-              handleInput = {this.props.handleAgeInput}
-              handleInputButtons = {this.props.handleInputButtons}
-              myCurrentAge = {this.props.myCurrentAge}
-              isShowingCalculation = {this.props.isShowingCalculation}
-              isExpanded = {this.props.isExpanded}
-      />
+      startApp = {this.props.startApp}
+      handleAgeInput = {this.props.handleAgeInput}
+      handleInputButtons = {this.props.handleInputButtons}
+      myCurrentAge = {this.props.myCurrentAge}
+      isShowingCalculation = {this.props.isShowingCalculation}
+      isExpanded = {this.props.isExpanded}
+    />
         {/* {this.state.isShowingParticles
         && 
         <CoinParticles/>

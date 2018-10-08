@@ -72,12 +72,12 @@ class Index extends Component {
     const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
-    this.setState({ [parentId]: parentValue });
+    this.setState({ [parentId]: parseFloat(parentValue) });
   }
 
   handleAgeInput = (e) => {
     const { id, value } = e.target;
-    this.setState({ [id]: value });
+    this.setState({ [id]: parseFloat(value) });
   }
 
   handleInvestmentRateInput = (e) => {
@@ -168,7 +168,12 @@ class Index extends Component {
       <div>
           <Header />
           <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
-            <Intro isShowing={this.state.isShowingIntro} />
+            <Intro 
+              handleAgeInput={this.handleAgeInput}
+              handleInputButtons={this.handleInputButtons}
+              startApp={this.startApp}
+              // myCurrentAge={this.state.myCurrentAge}
+              isShowing={this.state.isShowingIntro} />
             <div id="bottomWrapper">
               <InputContainer
                   {...this.state}
@@ -187,11 +192,6 @@ class Index extends Component {
                   handleInvestmentSelector = {this.handleInvestmentSelector}
                   handleInvestmentRateInput = {this.handleInvestmentRateInput}
                   />
-                  {this.state.isShowingIntro
-                    && <div className='w-100 flex items-center justify-end pr5'>
-                      <Button isEnabled={true} label='começar'onClick={this.startApp} />
-                    </div>
-                  }
                   {!this.state.isShowingIntro
                     && <OutPutContainer {...this.state}/>
                   }

@@ -21,13 +21,6 @@ class InputContainer extends Component {
           <Logo />
         </div>
             }
-            <IntroQuestion
-              handleInput = {this.props.handleAgeInput}
-              handleInputButtons = {this.props.handleInputButtons}
-              myCurrentAge = {this.props.myCurrentAge}
-              isShowingCalculation = {this.props.isShowingCalculation}
-              isExpanded = {this.props.isExpanded}
-            />
             <InputField
               isCurrency
               label = "Quanto você consegue guardar todo mês?"
