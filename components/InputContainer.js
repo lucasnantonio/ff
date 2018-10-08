@@ -31,7 +31,7 @@ class InputContainer extends Component {
               max = "100"
               id = "myCurrentAge"
               label = "Quantos anos você tem?"
-              handleInput = {this.props.handleCurrencyInput}
+              handleInput = {this.props.handleInput}
               handleInputButtons = {this.props.handleInputButtons}
             />
             <InputField
