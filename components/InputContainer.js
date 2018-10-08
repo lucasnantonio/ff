@@ -21,7 +21,7 @@ class InputContainer extends Component {
           <Logo />
         </div>
             }
-            <IntroQuestion 
+            <IntroQuestion
               handleInput = {this.props.handleAgeInput}
               handleInputButtons = {this.props.handleInputButtons}
               myCurrentAge = {this.props.myCurrentAge}

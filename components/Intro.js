@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Particles from 'react-particles-js';
 import Logo from './Logo';
 import NavBar from './Navbar';
+import IntroQuestion from './IntroQuestion';
+import CoinParticles from './CoinParticles';
 
 class Intro extends Component {
   state = {
@@ -22,70 +23,24 @@ class Intro extends Component {
   render() {
     return (<div id="intro" className={`${this.props.isShowing ? 'h-100 flex flex-column' : 'h0 overflow-hidden'} w-100 bg-offwhite relative`}>
     <div className="flex z-max flex-column items-center justify-between w-100 h-100">
-          <NavBar />
-          <div className="flex flex-column center justify-center items-center h-100">
-            <div className="mb2 mw7 w-50">
-                <Logo />
-            </div>
-            <h2 className="f2 fw1 measure-narrow gray tc">Calcule sua independência financeira</h2>
-            <h3 className="f5 measure-narrow gray mb5 tc">Descubra quando você vai poder mandar tudo à merda!</h3>
+      <NavBar />
+      <div className="flex flex-column center justify-center items-center h-100">
+        <div className="mb2 mw7 w-50">
+          <Logo />
         </div>
-        </div>
+        <h2 className="f2 fw1 measure-narrow gray tc">Calcule sua independência financeira</h2>
+        <h3 className="f5 measure-narrow gray mb5 tc">Descubra quando você vai poder mandar tudo à merda!</h3>
+      </div>
+    </div>
+    <IntroQuestion
+              handleInput = {this.props.handleAgeInput}
+              handleInputButtons = {this.props.handleInputButtons}
+              myCurrentAge = {this.props.myCurrentAge}
+              isShowingCalculation = {this.props.isShowingCalculation}
+              isExpanded = {this.props.isExpanded}
+      />
         {this.state.isShowingParticles
-        && <Particles
-        className="absolute"
-            width="100vw"
-            height="100vh"
-            params={{
-              particles: {
-                opacity: {
-                  anim: {
-                    enable: false,
-                  },
-                  value: 1,
-                  random: false,
-                },
-                color: { value: '#f5c83f' },
-                number: {
-                  value: 1.5,
-                  density: {
-                    enable: true,
-                  },
-                },
-                shape: {
-                  stroke: {
-                    width: 48,
-                    color: '#f5d46a',
-                  },
-                },
-                size: {
-                  value: 54,
-                  random: false,
-                  anim: {
-                    speed: 4,
-                  },
-                },
-                line_linked: {
-                  enable: false,
-                },
-                move: {
-                //   random: true,
-                  speed: 1,
-                  direction: 'bottom',
-                  straight: false,
-                  out_mode: 'out',
-                },
-              },
-              interactivity: {
-                events: {
-                  onclick: {
-                    enable: true,
-                    mode: 'repulse',
-                  },
-                },
-              },
-            }}
-        />
+        && <CoinParticles/>
       }
         <style jsx>
             {`
