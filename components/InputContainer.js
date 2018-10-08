@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
+import IntroQuestion from './IntroQuestion';
 import Logo from './Logo';
 import QuestionChunk from './QuestionChunk';
 import Button from './Button';
@@ -20,29 +21,13 @@ class InputContainer extends Component {
           <Logo />
         </div>
             }
-            <InputField
-              hasSteppers
-              label = "Quantos anos você tem?"
-              id = "myCurrentAge"
-              isShowingCalculation = {this.props.isShowingCalculation}
-              isExpanded = {this.props.isExpanded}
-              value = {this.props.myCurrentAge}
-              placeholder="26"
-              stepperIncrement = "1"
-              min = "1"
-              max = "100"
+            <IntroQuestion 
               handleInput = {this.props.handleAgeInput}
               handleInputButtons = {this.props.handleInputButtons}
-            />
-            <InputField
-              isCurrency
-              label = "Quanto você tem hoje para começar a investir?"
-              id = "myCurrentBalance"
+              myCurrentAge = {this.props.myCurrentAge}
               isShowingCalculation = {this.props.isShowingCalculation}
               isExpanded = {this.props.isExpanded}
-              value = {this.props.myCurrentBalance}
-              handleInput = {this.props.handleCurrencyInput}
-              />
+            />
             <InputField
               isCurrency
               label = "Quanto você consegue guardar todo mês?"
