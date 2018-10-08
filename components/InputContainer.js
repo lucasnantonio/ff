@@ -21,11 +21,11 @@ class InputContainer extends Component {
         </div>
             }
             <InputField
+              hasSteppers
               isShowingCalculation = {this.props.isShowingCalculation}
               isExpanded = {this.props.isExpanded}
               value = {this.props.myCurrentAge}
               placeholder="26"
-              hasSteppers = "true"
               stepperIncrement = "1"
               min = "1"
               max = "100"
@@ -81,9 +81,9 @@ class InputContainer extends Component {
               title="Opções avançadas"
             >
             <InputField
+                hasSteppers
                 isExpanded = {this.props.isExpanded}
                 value = {this.props.myLifeExpectancy}
-                hasSteppers = "true"
                 stepperIncrement = "1"
                 min = "1"
                 max = "100"
@@ -102,7 +102,6 @@ class InputContainer extends Component {
               handleInput = {this.props.handleInput}
               />))
             }
-
             <button
               style={{ width: '100%' }}
               onClick={this.props.handleResetRates}>Reset taxas</button>
