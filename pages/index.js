@@ -75,21 +75,23 @@ class Index extends Component {
     this.setState({ [parentId]: parentValue });
   }
 
-  handleInput = (e) => {
+  handleAgeInput = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
-    if (e.target.dataset.type === 'rate') { // check if is investment rate input
-      const updateMyInvestments = this.state.myInvestments.map((item) => {
-        if (item.label === id) {
-          return {
-            ...item,
-            rate: value,
-          };
-        }
-        return item;
-      });
-      this.setState({ myInvestments: updateMyInvestments });
-    }
+  }
+
+  handleInvestmentRateInput = (e) => {
+    const { id, value } = e.target;
+    const updateMyInvestments = this.state.myInvestments.map((item) => {
+      if (item.label === id) {
+        return {
+          ...item,
+          rate: value,
+        };
+      }
+      return item;
+    });
+    this.setState({ myInvestments: updateMyInvestments });
   }
 
   handleInvestmentSelector = (e, index) => {
@@ -180,13 +182,14 @@ class Index extends Component {
                   handleStartApp = {this.startApp}
                   handleShowCalculation = {this.showFirstCalculation}
                   handleResetRates = {this.handleResetRates}
-                  handleInput = {this.handleInput}
+                  handleAgeInput = {this.handleAgeInput}
                   handleInputButtons = {this.handleInputButtons}
                   handleCurrencyInput = {this.handleCurrencyInput}
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}
                   handleRemoveTableRow = {this.handleRemoveTableRow}
                   handleInvestmentSelector = {this.handleInvestmentSelector}
+                  handleInvestmentRateInput = {this.handleInvestmentRateInput}
                   />
                   {this.state.isShowingIntro
                     && <div className='w-100 flex items-center justify-end pr5'>

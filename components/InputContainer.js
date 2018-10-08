@@ -22,6 +22,8 @@ class InputContainer extends Component {
             }
             <InputField
               hasSteppers
+              label = "Quantos anos você tem?"
+              id = "myCurrentAge"
               isShowingCalculation = {this.props.isShowingCalculation}
               isExpanded = {this.props.isExpanded}
               value = {this.props.myCurrentAge}
@@ -29,41 +31,39 @@ class InputContainer extends Component {
               stepperIncrement = "1"
               min = "1"
               max = "100"
-              id = "myCurrentAge"
-              label = "Quantos anos você tem?"
-              handleInput = {this.props.handleInput}
+              handleInput = {this.props.handleAgeInput}
               handleInputButtons = {this.props.handleInputButtons}
             />
             <InputField
               isCurrency
+              label = "Quanto você tem hoje para começar a investir?"
+              id = "myCurrentBalance"
               isShowingCalculation = {this.props.isShowingCalculation}
               isExpanded = {this.props.isExpanded}
               value = {this.props.myCurrentBalance}
-              id = "myCurrentBalance"
-              label = "Quanto você tem hoje para começar a investir?"
               handleInput = {this.props.handleCurrencyInput}
               />
             <InputField
               isCurrency
+              label = "Quanto você consegue guardar todo mês?"
+              id = "myCurrentMonthlySavings"
               isShowingCalculation = {this.props.isShowingCalculation}
               isExpanded = {this.props.isExpanded}
               value={this.props.myCurrentMonthlySavings}
-              id = "myCurrentMonthlySavings"
-              label = "Quanto você consegue guardar todo mês?"
-              handleInput = {this.props.handleInput}
+              handleInput = {this.props.handleCurrencyInput}
             />
             <InputField
               isCurrency
+              label = "Quanto você quer tirar mês ao se aposentar?"
+              id = "myRetirementIncome"
               isShowingCalculation = {this.props.isShowingCalculation}
               value={this.props.myRetirementIncome}
               isExpanded = {this.props.isExpanded}
-              id = "myRetirementIncome"
-              label = "Quanto você quer tirar mês ao se aposentar?"
-              handleInput = {this.props.handleInput}
+              handleInput = {this.props.handleCurrencyInput}
             />
             <MultiSelect
-              isShowingCalculation = {this.props.isShowingCalculation}
               label="Onde você guarda seu dinheiro hoje?"
+              isShowingCalculation = {this.props.isShowingCalculation}
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}
               hiddenBorder={true}
@@ -82,14 +82,14 @@ class InputContainer extends Component {
             >
             <InputField
                 hasSteppers
+                label = "Você pretende viver até quantos anos?"
+                id = "myLifeExpectancy"
                 isExpanded = {this.props.isExpanded}
                 value = {this.props.myLifeExpectancy}
                 stepperIncrement = "1"
                 min = "1"
                 max = "100"
-                id = "myLifeExpectancy"
-                label = "Você pretende viver até quantos anos?"
-                handleInput = {this.props.handleInput}
+                handleInput = {this.props.handleAgeInput}
             />
             { this.props.myInvestments.map((item, index) => (<InputField
               isPercentage
@@ -99,7 +99,7 @@ class InputContainer extends Component {
               value = {item.rate}
               id = {item.label}
               label = {`Rendimento anual da ${item.label}`}
-              handleInput = {this.props.handleInput}
+              handleInput = {this.props.handleInvestmentRateInput}
               />))
             }
             <button
