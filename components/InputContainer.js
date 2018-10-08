@@ -33,7 +33,7 @@ class InputContainer extends Component {
                 max = "100"
                 id = "myCurrentAge"
                 label = "Quantos anos você tem?"
-                handleInput = {this.props.handleInput}
+                handleInput = {this.props.handleCurrencyInput}
             />
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}
@@ -42,7 +42,7 @@ class InputContainer extends Component {
                 value = {this.props.myCurrentBalance}
                 id = "myCurrentBalance"
                 label = "Quanto você tem hoje para começar a investir?"
-                handleInput = {this.props.handleInput}
+                handleInput = {this.props.handleCurrencyInput}
               />
             <InputField
                 isShowingCalculation = {this.props.isShowingCalculation}

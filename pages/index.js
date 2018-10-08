@@ -63,12 +63,14 @@ class Index extends Component {
     this.setState({ isShowingCalculation: false, isShowingIntro: true });
   }
 
-  handleInput = (e, floatValue, maskedValue) => {
-    const { id, value } = e.target;
+  handleCurrencyInput = (e, floatValue) => {
+    const { id } = e.target;
+    this.setState({ [id]: floatValue });
+  }
 
-    if (floatValue && maskedValue) { // if is currencyInput
-      this.setState({ [id]: floatValue });
-    } else if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
+  handleInput = (e) => {
+    const { id, value } = e.target;
+    if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
       this.setState({ [id]: value });
     } else if (e.target.dataset.type === 'rate') { // check if is investment rate input
       const updateMyInvestments = this.state.myInvestments.map((item) => {
@@ -178,6 +180,7 @@ class Index extends Component {
                   handleShowCalculation = {this.showFirstCalculation}
                   handleResetRates = {this.handleResetRates}
                   handleInput = {this.handleInput}
+                  handleCurrencyInput = {this.handleCurrencyInput}
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}
                   handleRemoveTableRow = {this.handleRemoveTableRow}
