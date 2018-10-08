@@ -68,6 +68,13 @@ class Index extends Component {
     this.setState({ [id]: floatValue });
   }
 
+  handleInputButtons = (e) => {
+    const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
+    const parentId = parentNode.id;
+    const parentValue = parentNode.value;
+    this.setState({ [parentId]: parentValue });
+  }
+
   handleInput = (e) => {
     const { id, value } = e.target;
     if (e.target.type !== undefined && e.target.dataset.type !== 'rate') { // if user is typing inside input, not using buttons
@@ -180,6 +187,7 @@ class Index extends Component {
                   handleShowCalculation = {this.showFirstCalculation}
                   handleResetRates = {this.handleResetRates}
                   handleInput = {this.handleInput}
+                  handleInputButtons = {this.handleInputButtons}
                   handleCurrencyInput = {this.handleCurrencyInput}
                   handleTableInput = {this.handleTableInput}
                   handleAddTableRow = {this.handleAddTableRow}

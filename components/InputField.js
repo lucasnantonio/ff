@@ -84,7 +84,7 @@ class InputField extends Component {
                             </div>
                         }
                         <div className={'bn w-100 flex flex-column justify-center pv2'}>
-                       {this.props.isCurrency === 'false'
+                       {!this.props.isCurrency
                          ? (
                          <div className="flex items-center">
                            <input
