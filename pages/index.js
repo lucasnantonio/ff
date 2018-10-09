@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InputContainer from '../components/InputContainer';
+import Questions from '../components/Questions';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
@@ -50,7 +50,10 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      // alert('scroll!');
+      document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
+    });
   };
 
   showFirstCalculation = () => {
@@ -161,12 +164,7 @@ class Index extends Component {
     return (
       <div>
         <Header />
-        <div
-          id="pageWrapper"
-          className={`${
-            this.state.isShowingIntro ? 'vh-100 overflow-hidden' : 'h-auto overflow-scroll'
-          }`}
-        >
+        <div id="pageWrapper">
           <Intro
             handleAgeInput={this.handleAgeInput}
             handleInputButtons={this.handleInputButtons}
@@ -174,8 +172,12 @@ class Index extends Component {
             myCurrentAge={this.state.myCurrentAge}
             isShowing={this.state.isShowingIntro}
           />
-          <div id="bottomWrapper" className="vh-100">
-            <InputContainer
+
+          <div
+            id="bottomWrapper"
+            className={` ${this.state.isShowingIntro ? 'dn' : 'flex flex-column'} vh-100`}
+          >
+            <Questions
               {...this.state}
               handleBack={this.handleBack}
               isShowingCalculation={this.state.isShowingCalculation}

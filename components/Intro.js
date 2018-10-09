@@ -17,12 +17,11 @@ class Intro extends Component {
     return (
       <div id="intro" className={'vh-100 w-100 bg-offwhite flex flex-column'}>
         <NavBar />
-        <div className="flex flex-column center justify-center items-center h-100">
+        <div className="flex flex-column h-100 ph5">
           <div className="mb2 mw7 w-50">
             <Logo />
           </div>
-          <h2 className="f2 fw1 measure-narrow gray tc">Calcule sua independência financeira</h2>
-          <h3 className="f5 measure-narrow gray mb5 tc">
+          <h3 className="f4 measure-narrow gray mb5">
             Descubra quando você vai poder mandar tudo à merda!
           </h3>
         </div>
@@ -43,7 +42,7 @@ class Intro extends Component {
               height: 0;
             }
             .bg-offwhite {
-              background-color: #f8f4ef;
+              background-color: rgba(244, 244, 244, 1);
             }
             #intro {
               transition: all 0.5s;
