@@ -77,7 +77,6 @@ class Index extends Component {
   handleAgeInput = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: parseFloat(value) });
-    console.log(value, this.state.myCurrentAge);
   };
 
   handleInvestmentRateInput = (e) => {
@@ -162,7 +161,12 @@ class Index extends Component {
     return (
       <div>
         <Header />
-        <div id="pageWrapper" className="">
+        <div
+          id="pageWrapper"
+          className={`${
+            this.state.isShowingIntro ? 'vh-100 overflow-hidden' : 'h-auto overflow-scroll'
+          }`}
+        >
           <Intro
             handleAgeInput={this.handleAgeInput}
             handleInputButtons={this.handleInputButtons}

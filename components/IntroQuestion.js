@@ -8,19 +8,21 @@ class IntroQuestion extends Component {
   render() {
     return (
       <div className="pa5 bg-white flex justify-between items-center">
-        <InputField
-          hasSteppers
-          label="Quantos anos você tem?"
-          id="myCurrentAge"
-          isShowingCalculation={this.props.isShowingCalculation}
-          value={this.props.myCurrentAge}
-          placeholder="26"
-          stepperIncrement="1"
-          min="1"
-          max="100"
-          handleInput={this.props.handleAgeInput}
-          handleInputButtons={this.props.handleInputButtons}
-        />
+        <div className="w-50 pr5">
+          <InputField
+            hasSteppers
+            label="Quantos anos você tem?"
+            id="myCurrentAge"
+            isShowingCalculation={this.props.isShowingCalculation}
+            value={this.props.myCurrentAge}
+            placeholder="26"
+            stepperIncrement="1"
+            min="1"
+            max="100"
+            handleInput={this.props.handleAgeInput}
+            handleInputButtons={this.props.handleInputButtons}
+          />
+        </div>
         <Button isEnabled label="começar" onClick={this.props.startApp} />
       </div>
     );
