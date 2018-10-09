@@ -10,7 +10,7 @@ import MultiSelect from './MultiSelect';
 class InputContainer extends Component {
   render() {
     return (
-      <div id='inputContainer' className={`h-100 pl5 pr5
+      <div id='inputContainer' className={`
                                           ${this.props.isExpanded
                                             && this.props.isShowingCalculation ? 'w-50 pb6' : 'w-100'}
                                             ${this.props.isExpanded

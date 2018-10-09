@@ -169,7 +169,7 @@ class Index extends Component {
     return (
       <div>
           <Header />
-          <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
+          <div id="pageWrapper" className=''>
             <Intro
               handleAgeInput={this.handleAgeInput}
               handleInputButtons={this.handleInputButtons}
