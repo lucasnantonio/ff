@@ -50,6 +50,7 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
+    document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
   };
 
   showFirstCalculation = () => {

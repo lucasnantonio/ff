@@ -11,9 +11,6 @@ class InputContainer extends Component {
   render() {
     return (
       <div id="inputContainer" className={'ph5 w-50 pb6'}>
-        <div onClick={this.props.handleBack} className="pointer grow w4 mt4">
-          <Logo />
-        </div>
         <InputField
           hasSteppers
           label="Quantos anos você tem?"
