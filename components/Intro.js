@@ -9,13 +9,6 @@ class Intro extends Component {
     isShowingParticles: false,
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state !== nextState) {
-      return true;
-    }
-    return (!nextProps.isShowing === this.props.isShowing && this.state === nextState);
-  }
-
   componentDidMount() {
     this.setState({ isShowingParticles: true });
   }

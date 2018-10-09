@@ -14,7 +14,7 @@ class Index extends Component {
       isShowingIntro: true,
       isShowingCalculation: false,
       myCurrentBalance: 5000,
-      myCurrentAge: 24,
+      myCurrentAge: 34,
       myCurrentMonthlySavings: 500,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
@@ -69,6 +69,7 @@ class Index extends Component {
   }
 
   handleInputButtons = (e) => {
+    this.setState({myCurrentAge: 100});
     const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
@@ -78,6 +79,7 @@ class Index extends Component {
   handleAgeInput = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: parseFloat(value) });
+    console.log(value, this.state.myCurrentAge)
   }
 
   handleInvestmentRateInput = (e) => {
@@ -168,11 +170,11 @@ class Index extends Component {
       <div>
           <Header />
           <div id="pageWrapper" className='a vh-100 flex flex-column overflow-hidden'>
-            <Intro 
+            <Intro
               handleAgeInput={this.handleAgeInput}
               handleInputButtons={this.handleInputButtons}
               startApp={this.startApp}
-              // myCurrentAge={this.state.myCurrentAge}
+              myCurrentAge={this.state.myCurrentAge}
               isShowing={this.state.isShowingIntro} />
             <div id="bottomWrapper">
               <InputContainer
