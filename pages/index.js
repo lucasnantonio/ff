@@ -35,10 +35,7 @@ class Index extends Component {
           isSelected: false,
         },
       ],
-      lifeEvents: [
-        {
-        },
-      ],
+      lifeEvents: [{}],
       retirementResults: false,
     };
   }
@@ -53,34 +50,34 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-  }
+  };
 
   showFirstCalculation = () => {
     this.setState({ isShowingCalculation: true });
-  }
+  };
 
   handleBack = () => {
     this.setState({ isShowingCalculation: false, isShowingIntro: true });
-  }
+  };
 
   handleCurrencyInput = (e, floatValue) => {
     const { id } = e.target;
     this.setState({ [id]: floatValue });
-  }
+  };
 
   handleInputButtons = (e) => {
-    this.setState({myCurrentAge: 100});
+    this.setState({ myCurrentAge: 100 });
     const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
     this.setState({ [parentId]: parseFloat(parentValue) });
-  }
+  };
 
   handleAgeInput = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: parseFloat(value) });
-    console.log(value, this.state.myCurrentAge)
-  }
+    console.log(value, this.state.myCurrentAge);
+  };
 
   handleInvestmentRateInput = (e) => {
     const { id, value } = e.target;
@@ -94,7 +91,7 @@ class Index extends Component {
       return item;
     });
     this.setState({ myInvestments: updateMyInvestments });
-  }
+  };
 
   handleInvestmentSelector = (e, index) => {
     const investmentsState = this.state.myInvestments;
@@ -103,7 +100,7 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
     this.setState({ myInvestments: ressetedInvestment });
-  }
+  };
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
     const { value } = event.target;
@@ -121,9 +118,7 @@ class Index extends Component {
       });
       this.setState(prevState => ({
         [tableName]: updatedTable,
-        retirementResults: getRetirementResults(
-          { ...prevState, [tableName]: updatedTable },
-        ),
+        retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
       }));
     }
   };
@@ -138,9 +133,7 @@ class Index extends Component {
     const updatedTable = table.filter((p, pidx) => idx !== pidx);
     this.setState(prevState => ({
       [tableName]: updatedTable,
-      retirementResults: getRetirementResults(
-        { ...prevState, [tableName]: updatedTable },
-      ),
+      retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
     }));
   };
 
@@ -153,100 +146,102 @@ class Index extends Component {
       'renda variável': 8.5,
     };
 
-    const reseted = myInvestments.map(
-      investment => ({ ...investment, rate: rates[investment.label] }),
-    );
+    const reseted = myInvestments.map(investment => ({
+      ...investment,
+      rate: rates[investment.label],
+    }));
 
     this.setState({ myInvestments: reseted });
     this.setState(prevState => ({
-      retirementResults: getRetirementResults(
-        { ...prevState, myInvestments: reseted },
-      ),
+      retirementResults: getRetirementResults({ ...prevState, myInvestments: reseted }),
     }));
-  }
+  };
 
   render() {
     return (
       <div>
-          <Header />
-          <div id="pageWrapper" className=''>
-            <Intro
+        <Header />
+        <div id="pageWrapper" className="">
+          <Intro
+            handleAgeInput={this.handleAgeInput}
+            handleInputButtons={this.handleInputButtons}
+            startApp={this.startApp}
+            myCurrentAge={this.state.myCurrentAge}
+            isShowing={this.state.isShowingIntro}
+          />
+          <div id="bottomWrapper" className="vh-100">
+            <InputContainer
+              {...this.state}
+              handleBack={this.handleBack}
+              isShowingCalculation={this.state.isShowingCalculation}
+              handleStartApp={this.startApp}
+              handleShowCalculation={this.showFirstCalculation}
+              handleResetRates={this.handleResetRates}
               handleAgeInput={this.handleAgeInput}
               handleInputButtons={this.handleInputButtons}
-              startApp={this.startApp}
-              myCurrentAge={this.state.myCurrentAge}
-              isShowing={this.state.isShowingIntro} />
-            <div id="bottomWrapper">
-              <InputContainer
-                  {...this.state}
-                  handleBack = {this.handleBack}
-                  isShowingCalculation = {this.state.isShowingCalculation}
-                  isExpanded = {!this.state.isShowingIntro}
-                  handleStartApp = {this.startApp}
-                  handleShowCalculation = {this.showFirstCalculation}
-                  handleResetRates = {this.handleResetRates}
-                  handleAgeInput = {this.handleAgeInput}
-                  handleInputButtons = {this.handleInputButtons}
-                  handleCurrencyInput = {this.handleCurrencyInput}
-                  handleTableInput = {this.handleTableInput}
-                  handleAddTableRow = {this.handleAddTableRow}
-                  handleRemoveTableRow = {this.handleRemoveTableRow}
-                  handleInvestmentSelector = {this.handleInvestmentSelector}
-                  handleInvestmentRateInput = {this.handleInvestmentRateInput}
-                  />
-                  {!this.state.isShowingIntro
-                    && <OutPutContainer {...this.state}/>
-                  }
-            </div>
+              handleCurrencyInput={this.handleCurrencyInput}
+              handleTableInput={this.handleTableInput}
+              handleAddTableRow={this.handleAddTableRow}
+              handleRemoveTableRow={this.handleRemoveTableRow}
+              handleInvestmentSelector={this.handleInvestmentSelector}
+              handleInvestmentRateInput={this.handleInvestmentRateInput}
+            />
+            {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
           </div>
-          <style jsx global>{`
-            .r0{
-              right:0;
-            }
-            ::selection{
-              color:white;
-              background-color:#2ea776;
-            }
-                .noSelect {
-                  -webkit-touch-callout: none;
-                  -webkit-user-select: none;
-                  -khtml-user-select: none;
-                  -moz-user-select: none;
-                  -ms-user-select: none;
-                  user-select: none;
-              }
-              .showing{
-                opacity: 1;
-              }
-              .hidden{
-                opacity: 0;
-              }
-              .absolute-bottom{
-                bottom:4rem;
-                right: 0;
-              }
-              .absolute-top{
-                right: 0;
-                top: 4rem;
-              }
-              .mt-negative{
-                margin-top: -5rem;
-              }
-              input{outline:none; caret-color: #2ea776; caret-width: 2px}
-              .checkmark{
-                  transition: all .2s;
-              }
-              input::-webkit-outer-spin-button,
-              input::-webkit-inner-spin-button {
-                  /* display: none; <- Crashes Chrome on hover */
-                  -webkit-appearance: none;
-                  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-              }
-              #bottomWrapper{
-                transition: height .55s ease-in-out, width .55s ease-in-out;
-              }
-          `}</style>
-      </div>);
+        </div>
+        <style jsx global>{`
+          .r0 {
+            right: 0;
+          }
+          ::selection {
+            color: white;
+            background-color: #2ea776;
+          }
+          .noSelect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+          .showing {
+            opacity: 1;
+          }
+          .hidden {
+            opacity: 0;
+          }
+          .absolute-bottom {
+            bottom: 4rem;
+            right: 0;
+          }
+          .absolute-top {
+            right: 0;
+            top: 4rem;
+          }
+          .mt-negative {
+            margin-top: -5rem;
+          }
+          input {
+            outline: none;
+            caret-color: #2ea776;
+            caret-width: 2px;
+          }
+          .checkmark {
+            transition: all 0.2s;
+          }
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+          }
+          #bottomWrapper {
+            transition: height 0.55s ease-in-out, width 0.55s ease-in-out;
+          }
+        `}</style>
+      </div>
+    );
   }
 }
 
