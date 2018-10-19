@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Logo from './Logo';
-import NavBar from './Navbar';
 import IntroQuestion from './IntroQuestion';
 import CoinParticles from './CoinParticles';
 
@@ -15,17 +14,22 @@ class Intro extends Component {
 
   render() {
     return (
-      <div id="intro" className={'vh-100 w-100 bg-offwhite flex flex-column'}>
-        <NavBar />
-        <div className="flex flex-column h-100 ph5">
+      <div
+        id="intro"
+        className={`${
+          this.props.isShowingIntro ? 'vh-100' : 'h0'
+        } w-100 bg-green flex flex-column verflow-hidden`}
+      >
+        <div className="flex flex-column h-100 ph5 justify-center mt5">
           <div className="mb2 mw7 w-50">
             <Logo />
           </div>
-          <h3 className="f4 measure-narrow gray mb5">
+          <h3 className="f4 measure-narrow white mb5">
             Descubra quando você vai poder mandar tudo à merda!
           </h3>
         </div>
         <IntroQuestion
+          isShowingIntro={this.props.isShowingIntro}
           startApp={this.props.startApp}
           handleAgeInput={this.props.handleAgeInput}
           handleInputButtons={this.props.handleInputButtons}

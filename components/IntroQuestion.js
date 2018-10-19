@@ -7,7 +7,11 @@ class IntroQuestion extends Component {
 
   render() {
     return (
-      <div className="pa5 bg-white flex justify-between items-center">
+      <div
+        className={`${
+          this.props.isShowingIntro ? 'h-100 pa5 bg-white flex' : 'h0'
+        }  justify-between items-center overflow-hidden`}
+      >
         <div className="w-50 pr5">
           <InputField
             hasSteppers

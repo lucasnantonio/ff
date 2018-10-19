@@ -4,6 +4,7 @@ import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Button from '../components/Button';
+import NavBar from '../components/Navbar';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -50,10 +51,9 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    setTimeout(() => {
-      // alert('scroll!');
-      document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
-    });
+    // setTimeout(() => {
+    //   document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
+    // });
   };
 
   showFirstCalculation = () => {
@@ -165,7 +165,9 @@ class Index extends Component {
       <div>
         <Header />
         <div id="pageWrapper">
+          <NavBar isShowingIntro={this.state.isShowingIntro} />
           <Intro
+            isShowingIntro={this.state.isShowingIntro}
             handleAgeInput={this.handleAgeInput}
             handleInputButtons={this.handleInputButtons}
             startApp={this.startApp}
