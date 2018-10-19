@@ -9,7 +9,7 @@ class IntroQuestion extends Component {
     return (
       <div
         className={`${
-          this.props.isShowingIntro ? 'h-100 pa5 bg-white flex' : 'h0'
+          this.props.isShowingIntro ? 'pa5 bg-white flex' : 'h0'
         }  justify-between items-center overflow-hidden`}
       >
         <div className="w-50 pr5">
