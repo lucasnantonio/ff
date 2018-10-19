@@ -6,10 +6,10 @@ const Header = () => (
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,700,900" rel="stylesheet" />
     <style jsx global>
       {`
-        body * {
-          // font-family: 'Rubik', sans-serif;
+        html {
+          font-size: 15px;
           font-family: 'Poppins', sans-serif;
-          font-weight: 300;
+          font-weight: 100;
         }
       `}
     </style>

@@ -9,10 +9,12 @@ class IntroQuestion extends Component {
     return (
       <div
         className={`${
-          this.props.isShowingIntro ? 'pa5 bg-white flex' : 'h0'
-        }  justify-between items-center overflow-hidden`}
+          this.props.isShowingIntro
+            ? 'pa5 bg-white flex-l flex-column justify-between items-center'
+            : 'h0'
+        }   overflow-hidden`}
       >
-        <div className="w-50 pr5">
+        <div className="w-50-l w-100 pr5">
           <InputField
             hasSteppers
             label="Quantos anos você tem?"

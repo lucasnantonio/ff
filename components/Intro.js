@@ -24,7 +24,7 @@ class Intro extends Component {
           <div className="mb2 mw7 w-50">
             <Logo />
           </div>
-          <h3 className="f4 measure-narrow white mb5">
+          <h3 className="f4 measure-narrow white mb5 fw3">
             Descubra quando você vai poder mandar tudo à merda!
           </h3>
         </div>
