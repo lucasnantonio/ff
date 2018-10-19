@@ -15,7 +15,7 @@ class RetirementChart extends Component {
 
   handleHover = (cursorX) => {
     this.setState({ cursorX });
-  }
+  };
 
   loadIcon = async (retirementIconName, path) => {
     const retirementIcon = await new Promise((resolve, reject) => {
@@ -25,12 +25,11 @@ class RetirementChart extends Component {
       retirementImage.src = path;
     });
     this.setState({ [retirementIconName]: retirementIcon });
-  }
+  };
 
   filterIntegerAge(investmentData) {
     return investmentData.timeHistory.filter(
-      point => point.x === parseInt(point.x)
-      || point.x === investmentData.retirement.age / 12,
+      point => point.x === parseInt(point.x) || point.x === investmentData.retirement.age / 12,
     );
   }
 
@@ -144,7 +143,7 @@ class RetirementChart extends Component {
 
   render() {
     return (
-      <div className="relative w-100 h-100 bg-green pa5">
+      <div className="relative w-100 h-100 pa5">
         <canvas
           ref={(canvas) => {
             this.canvas = canvas;
