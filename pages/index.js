@@ -165,7 +165,7 @@ class Index extends Component {
       <div>
         <Header />
         <div id="pageWrapper">
-          <NavBar isShowingIntro={this.state.isShowingIntro} />
+          <NavBar handleBack={this.handleBack} isShowingIntro={this.state.isShowingIntro} />
           <Intro
             isShowingIntro={this.state.isShowingIntro}
             handleAgeInput={this.handleAgeInput}
@@ -181,7 +181,6 @@ class Index extends Component {
           >
             <Questions
               {...this.state}
-              handleBack={this.handleBack}
               isShowingCalculation={this.state.isShowingCalculation}
               handleStartApp={this.startApp}
               handleShowCalculation={this.showFirstCalculation}
