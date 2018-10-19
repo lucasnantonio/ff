@@ -10,7 +10,7 @@ import MultiSelect from './MultiSelect';
 class InputContainer extends Component {
   render() {
     return (
-      <div id="inputContainer" className={'ph5 w-50 pb6'}>
+      <div id="inputContainer" className={'ph5 w-50 pb6 mt6'}>
         <InputField
           hasSteppers
           label="Quantos anos você tem?"
