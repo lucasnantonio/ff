@@ -73,70 +73,72 @@ class InputField extends Component {
 
   render() {
     return (
-            <InputFieldWrapper
-              isShowingCalculation={this.props.isShowingCalculation}
-            >
-                    <InputLabel label={this.props.label}/>
-                    <div className={'flex items-center'}>
-                        {this.props.hasSteppers
-                            && <div className="pointer flex items-center" onClick={this.handleDecrement}>
-                            <MinusBtn />
-                            </div>
-                        }
-                        <div className={'bn w-100 flex flex-column justify-center pv2'}>
-                       {!this.props.isCurrency
-                         ? (
-                         <div className="flex items-center">
-                           <input
-                            data-type={this.props.dataType}
-                            value={ this.props.value }
-                            className={`bn w-100 bg-transparent f4 ${this.props.isPercentage ? 'tr' : 'tc'}`}
-                            min={this.props.min}
-                            max={this.props.max}
-                            onFocus= {this.handleFocus}
-                            onBlur= {this.handleBlur}
-                            id={this.props.id}
-                            type="number"
-                            placeholder={this.props.placeholder}
-                            onChange={this.handleInput} >
-                          </input>
-                          {this.props.isPercentage
-                            && <div className="nowrap">% ao ano</div>
-                          }
-                        </div>
-                         )
-                         : <IntlCurrencyInput
-                            className="bn w-100 bg-transparent f4 tr"
-                            defaultValue={this.props.value}
-                            min={this.props.min}
-                            max={this.props.max}
-                            onFocus= {this.handleFocus}
-                            onBlur= {this.handleBlur}
-                            id={this.props.id}
-                            currency="BRL"
-                            config={currencyConfig}
-                            onChange={this.handleInput} />
-                        }
-                        </div>
-                        {this.props.hasSteppers
-                             && <div className="pointer flex items-center" onClick={this.handleIncrement}>
-                             <PlusBtn />
-                             </div>
-                        }
-                    </div>
-                <style jsx>{`
-                    input{outline:none}
-                    .checkmark{
-                        transition: all .2s;
-                    }
-                    input::-webkit-outer-spin-button,
-                    input::-webkit-inner-spin-button {
-                        /* display: none; <- Crashes Chrome on hover */
-                        -webkit-appearance: none;
-                        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-                    }
-                `}</style>
-</InputFieldWrapper>
+      <InputFieldWrapper
+        hiddenBorder={this.props.hiddenBorder}
+        className="w-100"
+        isShowingCalculation={this.props.isShowingCalculation}
+      >
+        <InputLabel label={this.props.label} />
+        <div className={'flex items-center'}>
+          {this.props.hasSteppers && (
+            <div className="pointer flex items-center" onClick={this.handleDecrement}>
+              <MinusBtn />
+            </div>
+          )}
+          <div className={'bn w-100 flex flex-column justify-center pv2'}>
+            {!this.props.isCurrency ? (
+              <div className="flex items-center">
+                <input
+                  data-type={this.props.dataType}
+                  value={this.props.value}
+                  className={`bn w-100 bg-transparent f4 ${this.props.isPercentage ? 'tr' : 'tc'}`}
+                  min={this.props.min}
+                  max={this.props.max}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
+                  id={this.props.id}
+                  type="number"
+                  placeholder={this.props.placeholder}
+                  onChange={this.handleInput}
+                />
+                {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
+              </div>
+            ) : (
+              <IntlCurrencyInput
+                className="bn w-100 bg-transparent f4 tr"
+                defaultValue={this.props.value}
+                min={this.props.min}
+                max={this.props.max}
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                id={this.props.id}
+                currency="BRL"
+                config={currencyConfig}
+                onChange={this.handleInput}
+              />
+            )}
+          </div>
+          {this.props.hasSteppers && (
+            <div className="pointer flex items-center" onClick={this.handleIncrement}>
+              <PlusBtn />
+            </div>
+          )}
+        </div>
+        <style jsx>{`
+          input {
+            outline: none;
+          }
+          .checkmark {
+            transition: all 0.2s;
+          }
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+          }
+        `}</style>
+      </InputFieldWrapper>
     );
   }
 }

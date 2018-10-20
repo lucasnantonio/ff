@@ -177,7 +177,9 @@ class Index extends Component {
 
           <div
             id="bottomWrapper"
-            className={` ${this.state.isShowingIntro ? 'dn' : 'flex flex-column'} vh-100`}
+            className={` ${
+              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column'
+            } vh-100 overflow-hidden-l`}
           >
             <Questions
               {...this.state}
@@ -198,6 +200,10 @@ class Index extends Component {
           </div>
         </div>
         <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 0px;  /* remove scrollbar space */
+          background: transparent;  /* optional: just make scrollbar invisible */
+        }
           .r0 {
             right: 0;
           }

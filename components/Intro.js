@@ -16,9 +16,7 @@ class Intro extends Component {
     return (
       <div
         id="intro"
-        className={`${
-          this.props.isShowingIntro ? 'vh-100' : 'h0'
-        } w-100 bg-green flex flex-column verflow-hidden`}
+        className={`${this.props.isShowingIntro ? 'vh-100' : 'h0'} w-100 bg-green flex flex-column`}
       >
         <div className="flex flex-column h-100 ph5 justify-center mt5">
           <div className="mb2 mw7 w-50">
