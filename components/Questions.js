@@ -8,6 +8,24 @@ class InputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      questions: [
+        {
+          id: 'myCurrentAge',
+          isEmpty: false,
+        },
+        {
+          id: 'myCurrentBalance',
+          isEmpty: true,
+        },
+        {
+          id: 'myCurrentMonthlySavings',
+          isEmpty: true,
+        },
+        {
+          id: 'myRetirementIncome',
+          isEmpty: true,
+        },
+      ],
       tabs: [
         { label: 'básico', isSelected: true },
         { label: 'avançado', isSelected: false },
@@ -23,6 +41,12 @@ class InputContainer extends Component {
       isSelected: index === itemIndex,
     }));
     this.setState({ tabs: newState });
+  };
+
+  canSubmit = () => {
+    const { myCurrentBalance, myCurrentMonthlySavings, myRetirementIncome } = this.props;
+    const requiredQuestions = [myCurrentBalance, myCurrentMonthlySavings, myRetirementIncome];
+    return requiredQuestions.every(item => item !== 0);
   };
 
   render() {
@@ -75,6 +99,7 @@ class InputContainer extends Component {
               handleInput={this.props.handleCurrencyInput}
             />
             <MultiSelect
+              isEnabled={this.canSubmit()}
               label="Onde você guarda seu dinheiro hoje?"
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}

@@ -12,9 +12,10 @@ const MultiSelect = props => (
     <div className="flex flex-row-ns flex-column items-center mb0-ns mb3">
       {props.options.map((item, index) => (
         <MultiSelectOption
+          isEnabled={props.isEnabled}
           isSelected={item.isSelected}
           index={index}
-          handleClick={props.handleClick}
+          handleClick={props.isEnabled && props.handleClick}
           label={item.label}
           key={index}
         />
