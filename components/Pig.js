@@ -4,20 +4,20 @@ function getInvestmentMessages(investmentLabel) {
   const messages = {
     poupança: [
       {
-        lowerRate: 2,
-        upperRate: 3,
+        lowerValue: 2,
+        upperValue: 3,
         message: 'Você está otimista. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
       {
-        lowerRate: 3,
-        upperRate: 20,
+        lowerValue: 3,
+        upperValue: 20,
         message: 'Caraio, me fala que poupança é essa que eu também vou colocar meu dinheiro lá. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
     ],
     'renda variável': [
       {
-        lowerRate: 20,
-        upperRate: 30,
+        lowerValue: 20,
+        upperValue: 30,
         message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
       },
 
@@ -25,6 +25,13 @@ function getInvestmentMessages(investmentLabel) {
   };
 
   return messages[investmentLabel];
+}
+
+function filterMessages(messages, inputValue) {
+  const filteredMessages = messages.filter(
+    m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
+  );
+  return filteredMessages.map(m => m.message);
 }
 
 class Pig extends Component {
@@ -39,7 +46,7 @@ class Pig extends Component {
     const messages = getInvestmentMessages(investmentLabel);
 
     if (label !== focusedInput) return [];
-    return messages.filter(m => (rate >= m.lowerRate && rate < m.upperRate));
+    return filterMessages(messages, rate);
   }
 
   getAllMessages() {
@@ -51,6 +58,7 @@ class Pig extends Component {
   }
 
   render() {
+    console.log(this.props.focusedInput);
     const messages = this.getAllMessages();
     const newMessage = messages.length > 0;
     return (
@@ -58,7 +66,7 @@ class Pig extends Component {
         {newMessage ? <div className={'pig'} /> : null}
         {newMessage
           && <div className={'message-box'}>
-            {messages.map((m, id) => <p key={id}>{m.message}</p>)}
+            {messages.map((m, id) => <p key={id}>{m}</p>)}
           </div>
 
         }

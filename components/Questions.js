@@ -63,6 +63,8 @@ class InputContainer extends Component {
               id="myCurrentMonthlySavings"
               value={this.props.myCurrentMonthlySavings}
               handleInput={this.props.handleCurrencyInput}
+              hasTips
+              setFocusedInput={this.props.setFocusedInput}
             />
             <InputField
               isCurrency
