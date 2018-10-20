@@ -100,9 +100,27 @@ class InputContainer extends Component {
               dataType="rate"
               value={this.props.annualSavingsIncreaseRate}
               id="annualSavingsIncreaseRate"
-              label="Aumento anual das economias"
+              label="Quanto você acha que sua renda vai aumentar ao ano?"
               handleInput={this.props.handleInput}
             />
+            <InputTable
+              id="lifeEvents"
+              table={this.props.lifeEvents}
+              fields={{
+                label: '',
+                age: 0,
+                cost: 0,
+              }}
+              myInvestments={this.props.myInvestments}
+              retirementResults={this.props.retirementResults}
+              handleTableInput={this.props.handleTableInput}
+              handleAddTableRow={this.props.handleAddTableRow}
+              handleRemoveTableRow={this.props.handleRemoveTableRow}
+            />
+          </div>
+        )}
+        {this.state.tabs[2].isSelected && (
+          <div className="flex flex-column h-100">
             {this.props.myInvestments.map((item, index) => (
               <InputField
                 isPercentage
@@ -122,24 +140,6 @@ class InputContainer extends Component {
             >
               Resetar taxas
             </button>
-          </div>
-        )}
-        {this.state.tabs[2].isSelected && (
-          <div className="flex flex-column h-100">
-            <InputTable
-              id="lifeEvents"
-              table={this.props.lifeEvents}
-              fields={{
-                label: '',
-                age: 0,
-                cost: 0,
-              }}
-              myInvestments={this.props.myInvestments}
-              retirementResults={this.props.retirementResults}
-              handleTableInput={this.props.handleTableInput}
-              handleAddTableRow={this.props.handleAddTableRow}
-              handleRemoveTableRow={this.props.handleRemoveTableRow}
-            />
           </div>
         )}
       </div>
