@@ -15,7 +15,9 @@ class InputTable extends Component {
 
     const selectedInvestment = myInvestments.filter(investment => investment.isSelected);
 
-    const selectedInvestmentLabel = selectedInvestment.length > 0 ? selectedInvestment[0].label : null;
+    if (selectedInvestment.length === 0) return null;
+
+    const selectedInvestmentLabel = selectedInvestment[0].label;
 
     const { events } = retirementResults.filter(
       investment => investment[0] === selectedInvestmentLabel,
