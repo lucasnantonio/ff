@@ -13,8 +13,9 @@ class InputTable extends Component {
       handleRemoveTableRow,
     } = this.props;
 
-    const selectedInvestmentLabel = myInvestments.filter(investment => investment.isSelected)[0]
-      .label;
+    const selectedInvestment = myInvestments.filter(investment => investment.isSelected);
+
+    const selectedInvestmentLabel = selectedInvestment.length > 0 ? selectedInvestment[0].label : null;
 
     const { events } = retirementResults.filter(
       investment => investment[0] === selectedInvestmentLabel,
