@@ -14,6 +14,7 @@ function getMessages(label) {
         message: 'Caraio, me fala que poupança é essa que eu também vou colocar meu dinheiro lá. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
     ],
+    'renda fixa': [],
     'renda variável': [
       {
         lowerValue: 20,
@@ -29,8 +30,13 @@ function getMessages(label) {
       },
       {
         lowerValue: 10000,
-        upperValue: 100000,
+        upperValue: 30000,
         message: 'Aooow chefia. Tá cheio da nota, hein?!',
+      },
+      {
+        lowerValue: 30000,
+        upperValue: Number.POSITIVE_INFINITY,
+        message: 'Ah, tá de sacanagem que você poupa tudo isso por mês.',
       },
     ],
   };
@@ -61,6 +67,7 @@ class Pig extends Component {
   }
 
   getSavingsMessages() {
+    if (this.props.focusedInput !== 'myCurrentMonthlySavings') return [];
     const messages = getMessages('myCurrentMonthlySavings');
     return filterMessages(messages, this.props.myCurrentMonthlySavings);
   }
