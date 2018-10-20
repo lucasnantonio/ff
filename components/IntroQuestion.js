@@ -9,11 +9,14 @@ class IntroQuestion extends Component {
     return (
       <div
         className={`${
-          this.props.isShowingIntro ? 'pa5 bg-white flex' : 'h0'
-        }  justify-between items-center overflow-hidden`}
+          this.props.isShowingIntro
+            ? 'pa5-l bg-white flex flex-row-ns flex-column justify-between items-center'
+            : 'h0'
+        }   overflow-hidden`}
       >
-        <div className="w-50 pr5">
+        <div className="w-50-l w-100 pr5-l">
           <InputField
+            hiddenBorder
             hasSteppers
             label="Quantos anos você tem?"
             id="myCurrentAge"
@@ -27,7 +30,12 @@ class IntroQuestion extends Component {
             handleInputButtons={this.props.handleInputButtons}
           />
         </div>
-        <Button isEnabled label="começar" onClick={this.props.startApp} />
+        <button
+          className="w-auto-l ph5-l w-100 h3-l h5 bn pointer bg-green white ttu b pv3"
+          onClick={this.props.startApp}
+        >
+          Começar
+        </button>
       </div>
     );
   }

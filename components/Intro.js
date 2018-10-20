@@ -16,15 +16,13 @@ class Intro extends Component {
     return (
       <div
         id="intro"
-        className={`${
-          this.props.isShowingIntro ? 'vh-100' : 'h0'
-        } w-100 bg-green flex flex-column verflow-hidden`}
+        className={`${this.props.isShowingIntro ? 'vh-100' : 'h0'} w-100 bg-green flex flex-column`}
       >
         <div className="flex flex-column h-100 ph5 justify-center mt5">
           <div className="mb2 mw7 w-50">
             <Logo />
           </div>
-          <h3 className="f4 measure-narrow white mb5">
+          <h3 className="f4 measure-narrow white mb5 fw3">
             Descubra quando você vai poder mandar tudo à merda!
           </h3>
         </div>
