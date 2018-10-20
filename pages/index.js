@@ -14,10 +14,10 @@ class Index extends Component {
     this.state = {
       isShowingIntro: true,
       isShowingCalculation: false,
-      myCurrentBalance: 5000,
-      myCurrentAge: 34,
-      myCurrentMonthlySavings: 500,
-      myRetirementIncome: 10000,
+      myCurrentBalance: 0,
+      myCurrentAge: 18,
+      myCurrentMonthlySavings: 0,
+      myRetirementIncome: 0,
       myLifeExpectancy: 100,
       myInvestments: [
         {

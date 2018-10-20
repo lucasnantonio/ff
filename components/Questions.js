@@ -34,6 +34,7 @@ class InputContainer extends Component {
         {this.state.tabs[0].isSelected && (
           <div>
             <InputField
+              isEnabled
               hasSteppers
               label="Quantos anos você tem?"
               id="myCurrentAge"
@@ -47,12 +48,11 @@ class InputContainer extends Component {
               handleInputButtons={this.props.handleInputButtons}
             />
             <InputField
+              isCurrency
+              label="Quanto você tem hoje para começar a investir?"
               isShowingCalculation={this.props.isShowingCalculation}
-              isExpanded={this.props.isExpanded}
-              isCurrency="true"
               value={this.props.myCurrentBalance}
               id="myCurrentBalance"
-              label="Quanto você tem hoje para começar a investir?"
               handleInput={this.props.handleCurrencyInput}
             />
             <InputField
@@ -65,7 +65,7 @@ class InputContainer extends Component {
             />
             <InputField
               isCurrency
-              label="Quanto você quer tirar mês ao se aposentar?"
+              label="Quanto você quer tirar por mês ao se aposentar?"
               id="myRetirementIncome"
               isShowingCalculation={this.props.isShowingCalculation}
               value={this.props.myRetirementIncome}
