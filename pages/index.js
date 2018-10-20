@@ -19,6 +19,7 @@ class Index extends Component {
       myCurrentMonthlySavings: 500,
       myRetirementIncome: 10000,
       myLifeExpectancy: 100,
+      annualSavingsIncreaseRate: 1,
       myInvestments: [
         {
           label: 'poupança',
@@ -78,7 +79,6 @@ class Index extends Component {
 
   handleAgeInput = (e) => {
     const { id, value } = e.target;
-    console.log(id, value);
     this.setState({ [id]: parseFloat(value) });
   };
 

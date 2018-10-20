@@ -70,6 +70,14 @@ class InputContainer extends Component {
               handleInput={this.props.handleAgeInput}
               handleInputButtons={this.props.handleInputButtons}
             />
+            <InputField
+              isPercentage
+              dataType="rate"
+              value={this.props.annualSavingsIncreaseRate}
+              id="annualSavingsIncreaseRate"
+              label="Aumento anual das economias"
+              handleInput={this.props.handleAgeInput}
+            />
             {this.props.myInvestments.map((item, index) => (
               <InputField
                 isPercentage
