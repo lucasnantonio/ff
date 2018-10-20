@@ -3,7 +3,7 @@ import React from 'react';
 const Logo = props => (
   <h1
     onClick={props.onClick}
-    className={`fw8 ${props.size === 'small' ? 'f5' : 'f1'} f1 white lh-solid z-max`}
+    className={`fw8 ${props.size === 'small' ? 'f5 pointer' : 'f1'} f1 white lh-solid z-max`}
   >
     Quando <br /> vou me <br /> aposentar?
     <style jsx>

@@ -9,7 +9,7 @@ class OutPutContainer extends Component {
       <div
         id="resultsWrapper"
         className={
-          'bg-green r0 w-50-ns w-100 flex flex-column center items-center justify-center vh-80-ns vh-100'
+          'bg-green w-50-l w-100 flex flex-column center items-center justify-center h-100-ns vh-100 pa5-ns pa4'
         }
       >
         {!this.props.isShowingIntro
