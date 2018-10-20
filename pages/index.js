@@ -14,17 +14,17 @@ class Index extends Component {
     this.state = {
       isShowingIntro: true,
       isShowingCalculation: false,
-      myCurrentBalance: 5000,
-      myCurrentAge: 34,
-      myCurrentMonthlySavings: 500,
-      myRetirementIncome: 10000,
+      myCurrentBalance: 0,
+      myCurrentAge: 18,
+      myCurrentMonthlySavings: 0,
+      myRetirementIncome: 0,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
       myInvestments: [
         {
           label: 'poupança',
           rate: 3,
-          isSelected: false,
+          isSelected: true,
         },
         {
           label: 'renda fixa',
@@ -45,16 +45,12 @@ class Index extends Component {
   componentDidUpdate(prevProps, prevState) {
     const nextRetirementResults = getRetirementResults(this.state);
     if (JSON.stringify(prevState.retirementResults) !== JSON.stringify(nextRetirementResults)) {
-      // update if results are different
       this.setState({ retirementResults: nextRetirementResults });
     }
   }
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    // setTimeout(() => {
-    //   document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
-    // });
   };
 
   showFirstCalculation = () => {
@@ -178,8 +174,8 @@ class Index extends Component {
           <div
             id="bottomWrapper"
             className={` ${
-              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column'
-            } vh-100 overflow-hidden-l`}
+              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column overflow-hidden-l'
+            } vh-100-l`}
           >
             <Questions
               {...this.state}
@@ -200,10 +196,10 @@ class Index extends Component {
           </div>
         </div>
         <style jsx global>{`
-        ::-webkit-scrollbar {
-          width: 0px;  /* remove scrollbar space */
-          background: transparent;  /* optional: just make scrollbar invisible */
-        }
+          ::-webkit-scrollbar {
+            width: 0px; /* remove scrollbar space */
+            background: transparent; /* optional: just make scrollbar invisible */
+          }
           .r0 {
             right: 0;
           }
