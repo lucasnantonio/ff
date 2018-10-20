@@ -23,8 +23,25 @@ class Pig extends Component {
 
   render() {
     return (
-      <div>
+      <div className={'pig'}>
+        <p>Roinc</p>
         {this.poupancaAlert()}
+        <style jsx>
+          {`
+            .pig {
+              position: fixed;
+              bottom: 24px;
+              right: 24px;
+              padding: 24px;
+              background-color: #F8BBD0;
+              border: 1px solid black;
+              border-radius: 50px;
+              max-width: 300px;
+              min-width: 100px;
+              min-height: 100px;
+            }
+          `}
+        </style>
       </div>
     );
   }

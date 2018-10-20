@@ -17,8 +17,8 @@ class Index extends Component {
       isShowingCalculation: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
-      myCurrentMonthlySavings: 0,
-      myRetirementIncome: 0,
+      myCurrentMonthlySavings: 500,
+      myRetirementIncome: 10000,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
       myInvestments: [
@@ -175,7 +175,7 @@ class Index extends Component {
           <div
             id="bottomWrapper"
             className={` ${
-              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column overflow-hidden-l'
+              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column'
             } vh-100-l`}
           >
             <Questions
