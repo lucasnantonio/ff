@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Button from '../components/Button';
 import NavBar from '../components/Navbar';
+import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -199,6 +200,7 @@ class Index extends Component {
             {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
           </div>
         </div>
+        <Pig myInvestments={this.state.myInvestments}/>
         <style jsx global>{`
         ::-webkit-scrollbar {
           width: 0px;  /* remove scrollbar space */
