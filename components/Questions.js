@@ -116,8 +116,11 @@ class InputContainer extends Component {
                 setFocusedInput={this.props.setFocusedInput}
               />
             ))}
-            <button style={{ width: '100%' }} onClick={this.props.handleResetRates}>
-              Reset taxas
+            <button
+              className="mt4 ttu fw6 f7 pa3 relative bg-white hover-bg-black hover-white br-pill w4 pointer h4"
+              onClick={this.props.handleResetRates}
+            >
+              Resetar taxas
             </button>
           </div>
         )}
