@@ -2,9 +2,9 @@ import React from 'react';
 
 const MinusBtn = () => (
   <svg
-    className="mr3-ns"
-    width="50"
-    height="50"
+    className="ml3-ns pa2 hover-bg-near-white br-pill"
+    width="40"
+    height="40"
     viewBox="0 0 63 63"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
