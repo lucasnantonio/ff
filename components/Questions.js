@@ -51,12 +51,14 @@ class InputContainer extends Component {
             <InputField
               isCurrency
               label="Quanto você tem hoje para começar a investir?"
+              placeholder="0"
               value={this.props.myCurrentBalance}
               id="myCurrentBalance"
               handleInput={this.props.handleCurrencyInput}
             />
             <InputField
               isCurrency
+              placeholder="0"
               label="Quanto você consegue guardar todo mês?"
               id="myCurrentMonthlySavings"
               value={this.props.myCurrentMonthlySavings}
@@ -64,6 +66,7 @@ class InputContainer extends Component {
             />
             <InputField
               isCurrency
+              placeholder="0"
               label="Quanto você quer tirar por mês ao se aposentar?"
               id="myRetirementIncome"
               value={this.props.myRetirementIncome}

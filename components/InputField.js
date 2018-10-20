@@ -23,6 +23,7 @@ class InputField extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isHovered: false,
       isFocused: false,
       isEmpty: true,
     };
@@ -36,6 +37,14 @@ class InputField extends Component {
   handleInput(e, floatValue, maskedValue) {
     this.props.handleInput(e, floatValue, maskedValue);
   }
+
+  handleMouseEnter = () => {
+    this.setState({ isHovered: true });
+  };
+
+  handleMouseLeave = () => {
+    this.setState({ isHovered: false });
+  };
 
   handleFocus() {
     this.setState({
@@ -103,8 +112,10 @@ class InputField extends Component {
               </div>
             ) : (
               <IntlCurrencyInput
-                className="bn w-100 bg-transparent f4 tr"
-                defaultValue={this.props.value}
+                className={`${
+                  this.props.value === 0 ? 'black-20' : 'black'
+                } bn w-100 bg-transparent f4 tr`}
+                defaultValue={this.props.placeholder}
                 min={this.props.min}
                 max={this.props.max}
                 onFocus={this.handleFocus}

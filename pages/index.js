@@ -17,8 +17,8 @@ class Index extends Component {
       isShowingCalculation: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
-      myCurrentMonthlySavings: 500,
-      myRetirementIncome: 10000,
+      myCurrentMonthlySavings: 0,
+      myRetirementIncome: 0,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
       myInvestments: [
