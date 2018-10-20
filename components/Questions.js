@@ -38,7 +38,6 @@ class InputContainer extends Component {
               hasSteppers
               label="Quantos anos você tem?"
               id="myCurrentAge"
-              isShowingCalculation={this.props.isShowingCalculation}
               value={this.props.myCurrentAge}
               placeholder="26"
               stepperIncrement="1"
@@ -50,7 +49,6 @@ class InputContainer extends Component {
             <InputField
               isCurrency
               label="Quanto você tem hoje para começar a investir?"
-              isShowingCalculation={this.props.isShowingCalculation}
               value={this.props.myCurrentBalance}
               id="myCurrentBalance"
               handleInput={this.props.handleCurrencyInput}
@@ -59,7 +57,6 @@ class InputContainer extends Component {
               isCurrency
               label="Quanto você consegue guardar todo mês?"
               id="myCurrentMonthlySavings"
-              isShowingCalculation={this.props.isShowingCalculation}
               value={this.props.myCurrentMonthlySavings}
               handleInput={this.props.handleCurrencyInput}
             />
@@ -67,13 +64,11 @@ class InputContainer extends Component {
               isCurrency
               label="Quanto você quer tirar por mês ao se aposentar?"
               id="myRetirementIncome"
-              isShowingCalculation={this.props.isShowingCalculation}
               value={this.props.myRetirementIncome}
               handleInput={this.props.handleCurrencyInput}
             />
             <MultiSelect
               label="Onde você guarda seu dinheiro hoje?"
-              isShowingCalculation={this.props.isShowingCalculation}
               options={this.props.myInvestments}
               handleClick={this.props.handleInvestmentSelector}
               hiddenBorder={true}
