@@ -81,7 +81,7 @@ class Index extends Component {
     const { id, value } = e.target;
     this.setState({ [id]: parseFloat(value) });
   };
-
+  
   handleInvestmentRateInput = (e) => {
     const { id, value } = e.target;
     const updateMyInvestments = this.state.myInvestments.map((item) => {
@@ -179,7 +179,7 @@ class Index extends Component {
             id="bottomWrapper"
             className={` ${
               this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column'
-            } vh-100 overflow-hidden-l`}
+            } vh-100`}
           >
             <Questions
               {...this.state}
@@ -200,10 +200,10 @@ class Index extends Component {
           </div>
         </div>
         <style jsx global>{`
-        ::-webkit-scrollbar {
-          width: 0px;  /* remove scrollbar space */
-          background: transparent;  /* optional: just make scrollbar invisible */
-        }
+          ::-webkit-scrollbar {
+            width: 0px; /* remove scrollbar space */
+            background: transparent; /* optional: just make scrollbar invisible */
+          }
           .r0 {
             right: 0;
           }

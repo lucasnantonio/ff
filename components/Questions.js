@@ -25,6 +25,15 @@ class InputContainer extends Component {
           handleInputButtons={this.props.handleInputButtons}
         />
         <InputField
+          isShowingCalculation={this.props.isShowingCalculation}
+          isExpanded={this.props.isExpanded}
+          isCurrency="true"
+          value={this.props.myCurrentBalance}
+          id="myCurrentBalance"
+          label="Quanto você tem hoje para começar a investir?"
+          handleInput={this.props.handleCurrencyInput}
+        />
+        <InputField
           isCurrency
           label="Quanto você consegue guardar todo mês?"
           id="myCurrentMonthlySavings"
