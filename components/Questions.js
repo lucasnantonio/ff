@@ -47,6 +47,8 @@ class InputContainer extends Component {
               max="100"
               handleInput={this.props.handleAgeInput}
               handleInputButtons={this.props.handleInputButtons}
+              hasTips
+              setFocusedInput={this.props.setFocusedInput}
             />
             <InputField
               isCurrency

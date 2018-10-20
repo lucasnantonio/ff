@@ -22,6 +22,13 @@ function getMessages(label) {
         message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
       },
     ],
+    myCurrentAge: [
+      {
+        lowerValue: 0,
+        upperValue: 22,
+        message: 'Está começando cedo, hein. Parabéns.',
+      },
+    ],
     myCurrentMonthlySavings: [
       {
         lowerValue: 500,
@@ -44,17 +51,19 @@ function getMessages(label) {
   return messages[label];
 }
 
-function filterMessages(messages, inputValue) {
-  const filteredMessages = messages.filter(
-    m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
-  );
-  return filteredMessages.map(m => m.message);
-}
-
 class Pig extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  filterMessages(label, messages, inputValue) {
+    if (label !== this.props.focusedInput) return [];
+
+    const filteredMessages = messages.filter(
+      m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
+    );
+    return filteredMessages.map(m => m.message);
   }
 
   getInvestmentMessages(investmentLabel) {
@@ -62,22 +71,21 @@ class Pig extends Component {
     const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
     const messages = getMessages(investmentLabel);
 
-    if (label !== focusedInput) return [];
-    return filterMessages(messages, rate);
+    return this.filterMessages(label, messages, rate);
   }
 
-  getSavingsMessages() {
-    if (this.props.focusedInput !== 'myCurrentMonthlySavings') return [];
-    const messages = getMessages('myCurrentMonthlySavings');
-    return filterMessages(messages, this.props.myCurrentMonthlySavings);
+  getInputMessages(label) {
+    const messages = getMessages(label);
+    return this.filterMessages(label, messages, this.props[label]);
   }
 
   getAllMessages() {
     const messages = [];
+    messages.push(...this.getInputMessages('myCurrentAge'));
+    messages.push(...this.getInputMessages('myCurrentMonthlySavings'));
     messages.push(...this.getInvestmentMessages('poupança'));
     messages.push(...this.getInvestmentMessages('renda fixa'));
     messages.push(...this.getInvestmentMessages('renda variável'));
-    messages.push(...this.getSavingsMessages());
     return messages;
   }
 
