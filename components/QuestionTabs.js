@@ -7,9 +7,12 @@ class QuestionTabs extends Component {
         {this.props.tabs.map((item, index) => (
           <div
             id={item.label}
-            className={`${item.isSelected
-              && 'bg-green white'} ttu fw3 flex items-center ttu ph3 pv1 mv2 br-pill pointer`}
-            onClick={e => this.props.handleTabChange(e, index)}
+            className={`${item.isSelected && 'bg-green white'} 
+              ${this.props.isShowingCalculation ? 'black-30 pointer' : 'black-10'}
+              ttu fw3 flex items-center ttu ph3 pv1 mv2 br-pill  fw6`}
+            onClick={
+              this.props.isShowingCalculation ? e => this.props.handleTabChange(e, index) : null
+            }
             key={index}
           >
             {item.label}

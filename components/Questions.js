@@ -28,7 +28,11 @@ class InputContainer extends Component {
   render() {
     return (
       <div id="inputContainer" className={'vh-100-l flex flex-column ph5 w-50-l w-100 pb6 mt6'}>
-        <QuestionTabs tabs={this.state.tabs} handleTabChange={this.handleTabChange} />
+        <QuestionTabs
+          isShowingCalculation={this.props.isShowingCalculation}
+          tabs={this.state.tabs}
+          handleTabChange={this.handleTabChange}
+        />
         {this.state.tabs[0].isSelected && (
           <div>
             <InputField
