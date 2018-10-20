@@ -70,6 +70,7 @@ class InputField extends Component {
         isEmpty: true,
       });
     }
+    if (this.props.hasTips) this.props.setFocusedInput('');
   }
 
   render() {

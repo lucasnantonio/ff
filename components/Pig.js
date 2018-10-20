@@ -14,6 +14,14 @@ function getMessages(investmentLabel) {
         message: 'Caraio, me fala que poupança é essa que eu também vou colocar meu dinheiro lá. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
     ],
+    'renda variável': [
+      {
+        lowerRate: 20,
+        upperRate: 30,
+        message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
+      },
+
+    ],
   };
 
   return messages[investmentLabel];
@@ -65,6 +73,7 @@ class Pig extends Component {
       <div >
         <div className={'pig'} />
         {this.renderInvestmentAlert('poupança')}
+        {this.renderInvestmentAlert('renda variável')}
         <style jsx>
           {`
             .pig {
@@ -73,7 +82,6 @@ class Pig extends Component {
               right: 24px;
               padding: 24px;
               background-color: #F8BBD0;
-              border: 1px solid black;
               border-radius: 25px;
               min-width: 50px;
               min-height: 50px;
