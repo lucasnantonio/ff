@@ -19,6 +19,7 @@ class Index extends Component {
       myCurrentMonthlySavings: 0,
       myRetirementIncome: 0,
       myLifeExpectancy: 100,
+      annualSavingsIncreaseRate: 1,
       myInvestments: [
         {
           label: 'poupança',
@@ -66,14 +67,13 @@ class Index extends Component {
   };
 
   handleInputButtons = (e) => {
-    this.setState({ myCurrentAge: 100 });
     const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
     this.setState({ [parentId]: parseFloat(parentValue) });
   };
 
-  handleAgeInput = (e) => {
+  handleInput = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: parseFloat(value) });
   };
@@ -164,7 +164,7 @@ class Index extends Component {
           <NavBar handleBack={this.handleBack} isShowingIntro={this.state.isShowingIntro} />
           <Intro
             isShowingIntro={this.state.isShowingIntro}
-            handleAgeInput={this.handleAgeInput}
+            handleInput={this.handleInput}
             handleInputButtons={this.handleInputButtons}
             startApp={this.startApp}
             myCurrentAge={this.state.myCurrentAge}
@@ -183,7 +183,7 @@ class Index extends Component {
               handleStartApp={this.startApp}
               handleShowCalculation={this.showFirstCalculation}
               handleResetRates={this.handleResetRates}
-              handleAgeInput={this.handleAgeInput}
+              handleInput={this.handleInput}
               handleInputButtons={this.handleInputButtons}
               handleCurrencyInput={this.handleCurrencyInput}
               handleTableInput={this.handleTableInput}

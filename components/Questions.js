@@ -86,7 +86,16 @@ class InputContainer extends Component {
               stepperIncrement="1"
               min="1"
               max="100"
-              handleInput={this.props.handleAgeInput}
+              handleInput={this.props.handleInput}
+              handleInputButtons={this.props.handleInputButtons}
+            />
+            <InputField
+              isPercentage
+              dataType="rate"
+              value={this.props.annualSavingsIncreaseRate}
+              id="annualSavingsIncreaseRate"
+              label="Aumento anual das economias"
+              handleInput={this.props.handleInput}
             />
             {this.props.myInvestments.map((item, index) => (
               <InputField

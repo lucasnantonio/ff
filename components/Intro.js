@@ -29,7 +29,7 @@ class Intro extends Component {
         <IntroQuestion
           isShowingIntro={this.props.isShowingIntro}
           startApp={this.props.startApp}
-          handleAgeInput={this.props.handleAgeInput}
+          handleInput={this.props.handleInput}
           handleInputButtons={this.props.handleInputButtons}
           myCurrentAge={this.props.myCurrentAge}
           isShowingCalculation={this.props.isShowingCalculation}

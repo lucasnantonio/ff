@@ -27,11 +27,12 @@ export function getLifeEvent(age, lifeEvents) {
   return 0;
 }
 
-export function retirementAge(iR, balance, savings, retirementIncome,
-  currentAge, lifeExpectancy, lifeEvents = []) {
+export function retirementAge(iR, balance, initialSavings, savingsIncrese,
+  retirementIncome, currentAge, lifeExpectancy, lifeEvents = []) {
   /* all variables must be in the same time unit (montly, annual, ...) */
   let t = 0;
   let retirementAge = currentAge;
+  let savings = initialSavings;
   let eventCost = 0;
 
   balance += savings;
@@ -46,6 +47,7 @@ export function retirementAge(iR, balance, savings, retirementIncome,
     return [retirementAge + 1, balance];
   }
 
+  savings *= (1 + savingsIncrese);
   t += 1;
   retirementAge += 1;
 
@@ -63,6 +65,7 @@ export function retirementAge(iR, balance, savings, retirementIncome,
       return [retirementAge + 1, balance];
     }
 
+    savings *= (1 + savingsIncrese);
     t += 1;
     retirementAge += 1;
   }
