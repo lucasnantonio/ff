@@ -81,7 +81,7 @@ class InputContainer extends Component {
           </div>
         )}
         {this.state.tabs[1].isSelected && (
-          <div>
+          <div className="flex flex-column h-100">
             <InputField
               hasSteppers
               label="Você pretende viver até quantos anos?"
@@ -120,20 +120,22 @@ class InputContainer extends Component {
           </div>
         )}
         {this.state.tabs[2].isSelected && (
-          <InputTable
-            id="lifeEvents"
-            table={this.props.lifeEvents}
-            fields={{
-              label: '',
-              age: 0,
-              cost: 0,
-            }}
-            myInvestments={this.props.myInvestments}
-            retirementResults={this.props.retirementResults}
-            handleTableInput={this.props.handleTableInput}
-            handleAddTableRow={this.props.handleAddTableRow}
-            handleRemoveTableRow={this.props.handleRemoveTableRow}
-          />
+          <div className="flex flex-column h-100">
+            <InputTable
+              id="lifeEvents"
+              table={this.props.lifeEvents}
+              fields={{
+                label: '',
+                age: 0,
+                cost: 0,
+              }}
+              myInvestments={this.props.myInvestments}
+              retirementResults={this.props.retirementResults}
+              handleTableInput={this.props.handleTableInput}
+              handleAddTableRow={this.props.handleAddTableRow}
+              handleRemoveTableRow={this.props.handleRemoveTableRow}
+            />
+          </div>
         )}
       </div>
     );
