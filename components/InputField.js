@@ -41,6 +41,7 @@ class InputField extends Component {
     this.setState({
       isFocused: true,
     });
+    if (this.props.hasTips) this.props.setFocusedInput(this.props.id);
   }
 
   handleIncrement(e) {

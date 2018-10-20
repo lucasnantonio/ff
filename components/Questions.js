@@ -106,6 +106,8 @@ class InputContainer extends Component {
                 id={item.label}
                 label={`Rendimento anual da ${item.label}`}
                 handleInput={this.props.handleInvestmentRateInput}
+                hasTips
+                setFocusedInput={this.props.setFocusedInput}
               />
             ))}
             <button style={{ width: '100%' }} onClick={this.props.handleResetRates}>

@@ -40,6 +40,7 @@ class Index extends Component {
       ],
       lifeEvents: [{}],
       retirementResults: false,
+      focusedInput: '',
     };
   }
 
@@ -157,6 +158,10 @@ class Index extends Component {
     }));
   };
 
+  setFocusedInput = inputId => {
+    this.setState({focusedInput: inputId})
+  }
+
   render() {
     return (
       <div>
@@ -192,11 +197,15 @@ class Index extends Component {
               handleRemoveTableRow={this.handleRemoveTableRow}
               handleInvestmentSelector={this.handleInvestmentSelector}
               handleInvestmentRateInput={this.handleInvestmentRateInput}
+              setFocusedInput={this.setFocusedInput}
             />
             {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
           </div>
         </div>
-        <Pig myInvestments={this.state.myInvestments}/>
+        <Pig
+          focusedInput={this.state.focusedInput}
+          myInvestments={this.state.myInvestments}
+        />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */

@@ -7,8 +7,10 @@ class Pig extends Component {
   }
 
   poupancaAlert() {
-    const { myInvestments } = this.props;
-    const { rate } = myInvestments.find(investment => investment.label === 'poupança');
+    const { focusedInput, myInvestments } = this.props;
+    const { label, rate } = myInvestments.find(investment => investment.label === 'poupança');
+
+    if (label !== focusedInput) return null;
 
     if (rate > 3) {
       return (
