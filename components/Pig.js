@@ -36,7 +36,24 @@ class Pig extends Component {
       const { lowerRate, upperRate, message } = m;
 
       if (rate >= lowerRate && rate < upperRate) {
-        return <span key={id}>{message}</span>;
+        return (
+          <div className={'message'} key={id}>
+          {message}
+          <style jsx>
+            {`
+              .message {
+                position: fixed;
+                bottom: 70px;
+                right: 70px;
+                padding: 24px;
+                background-color: #fff;
+                border: 1px solid black;
+                border-radius: 25px;
+                max-width: 300px;
+              }
+            `}
+          </style>
+        </div>);
       }
 
       return null;
@@ -45,8 +62,8 @@ class Pig extends Component {
 
   render() {
     return (
-      <div className={'pig'}>
-        <p>Roinc</p>
+      <div >
+        <div className={'pig'} />
         {this.renderInvestmentAlert('poupança')}
         <style jsx>
           {`
@@ -57,10 +74,9 @@ class Pig extends Component {
               padding: 24px;
               background-color: #F8BBD0;
               border: 1px solid black;
-              border-radius: 50px;
-              max-width: 300px;
-              min-width: 100px;
-              min-height: 100px;
+              border-radius: 25px;
+              min-width: 50px;
+              min-height: 50px;
             }
           `}
         </style>
