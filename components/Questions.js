@@ -68,6 +68,7 @@ class InputContainer extends Component {
               min="1"
               max="100"
               handleInput={this.props.handleAgeInput}
+              handleInputButtons={this.props.handleInputButtons}
             />
             {this.props.myInvestments.map((item, index) => (
               <InputField

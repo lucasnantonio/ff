@@ -70,7 +70,6 @@ class Index extends Component {
   };
 
   handleInputButtons = (e) => {
-    this.setState({ myCurrentAge: 100 });
     const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
@@ -79,6 +78,7 @@ class Index extends Component {
 
   handleAgeInput = (e) => {
     const { id, value } = e.target;
+    console.log(id, value);
     this.setState({ [id]: parseFloat(value) });
   };
 
