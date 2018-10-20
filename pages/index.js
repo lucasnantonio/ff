@@ -180,7 +180,7 @@ class Index extends Component {
           <div
             id="bottomWrapper"
             className={` ${
-              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column'
+              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column overflow-hidden-l'
             } vh-100-l`}
           >
             <Questions
