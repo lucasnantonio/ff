@@ -31,53 +31,57 @@ class InputContainer extends Component {
     return (
       <div id="inputContainer" className={'vh-100-l flex flex-column ph5 w-50-l w-100 pb6 mt6'}>
         <QuestionTabs tabs={this.state.tabs} handleTabChange={this.handleTabChange} />
-        <InputField
-          hasSteppers
-          label="Quantos anos você tem?"
-          id="myCurrentAge"
-          isShowingCalculation={this.props.isShowingCalculation}
-          value={this.props.myCurrentAge}
-          placeholder="26"
-          stepperIncrement="1"
-          min="1"
-          max="100"
-          handleInput={this.props.handleAgeInput}
-          handleInputButtons={this.props.handleInputButtons}
-        />
-        <InputField
-          isShowingCalculation={this.props.isShowingCalculation}
-          isExpanded={this.props.isExpanded}
-          isCurrency="true"
-          value={this.props.myCurrentBalance}
-          id="myCurrentBalance"
-          label="Quanto você tem hoje para começar a investir?"
-          handleInput={this.props.handleCurrencyInput}
-        />
-        <InputField
-          isCurrency
-          label="Quanto você consegue guardar todo mês?"
-          id="myCurrentMonthlySavings"
-          isShowingCalculation={this.props.isShowingCalculation}
-          value={this.props.myCurrentMonthlySavings}
-          handleInput={this.props.handleCurrencyInput}
-        />
-        <InputField
-          isCurrency
-          label="Quanto você quer tirar mês ao se aposentar?"
-          id="myRetirementIncome"
-          isShowingCalculation={this.props.isShowingCalculation}
-          value={this.props.myRetirementIncome}
-          handleInput={this.props.handleCurrencyInput}
-        />
-        <MultiSelect
-          label="Onde você guarda seu dinheiro hoje?"
-          isShowingCalculation={this.props.isShowingCalculation}
-          options={this.props.myInvestments}
-          handleClick={this.props.handleInvestmentSelector}
-          hiddenBorder={true}
-        />
-        {this.props.isShowingCalculation && (
-          <QuestionChunk title="Opções avançadas">
+        {this.state.tabs[0].isSelected && (
+          <div>
+            <InputField
+              hasSteppers
+              label="Quantos anos você tem?"
+              id="myCurrentAge"
+              isShowingCalculation={this.props.isShowingCalculation}
+              value={this.props.myCurrentAge}
+              placeholder="26"
+              stepperIncrement="1"
+              min="1"
+              max="100"
+              handleInput={this.props.handleAgeInput}
+              handleInputButtons={this.props.handleInputButtons}
+            />
+            <InputField
+              isShowingCalculation={this.props.isShowingCalculation}
+              isExpanded={this.props.isExpanded}
+              isCurrency="true"
+              value={this.props.myCurrentBalance}
+              id="myCurrentBalance"
+              label="Quanto você tem hoje para começar a investir?"
+              handleInput={this.props.handleCurrencyInput}
+            />
+            <InputField
+              isCurrency
+              label="Quanto você consegue guardar todo mês?"
+              id="myCurrentMonthlySavings"
+              isShowingCalculation={this.props.isShowingCalculation}
+              value={this.props.myCurrentMonthlySavings}
+              handleInput={this.props.handleCurrencyInput}
+            />
+            <InputField
+              isCurrency
+              label="Quanto você quer tirar mês ao se aposentar?"
+              id="myRetirementIncome"
+              isShowingCalculation={this.props.isShowingCalculation}
+              value={this.props.myRetirementIncome}
+              handleInput={this.props.handleCurrencyInput}
+            />
+            <MultiSelect
+              label="Onde você guarda seu dinheiro hoje?"
+              isShowingCalculation={this.props.isShowingCalculation}
+              options={this.props.myInvestments}
+              handleClick={this.props.handleInvestmentSelector}
+              hiddenBorder={true}
+            />
+          </div>
+        )}
+        {this.state.tabs[1].isSelected && (
+          <div>
             <InputField
               hasSteppers
               label="Você pretende viver até quantos anos?"
@@ -102,25 +106,23 @@ class InputContainer extends Component {
             <button style={{ width: '100%' }} onClick={this.props.handleResetRates}>
               Reset taxas
             </button>
-          </QuestionChunk>
+          </div>
         )}
-        {this.props.isShowingCalculation && (
-          <QuestionChunk title="Gastos planejados">
-            <InputTable
-              id="lifeEvents"
-              table={this.props.lifeEvents}
-              fields={{
-                label: '',
-                age: 0,
-                cost: 0,
-              }}
-              myInvestments={this.props.myInvestments}
-              retirementResults={this.props.retirementResults}
-              handleTableInput={this.props.handleTableInput}
-              handleAddTableRow={this.props.handleAddTableRow}
-              handleRemoveTableRow={this.props.handleRemoveTableRow}
-            />
-          </QuestionChunk>
+        {this.state.tabs[2].isSelected && (
+          <InputTable
+            id="lifeEvents"
+            table={this.props.lifeEvents}
+            fields={{
+              label: '',
+              age: 0,
+              cost: 0,
+            }}
+            myInvestments={this.props.myInvestments}
+            retirementResults={this.props.retirementResults}
+            handleTableInput={this.props.handleTableInput}
+            handleAddTableRow={this.props.handleAddTableRow}
+            handleRemoveTableRow={this.props.handleRemoveTableRow}
+          />
         )}
       </div>
     );

@@ -23,7 +23,7 @@ class Index extends Component {
         {
           label: 'poupança',
           rate: 3,
-          isSelected: false,
+          isSelected: true,
         },
         {
           label: 'renda fixa',
