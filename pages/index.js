@@ -77,7 +77,7 @@ class Index extends Component {
     this.setState({ [parentId]: parseFloat(parentValue) });
   };
 
-  handleAgeInput = (e) => {
+  handleInput = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: parseFloat(value) });
   };
@@ -168,7 +168,7 @@ class Index extends Component {
           <NavBar handleBack={this.handleBack} isShowingIntro={this.state.isShowingIntro} />
           <Intro
             isShowingIntro={this.state.isShowingIntro}
-            handleAgeInput={this.handleAgeInput}
+            handleInput={this.handleInput}
             handleInputButtons={this.handleInputButtons}
             startApp={this.startApp}
             myCurrentAge={this.state.myCurrentAge}
@@ -187,7 +187,7 @@ class Index extends Component {
               handleStartApp={this.startApp}
               handleShowCalculation={this.showFirstCalculation}
               handleResetRates={this.handleResetRates}
-              handleAgeInput={this.handleAgeInput}
+              handleInput={this.handleInput}
               handleInputButtons={this.handleInputButtons}
               handleCurrencyInput={this.handleCurrencyInput}
               handleTableInput={this.handleTableInput}

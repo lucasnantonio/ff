@@ -26,7 +26,7 @@ class IntroQuestion extends Component {
             stepperIncrement="1"
             min="1"
             max="100"
-            handleInput={this.props.handleAgeInput}
+            handleInput={this.props.handleInput}
             handleInputButtons={this.props.handleInputButtons}
           />
         </div>
