@@ -44,16 +44,12 @@ class Index extends Component {
   componentDidUpdate(prevProps, prevState) {
     const nextRetirementResults = getRetirementResults(this.state);
     if (JSON.stringify(prevState.retirementResults) !== JSON.stringify(nextRetirementResults)) {
-      // update if results are different
       this.setState({ retirementResults: nextRetirementResults });
     }
   }
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    // setTimeout(() => {
-    //   document.getElementById('bottomWrapper').scrollIntoView({ behavior: 'smooth' });
-    // });
   };
 
   showFirstCalculation = () => {

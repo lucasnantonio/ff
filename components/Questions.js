@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
-import IntroQuestion from './IntroQuestion';
-import Logo from './Logo';
 import QuestionChunk from './QuestionChunk';
 import Button from './Button';
 import MultiSelect from './MultiSelect';
+import QuestionTabs from './QuestionTabs';
 
 class InputContainer extends Component {
   render() {
     return (
       <div id="inputContainer" className={'vh-100-l flex flex-column ph5 w-50-l w-100 pb6 mt6'}>
+        <QuestionTabs />
         <InputField
           hasSteppers
           label="Quantos anos você tem?"
@@ -56,7 +56,7 @@ class InputContainer extends Component {
           handleClick={this.props.handleInvestmentSelector}
           hiddenBorder={true}
         />
-        {!this.props.isShowingCalculation
+        {/* {!this.props.isShowingCalculation
           && !this.props.isShowingIntro && (
             <div className="self-end mb5">
               <Button
@@ -65,7 +65,7 @@ class InputContainer extends Component {
                 onClick={this.props.handleShowCalculation}
               />
             </div>
-        )}
+        )} */}
         {this.props.isShowingCalculation && (
           <QuestionChunk title="Opções avançadas">
             <InputField
