@@ -1,30 +1,48 @@
 import React, { Component } from 'react';
 
-function getMessages(investmentLabel) {
+function getMessages(label) {
   const messages = {
     poupança: [
       {
-        lowerRate: 2,
-        upperRate: 3,
+        lowerValue: 2,
+        upperValue: 3,
         message: 'Você está otimista. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
       {
-        lowerRate: 3,
-        upperRate: 20,
+        lowerValue: 3,
+        upperValue: 20,
         message: 'Caraio, me fala que poupança é essa que eu também vou colocar meu dinheiro lá. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
     ],
     'renda variável': [
       {
-        lowerRate: 20,
-        upperRate: 30,
+        lowerValue: 20,
+        upperValue: 30,
         message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
       },
-
+    ],
+    myCurrentMonthlySavings: [
+      {
+        lowerValue: 500,
+        upperValue: 10000,
+        message: 'Parabéns. Você está acima da média da população.',
+      },
+      {
+        lowerValue: 10000,
+        upperValue: 100000,
+        message: 'Aooow chefia. Tá cheio da nota, hein?!',
+      },
     ],
   };
 
-  return messages[investmentLabel];
+  return messages[label];
+}
+
+function filterMessages(messages, inputValue) {
+  const filteredMessages = messages.filter(
+    m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
+  );
+  return filteredMessages.map(m => m.message);
 }
 
 class Pig extends Component {
@@ -33,47 +51,41 @@ class Pig extends Component {
     this.state = {};
   }
 
-  renderInvestmentAlert(investmentLabel) {
+  getInvestmentMessages(investmentLabel) {
     const { focusedInput, myInvestments } = this.props;
     const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
     const messages = getMessages(investmentLabel);
 
-    if (label !== this.props.focusedInput) return null;
+    if (label !== focusedInput) return [];
+    return filterMessages(messages, rate);
+  }
 
-    return messages.map((m, id) => {
-      const { lowerRate, upperRate, message } = m;
+  getSavingsMessages() {
+    const messages = getMessages('myCurrentMonthlySavings');
+    return filterMessages(messages, this.props.myCurrentMonthlySavings);
+  }
 
-      if (rate >= lowerRate && rate < upperRate) {
-        return (
-          <div className={'message'} key={id}>
-          {message}
-          <style jsx>
-            {`
-              .message {
-                position: fixed;
-                bottom: 70px;
-                right: 70px;
-                padding: 24px;
-                background-color: #fff;
-                border: 1px solid black;
-                border-radius: 25px;
-                max-width: 300px;
-              }
-            `}
-          </style>
-        </div>);
-      }
-
-      return null;
-    });
+  getAllMessages() {
+    const messages = [];
+    messages.push(...this.getInvestmentMessages('poupança'));
+    messages.push(...this.getInvestmentMessages('renda fixa'));
+    messages.push(...this.getInvestmentMessages('renda variável'));
+    messages.push(...this.getSavingsMessages());
+    return messages;
   }
 
   render() {
+    const messages = this.getAllMessages();
+    const newMessage = messages.length > 0;
     return (
       <div >
-        <div className={'pig'} />
-        {this.renderInvestmentAlert('poupança')}
-        {this.renderInvestmentAlert('renda variável')}
+        {newMessage ? <div className={'pig'} /> : null}
+        {newMessage
+          && <div className={'message-box'}>
+            {messages.map((m, id) => <p key={id}>{m}</p>)}
+          </div>
+
+        }
         <style jsx>
           {`
             .pig {
@@ -85,6 +97,16 @@ class Pig extends Component {
               border-radius: 25px;
               min-width: 50px;
               min-height: 50px;
+            }
+            .message-box {
+              position: fixed;
+              bottom: 70px;
+              right: 70px;
+              padding: 24px;
+              background-color: #fff;
+              border: 1px solid black;
+              border-radius: 25px;
+              max-width: 300px;
             }
           `}
         </style>
