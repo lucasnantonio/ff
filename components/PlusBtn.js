@@ -2,7 +2,7 @@ import React from 'react';
 
 const PlusBtn = () => (
   <svg
-    className="ml3-ns pa2 hover-bg-near-white br-pill"
+    className="pa2 hover-bg-near-white br-pill"
     width="40"
     height="40"
     viewBox="0 0 63 63"
