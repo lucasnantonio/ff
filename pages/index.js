@@ -100,7 +100,7 @@ class Index extends Component {
       ...item,
       isSelected: index === itemIndex,
     }));
-    this.setState({ myInvestments: ressetedInvestment });
+    this.setState({ myInvestments: ressetedInvestment, isShowingCalculation: true });
   };
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
@@ -158,9 +158,9 @@ class Index extends Component {
     }));
   };
 
-  setFocusedInput = inputId => {
-    this.setState({focusedInput: inputId})
-  }
+  setFocusedInput = (inputId) => {
+    this.setState({ focusedInput: inputId });
+  };
 
   render() {
     return (
@@ -202,10 +202,7 @@ class Index extends Component {
             {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
           </div>
         </div>
-        <Pig
-          focusedInput={this.state.focusedInput}
-          myInvestments={this.state.myInvestments}
-        />
+        <Pig focusedInput={this.state.focusedInput} myInvestments={this.state.myInvestments} />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */
