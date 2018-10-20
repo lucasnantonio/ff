@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function getMessages(label) {
+function inputMessages(label) {
   const messages = {
     poupança: [
       {
@@ -14,11 +14,19 @@ function getMessages(label) {
         message: 'Caraio, me fala que poupança é essa que eu também vou colocar meu dinheiro lá. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
       },
     ],
+    'renda fixa': [],
     'renda variável': [
       {
         lowerValue: 20,
         upperValue: 30,
         message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
+      },
+    ],
+    myCurrentAge: [
+      {
+        lowerValue: 0,
+        upperValue: 22,
+        message: 'Está começando cedo, hein. Parabéns.',
       },
     ],
     myCurrentMonthlySavings: [
@@ -29,8 +37,13 @@ function getMessages(label) {
       },
       {
         lowerValue: 10000,
-        upperValue: 100000,
+        upperValue: 30000,
         message: 'Aooow chefia. Tá cheio da nota, hein?!',
+      },
+      {
+        lowerValue: 30000,
+        upperValue: Number.POSITIVE_INFINITY,
+        message: 'Ah, tá de sacanagem que você poupa tudo isso por mês.',
       },
     ],
   };
@@ -38,11 +51,12 @@ function getMessages(label) {
   return messages[label];
 }
 
-function filterMessages(messages, inputValue) {
-  const filteredMessages = messages.filter(
-    m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
-  );
-  return filteredMessages.map(m => m.message);
+function selectedInvestmentMessage(label) {
+  return {
+    poupança: [],
+    'renda fixa': [],
+    'renda variável': [],
+  }[label];
 }
 
 class Pig extends Component {
@@ -51,26 +65,53 @@ class Pig extends Component {
     this.state = {};
   }
 
+  filterMessages(label, messages, inputValue) {
+    if (label !== this.props.focusedInput) return [];
+
+    const filteredMessages = messages.filter(
+      m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
+    );
+    return filteredMessages.map(m => m.message);
+  }
+
   getInvestmentMessages(investmentLabel) {
     const { focusedInput, myInvestments } = this.props;
     const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
-    const messages = getMessages(investmentLabel);
+    const messages = inputMessages(investmentLabel);
 
-    if (label !== focusedInput) return [];
-    return filterMessages(messages, rate);
+    return this.filterMessages(label, messages, rate);
   }
 
-  getSavingsMessages() {
-    const messages = getMessages('myCurrentMonthlySavings');
-    return filterMessages(messages, this.props.myCurrentMonthlySavings);
+  getInputMessages(label) {
+    const messages = inputMessages(label);
+    return this.filterMessages(label, messages, this.props[label]);
+  }
+
+  poupancaAlert() {
+    const { focusedInput, myInvestments } = this.props;
+    const poup = myInvestments.find(investment => investment.label === 'poupança');
+    if (poup.isSelected) {
+      return ['Serião que você deixa o seu dinheiro na poupança?!'];
+    }
+
+    return [];
+  }
+
+  getSelectedInvestmentMessage() {
+    const selectedInvestment = this.props.myInvestments.find(i => i.isSelected);
+    if (selectedInvestment === undefined) return [];
+
+    return selectedInvestmentMessage(selectedInvestment.label);
   }
 
   getAllMessages() {
     const messages = [];
+    messages.push(...this.getInputMessages('myCurrentAge'));
+    messages.push(...this.getInputMessages('myCurrentMonthlySavings'));
     messages.push(...this.getInvestmentMessages('poupança'));
     messages.push(...this.getInvestmentMessages('renda fixa'));
     messages.push(...this.getInvestmentMessages('renda variável'));
-    messages.push(...this.getSavingsMessages());
+    messages.push(...this.getSelectedInvestmentMessage());
     return messages;
   }
 

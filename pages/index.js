@@ -206,8 +206,9 @@ class Index extends Component {
         </div>
         <Pig
           focusedInput={this.state.focusedInput}
-          myInvestments={this.state.myInvestments}
+          myCurrentAge={this.state.myCurrentAge}
           myCurrentMonthlySavings={this.state.myCurrentMonthlySavings}
+          myInvestments={this.state.myInvestments}
         />
         <style jsx global>{`
           ::-webkit-scrollbar {
