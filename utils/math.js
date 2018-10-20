@@ -4,19 +4,21 @@ export function toCurrency(value) {
   return (`R$ ${Number(value).toFixed(2)}`);
 }
 
-function getRetirementData(mIR, currentBalance, savings, retirementIncome,
-  currentAge, lifeExpectancy, lifeEvents) {
+function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrese,
+  retirementIncome, currentAge, lifeExpectancy, lifeEvents) {
   /* all variables in months */
   const chartData = [];
   const events = [];
+  let savings = initialSavings;
 
   let balance = currentBalance;
   let age = currentAge;
   let m = 0;
   let eventCost = 0;
 
-  const [retirementAge, retirementBalance] = fin.retirementAge(mIR, balance, savings,
-    retirementIncome, currentAge, lifeExpectancy, lifeEvents);
+  const [retirementAge, retirementBalance] = fin.retirementAge(mIR, balance,
+    initialSavings, savingsIncrese, retirementIncome, currentAge,
+    lifeExpectancy, lifeEvents);
 
   balance += savings;
   chartData.push({ x: age / 12, y: balance });
@@ -36,6 +38,7 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
     }
   }
 
+  savings *= (1 + savingsIncrese);
   age += 1;
   m += 1;
 
@@ -58,6 +61,7 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
       }
     }
 
+    savings *= (1 + savingsIncrese);
     age += 1;
     m += 1;
   }
@@ -67,6 +71,7 @@ function getRetirementData(mIR, currentBalance, savings, retirementIncome,
 
     chartData.push({ x: age / 12, y: balance });
 
+    savings *= (1 + savingsIncrese);
     age += 1;
     m += 1;
   }
@@ -89,6 +94,7 @@ export function getRetirementResults(state) {
   const retirementIncome = parseFloat(state.myRetirementIncome);
   const lifeExpectancy = parseFloat(state.myLifeExpectancy);
   const myCurrentAge = parseFloat(state.myCurrentAge);
+  const annualSavingsIncreaseRate = parseFloat(state.annualSavingsIncreaseRate);
 
   return myInvestments.map((investment) => {
     const { label, rate } = investment;
@@ -99,6 +105,7 @@ export function getRetirementResults(state) {
         fin.annualToMonthly(parseFloat(rate) / 100),
         currentBalance,
         savings,
+        fin.annualToMonthly(annualSavingsIncreaseRate / 100),
         retirementIncome,
         myCurrentAge * 12,
         lifeExpectancy * 12,
