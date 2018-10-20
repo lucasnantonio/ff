@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function getMessages(investmentLabel) {
+function getInvestmentMessages(investmentLabel) {
   const messages = {
     poupança: [
       {
@@ -33,47 +33,35 @@ class Pig extends Component {
     this.state = {};
   }
 
-  renderInvestmentAlert(investmentLabel) {
+  filterInvestmentMessage(investmentLabel) {
     const { focusedInput, myInvestments } = this.props;
     const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
-    const messages = getMessages(investmentLabel);
+    const messages = getInvestmentMessages(investmentLabel);
 
-    if (label !== this.props.focusedInput) return null;
+    if (label !== focusedInput) return [];
+    return messages.filter(m => (rate >= m.lowerRate && rate < m.upperRate));
+  }
 
-    return messages.map((m, id) => {
-      const { lowerRate, upperRate, message } = m;
-
-      if (rate >= lowerRate && rate < upperRate) {
-        return (
-          <div className={'message'} key={id}>
-          {message}
-          <style jsx>
-            {`
-              .message {
-                position: fixed;
-                bottom: 70px;
-                right: 70px;
-                padding: 24px;
-                background-color: #fff;
-                border: 1px solid black;
-                border-radius: 25px;
-                max-width: 300px;
-              }
-            `}
-          </style>
-        </div>);
-      }
-
-      return null;
-    });
+  getAllMessages() {
+    const messages = [];
+    messages.push(...this.filterInvestmentMessage('poupança'));
+    messages.push(...this.filterInvestmentMessage('renda fixa'));
+    messages.push(...this.filterInvestmentMessage('renda variável'));
+    return messages;
   }
 
   render() {
+    const messages = this.getAllMessages();
+    const newMessage = messages.length > 0;
     return (
       <div >
-        <div className={'pig'} />
-        {this.renderInvestmentAlert('poupança')}
-        {this.renderInvestmentAlert('renda variável')}
+        {newMessage ? <div className={'pig'} /> : null}
+        {newMessage
+          && <div className={'message-box'}>
+            {messages.map((m, id) => <p key={id}>{m.message}</p>)}
+          </div>
+
+        }
         <style jsx>
           {`
             .pig {
@@ -85,6 +73,16 @@ class Pig extends Component {
               border-radius: 25px;
               min-width: 50px;
               min-height: 50px;
+            }
+            .message-box {
+              position: fixed;
+              bottom: 70px;
+              right: 70px;
+              padding: 24px;
+              background-color: #fff;
+              border: 1px solid black;
+              border-radius: 25px;
+              max-width: 300px;
             }
           `}
         </style>
