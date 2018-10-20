@@ -24,7 +24,7 @@ class Index extends Component {
       myInvestments: [
         {
           label: 'poupança',
-          rate: 3,
+          rate: 1.5,
           isSelected: true,
         },
         {
