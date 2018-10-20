@@ -73,6 +73,7 @@ class InputContainer extends Component {
               handleClick={this.props.handleInvestmentSelector}
               hiddenBorder={true}
             />
+            <button onClick={this.props.handleShowCalculation}> Calcular </button>
           </div>
         )}
         {this.state.tabs[1].isSelected && (
