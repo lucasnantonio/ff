@@ -202,7 +202,11 @@ class Index extends Component {
             {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
           </div>
         </div>
-        <Pig focusedInput={this.state.focusedInput} myInvestments={this.state.myInvestments} />
+        <Pig
+          focusedInput={this.state.focusedInput}
+          myInvestments={this.state.myInvestments}
+          myCurrentMonthlySavings={this.state.myCurrentMonthlySavings}
+        />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */

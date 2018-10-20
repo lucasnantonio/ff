@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function getInvestmentMessages(investmentLabel) {
+function getMessages(label) {
   const messages = {
     poupança: [
       {
@@ -20,11 +20,22 @@ function getInvestmentMessages(investmentLabel) {
         upperValue: 30,
         message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
       },
-
+    ],
+    myCurrentMonthlySavings: [
+      {
+        lowerValue: 500,
+        upperValue: 10000,
+        message: 'Parabéns. Você está acima da média da população.',
+      },
+      {
+        lowerValue: 10000,
+        upperValue: 100000,
+        message: 'Aooow chefia. Tá cheio da nota, hein?!',
+      },
     ],
   };
 
-  return messages[investmentLabel];
+  return messages[label];
 }
 
 function filterMessages(messages, inputValue) {
@@ -40,25 +51,30 @@ class Pig extends Component {
     this.state = {};
   }
 
-  filterInvestmentMessage(investmentLabel) {
+  getInvestmentMessages(investmentLabel) {
     const { focusedInput, myInvestments } = this.props;
     const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
-    const messages = getInvestmentMessages(investmentLabel);
+    const messages = getMessages(investmentLabel);
 
     if (label !== focusedInput) return [];
     return filterMessages(messages, rate);
   }
 
+  getSavingsMessages() {
+    const messages = getMessages('myCurrentMonthlySavings');
+    return filterMessages(messages, this.props.myCurrentMonthlySavings);
+  }
+
   getAllMessages() {
     const messages = [];
-    messages.push(...this.filterInvestmentMessage('poupança'));
-    messages.push(...this.filterInvestmentMessage('renda fixa'));
-    messages.push(...this.filterInvestmentMessage('renda variável'));
+    messages.push(...this.getInvestmentMessages('poupança'));
+    messages.push(...this.getInvestmentMessages('renda fixa'));
+    messages.push(...this.getInvestmentMessages('renda variável'));
+    messages.push(...this.getSavingsMessages());
     return messages;
   }
 
   render() {
-    console.log(this.props.focusedInput);
     const messages = this.getAllMessages();
     const newMessage = messages.length > 0;
     return (
