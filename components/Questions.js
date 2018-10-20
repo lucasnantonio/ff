@@ -7,10 +7,30 @@ import MultiSelect from './MultiSelect';
 import QuestionTabs from './QuestionTabs';
 
 class InputContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs: [
+        { label: 'básico', isSelected: true },
+        { label: 'avançado', isSelected: false },
+        { label: 'taxas', isSelected: false },
+      ],
+    };
+  }
+
+  handleTabChange = (e, index) => {
+    const { tabs } = this.state;
+    const newState = tabs.map((item, itemIndex) => ({
+      ...item,
+      isSelected: index === itemIndex,
+    }));
+    this.setState({ tabs: newState });
+  };
+
   render() {
     return (
       <div id="inputContainer" className={'vh-100-l flex flex-column ph5 w-50-l w-100 pb6 mt6'}>
-        <QuestionTabs />
+        <QuestionTabs tabs={this.state.tabs} handleTabChange={this.handleTabChange} />
         <InputField
           hasSteppers
           label="Quantos anos você tem?"
@@ -56,16 +76,6 @@ class InputContainer extends Component {
           handleClick={this.props.handleInvestmentSelector}
           hiddenBorder={true}
         />
-        {/* {!this.props.isShowingCalculation
-          && !this.props.isShowingIntro && (
-            <div className="self-end mb5">
-              <Button
-                isEnabled={this.props.myInvestments.filter(item => item.isSelected).length > 0}
-                label="Calcular"
-                onClick={this.props.handleShowCalculation}
-              />
-            </div>
-        )} */}
         {this.props.isShowingCalculation && (
           <QuestionChunk title="Opções avançadas">
             <InputField
