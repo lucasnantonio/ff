@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function getMessages(label) {
+function inputMessages(label) {
   const messages = {
     poupança: [
       {
@@ -51,6 +51,14 @@ function getMessages(label) {
   return messages[label];
 }
 
+function selectedInvestmentMessage(label) {
+  return {
+    poupança: [],
+    'renda fixa': [],
+    'renda variável': [],
+  }[label];
+}
+
 class Pig extends Component {
   constructor(props) {
     super(props);
@@ -69,14 +77,31 @@ class Pig extends Component {
   getInvestmentMessages(investmentLabel) {
     const { focusedInput, myInvestments } = this.props;
     const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
-    const messages = getMessages(investmentLabel);
+    const messages = inputMessages(investmentLabel);
 
     return this.filterMessages(label, messages, rate);
   }
 
   getInputMessages(label) {
-    const messages = getMessages(label);
+    const messages = inputMessages(label);
     return this.filterMessages(label, messages, this.props[label]);
+  }
+
+  poupancaAlert() {
+    const { focusedInput, myInvestments } = this.props;
+    const poup = myInvestments.find(investment => investment.label === 'poupança');
+    if (poup.isSelected) {
+      return ['Serião que você deixa o seu dinheiro na poupança?!'];
+    }
+
+    return [];
+  }
+
+  getSelectedInvestmentMessage() {
+    const selectedInvestment = this.props.myInvestments.find(i => i.isSelected);
+    if (selectedInvestment === undefined) return [];
+
+    return selectedInvestmentMessage(selectedInvestment.label);
   }
 
   getAllMessages() {
@@ -86,6 +111,7 @@ class Pig extends Component {
     messages.push(...this.getInvestmentMessages('poupança'));
     messages.push(...this.getInvestmentMessages('renda fixa'));
     messages.push(...this.getInvestmentMessages('renda variável'));
+    messages.push(...this.getSelectedInvestmentMessage());
     return messages;
   }
 
