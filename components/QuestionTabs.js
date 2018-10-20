@@ -9,7 +9,8 @@ class QuestionTabs extends Component {
             id={item.label}
             className={`${item.isSelected && 'bg-black-80 white'} 
               ${this.props.isShowingCalculation ? 'black-30 pointer' : 'black-10'}
-              ttu fw3 flex items-center ttu ph3 pv1 mv2 br-pill  fw6`}
+              ${this.props.isShowingCalculation && !item.isSelected && 'hover-bg-black-10'}
+              ttu fw3 flex items-center ttu ph3 pv1 mv2 br-pill  fw6 `}
             onClick={
               this.props.isShowingCalculation ? e => this.props.handleTabChange(e, index) : null
             }
