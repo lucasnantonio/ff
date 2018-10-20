@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 import InputTable from './InputTable';
-import QuestionChunk from './QuestionChunk';
-import Button from './Button';
 import MultiSelect from './MultiSelect';
 import QuestionTabs from './QuestionTabs';
 
