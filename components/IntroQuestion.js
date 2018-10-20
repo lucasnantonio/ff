@@ -10,9 +10,9 @@ class IntroQuestion extends Component {
       <div
         className={`${
           this.props.isShowingIntro
-            ? 'pa5-l bg-white flex flex-row-ns flex-column justify-between items-center'
+            ? 'pa5-ns pa4 bg-white flex flex-row-ns flex-column justify-between items-center'
             : 'h0'
-        }   overflow-hidden`}
+        }   overflow-hidden `}
       >
         <div className="w-50-l w-100 pr5-l">
           <InputField
@@ -31,7 +31,7 @@ class IntroQuestion extends Component {
           />
         </div>
         <button
-          className="w-auto-l ph5-l w-100 h3-l h5 bn pointer bg-green white ttu b pv3"
+          className="w-auto-ns ph5-ns w-100 h3-ns h5 mt0-ns mt4 bn pointer bg-black-80 br-pill white ttu b pv3"
           onClick={this.props.startApp}
         >
           Começar

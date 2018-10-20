@@ -7,7 +7,7 @@ class QuestionTabs extends Component {
         {this.props.tabs.map((item, index) => (
           <div
             id={item.label}
-            className={`${item.isSelected && 'bg-green white'} 
+            className={`${item.isSelected && 'bg-black-80 white'} 
               ${this.props.isShowingCalculation ? 'black-30 pointer' : 'black-10'}
               ttu fw3 flex items-center ttu ph3 pv1 mv2 br-pill  fw6`}
             onClick={

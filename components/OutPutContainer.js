@@ -3,14 +3,13 @@ import RetirementChart from './RetirementChart';
 import RetirementSummary from './RetirementSummary';
 import Button from './Button';
 
-
 class OutPutContainer extends Component {
   render() {
     return (
       <div
         id="resultsWrapper"
         className={
-          'bg-green r0 w-50-ns w-100 flex flex-column center items-center justify-center h-100'
+          'bg-green r0 w-50-ns w-100 flex flex-column center items-center justify-center vh-80'
         }
       >
         {!this.props.isShowingIntro
