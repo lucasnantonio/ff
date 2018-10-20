@@ -16,13 +16,22 @@ class Intro extends Component {
     return (
       <div
         id="intro"
-        className={`${this.props.isShowingIntro ? 'vh-100' : 'h0'} w-100 bg-green flex flex-column`}
+        className={`${
+          this.props.isShowingIntro ? 'h-100' : 'h4 overflow-hidden'
+        } w-100 bg-green flex flex-column justify-center`}
       >
-        <div className="flex flex-column h-100 ph5-ns ph4 justify-center mt5">
-          <div className="mb2 mw7 w-50">
-            <Logo />
+        <div className="flex flex-column h-100 ph5-ns ph4 justify-center">
+          <div>
+            <Logo
+              onClick={this.props.handleBack}
+              size={this.props.isShowingIntro ? 'big' : 'small'}
+            />
           </div>
-          <h3 className="f4 measure-narrow white mb5 fw3">
+          <h3
+            className={`${
+              this.props.isShowingIntro ? 'flex' : 'dn'
+            } f4 measure-narrow white mb5 fw3`}
+          >
             Descubra quando você vai poder mandar tudo à merda!
           </h3>
         </div>
@@ -40,12 +49,6 @@ class Intro extends Component {
       } */}
         <style jsx>
           {`
-            .h0 {
-              height: 0;
-            }
-            .bg-offwhite {
-              background-color: rgba(244, 244, 244, 1);
-            }
             #intro {
               transition: all 0.5s;
             }

@@ -166,11 +166,13 @@ class Index extends Component {
     return (
       <div>
         <Header />
-        <div id="pageWrapper">
-          <NavBar handleBack={this.handleBack} isShowingIntro={this.state.isShowingIntro} />
+        <div id="pageWrapper" className="vh-100 flex-l flex-column">
+          {/* <NavBar handleBack={this.handleBack} isShowingIntro={this.state.isShowingIntro} />
+         */}
           <Intro
             isShowingIntro={this.state.isShowingIntro}
             handleInput={this.handleInput}
+            handleBack={this.handleBack}
             handleInputButtons={this.handleInputButtons}
             startApp={this.startApp}
             myCurrentAge={this.state.myCurrentAge}
@@ -180,8 +182,8 @@ class Index extends Component {
           <div
             id="bottomWrapper"
             className={` ${
-              this.state.isShowingIntro ? 'dn' : 'flex flex-row-ns flex-column overflow-hidden-l'
-            } vh-100-l`}
+              this.state.isShowingIntro ? 'dn' : 'flex-l flex-row-ns flex-column overflow-hidden-l'
+            } h-100`}
           >
             <Questions
               {...this.state}
@@ -210,6 +212,9 @@ class Index extends Component {
           }
           .r0 {
             right: 0;
+          }
+          .h0 {
+            height: 0;
           }
           ::selection {
             color: white;

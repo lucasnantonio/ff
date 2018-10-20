@@ -27,14 +27,14 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className={'vh-100-l flex flex-column ph5-ns ph4 w-50-l w-100 mt6'}>
+      <div id="inputContainer" className={'flex flex-column h-100 w-50-l w-100 pa5-ns pa4'}>
         <QuestionTabs
           isShowingCalculation={this.props.isShowingCalculation}
           tabs={this.state.tabs}
           handleTabChange={this.handleTabChange}
         />
         {this.state.tabs[0].isSelected && (
-          <div>
+          <div className="flex flex-column h-100">
             <InputField
               isEnabled
               hasSteppers

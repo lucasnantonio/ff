@@ -8,6 +8,7 @@ class IntroQuestion extends Component {
   render() {
     return (
       <div
+        id="introQuestion"
         className={`${
           this.props.isShowingIntro
             ? 'pa5-ns pa4 bg-white flex flex-row-ns flex-column justify-between items-center'
@@ -36,6 +37,13 @@ class IntroQuestion extends Component {
         >
           Começar
         </button>
+        <style jsx>
+          {`
+            #introQuestion {
+              transition: height 30s;
+            }
+          `}
+        </style>
       </div>
     );
   }
