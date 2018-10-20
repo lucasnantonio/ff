@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Button from '../components/Button';
 import NavBar from '../components/Navbar';
+import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 
@@ -16,14 +17,14 @@ class Index extends Component {
       isShowingCalculation: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
-      myCurrentMonthlySavings: 0,
-      myRetirementIncome: 0,
+      myCurrentMonthlySavings: 500,
+      myRetirementIncome: 10000,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
       myInvestments: [
         {
           label: 'poupança',
-          rate: 3,
+          rate: 1.5,
           isSelected: true,
         },
         {
@@ -39,6 +40,7 @@ class Index extends Component {
       ],
       lifeEvents: [{}],
       retirementResults: false,
+      focusedInput: '',
     };
   }
 
@@ -156,6 +158,10 @@ class Index extends Component {
     }));
   };
 
+  setFocusedInput = inputId => {
+    this.setState({focusedInput: inputId})
+  }
+
   render() {
     return (
       <div>
@@ -191,10 +197,15 @@ class Index extends Component {
               handleRemoveTableRow={this.handleRemoveTableRow}
               handleInvestmentSelector={this.handleInvestmentSelector}
               handleInvestmentRateInput={this.handleInvestmentRateInput}
+              setFocusedInput={this.setFocusedInput}
             />
             {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
           </div>
         </div>
+        <Pig
+          focusedInput={this.state.focusedInput}
+          myInvestments={this.state.myInvestments}
+        />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */
