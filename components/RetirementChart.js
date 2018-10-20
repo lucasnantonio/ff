@@ -94,6 +94,19 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     };
 
+    const deathPoint = {
+      label,
+      data: [
+        {
+          x: investmentData.timeHistory[investmentData.timeHistory.length - 1].x,
+          y: investmentData.timeHistory[investmentData.timeHistory.length - 1].y,
+        },
+      ],
+      pointStyle: this.state.retirementIcon,
+      pointHoverRadius: 0,
+      borderColor: 'rgba(0, 0, 0, 1)',
+    };
+
     const eventSets = investmentData.events.map(e => ({
       label,
       data: [
@@ -130,6 +143,7 @@ class RetirementChart extends Component {
     this.chart.data = {
       datasets: [
         retirementPoint,
+        deathPoint,
         ...eventSets,
         verticalLine,
         selectedInvestmentSet,
