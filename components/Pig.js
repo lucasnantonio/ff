@@ -53,9 +53,18 @@ function inputMessages(label) {
 
 function selectedInvestmentMessage(label) {
   return {
-    poupança: ['poupança'],
-    'renda fixa': ['renda fixa'],
-    'renda variável': ['renda variável'],
+    poupança: [
+      {
+        message: 'poupança',
+        src: 'SPC',
+      },
+    ],
+    'renda fixa': [
+      { message: 'renda fixa' },
+    ],
+    'renda variável': [
+      { message: 'renda variável' },
+    ],
   }[label];
 }
 
@@ -84,10 +93,9 @@ class Pig extends Component {
   filterMessages(label, messages, inputValue) {
     if (label !== this.props.focusedInput) return [];
 
-    const filteredMessages = messages.filter(
+    return messages.filter(
       m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
     );
-    return filteredMessages.map(m => m.message);
   }
 
   getInvestmentMessages(investmentLabel) {
@@ -132,7 +140,18 @@ class Pig extends Component {
         {newMessage ? <div className={'pig'} /> : null}
         {newMessage
           && <div className={'message-box'}>
-            {messages.map((m, id) => <p key={id}>{m}</p>)}
+            {messages.map((m, id) => <div key={id}>
+              {('message' in m)
+                && <p className={'message-content'}>
+                  {m.message}
+                </p>
+              }
+              {('src' in m)
+                && <p className={'message-src'}>
+                  {m.src}
+                </p>
+              }
+            </div>)}
           </div>
 
         }
@@ -157,6 +176,12 @@ class Pig extends Component {
               border: 1px solid black;
               border-radius: 25px;
               max-width: 300px;
+            }
+            .message-content {
+              font-size: 14px;
+            }
+            .message-src {
+              font-size: 10px;
             }
           `}
         </style>
