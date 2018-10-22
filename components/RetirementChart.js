@@ -122,6 +122,23 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     }));
 
+
+    const minX = Math.min(...selectedInvestmentSet.data.map(v => v.x));
+
+    this.chart.data = {
+      datasets: [
+        retirementPoint,
+        deathPoint,
+        ...eventSets,
+        // verticalLine,
+        selectedInvestmentSet,
+        ...otherInvestmentsSets,
+      ],
+    };
+
+    this.chart.options.scales.xAxes[0].ticks.min = minX;
+    this.chart.update();
+
     const verticalLine = {
       label: 'verticalLine',
       data: [
@@ -140,20 +157,7 @@ class RetirementChart extends Component {
       pointHitRadius: 0,
     };
 
-    const minX = Math.min(...selectedInvestmentSet.data.map(v => v.x));
-
-    this.chart.data = {
-      datasets: [
-        retirementPoint,
-        deathPoint,
-        ...eventSets,
-        verticalLine,
-        selectedInvestmentSet,
-        ...otherInvestmentsSets,
-      ],
-    };
-
-    this.chart.options.scales.xAxes[0].ticks.min = minX;
+    this.chart.data.datasets.push(verticalLine);
     this.chart.update();
   }
 
