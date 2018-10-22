@@ -3,8 +3,6 @@ import Questions from '../components/Questions';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
-import Button from '../components/Button';
-import NavBar from '../components/Navbar';
 import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
@@ -167,8 +165,6 @@ class Index extends Component {
       <div>
         <Header />
         <div id="pageWrapper" className="vh-100 flex-l flex-column">
-          {/* <NavBar handleBack={this.handleBack} isShowingIntro={this.state.isShowingIntro} />
-         */}
           <Intro
             isShowingIntro={this.state.isShowingIntro}
             handleInput={this.handleInput}
