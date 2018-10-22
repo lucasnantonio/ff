@@ -66,7 +66,7 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrese,
     m += 1;
   }
 
-  while (age < lifeExpectancy) {
+  while (age <= lifeExpectancy) {
     balance = (1 + mIR) * balance - retirementIncome;
 
     chartData.push({ x: age / 12, y: balance });
