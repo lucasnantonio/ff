@@ -53,16 +53,32 @@ function inputMessages(label) {
 
 function selectedInvestmentMessage(label) {
   return {
-    poupança: [],
-    'renda fixa': [],
-    'renda variável': [],
+    poupança: ['poupança'],
+    'renda fixa': ['renda fixa'],
+    'renda variável': ['renda variável'],
   }[label];
 }
+
+let timeoutVar = 0;
 
 class Pig extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      open: true,
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevSelectedInvestment = prevProps.myInvestments.find(i => i.isSelected);
+    const newSelectedInvestment = this.props.myInvestments.find(i => i.isSelected);
+
+    if (prevSelectedInvestment === undefined) return null;
+
+    if (prevSelectedInvestment.label !== newSelectedInvestment.label) {
+      // show message again if the user changes the selected investment
+      this.setState({ open: true });
+    }
   }
 
   filterMessages(label, messages, inputValue) {
@@ -75,8 +91,7 @@ class Pig extends Component {
   }
 
   getInvestmentMessages(investmentLabel) {
-    const { focusedInput, myInvestments } = this.props;
-    const { label, rate } = myInvestments.find(investment => investment.label === investmentLabel);
+    const { label, rate } = this.props.myInvestments.find(investment => investment.label === investmentLabel);
     const messages = inputMessages(investmentLabel);
 
     return this.filterMessages(label, messages, rate);
@@ -87,19 +102,13 @@ class Pig extends Component {
     return this.filterMessages(label, messages, this.props[label]);
   }
 
-  poupancaAlert() {
-    const { focusedInput, myInvestments } = this.props;
-    const poup = myInvestments.find(investment => investment.label === 'poupança');
-    if (poup.isSelected) {
-      return ['Serião que você deixa o seu dinheiro na poupança?!'];
-    }
-
-    return [];
-  }
-
-  getSelectedInvestmentMessage() {
+  getSelectedInvestmentMessage(duration = 2000) {
     const selectedInvestment = this.props.myInvestments.find(i => i.isSelected);
     if (selectedInvestment === undefined) return [];
+
+    clearTimeout(timeoutVar);
+    timeoutVar = setTimeout(() => this.setState({ open: false }), duration);
+    if (!this.state.open) return [];
 
     return selectedInvestmentMessage(selectedInvestment.label);
   }
