@@ -130,7 +130,6 @@ class RetirementChart extends Component {
         retirementPoint,
         deathPoint,
         ...eventSets,
-        // verticalLine,
         selectedInvestmentSet,
         ...otherInvestmentsSets,
       ],
