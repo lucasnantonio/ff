@@ -71,7 +71,6 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrese,
 
     chartData.push({ x: age / 12, y: balance });
 
-    savings *= (1 + savingsIncrese);
     age += 1;
     m += 1;
   }
