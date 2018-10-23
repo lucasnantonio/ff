@@ -9,6 +9,8 @@ class InputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      duration: 3000,
+      direction: 'right-to-left',
       questions: [
         {
           id: 'myCurrentAge',
@@ -37,11 +39,15 @@ class InputContainer extends Component {
 
   handleTabChange = (e, index) => {
     const { tabs } = this.state;
+    const previousTab = tabs.filter(item => item.isSelected)[0];
+    const previousTabIndex = tabs.indexOf(previousTab);
+    const animationDirection = previousTabIndex >= index ? 'right-to-left' : 'left-to-right';
+    console.log('prevState', this.state.direction, 'currentState', animationDirection);
     const newState = tabs.map((item, itemIndex) => ({
       ...item,
       isSelected: index === itemIndex,
     }));
-    this.setState({ tabs: newState });
+    this.setState({ tabs: newState, direction: animationDirection });
   };
 
   canSubmit = () => {
@@ -60,12 +66,12 @@ class InputContainer extends Component {
         />
         <CSSTransitionGroup
           transitionName="crossfade"
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}
+          transitionEnterTimeout={this.state.duration}
+          transitionLeaveTimeout={this.state.duration}
           className="flex h-100 w-100 relative overflow-hidden"
         >
           {this.state.tabs[0].isSelected && (
-            <div className="flex flex-column h-100 absolute">
+            <div id="tab1" className="flex flex-column h-100 w-100 absolute ">
               <InputField
                 isEnabled
                 hasSteppers
@@ -116,7 +122,7 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.tabs[1].isSelected && (
-            <div key="2" className="flex flex-column h-100 absolute">
+            <div id="tab2" key="2" className="flex flex-column h-100 w-100 absolute ">
               <InputField
                 hasSteppers
                 label="Você pretende viver até quantos anos?"
@@ -153,7 +159,7 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.tabs[2].isSelected && (
-            <div key="3" className="flex flex-column h-100 absolute">
+            <div id="tab3" key="3" className="flex flex-column h-100 w-100 absolute ">
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage
@@ -179,13 +185,13 @@ class InputContainer extends Component {
         <style jsx>
           {`
             .crossfade-enter {
-              transform: translateX(-100%);
+              transform: translateX(${this.state.direction === 'left-to-right' ? '100%' : '-100%'});
               opacity: 0;
             }
 
             .crossfade-enter-active {
               transform: translateX(0px);
-              transition: all 300ms ease-in-out;
+              transition: all ${this.state.duration}ms ease-in-out;
               opacity: 1;
             }
 
@@ -195,8 +201,8 @@ class InputContainer extends Component {
             }
 
             .crossfade-leave-active {
-              transform: translateX(100%);
-              transition: all 300ms ease-in-out;
+              transform: translateX(${this.state.direction === 'left-to-right' ? '-100%' : '100%'});
+              transition: all ${this.state.duration}ms ease-in-out;
               opacity: 0;
             }
           `}
