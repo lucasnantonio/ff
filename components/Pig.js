@@ -4,22 +4,43 @@ function inputMessages(label) {
   const messages = {
     poupança: [
       {
-        lowerValue: 2,
-        upperValue: 3,
-        message: 'Você está otimista. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
+        lowerValue: 1.6,
+        upperValue: 3.5,
+        message: 'Você está otimista. O retorno médio real da poupança do ano 2000 até hoje foi de apenas 1.4% a.a.',
+        src: 'Fonte: www.ipeadata.gov.br',
       },
       {
-        lowerValue: 3,
-        upperValue: 20,
-        message: 'Caraio, me fala que poupança é essa que eu também vou colocar meu dinheiro lá. O retorno médio real da poupança de 01/2000 até hoje foi de apenas 1.5% a.a.',
+        lowerValue: 3.5,
+        upperValue: 5.1,
+        message: 'Desde o ano 2000, a poupança teve essa ordem de rendimento apenas em 2006. Você está certo dessa taxa?',
+        src: 'Fonte: www.ipeadata.gov.br',
+      },
+      {
+        lowerValue: 5.1,
+        upperValue: Number.POSITIVE_INFINITY,
+        message: 'Com esse rendimento na poupança eu nem trabalhava mais.',
       },
     ],
-    'renda fixa': [],
+    'renda fixa': [
+      {
+        lowerValue: 5,
+        upperValue: 7,
+        message: 'Você está otimista. O retorno médio real do tesouro SELIC do ano 2000 até hoje foi de apenas 4.7% a.a.',
+        src: 'Fonte: www.ipeadata.gov.br',
+      },
+      {
+        lowerValue: 7,
+        upperValue: 9,
+        message: 'Desde o ano 2000, a renda fixa teve essa ordem de rendimento apenas em 4 anos. Você está certo dessa taxa?',
+        src: 'Fonte: www.ipeadata.gov.br',
+      },
+    ],
     'renda variável': [
       {
         lowerValue: 20,
-        upperValue: 30,
-        message: 'Parabéns, temos um novo Warren Buffett (ou um novo otário).',
+        upperValue: Number.POSITIVE_INFINITY,
+        message: 'Parabéns, temos um novo Warren Buffett. O retorno anual da Berkshire Hathaway é de 20,9%.',
+        src: 'Fonte: Berkshire Hathaway. Annual Report, 2017.',
       },
     ],
     myCurrentAge: [
