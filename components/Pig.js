@@ -32,9 +32,11 @@ function inputMessages(label) {
     ],
     myCurrentMonthlySavings: [
       {
-        lowerValue: 500,
+        lowerValue: 0.01,
         upperValue: 10000,
-        message: 'Parabéns. Você está acima da média da população.',
+        message: 'Sabia que apenas 31% dos brasileiros pouparam parte dos seus rendimentos nos últimos 12 meses? Você faz parte desse grupo.',
+        src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
+
       },
       {
         lowerValue: 10000,
@@ -45,6 +47,14 @@ function inputMessages(label) {
         lowerValue: 30000,
         upperValue: Number.POSITIVE_INFINITY,
         message: 'Ah, tá de sacanagem que você poupa tudo isso por mês.',
+      },
+    ],
+    myRetirementIncome: [
+      {
+        lowerValue: 5645.81,
+        upperValue: Number.POSITIVE_INFINITY,
+        message: 'Você pretende se aposentar com um valor acima do teto atual do INSS (R$ 5645,81), portanto, provavelente você precisa se preocupar em complementar a sua aposentadoria.',
+        src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
       },
     ],
   };
@@ -126,6 +136,7 @@ class Pig extends Component {
     const messages = [];
     messages.push(...this.getInputMessages('myCurrentAge'));
     messages.push(...this.getInputMessages('myCurrentMonthlySavings'));
+    messages.push(...this.getInputMessages('myRetirementIncome'));
     messages.push(...this.getInvestmentMessages('poupança'));
     messages.push(...this.getInvestmentMessages('renda fixa'));
     messages.push(...this.getInvestmentMessages('renda variável'));
