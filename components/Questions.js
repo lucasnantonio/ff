@@ -9,8 +9,8 @@ class InputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      duration: 3000,
-      direction: 'right-to-left',
+      duration: 200,
+      direction: '',
       questions: [
         {
           id: 'myCurrentAge',
@@ -42,7 +42,6 @@ class InputContainer extends Component {
     const previousTab = tabs.filter(item => item.isSelected)[0];
     const previousTabIndex = tabs.indexOf(previousTab);
     const animationDirection = previousTabIndex >= index ? 'right-to-left' : 'left-to-right';
-    console.log('prevState', this.state.direction, 'currentState', animationDirection);
     const newState = tabs.map((item, itemIndex) => ({
       ...item,
       isSelected: index === itemIndex,
@@ -65,7 +64,7 @@ class InputContainer extends Component {
           handleTabChange={this.handleTabChange}
         />
         <CSSTransitionGroup
-          transitionName="crossfade"
+          transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
           transitionLeaveTimeout={this.state.duration}
           className="flex h-100 w-100 relative overflow-hidden"
@@ -184,24 +183,46 @@ class InputContainer extends Component {
         </CSSTransitionGroup>
         <style jsx>
           {`
-            .crossfade-enter {
-              transform: translateX(${this.state.direction === 'left-to-right' ? '100%' : '-100%'});
+            .right-to-left-enter {
+              transform: translateX(100%);
               opacity: 0;
             }
 
-            .crossfade-enter-active {
+            .right-to-left-enter.right-to-left-enter-active {
               transform: translateX(0px);
               transition: all ${this.state.duration}ms ease-in-out;
               opacity: 1;
             }
 
-            .crossfade-leave {
+            .right-to-left-leave {
               transform: translateX(0px);
               opacity: 1;
             }
 
-            .crossfade-leave-active {
-              transform: translateX(${this.state.direction === 'left-to-right' ? '-100%' : '100%'});
+            .right-to-left-leave.right-to-left-leave-active {
+              transform: translateX(-100%);
+              transition: all ${this.state.duration}ms ease-in-out;
+              opacity: 0;
+            }
+
+            .left-to-right-enter {
+              transform: translateX(-100%);
+              opacity: 0;
+            }
+
+            .left-to-right-enter.left-to-right-enter-active {
+              transform: translateX(0px);
+              transition: all ${this.state.duration}ms ease-in-out;
+              opacity: 1;
+            }
+
+            .left-to-right-leave {
+              transform: translateX(0px);
+              opacity: 1;
+            }
+
+            .left-to-right-leave.left-to-right-leave-active {
+              transform: translateX(100%);
               transition: all ${this.state.duration}ms ease-in-out;
               opacity: 0;
             }
