@@ -66,8 +66,7 @@ function selectedInvestmentMessage(label) {
   return {
     poupança: [
       {
-        message: 'poupança',
-        src: 'SPC',
+        message: 'Aff, poupança... toma vergonha nessa cara.',
       },
     ],
     'renda fixa': [
@@ -121,7 +120,7 @@ class Pig extends Component {
     return this.filterMessages(label, messages, this.props[label]);
   }
 
-  getSelectedInvestmentMessage(duration = 2000) {
+  getSelectedInvestmentMessage(duration = 5000) {
     const selectedInvestment = this.props.myInvestments.find(i => i.isSelected);
     if (selectedInvestment === undefined) return [];
 
