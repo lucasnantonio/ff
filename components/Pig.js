@@ -25,15 +25,18 @@ function inputMessages(label) {
     myCurrentAge: [
       {
         lowerValue: 0,
-        upperValue: 22,
-        message: 'Está começando cedo, hein. Parabéns.',
+        upperValue: 29,
+        message: 'Está começando cedo, parabéns. A idade média das pessoas que começam a poupar para a aposentadoria é 28 anos.',
+        src: 'Fonte: SPC Brasil. O preparo para a aposentadoria no Brasil. Abril 2018.',
       },
     ],
     myCurrentMonthlySavings: [
       {
-        lowerValue: 500,
+        lowerValue: 0.01,
         upperValue: 10000,
-        message: 'Parabéns. Você está acima da média da população.',
+        message: 'Sabia que apenas 31% dos brasileiros pouparam parte dos seus rendimentos nos últimos 12 meses? Você faz parte desse grupo.',
+        src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
+
       },
       {
         lowerValue: 10000,
@@ -46,6 +49,14 @@ function inputMessages(label) {
         message: 'Ah, tá de sacanagem que você poupa tudo isso por mês.',
       },
     ],
+    myRetirementIncome: [
+      {
+        lowerValue: 5645.81,
+        upperValue: Number.POSITIVE_INFINITY,
+        message: 'Você pretende se aposentar com um valor acima do teto atual do INSS (R$ 5645,81), portanto, provavelente você precisa se preocupar em complementar a sua aposentadoria.',
+        src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
+      },
+    ],
   };
 
   return messages[label];
@@ -53,9 +64,17 @@ function inputMessages(label) {
 
 function selectedInvestmentMessage(label) {
   return {
-    poupança: ['poupança'],
-    'renda fixa': ['renda fixa'],
-    'renda variável': ['renda variável'],
+    poupança: [
+      {
+        message: 'Aff, poupança... toma vergonha nessa cara.',
+      },
+    ],
+    'renda fixa': [
+      { message: 'renda fixa' },
+    ],
+    'renda variável': [
+      { message: 'renda variável' },
+    ],
   }[label];
 }
 
@@ -84,10 +103,9 @@ class Pig extends Component {
   filterMessages(label, messages, inputValue) {
     if (label !== this.props.focusedInput) return [];
 
-    const filteredMessages = messages.filter(
+    return messages.filter(
       m => (inputValue >= m.lowerValue && inputValue < m.upperValue),
     );
-    return filteredMessages.map(m => m.message);
   }
 
   getInvestmentMessages(investmentLabel) {
@@ -102,7 +120,7 @@ class Pig extends Component {
     return this.filterMessages(label, messages, this.props[label]);
   }
 
-  getSelectedInvestmentMessage(duration = 2000) {
+  getSelectedInvestmentMessage(duration = 5000) {
     const selectedInvestment = this.props.myInvestments.find(i => i.isSelected);
     if (selectedInvestment === undefined) return [];
 
@@ -117,6 +135,7 @@ class Pig extends Component {
     const messages = [];
     messages.push(...this.getInputMessages('myCurrentAge'));
     messages.push(...this.getInputMessages('myCurrentMonthlySavings'));
+    messages.push(...this.getInputMessages('myRetirementIncome'));
     messages.push(...this.getInvestmentMessages('poupança'));
     messages.push(...this.getInvestmentMessages('renda fixa'));
     messages.push(...this.getInvestmentMessages('renda variável'));
@@ -132,7 +151,18 @@ class Pig extends Component {
         {newMessage ? <div className={'pig'} /> : null}
         {newMessage
           && <div className={'message-box'}>
-            {messages.map((m, id) => <p key={id}>{m}</p>)}
+            {messages.map((m, id) => <div key={id}>
+              {('message' in m)
+                && <p className={'message-content'}>
+                  {m.message}
+                </p>
+              }
+              {('src' in m)
+                && <p className={'message-src'}>
+                  {m.src}
+                </p>
+              }
+            </div>)}
           </div>
 
         }
@@ -157,6 +187,12 @@ class Pig extends Component {
               border: 1px solid black;
               border-radius: 25px;
               max-width: 300px;
+            }
+            .message-content {
+              font-size: 14px;
+            }
+            .message-src {
+              font-size: 10px;
             }
           `}
         </style>
