@@ -25,8 +25,9 @@ function inputMessages(label) {
     myCurrentAge: [
       {
         lowerValue: 0,
-        upperValue: 22,
-        message: 'Está começando cedo, hein. Parabéns.',
+        upperValue: 29,
+        message: 'Está começando cedo, parabéns. A idade média das pessoas que começam a poupar para a aposentadoria é 28 anos.',
+        src: 'Fonte: SPC Brasil. O preparo para a aposentadoria no Brasil. Abril 2018.',
       },
     ],
     myCurrentMonthlySavings: [
