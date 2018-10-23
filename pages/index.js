@@ -209,6 +209,7 @@ class Index extends Component {
           myCurrentAge={this.state.myCurrentAge}
           myCurrentMonthlySavings={this.state.myCurrentMonthlySavings}
           myInvestments={this.state.myInvestments}
+          myRetirementIncome={this.state.myRetirementIncome}
         />
         <style jsx global>{`
           ::-webkit-scrollbar {
