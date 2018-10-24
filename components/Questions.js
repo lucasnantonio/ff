@@ -5,11 +5,14 @@ import InputTable from './InputTable';
 import MultiSelect from './MultiSelect';
 import QuestionTabs from './QuestionTabs';
 
+let timeoutVar = 0;
+
 class InputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      duration: 200,
+      targetTabIndex: 0,
+      duration: 400,
       direction: '',
       questions: [
         {
@@ -37,16 +40,33 @@ class InputContainer extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { tabs } = this.state;
+    const selectedTab = tabs.find(item => item.isSelected);
+    const selectedTabIndex = tabs.indexOf(selectedTab);
+
+    const duration = selectedTabIndex === prevState.targetTabIndex ? 0 : this.state.duration;
+
+    if (selectedTabIndex !== this.state.targetTabIndex) {
+      const newState = tabs.map((item, itemIndex) => ({
+        ...item,
+        isSelected: selectedTabIndex + (selectedTabIndex < this.state.targetTabIndex ? 1 : -1) === itemIndex,
+      }));
+      clearTimeout(timeoutVar);
+      timeoutVar = setTimeout(() => this.setState({ tabs: newState }), duration);
+    }
+  }
+
   handleTabChange = (e, index) => {
     const { tabs } = this.state;
     const previousTab = tabs.filter(item => item.isSelected)[0];
     const previousTabIndex = tabs.indexOf(previousTab);
     const animationDirection = previousTabIndex >= index ? 'right-to-left' : 'left-to-right';
-    const newState = tabs.map((item, itemIndex) => ({
-      ...item,
-      isSelected: index === itemIndex,
-    }));
-    this.setState({ tabs: newState, direction: animationDirection });
+
+    const nTabTransitions = Math.abs(index - previousTabIndex);
+    const duration = 400 / nTabTransitions; // so that the total transition time is constant
+
+    this.setState({ direction: animationDirection, targetTabIndex: index, duration });
   };
 
   canSubmit = () => {
