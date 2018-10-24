@@ -12,6 +12,7 @@ class InputContainer extends Component {
     super(props);
     this.state = {
       targetTabIndex: 0,
+      currentTabIndex: 0,
       duration: 400,
       direction: '',
       questions: [
@@ -41,19 +42,17 @@ class InputContainer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { tabs } = this.state;
-    const selectedTab = tabs.find(item => item.isSelected);
-    const selectedTabIndex = tabs.indexOf(selectedTab);
+    const { currentTabIndex } = this.state;
 
-    const duration = selectedTabIndex === prevState.targetTabIndex ? 0 : this.state.duration;
+    if (currentTabIndex !== this.state.targetTabIndex) {
+      const nextTabIndex = currentTabIndex + (currentTabIndex < this.state.targetTabIndex ? 1 : -1);
 
-    if (selectedTabIndex !== this.state.targetTabIndex) {
-      const newState = tabs.map((item, itemIndex) => ({
-        ...item,
-        isSelected: selectedTabIndex + (selectedTabIndex < this.state.targetTabIndex ? 1 : -1) === itemIndex,
-      }));
+      // wait for the animation to end before changing to the next tab
+      // if it is the first animation, start it right away.
+      const duration = currentTabIndex === prevState.targetTabIndex ? 0 : this.state.duration;
+
       clearTimeout(timeoutVar);
-      timeoutVar = setTimeout(() => this.setState({ tabs: newState }), duration);
+      timeoutVar = setTimeout(() => this.setState({ currentTabIndex: nextTabIndex }), duration);
     }
   }
 
@@ -66,7 +65,14 @@ class InputContainer extends Component {
     const nTabTransitions = Math.abs(index - previousTabIndex);
     const duration = 400 / nTabTransitions; // so that the total transition time is constant
 
-    this.setState({ direction: animationDirection, targetTabIndex: index, duration });
+    const newState = tabs.map((item, itemIndex) => ({
+      ...item,
+      isSelected: index === itemIndex,
+    }));
+
+    this.setState({
+      tabs: newState, direction: animationDirection, targetTabIndex: index, duration,
+    });
   };
 
   canSubmit = () => {
@@ -89,7 +95,7 @@ class InputContainer extends Component {
           transitionLeaveTimeout={this.state.duration}
           className="flex h-100 w-100 relative overflow-hidden"
         >
-          {this.state.tabs[0].isSelected && (
+          {this.state.currentTabIndex === 0 && (
             <div id="tab1" className="flex flex-column h-100 w-100 absolute ">
               <InputField
                 isEnabled
@@ -140,7 +146,7 @@ class InputContainer extends Component {
               />
             </div>
           )}
-          {this.state.tabs[1].isSelected && (
+          {this.state.currentTabIndex === 1 && (
             <div id="tab2" key="2" className="flex flex-column h-100 w-100 absolute ">
               <InputField
                 hasSteppers
@@ -177,7 +183,7 @@ class InputContainer extends Component {
               />
             </div>
           )}
-          {this.state.tabs[2].isSelected && (
+          {this.state.currentTabIndex === 2 && (
             <div id="tab3" key="3" className="flex flex-column h-100 w-100 absolute ">
               {this.props.myInvestments.map((item, index) => (
                 <InputField
