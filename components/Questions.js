@@ -71,7 +71,10 @@ class InputContainer extends Component {
     }));
 
     this.setState({
-      tabs: newState, direction: animationDirection, targetTabIndex: index, duration,
+      tabs: newState,
+      direction: animationDirection,
+      targetTabIndex: index,
+      duration,
     });
   };
 
@@ -106,7 +109,7 @@ class InputContainer extends Component {
                 stepperIncrement="1"
                 min="1"
                 max="100"
-                handleInput={this.props.handleAgeInput}
+                handleInput={this.props.handleInput}
                 handleInputButtons={this.props.handleInputButtons}
                 hasTips
                 setFocusedInput={this.props.setFocusedInput}
