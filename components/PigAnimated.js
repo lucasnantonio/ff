@@ -3,7 +3,7 @@ import React from 'react';
 const PigAnimated = () => (
   <div
     id="svg-bg"
-    className="w-100 absolute z-1 overflow-hidden"
+    className="w-100 h-100 absolute z-1 overflow-hidden"
     // style={{ right: '0' }}
   >
     <svg
