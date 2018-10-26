@@ -32,7 +32,7 @@ class IntroQuestion extends Component {
           />
         </div>
         <button
-          className="w-auto-ns ph5-ns w-100 h3-ns h5 mt0-ns mt4 bn pointer bg-black-80 br-pill white ttu b pv3"
+          className="w-auto-ns ph5-ns w-100 h3-ns h5 mt0-ns mt4 bn pointer bg-black-80 br-pill white pv3 titan fw1 f4"
           onClick={this.props.startApp}
         >
           Começar

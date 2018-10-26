@@ -11,7 +11,7 @@ class Button extends Component {
       <button
         className={`${
           this.props.isEnabled ? 'bg-green grow pointer' : 'bg-light-gray'
-        } ph4 pv3 h3 white b ttu  bn br-pill`}
+        } ph4 pv3 h3 white bn br-pill`}
         onClick={this.props.isEnabled ? this.props.onClick : undefined}
       >
         {this.props.label}
