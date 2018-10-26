@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Logo from './Logo';
 import IntroQuestion from './IntroQuestion';
 import CoinParticles from './CoinParticles';
+import PigAnimated from './PigAnimated';
 
 class Intro extends Component {
   state = {
@@ -20,9 +21,10 @@ class Intro extends Component {
           this.props.isShowingIntro ? 'h-100' : 'h4 overflow-hidden'
         } w-100 bg-green flex flex-column justify-center`}
       >
-        <div className="flex flex-column h-100 ph5-ns ph4 justify-center">
+        <div id="hero" className="flex flex-column h-100 ph5-ns ph4 justify-center relative">
           <div>
             <Logo
+              className="z-max"
               onClick={this.props.handleBack}
               size={this.props.isShowingIntro ? 'big' : 'small'}
             />
@@ -30,10 +32,11 @@ class Intro extends Component {
           <h3
             className={`${
               this.props.isShowingIntro ? 'flex' : 'dn'
-            } f4 measure-narrow white mb5 fw3`}
+            } f4 measure-narrow white mb5 fw3 z-2`}
           >
             Descubra quando você vai poder mandar tudo à merda!
           </h3>
+          {this.props.isShowingIntro && <PigAnimated />}
         </div>
         <IntroQuestion
           isShowingIntro={this.props.isShowingIntro}
@@ -52,6 +55,10 @@ class Intro extends Component {
             #intro {
               transition: all 0.5s;
             }
+            // #hero {
+            //   background-image: url('../static/hero-pig.svg');
+            //   background-size: cover;
+            // }
           `}
         </style>
       </div>
