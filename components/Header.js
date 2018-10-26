@@ -6,6 +6,7 @@ const Header = () => (
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,700,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Neuton:400" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Titan+One" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <style jsx global>
       {`
         html {
