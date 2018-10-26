@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
-import Button from './Button';
 
 class IntroQuestion extends Component {
   state = {};
