@@ -86,7 +86,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className={'flex flex-column h-100 w-50-l w-100 pa5-ns pa4'}>
+      <div id="inputContainer" className={'flex-l flex-column-l h-100-l w-50-l pa5-ns pa4'}>
         <QuestionTabs
           isShowingCalculation={this.props.isShowingCalculation}
           tabs={this.state.tabs}

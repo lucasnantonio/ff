@@ -5,11 +5,12 @@ import MultiSelectOption from './MultiSelectOption';
 
 const MultiSelect = props => (
   <InputFieldWrapper
+    wrap
     isShowingCalculation={props.isShowingCalculation}
     hiddenBorder={props.hiddenBorder}
   >
     <InputLabel label={props.label} />
-    <div className="flex flex-row-ns flex-column items-center mb0-ns mb3">
+    <div className="flex flex-row flex items-center-l mb0-ns mb3 justify-end-l justify-between w-100 mt0-ns mt4">
       {props.options.map((item, index) => (
         <MultiSelectOption
           isEnabled={props.isEnabled}
