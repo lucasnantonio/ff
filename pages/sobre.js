@@ -1,5 +1,7 @@
-import React from 'react';
+
 import Header from '../components/Header';
+import React, { Component } from 'react';
+import { initGA, logPageView } from '../utils/analytics';
 
 const Index = () => (
   <div>
