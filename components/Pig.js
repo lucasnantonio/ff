@@ -70,6 +70,7 @@ function inputMessages(label) {
         lowerValue: 30000,
         upperValue: Number.POSITIVE_INFINITY,
         message: 'Ah, tá de sacanagem que você poupa tudo isso por mês.',
+        reaction: 2,
       },
     ],
     myRetirementIncome: [
@@ -111,7 +112,8 @@ function reactionSVG(reactionIndex) {
     <svg viewBox="0 0 100 30">
       <circle
         cx={'50%'}
-        cy={0} r={r}
+        cy={0}
+        r={r}
         style={
           {
             stroke: '#000',
@@ -140,9 +142,28 @@ function reactionSVG(reactionIndex) {
     </svg>
   );
 
+  const face2 = (
+    <svg viewBox="0 0 100 30">
+      <line
+        x1={'45%'}
+        x2={'55%'}
+        y1={'5%'}
+        y2={'5%'}
+        style={
+          {
+            strokeWidth: 10,
+            stroke: '#000',
+            fill: '#000',
+          }
+        }
+      />
+    </svg>
+  );
+
   return {
     0: face0,
     1: face1,
+    2: face2,
   }[reactionIndex];
 }
 
