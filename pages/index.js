@@ -176,7 +176,7 @@ class Index extends Component {
           />
           <div
             id="bottomWrapper"
-            className={` ${this.state.isShowingIntro ? 'dn' : 'flex-ns flex-row-ns h-100'}`}
+            className={` ${this.state.isShowingIntro ? 'dn' : 'flex-l flex-row-l h-100'}`}
           >
             <Questions
               {...this.state}

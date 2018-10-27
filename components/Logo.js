@@ -5,7 +5,7 @@ const Logo = props => (
     onClick={props.onClick}
     className={`${
       props.size === 'small' ? 'f5 pointer' : 'f1-l f2'
-    } white lh-solid z-max titan fw1 tl-ns tc`}
+    } white lh-solid z-max titan fw1 tl-l tc`}
   >
     Quando <br /> vou me <br /> aposentar?
     <style jsx>
