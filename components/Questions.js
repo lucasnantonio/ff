@@ -96,11 +96,11 @@ class InputContainer extends Component {
           transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
           transitionLeaveTimeout={this.state.duration}
-          className="flex-l h-100 relative"
+          className="flex-l h-100 relative overflow-hidden"
           component="div"
         >
           {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="flex flex-column h-100 w-100 absolute ">
+            <div id="tab1" className="flex flex-column h-100 w-100 absolute">
               <InputField
                 isEnabled
                 hasSteppers
