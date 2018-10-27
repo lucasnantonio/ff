@@ -18,17 +18,7 @@ export default function getRetirementChart(ctx, handleHover) {
         },
       },
       tooltips: {
-        mode: 'x',
-        intersect: false,
-        backgroundColor: '#000',
-        displayColors: false,
-        xPadding: 20,
-        yPadding: 20,
-        bodySpacing: 10,
-        callbacks: {
-          title: tooltipItem => `${Math.floor(tooltipItem[0].xLabel)} anos`,
-          label: tooltipItem => `R$ ${parseFloat(tooltipItem.yLabel.toFixed(2)).toLocaleString('pt-br')}`,
-        },
+        enabled: false,
       },
       animation: {
         duration: 0, // in milliseconds
@@ -54,15 +44,7 @@ export default function getRetirementChart(ctx, handleHover) {
         ],
         yAxes: [
           {
-            scaleLabel: {
-              display: true,
-            },
-            ticks: {
-              suggestedMin: 0,
-              callback(value, index, values) {
-                return `R$${value / 1000 < 1000 ? `${value / 1000}mil` : `${value / 1000000}MM`}`;
-              },
-            },
+            display: false,
           },
         ],
       },
