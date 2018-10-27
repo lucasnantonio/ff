@@ -96,7 +96,7 @@ class InputContainer extends Component {
           transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
           transitionLeaveTimeout={this.state.duration}
-          className="flex h-100 w-100 relative overflow-hidden"
+          className="flex-l h-100 w-100 relative overflow-hidden"
         >
           {this.state.currentTabIndex === 0 && (
             <div id="tab1" className="flex flex-column h-100 w-100 absolute ">
