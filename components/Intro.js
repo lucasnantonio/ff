@@ -21,7 +21,10 @@ class Intro extends Component {
           this.props.isShowingIntro ? 'vh-100' : 'h4 overflow-hidden'
         } w-100 bg-green flex flex-column justify-center`}
       >
-        <div id="hero" className="flex flex-column h-100 ph5-ns ph4 justify-center relative">
+        <div
+          id="hero"
+          className="flex flex-column h-100 ph5-ns ph4 justify-center relative overflow-hidden"
+        >
           <div className="z-max">
             <Logo
               onClick={this.props.handleBack}
