@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
+import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
@@ -42,6 +44,16 @@ class Index extends Component {
     };
   }
 
+  componentDidMount() {
+    if (process.env.NODE_ENV === 'development') return null;
+
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const nextRetirementResults = getRetirementResults(this.state);
     if (JSON.stringify(prevState.retirementResults) !== JSON.stringify(nextRetirementResults)) {
@@ -51,6 +63,7 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
+    logEvent('User', 'clicked start');
   };
 
   showFirstCalculation = () => {
@@ -99,6 +112,10 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
     this.setState({ myInvestments: ressetedInvestment, isShowingCalculation: true });
+
+    // only for analytics
+    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
+    logEvent('User', 'Selected Investment');
   };
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
