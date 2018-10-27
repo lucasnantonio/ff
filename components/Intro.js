@@ -22,9 +22,8 @@ class Intro extends Component {
         } w-100 bg-green flex flex-column justify-center`}
       >
         <div id="hero" className="flex flex-column h-100 ph5-ns ph4 justify-center relative">
-          <div>
+          <div className="z-max">
             <Logo
-              className="z-max"
               onClick={this.props.handleBack}
               size={this.props.isShowingIntro ? 'big' : 'small'}
             />
