@@ -234,7 +234,8 @@ class Index extends Component {
           }
           ::selection {
             color: white;
-            background-color: #2ea776;
+            background-color: #fbadaf;
+            opacity: 1;
           }
           .noSelect {
             -webkit-touch-callout: none;
