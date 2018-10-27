@@ -11,9 +11,11 @@ export const logPageView = () => {
   ReactGA.pageview(window.location.pathname);
 };
 
-export const logEvent = (category = '', action = '') => {
+export const logEvent = (category = '', action = '', label, value) => {
   if (category && action) {
-    console.log(`category: ${category}, action: ${action}`);
-    ReactGA.event({ category, action });
+    console.log(`category: ${category}, action: ${action}, label: ${label}, value: ${value}`);
+    ReactGA.event({
+      category, action, label, value,
+    });
   }
 };

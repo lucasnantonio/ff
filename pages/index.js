@@ -61,7 +61,7 @@ class Index extends Component {
 
   startApp = () => {
     this.setState({ isShowingIntro: false });
-    logEvent('User', 'startApp');
+    logEvent('User', 'clicked start');
   };
 
   showFirstCalculation = () => {
@@ -110,6 +110,10 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
     this.setState({ myInvestments: ressetedInvestment, isShowingCalculation: true });
+
+    // only for analytics
+    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
+    logEvent('User', 'Selected Investment');
   };
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
