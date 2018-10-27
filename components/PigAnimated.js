@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PigAnimated = () => (
-  <div id="svg-bg" className="absolute w-100 h-100" style={{ right: 0 }}>
+  <div id="svg-bg" className="absolute w-100 h-100 mt0-l mt5-ns mt6" style={{ right: 0 }}>
     <svg
       className="absolute"
       style={{ position: 'absolute', right: 0 }}
