@@ -50,6 +50,11 @@ function inputMessages(label) {
         message: 'Está começando cedo, parabéns. A idade média das pessoas que começam a poupar para a aposentadoria é 28 anos.',
         src: 'Fonte: SPC Brasil. O preparo para a aposentadoria no Brasil. Abril 2018.',
       },
+      {
+        lowerValue: 50,
+        upperValue: 60,
+        message: 'Nunca é tarde para começar.',
+      },
     ],
     myCurrentMonthlySavings: [
       {
@@ -90,14 +95,32 @@ function selectedInvestmentMessage(label) {
   return {
     poupança: [
       {
-        message: 'Aff, poupança... toma vergonha nessa cara.',
+        message: ('A poupança não é a melhor opção para quem busca a '
+        + 'liberdade financeira. Por curiosidade, veja as outras opções de '
+        + 'investimento e a diferença que isso faz.'),
+        reaction: 2,
+      },
+      {
+        message: ('Apesar disso, 39% dos brasileiros que se preparam para a '
+        + 'aposentadoria deixam o dinheiro na poupança.'),
+        src: 'Fonte: SPC Brasil. O preparo para a aposentadoria no Brasil. Abril 2018.',
       },
     ],
     'renda fixa': [
-      { message: 'renda fixa' },
+      {
+        message: ('Investimentos de renda fixa são uma boa opção de baixo risco '
+        + 'para quem está focado no longo prazo.'),
+        reaction: 0,
+      },
     ],
     'renda variável': [
-      { message: 'renda variável' },
+      {
+        message: ('Investimentos de renda variável são uma boa opção para quem '
+        + 'está focado no longo prazo. Não é todo mundo que se sente '
+        + 'confortável em ver o dinheiro oscilando todo dia, portanto, é importante '
+        + 'checar o seu perfil de investimento.'),
+        reaction: 0,
+      },
     ],
   }[label];
 }
@@ -232,7 +255,7 @@ class Pig extends Component {
     return this.filterMessages(label, messages, this.props[label]);
   }
 
-  getSelectedInvestmentMessage(duration = 5000) {
+  getSelectedInvestmentMessage(duration = 7000) {
     const selectedInvestment = this.props.myInvestments.find(i => i.isSelected);
     if (selectedInvestment === undefined) return [];
 
@@ -282,16 +305,6 @@ class Pig extends Component {
         }
         <style jsx>
           {`
-            .pig {
-              position: fixed;
-              bottom: 24px;
-              right: 24px;
-              padding: 24px;
-              background-color: #F8BBD0;
-              border-radius: 25px;
-              min-width: 50px;
-              min-height: 50px;
-            }
             .message-box {
               position: fixed;
               bottom: 70px;
