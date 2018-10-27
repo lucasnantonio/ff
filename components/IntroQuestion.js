@@ -12,7 +12,7 @@ class IntroQuestion extends Component {
           this.props.isShowingIntro
             ? 'pa5-ns pa4 bg-white flex flex-row-ns flex-column justify-between items-center'
             : 'h0'
-        }   overflow-hidden h-auto-l h-50`}
+        }   overflow-hidden`}
       >
         <div className="w-50-l w-100 pr5-l">
           <InputField
