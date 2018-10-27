@@ -21,10 +21,13 @@ class Intro extends Component {
           this.props.isShowingIntro ? 'vh-100' : 'h4 overflow-hidden'
         } w-100 bg-green flex flex-column justify-center`}
       >
-        <div id="hero" className="flex flex-column h-100 ph5-ns ph4 justify-center relative">
-          <div>
+        <div
+          id="hero"
+          className={`flex flex-column h-100 ph5-ns ph4 justify-center ${this.props
+            .isShowingIntro && 'justify-between'} relative overflow-hidden`}
+        >
+          <div className="z-max">
             <Logo
-              className="z-max"
               onClick={this.props.handleBack}
               size={this.props.isShowingIntro ? 'big' : 'small'}
             />
@@ -32,7 +35,7 @@ class Intro extends Component {
           <h3
             className={`${
               this.props.isShowingIntro ? 'flex' : 'dn'
-            } f3-l f4 measure-narrow light-green mb5 fw3 z-2 lh-copy tl-ns tc`}
+            } f3-l f4 measure-narrow light-green-l white-90 mb5 fw3 z-2 lh-copy tl-ns tc`}
           >
             Descubra quando você vai ter grana pra mandar tudo à merda!
           </h3>
