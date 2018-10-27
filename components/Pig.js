@@ -57,12 +57,14 @@ function inputMessages(label) {
         upperValue: 10000,
         message: 'Sabia que apenas 31% dos brasileiros pouparam parte dos seus rendimentos nos últimos 12 meses? Você faz parte desse grupo.',
         src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
+        reaction: 0,
 
       },
       {
         lowerValue: 10000,
         upperValue: 30000,
         message: 'Aooow chefia. Tá cheio da nota, hein?!',
+        reaction: 1,
       },
       {
         lowerValue: 30000,
@@ -97,6 +99,74 @@ function selectedInvestmentMessage(label) {
       { message: 'renda variável' },
     ],
   }[label];
+}
+
+function getReaction(messages) {
+  return Math.max(...messages.map(m => (m.reaction ? m.reaction : 0)));
+}
+
+function reactionSVG(reactionIndex) {
+  const r = 25;
+  const face0 = (
+    <svg viewBox="0 0 100 30">
+      <circle
+        cx={'50%'}
+        cy={0} r={r}
+        style={
+          {
+            stroke: '#000',
+            fill: '#000',
+          }
+        }
+      />
+    </svg>
+  );
+
+  const face1 = (
+    <svg viewBox="0 0 100 30">
+      <line
+        x1={'25%'}
+        x2={'75%'}
+        y1={'5%'}
+        y2={'5%'}
+        style={
+          {
+            strokeWidth: 10,
+            stroke: '#000',
+            fill: '#000',
+          }
+        }
+      />
+    </svg>
+  );
+
+  return {
+    0: face0,
+    1: face1,
+  }[reactionIndex];
+}
+
+function renderPig(messages) {
+  const reactionIndex = getReaction(messages);
+
+  return (
+    <div style={
+      {
+        position: 'fixed',
+        bottom: 24,
+        right: 24,
+      }}>
+      <img
+        src={'../static/pig.svg'}
+        style={
+          {
+            width: 48,
+          }}>
+      </img>
+      {reactionSVG(reactionIndex)}
+    </div>
+
+  );
 }
 
 let timeoutVar = 0;
@@ -164,12 +234,14 @@ class Pig extends Component {
     return messages;
   }
 
+
   render() {
     const messages = this.getAllMessages();
     const newMessage = messages.length > 0;
     return (
       <div >
-        {newMessage ? <div className={'pig'} /> : null}
+
+        {newMessage ? renderPig(messages) : null}
         {newMessage
           && <div className={'message-box'}>
             {messages.map((m, id) => <div key={id}>
