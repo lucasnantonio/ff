@@ -23,7 +23,8 @@ class Intro extends Component {
       >
         <div
           id="hero"
-          className="flex flex-column h-100 ph5-ns ph4 justify-center-ns justify-between relative overflow-hidden"
+          className={`flex flex-column h-100 ph5-ns ph4 justify-center ${this.props
+            .isShowingIntro && 'justify-between'} relative overflow-hidden`}
         >
           <div className="z-max">
             <Logo
