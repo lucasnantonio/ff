@@ -139,6 +139,8 @@ class InputContainer extends Component {
                 placeholder={this.props.myRetirementIncome}
                 value={this.props.myRetirementIncome}
                 handleInput={this.props.handleCurrencyInput}
+                hasTips
+                setFocusedInput={this.props.setFocusedInput}
               />
               <MultiSelect
                 isEnabled={this.canSubmit()}
