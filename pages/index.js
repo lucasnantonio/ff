@@ -45,6 +45,8 @@ class Index extends Component {
   }
 
   componentDidMount() {
+    if (process.env.NODE_ENV === 'development') return null;
+
     if (!window.GA_INITIALIZED) {
       initGA();
       window.GA_INITIALIZED = true;

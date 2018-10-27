@@ -13,7 +13,6 @@ export const logPageView = () => {
 
 export const logEvent = (category = '', action = '', label, value) => {
   if (category && action) {
-    console.log(`category: ${category}, action: ${action}, label: ${label}, value: ${value}`);
     ReactGA.event({
       category, action, label, value,
     });
