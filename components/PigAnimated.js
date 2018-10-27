@@ -1,14 +1,10 @@
 import React from 'react';
 
 const PigAnimated = () => (
-  <div
-    id="svg-bg"
-    className="w-100 h-100 absolute z-1 overflow-hidden"
-    // style={{ right: '0' }}
-  >
+  <div id="svg-bg" className="w-100-l h-100-l absolute z-1 overflow-hidden">
     <svg
       id="svg-pig"
-      min-width="100%"
+      width="100%"
       height="100%"
       viewBox="0 0 2875 1150"
       fill="none"

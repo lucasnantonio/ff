@@ -17,8 +17,8 @@ class RetirementSummary extends Component {
 
     return (
       <div className="w-100 center white tc">
-        <h2 className="f3 mb2">Você vai se aposentar com</h2>
-        <h3 className="mv0 f1 tracked-tight b lh-solid"> {y} anos</h3>
+        <h2 className="f3 mb2 white-80">Você vai se aposentar com</h2>
+        <h3 className="mv0 f1 lh-solid titan"> {y} anos</h3>
         <h2 className="f3 mb2">
           (R$ {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })})
         </h2>

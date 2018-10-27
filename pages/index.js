@@ -164,7 +164,7 @@ class Index extends Component {
     return (
       <div>
         <Header />
-        <div id="pageWrapper" className="vh-100 flex-l flex-column">
+        <div id="pageWrapper" className="vh-100-l flex-l flex-column">
           <Intro
             isShowingIntro={this.state.isShowingIntro}
             handleInput={this.handleInput}

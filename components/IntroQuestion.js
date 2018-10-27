@@ -10,9 +10,9 @@ class IntroQuestion extends Component {
         id="introQuestion"
         className={`${
           this.props.isShowingIntro
-            ? 'pa5-ns pa4 bg-white flex flex-row-ns flex-column justify-between items-center'
+            ? 'ph5-ns ph4 pb5-ns pb4 pt5-l bg-white flex flex-row-ns flex-column justify-between items-center h-auto-l h-50'
             : 'h0'
-        }   overflow-hidden `}
+        }   overflow-hidden`}
       >
         <div className="w-50-l w-100 pr5-l">
           <InputField
@@ -31,18 +31,11 @@ class IntroQuestion extends Component {
           />
         </div>
         <button
-          className="w-auto-ns ph5-ns w-100 h3-ns h5 mt0-ns mt4 bn pointer bg-black-80 br-pill white pv3 titan fw1 f4"
+          className="flex flex-column justify-center items-center w-auto-ns ph5-ns w-100 h3-ns mt0-ns bn pointer bg-black-80 br-pill white pv3 titan fw1 f4"
           onClick={this.props.startApp}
         >
           Começar
         </button>
-        <style jsx>
-          {`
-            #introQuestion {
-              transition: height 30s;
-            }
-          `}
-        </style>
       </div>
     );
   }
