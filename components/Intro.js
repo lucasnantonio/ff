@@ -32,7 +32,7 @@ class Intro extends Component {
           <h3
             className={`${
               this.props.isShowingIntro ? 'flex' : 'dn'
-            } f3 measure-narrow light-green mb5 fw3 z-2 lh-copy`}
+            } f3 measure-narrow light-green mb5 fw3 z-2 lh-copy tl-ns tc`}
           >
             Descubra quando você vai ter grana pra mandar tudo à merda!
           </h3>
