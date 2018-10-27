@@ -10,7 +10,7 @@ class IntroQuestion extends Component {
         id="introQuestion"
         className={`${
           this.props.isShowingIntro
-            ? 'pa5-ns pa4 bg-white flex flex-row-ns flex-column justify-between items-center'
+            ? 'pa5-ns pa4 bg-white flex flex-row-ns flex-column justify-between items-center h-auto-l h-50'
             : 'h0'
         }   overflow-hidden`}
       >
@@ -36,13 +36,6 @@ class IntroQuestion extends Component {
         >
           Começar
         </button>
-        <style jsx>
-          {`
-            #introQuestion {
-              transition: height 30s;
-            }
-          `}
-        </style>
       </div>
     );
   }
