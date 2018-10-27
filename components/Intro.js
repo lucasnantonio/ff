@@ -56,10 +56,6 @@ class Intro extends Component {
           myCurrentAge={this.props.myCurrentAge}
           isShowingCalculation={this.props.isShowingCalculation}
         />
-        {/* {this.state.isShowingParticles
-        &&
-        <CoinParticles/>
-      } */}
         <style jsx>
           {`
             #intro {

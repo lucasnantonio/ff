@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IntlCurrencyInput from 'react-intl-currency-input';
-import CurrencyInput from 'react-currency-input';
+// import CurrencyInput from 'react-currency-input';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
@@ -35,7 +35,7 @@ class InputField extends Component {
     this.handleDecrement = this.handleDecrement.bind(this);
   }
 
-  handleInput(e, maskedValue, floatValue) {
+  handleInput(e, floatValue, maskedValue) {
     this.props.handleInput(e, floatValue);
   }
 
@@ -115,21 +115,19 @@ class InputField extends Component {
                 {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
               </div>
             ) : (
-              <CurrencyInput
+              <IntlCurrencyInput
                 className={`${
                   this.props.value === 0 ? 'black-20' : 'black'
                 } bn w-100 bg-transparent f4 tr`}
-                value={this.props.value}
+                defaultValue={this.props.placeholder}
                 min={this.props.min}
                 max={this.props.max}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
                 id={this.props.id}
-                onChangeEvent={this.handleInput}
-                prefix="R$ "
-                precision="0"
-                thousandSeparator="."
-                selectAllOnFocus
+                currency="BRL"
+                config={currencyConfig}
+                onChange={this.handleInput}
               />
             )}
           </div>
