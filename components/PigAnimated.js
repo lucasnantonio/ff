@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PigAnimated = () => (
-  <div id="svg-bg" className="w-100 h-100 absolute z-1 overflow-hidden">
+  <div id="svg-bg" className="w-100-l h-100-l absolute z-1 overflow-hidden">
     <svg
       id="svg-pig"
       width="100%"
