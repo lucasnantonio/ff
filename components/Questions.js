@@ -86,7 +86,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className={'flex-l flex-column-l h-100-l w-50-l pa5-ns pa4'}>
+      <div id="inputContainer" className={'flex-l flex-column-l h-100-l vh-100 w-50-l pa5-ns pa4'}>
         <QuestionTabs
           isShowingCalculation={this.props.isShowingCalculation}
           tabs={this.state.tabs}
@@ -96,7 +96,8 @@ class InputContainer extends Component {
           transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
           transitionLeaveTimeout={this.state.duration}
-          className="flex-l h-100 w-100 relative overflow-hidden"
+          className="flex-l h-100 relative"
+          component="div"
         >
           {this.state.currentTabIndex === 0 && (
             <div id="tab1" className="flex flex-column h-100 w-100 absolute ">
