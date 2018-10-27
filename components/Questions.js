@@ -60,7 +60,7 @@ class InputContainer extends Component {
     const { tabs } = this.state;
     const previousTab = tabs.filter(item => item.isSelected)[0];
     const previousTabIndex = tabs.indexOf(previousTab);
-    const animationDirection = previousTabIndex >= index ? 'right-to-left' : 'left-to-right';
+    const animationDirection = previousTabIndex >= index ? 'left-to-right' : 'right-to-left';
 
     const nTabTransitions = Math.abs(index - previousTabIndex);
     const duration = 400 / nTabTransitions; // so that the total transition time is constant
