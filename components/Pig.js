@@ -130,12 +130,23 @@ function getReaction(messages) {
 }
 
 function reactionSVG(reactionIndex) {
-  const r = 25;
+  const r = 5;
   const face0 = (
     <svg viewBox="0 0 100 30">
       <circle
-        cx={'50%'}
-        cy={0}
+        cx={'35%'}
+        cy={'50%'}
+        r={r}
+        style={
+          {
+            stroke: '#000',
+            fill: '#000',
+          }
+        }
+      />
+      <circle
+        cx={'65%'}
+        cy={'50%'}
         r={r}
         style={
           {
@@ -149,32 +160,58 @@ function reactionSVG(reactionIndex) {
 
   const face1 = (
     <svg viewBox="0 0 100 30">
-      <line
-        x1={'25%'}
-        x2={'75%'}
-        y1={'5%'}
-        y2={'5%'}
+      <text
+        x={'35%'}
+        y={'100%'}
+        textAnchor={'middle'}
         style={
           {
-            strokeWidth: 10,
-            stroke: '#000',
-            fill: '#000',
+            fontSize: 30,
           }
         }
-      />
+
+        >
+        $
+      </text>
+      <text
+        x={'65%'}
+        y={'100%'}
+        textAnchor={'middle'}
+        style={
+          {
+            fontSize: 30,
+          }
+        }
+
+        >
+        $
+      </text>
     </svg>
   );
 
   const face2 = (
     <svg viewBox="0 0 100 30">
       <line
-        x1={'45%'}
-        x2={'55%'}
-        y1={'5%'}
-        y2={'5%'}
+        x1={'25%'}
+        x2={'45%'}
+        y1={'100%'}
+        y2={'100%'}
         style={
           {
-            strokeWidth: 10,
+            strokeWidth: 5,
+            stroke: '#000',
+            fill: '#000',
+          }
+        }
+      />
+      <line
+        x1={'55%'}
+        x2={'75%'}
+        y1={'100%'}
+        y2={'100%'}
+        style={
+          {
+            strokeWidth: 5,
             stroke: '#000',
             fill: '#000',
           }
@@ -200,6 +237,7 @@ function renderPig(messages) {
         bottom: 24,
         right: 24,
       }}>
+      {reactionSVG(reactionIndex)}
       <img
         src={'../static/pig.svg'}
         style={
@@ -207,7 +245,7 @@ function renderPig(messages) {
             width: 48,
           }}>
       </img>
-      {reactionSVG(reactionIndex)}
+
     </div>
 
   );
