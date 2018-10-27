@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import Logo from './Logo';
 import IntroQuestion from './IntroQuestion';
-import CoinParticles from './CoinParticles';
 import PigAnimated from './PigAnimated';
 
 class Intro extends Component {
@@ -23,21 +23,28 @@ class Intro extends Component {
       >
         <div
           id="hero"
-          className={`flex flex-column h-100 ph5-ns ph4 justify-center ${this.props
-            .isShowingIntro && 'justify-center-l justify-between'} relative overflow-hidden`}
+          className={'flex h-100 ph5-ns ph4 justify-center items-center relative overflow-hidden'}
         >
-          <div className="z-max">
-            <Logo
-              onClick={this.props.handleBack}
-              size={this.props.isShowingIntro ? 'big' : 'small'}
-            />
+          <div
+            id="navbar"
+            style={{ position: 'absolute', left: '0rem', top: '0' }}
+            className="white z-max flex w-100 pa4 justify-between"
+          >
+            <Logo onClick={this.props.handleBack} />
+            <div className="flex">
+              <Link href="sobre">
+                <div className="pointer link white-80 ml4 pv3 ph4 br-pill hover-bg-black-10 hover-white nowrap">
+                  Nos pague um café <span className="light-pink">♥</span>
+                </div>
+              </Link>
+            </div>
           </div>
           <h3
             className={`${
               this.props.isShowingIntro ? 'flex' : 'dn'
-            } f3-ns f4 measure-narrow light-green-l white-90 mb5 fw3 z-2 lh-copy tl-l tc ml0-l center`}
+            } f-subheadline-l f1 measure-narrow white-90 fw3 lh-solid tl-l tc ml0-l center fw1 z-max titan`}
           >
-            Descubra quando você vai ter grana pra mandar tudo à merda!
+            Planeje sua <br /> independência <br /> financeira.
           </h3>
           {this.props.isShowingIntro && <PigAnimated />}
         </div>

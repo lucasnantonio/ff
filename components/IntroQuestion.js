@@ -10,7 +10,7 @@ class IntroQuestion extends Component {
         id="introQuestion"
         className={`${
           this.props.isShowingIntro
-            ? 'ph5-ns ph4 pb5-ns pb4 pt5-l bg-white flex flex-row-ns flex-column justify-between items-center h-auto-l h-50'
+            ? 'ph5-ns ph4 pb4-ns pb4 pt4-l bg-white flex flex-row-ns flex-column justify-between items-center h-auto-l h-50'
             : 'h0'
         }   overflow-hidden`}
       >
