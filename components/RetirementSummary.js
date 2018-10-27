@@ -10,14 +10,18 @@ class RetirementSummary extends Component {
   };
 
   render() {
-    const age = this.props.retirementResults[
+    const { age, balance } = this.props.retirementResults[
       this.getSelectedInvestmentIndex(this.props.myInvestments)
-    ][1].retirement.age;
+    ][1].retirement;
     const [y, m] = formatAge(age);
+
     return (
       <div className="w-100 center white tc">
         <h2 className="f3 mb2">Você vai se aposentar com</h2>
         <h3 className="mv0 f1 tracked-tight b lh-solid"> {y} anos</h3>
+        <h2 className="f3 mb2">
+          (R$ {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })})
+        </h2>
       </div>
     );
   }
