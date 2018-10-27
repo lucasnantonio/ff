@@ -86,7 +86,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className={'flex-l flex-column-l h-100-l vh-100 w-50-l pa5-ns pa4'}>
+      <div id="inputContainer" className={''}>
         <QuestionTabs
           isShowingCalculation={this.props.isShowingCalculation}
           tabs={this.state.tabs}
@@ -96,11 +96,11 @@ class InputContainer extends Component {
           transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
           transitionLeaveTimeout={this.state.duration}
-          className="flex-l h-100 relative overflow-hidden"
+          className="relative overflow-hidden"
           component="div"
         >
           {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="flex flex-column h-100 w-100 absolute">
+            <div id="tab1" className="">
               <InputField
                 isEnabled
                 hasSteppers
@@ -153,7 +153,7 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 1 && (
-            <div id="tab2" key="2" className="flex flex-column h-100 w-100 absolute ">
+            <div id="tab2" key="2" className="">
               <InputField
                 hasSteppers
                 label="Você pretende viver até quantos anos?"
@@ -190,7 +190,7 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 2 && (
-            <div id="tab3" key="3" className="flex flex-column h-100 w-100 absolute ">
+            <div id="tab3" key="3" className="">
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage
