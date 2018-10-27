@@ -142,7 +142,7 @@ const PigAnimated = () => (
       {`
         #barriga {
           animation-name: barriga;
-          animation-duration: 4s;
+          animation-duration: 2.8s;
           animation-iteration-count: infinite;
           animation-direction: alternate;
         }
