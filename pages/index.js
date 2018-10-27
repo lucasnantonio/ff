@@ -174,8 +174,10 @@ class Index extends Component {
             myCurrentAge={this.state.myCurrentAge}
             isShowing={this.state.isShowingIntro}
           />
-
-          <div id="bottomWrapper" className={` ${this.state.isShowingIntro ? 'dn' : ''}`}>
+          <div
+            id="bottomWrapper"
+            className={` ${this.state.isShowingIntro ? 'dn' : 'flex-ns flex-row-ns h-100'}`}
+          >
             <Questions
               {...this.state}
               isShowingCalculation={this.state.isShowingCalculation}

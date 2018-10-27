@@ -5,7 +5,10 @@ import RetirementSummary from './RetirementSummary';
 class OutPutContainer extends Component {
   render() {
     return (
-      <div id="resultsWrapper" className={'bg-green w-100'}>
+      <div
+        id="resultsWrapper"
+        className={'bg-green ph5-ns ph3 pv5 w-50-ns w-100 flex-ns flex-column-ns'}
+      >
         {!this.props.isShowingIntro
           && this.props.isShowingCalculation && (
             <React.Fragment>
