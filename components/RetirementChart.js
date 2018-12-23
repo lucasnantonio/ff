@@ -140,7 +140,7 @@ class RetirementChart extends Component {
 
   render() {
     return (
-      <div style={{ minHeight: '10rem' }} className="relative w-100 h-100">
+      <div style={{ minHeight: '10rem' }} className="relative w-100 h-100-l h5">
         <canvas
           ref={(canvas) => {
             this.canvas = canvas;
