@@ -4,7 +4,6 @@ import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
-import Intro from '../components/Intro';
 import Hero from '../components/Hero';
 import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
