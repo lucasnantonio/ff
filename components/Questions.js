@@ -3,15 +3,12 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import InputField from './InputField';
 import InputTable from './InputTable';
 import MultiSelect from './MultiSelect';
+import QuestionChunk from './QuestionChunk';
 
 class InputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      targetTabIndex: 0,
-      currentTabIndex: 0,
-      duration: 400,
-      direction: '',
       questions: [
         {
           id: 'myCurrentAge',
@@ -42,7 +39,7 @@ class InputContainer extends Component {
   render() {
     return (
       <div id="inputContainer" className="flex flex-column">
-        <div id="tab1" className="w-100 h-100-l flex-l flex-column-l">
+        <QuestionChunk isOpen title="Informações básicas">
           <InputField
             isEnabled
             hasSteppers
@@ -92,8 +89,6 @@ class InputContainer extends Component {
             handleClick={this.props.handleInvestmentSelector}
             hiddenBorder={true}
           />
-        </div>
-        <div id="tab2" key="2" className="w-100 h-100-l flex-l flex-column-l">
           <InputField
             hasSteppers
             label="Você pretende viver até quantos anos?"
@@ -113,6 +108,8 @@ class InputContainer extends Component {
             label="Quanto você acha que sua renda vai aumentar ao ano?"
             handleInput={this.props.handleInput}
           />
+        </QuestionChunk>
+        <QuestionChunk isOpen title="Planeje grandes gastos">
           <InputTable
             id="lifeEvents"
             table={this.props.lifeEvents}
@@ -127,8 +124,8 @@ class InputContainer extends Component {
             handleAddTableRow={this.props.handleAddTableRow}
             handleRemoveTableRow={this.props.handleRemoveTableRow}
           />
-        </div>
-        <div id="tab3" key="3" className="w-100 h-100-l flex-l flex-column-l">
+        </QuestionChunk>
+        <QuestionChunk isOpen title="Configurações de taxas">
           {this.props.myInvestments.map((item, index) => (
             <InputField
               isPercentage
@@ -148,7 +145,7 @@ class InputContainer extends Component {
           >
             Resetar taxas
           </button>
-        </div>
+        </QuestionChunk>
         <style jsx>
           {`
             .right-to-left-enter {
