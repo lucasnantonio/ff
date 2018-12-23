@@ -163,7 +163,7 @@ class InputContainer extends Component {
                 value={this.props.myLifeExpectancy}
                 stepperIncrement="1"
                 min="1"
-                max="100"
+                max="200"
                 handleInput={this.props.handleInput}
                 handleInputButtons={this.props.handleInputButtons}
               />
@@ -207,7 +207,7 @@ class InputContainer extends Component {
                 />
               ))}
               <button
-                className="mt4 ttu fw6 f7 pa3 relative bg-white hover-bg-black hover-white br-pill w4 pointer h4"
+                className="mt4 pa3 relative bg-white hover-bg-black hover-white br2 pointer"
                 onClick={this.props.handleResetRates}
               >
                 Resetar taxas
@@ -216,13 +216,22 @@ class InputContainer extends Component {
           )}
         </CSSTransitionGroup>
         {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
-          <button
-            style={{ backgroundColor: '#f95c72' }}
-            className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
-            onClick={this.props.handleShowAnswer}
+          <CSSTransitionGroup
+            transitionAppear={true}
+            transitionAppearTimeout={200}
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={200}
+            component="div"
+            transitionName="slideInBottom"
           >
-            Calcular
-          </button>
+            <button
+              style={{ backgroundColor: '#f95c72' }}
+              className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
+              onClick={this.props.handleShowAnswer}
+            >
+              Calcular
+            </button>
+          </CSSTransitionGroup>
         )}
         <style jsx>
           {`
@@ -267,6 +276,24 @@ class InputContainer extends Component {
             .left-to-right-leave.left-to-right-leave-active {
               transform: translateX(100%);
               transition: all ${this.state.duration}ms ease-in-out;
+              opacity: 0;
+            }
+            .slideInBottom-appear {
+              transform: translateY(100%);
+            }
+            .slideInBottom-appear-active {
+              transition: transform 0.2s ease-in;
+              transform: translateY(0%);
+            }
+            .slideInBottom-enter {
+              opacity: 0;
+            }
+            .slideInBottom-active {
+              opacity: 1;
+              background-color: black;
+            }
+
+            .slideInBottom-leave {
               opacity: 0;
             }
           `}
