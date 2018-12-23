@@ -182,7 +182,7 @@ class Index extends Component {
       <div id="pageWrapper" className="mw8-ns ph0-l ph4 center vh-100">
         <Header />
         <Hero />
-        <Answer />
+        <Answer {...this.state} />
         <Questions
           {...this.state}
           isShowingCalculation={this.state.isShowingCalculation}
