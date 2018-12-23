@@ -186,14 +186,14 @@ class Index extends Component {
 
   render() {
     return (
-      <div id="pageWrapper" className="mw8-ns ph0-l ph4 center vh-100">
+      <div id="pageWrapper" className="center vh-100">
         <Header />
         {!this.state.isShowingAnswer ? (
-          <Hero startApp={this.startApp} />
+          <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
           <Answer {...this.state} />
         )}
-        <div id="questionsContainer">
+        <div id="questionsContainer" className="mw7-ns ph0-l ph4 center">
           {this.state.isShowingQuestions && (
             <Questions
               {...this.state}

@@ -217,7 +217,8 @@ class InputContainer extends Component {
         </CSSTransitionGroup>
         {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
           <button
-            className="fixed l0 r0 bottom-0 pv4 w-100 white ba0 bg-blue pointer center"
+            style={{ backgroundColor: '#f95c72' }}
+            className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
             onClick={this.props.handleShowAnswer}
           >
             Calcular
