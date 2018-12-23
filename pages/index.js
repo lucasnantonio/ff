@@ -61,8 +61,12 @@ class Index extends Component {
   }
 
   startApp = () => {
-    this.setState({ isShowingIntro: false });
     logEvent('User', 'clicked start');
+    const section = document.getElementById('questionsContainer');
+    const scroll = () => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    setTimeout(scroll, 200);
   };
 
   handleShowAnswer = () => {
@@ -185,7 +189,7 @@ class Index extends Component {
         <Questions
           {...this.state}
           isShowingAnswer={this.state.isShowingAnswer}
-          handleStartApp={this.startApp}
+          startApp={this.startApp}
           handleShowAnswer={this.handleShowAnswer}
           handleResetRates={this.handleResetRates}
           handleInput={this.handleInput}

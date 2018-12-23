@@ -16,6 +16,7 @@ class QuestionChunk extends Component {
   render() {
     return (
       <div
+        id={this.props.hasStartButton && 'basic-info'}
         className={`w-100 bt bw1 pt4 mt4
         ${!this.state.isOpen ? 'h4 overflow-y-hidden' : 'h-100 flex flex-column'}
         ${this.state.isEnabled ? 'b--black' : 'b--black-30'}
@@ -30,7 +31,12 @@ class QuestionChunk extends Component {
           </div>
           <div>
             {this.props.isShowingStartButton && this.props.hasStartButton && !this.state.isOpen && (
-              <button className="pv3 br2 ph4 white ba0 bg-blue pointer">Começar</button>
+              <button
+                onClick={this.props.startApp}
+                className="pv3 br2 ph4 white ba0 bg-blue pointer"
+              >
+                Começar
+              </button>
             )}
           </div>
         </div>

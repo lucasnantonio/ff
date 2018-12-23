@@ -40,6 +40,7 @@ class InputContainer extends Component {
     return (
       <div id="questionsContainer" className="flex flex-column">
         <QuestionChunk
+          startApp={this.props.startApp}
           hasStartButton
           isShowingStartButton={!this.props.isShowingAnswer}
           title="Informações básicas"
