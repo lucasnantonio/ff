@@ -180,7 +180,7 @@ class Index extends Component {
 
   render() {
     return (
-      <div id="pageWrapper" className="mw8-ns ph0-ns ph3 center vh-100 debug">
+      <div id="pageWrapper" className="mw8-ns ph0-l ph4 center vh-100 debug">
         <Header />
         <Hero />
         <Questions

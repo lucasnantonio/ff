@@ -41,8 +41,8 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className={'pa5-ns pa3 w-50-l w-100 flex flex-column'}>
-        <div id="tab1" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+      <div id="inputContainer" className="flex flex-column">
+        <div id="tab1" className="w-100 h-100-l flex-l flex-column-l">
           <InputField
             isEnabled
             hasSteppers
@@ -93,7 +93,7 @@ class InputContainer extends Component {
             hiddenBorder={true}
           />
         </div>
-        <div id="tab2" key="2" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+        <div id="tab2" key="2" className="w-100 h-100-l flex-l flex-column-l">
           <InputField
             hasSteppers
             label="Você pretende viver até quantos anos?"
@@ -128,7 +128,7 @@ class InputContainer extends Component {
             handleRemoveTableRow={this.props.handleRemoveTableRow}
           />
         </div>
-        <div id="tab3" key="3" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+        <div id="tab3" key="3" className="w-100 h-100-l flex-l flex-column-l">
           {this.props.myInvestments.map((item, index) => (
             <InputField
               isPercentage
