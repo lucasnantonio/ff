@@ -95,9 +95,9 @@ class InputContainer extends Component {
             handleClick={this.props.handleInvestmentSelector}
             hiddenBorder={true}
           />
-          {!this.props.isShowingAnswer && (
+          {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
             <button
-              className="pv3 br2 ph4 white ba0 bg-blue pointer"
+              className="fixed l0 r0 bottom-0 pv4 w-100 white ba0 bg-blue pointer center"
               onClick={this.props.handleShowAnswer}
             >
               Calcular

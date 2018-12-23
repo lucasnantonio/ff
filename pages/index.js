@@ -20,6 +20,7 @@ class Index extends Component {
       myRetirementIncome: 0,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
+      selectedInvestment: false,
       myInvestments: [
         {
           label: 'poupança',
@@ -115,7 +116,7 @@ class Index extends Component {
       ...item,
       isSelected: index === itemIndex,
     }));
-    this.setState({ myInvestments: ressetedInvestment, isShowingCalculation: true });
+    this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
 
     // only for analytics
     const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
@@ -209,6 +210,9 @@ class Index extends Component {
           }
           .ba0 {
             border: 0px;
+          }
+          .l0 {
+            left: 0;
           }
           .r0 {
             right: 0;
