@@ -5,9 +5,9 @@ import RetirementSummary from './RetirementSummary';
 class OutPutContainer extends Component {
   render() {
     return (
-      <div id="answersContainer" className={''}>
+      <div id="answersContainer" className={'bg-blue ph0-ns ph4'}>
         {this.props.isShowingAnswer && (
-          <div className="flex flex-row-ns flex-column vh-75-l mt0-ns mv5">
+          <div className="flex flex-row-ns flex-column vh-75-l mt0-ns pv4 mw7 center">
             <div className="w-100 f3-ns f5 tl-ns tc self-center">
               <RetirementSummary
                 myInvestments={this.props.myInvestments}
