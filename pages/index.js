@@ -183,9 +183,10 @@ class Index extends Component {
       <div id="pageWrapper" className="mw8-ns ph0-ns ph3 center vh-100 debug">
         <Header />
         <Hero />
-        <div>
-          <p>hahahaha</p>
-        </div>
+        <Questions
+          myInvestments={this.state.myInvestments}
+          handleInvestmentSelector={this.handleInvestmentSelector}
+        />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */

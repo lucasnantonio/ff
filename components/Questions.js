@@ -3,9 +3,6 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import InputField from './InputField';
 import InputTable from './InputTable';
 import MultiSelect from './MultiSelect';
-import QuestionTabs from './QuestionTabs';
-
-let timeoutVar = 0;
 
 class InputContainer extends Component {
   constructor(props) {
@@ -33,50 +30,8 @@ class InputContainer extends Component {
           isEmpty: true,
         },
       ],
-      tabs: [
-        { label: 'básico', isSelected: true },
-        { label: 'avançado', isSelected: false },
-        { label: 'taxas', isSelected: false },
-      ],
     };
   }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { currentTabIndex } = this.state;
-
-    if (currentTabIndex !== this.state.targetTabIndex) {
-      const nextTabIndex = currentTabIndex + (currentTabIndex < this.state.targetTabIndex ? 1 : -1);
-
-      // wait for the animation to end before changing to the next tab
-      // if it is the first animation, start it right away.
-      const duration = currentTabIndex === prevState.targetTabIndex ? 0 : this.state.duration;
-
-      clearTimeout(timeoutVar);
-      timeoutVar = setTimeout(() => this.setState({ currentTabIndex: nextTabIndex }), duration);
-    }
-  }
-
-  handleTabChange = (e, index) => {
-    const { tabs } = this.state;
-    const previousTab = tabs.filter(item => item.isSelected)[0];
-    const previousTabIndex = tabs.indexOf(previousTab);
-    const animationDirection = previousTabIndex >= index ? 'left-to-right' : 'right-to-left';
-
-    const nTabTransitions = Math.abs(index - previousTabIndex);
-    const duration = 400 / nTabTransitions; // so that the total transition time is constant
-
-    const newState = tabs.map((item, itemIndex) => ({
-      ...item,
-      isSelected: index === itemIndex,
-    }));
-
-    this.setState({
-      tabs: newState,
-      direction: animationDirection,
-      targetTabIndex: index,
-      duration,
-    });
-  };
 
   canSubmit = () => {
     const { myCurrentBalance, myCurrentMonthlySavings, myRetirementIncome } = this.props;
@@ -87,132 +42,113 @@ class InputContainer extends Component {
   render() {
     return (
       <div id="inputContainer" className={'pa5-ns pa3 w-50-l w-100 flex flex-column'}>
-        <QuestionTabs
-          isShowingCalculation={this.props.isShowingCalculation}
-          tabs={this.state.tabs}
-          handleTabChange={this.handleTabChange}
-        />
-        <CSSTransitionGroup
-          transitionName={this.state.direction}
-          transitionEnterTimeout={this.state.duration}
-          transitionLeaveTimeout={this.state.duration}
-          className="relative overflow-hidden h-100"
-          component="div"
-        >
-          {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="absolute-l w-100 h-100-l flex-l flex-column-l">
-              <InputField
-                isEnabled
-                hasSteppers
-                label="Quantos anos você tem?"
-                id="myCurrentAge"
-                value={this.props.myCurrentAge}
-                stepperIncrement="1"
-                min="1"
-                max="100"
-                handleInput={this.props.handleInput}
-                handleInputButtons={this.props.handleInputButtons}
-                hasTips
-                setFocusedInput={this.props.setFocusedInput}
-              />
-              <InputField
-                isCurrency
-                label="Quanto você tem hoje para começar a investir?"
-                placeholder={this.props.myCurrentBalance}
-                value={this.props.myCurrentBalance}
-                id="myCurrentBalance"
-                handleInput={this.props.handleCurrencyInput}
-              />
-              <InputField
-                isCurrency
-                label="Quanto você consegue guardar todo mês?"
-                id="myCurrentMonthlySavings"
-                placeholder={this.props.myCurrentMonthlySavings}
-                value={this.props.myCurrentMonthlySavings}
-                handleInput={this.props.handleCurrencyInput}
-                hasTips
-                setFocusedInput={this.props.setFocusedInput}
-              />
-              <InputField
-                isCurrency
-                label="Quanto você quer tirar por mês ao se aposentar?"
-                id="myRetirementIncome"
-                placeholder={this.props.myRetirementIncome}
-                value={this.props.myRetirementIncome}
-                handleInput={this.props.handleCurrencyInput}
-                hasTips
-                setFocusedInput={this.props.setFocusedInput}
-              />
-              <MultiSelect
-                isEnabled={this.canSubmit()}
-                label="Onde você guarda seu dinheiro hoje?"
-                options={this.props.myInvestments}
-                handleClick={this.props.handleInvestmentSelector}
-                hiddenBorder={true}
-              />
-            </div>
-          )}
-          {this.state.currentTabIndex === 1 && (
-            <div id="tab2" key="2" className="absolute-l w-100 h-100-l flex-l flex-column-l">
-              <InputField
-                hasSteppers
-                label="Você pretende viver até quantos anos?"
-                id="myLifeExpectancy"
-                value={this.props.myLifeExpectancy}
-                stepperIncrement="1"
-                min="1"
-                max="100"
-                handleInput={this.props.handleInput}
-                handleInputButtons={this.props.handleInputButtons}
-              />
-              <InputField
-                isPercentage
-                dataType="rate"
-                value={this.props.annualSavingsIncreaseRate}
-                id="annualSavingsIncreaseRate"
-                label="Quanto você acha que sua renda vai aumentar ao ano?"
-                handleInput={this.props.handleInput}
-              />
-              <InputTable
-                id="lifeEvents"
-                table={this.props.lifeEvents}
-                fields={{
-                  label: '',
-                  age: 0,
-                  cost: 0,
-                }}
-                myInvestments={this.props.myInvestments}
-                retirementResults={this.props.retirementResults}
-                handleTableInput={this.props.handleTableInput}
-                handleAddTableRow={this.props.handleAddTableRow}
-                handleRemoveTableRow={this.props.handleRemoveTableRow}
-              />
-            </div>
-          )}
-          {this.state.currentTabIndex === 2 && (
-            <div id="tab3" key="3" className="absolute-l w-100 h-100-l flex-l flex-column-l">
-              {this.props.myInvestments.map((item, index) => (
-                <InputField
-                  isPercentage
-                  dataType="rate"
-                  key={index}
-                  value={item.rate}
-                  id={item.label}
-                  label={`Rendimento anual da ${item.label}`}
-                  handleInput={this.props.handleInvestmentRateInput}
-                  hasTips
-                  setFocusedInput={this.props.setFocusedInput}
-                />
-              ))}
-              <button
-                className="mt4 ttu fw6 f7 pa3 relative bg-white hover-bg-black hover-white br-pill w4 pointer h4"
-                onClick={this.props.handleResetRates}
-              >
-                Resetar taxas
-              </button>
-            </div>
-          )}
-        </CSSTransitionGroup>
+        <div id="tab1" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+          <InputField
+            isEnabled
+            hasSteppers
+            label="Quantos anos você tem?"
+            id="myCurrentAge"
+            value={this.props.myCurrentAge}
+            stepperIncrement="1"
+            min="1"
+            max="100"
+            handleInput={this.props.handleInput}
+            handleInputButtons={this.props.handleInputButtons}
+            hasTips
+            setFocusedInput={this.props.setFocusedInput}
+          />
+          <InputField
+            isCurrency
+            label="Quanto você tem hoje para começar a investir?"
+            placeholder={this.props.myCurrentBalance}
+            value={this.props.myCurrentBalance}
+            id="myCurrentBalance"
+            handleInput={this.props.handleCurrencyInput}
+          />
+          <InputField
+            isCurrency
+            label="Quanto você consegue guardar todo mês?"
+            id="myCurrentMonthlySavings"
+            placeholder={this.props.myCurrentMonthlySavings}
+            value={this.props.myCurrentMonthlySavings}
+            handleInput={this.props.handleCurrencyInput}
+            hasTips
+            setFocusedInput={this.props.setFocusedInput}
+          />
+          <InputField
+            isCurrency
+            label="Quanto você quer tirar por mês ao se aposentar?"
+            id="myRetirementIncome"
+            placeholder={this.props.myRetirementIncome}
+            value={this.props.myRetirementIncome}
+            handleInput={this.props.handleCurrencyInput}
+            hasTips
+            setFocusedInput={this.props.setFocusedInput}
+          />
+          <MultiSelect
+            isEnabled={this.canSubmit()}
+            label="Onde você guarda seu dinheiro hoje?"
+            options={this.props.myInvestments}
+            handleClick={this.props.handleInvestmentSelector}
+            hiddenBorder={true}
+          />
+        </div>
+        <div id="tab2" key="2" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+          <InputField
+            hasSteppers
+            label="Você pretende viver até quantos anos?"
+            id="myLifeExpectancy"
+            value={this.props.myLifeExpectancy}
+            stepperIncrement="1"
+            min="1"
+            max="100"
+            handleInput={this.props.handleInput}
+            handleInputButtons={this.props.handleInputButtons}
+          />
+          <InputField
+            isPercentage
+            dataType="rate"
+            value={this.props.annualSavingsIncreaseRate}
+            id="annualSavingsIncreaseRate"
+            label="Quanto você acha que sua renda vai aumentar ao ano?"
+            handleInput={this.props.handleInput}
+          />
+          <InputTable
+            id="lifeEvents"
+            table={this.props.lifeEvents}
+            fields={{
+              label: '',
+              age: 0,
+              cost: 0,
+            }}
+            myInvestments={this.props.myInvestments}
+            retirementResults={this.props.retirementResults}
+            handleTableInput={this.props.handleTableInput}
+            handleAddTableRow={this.props.handleAddTableRow}
+            handleRemoveTableRow={this.props.handleRemoveTableRow}
+          />
+        </div>
+        <div id="tab3" key="3" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+          {this.props.myInvestments.map((item, index) => (
+            <InputField
+              isPercentage
+              dataType="rate"
+              key={index}
+              value={item.rate}
+              id={item.label}
+              label={`Rendimento anual da ${item.label}`}
+              handleInput={this.props.handleInvestmentRateInput}
+              hasTips
+              setFocusedInput={this.props.setFocusedInput}
+            />
+          ))}
+          <button
+            className="mt4 ttu fw6 f7 pa3 relative bg-white hover-bg-black hover-white br-pill w4 pointer h4"
+            onClick={this.props.handleResetRates}
+          >
+            Resetar taxas
+          </button>
+        </div>
         <style jsx>
           {`
             .right-to-left-enter {
