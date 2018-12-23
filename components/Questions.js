@@ -86,12 +86,14 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="questionsContainer" className={'w-100'}>
-        <QuestionTabs
-          isShowingAnswer={this.props.isShowingAnswer}
-          tabs={this.state.tabs}
-          handleTabChange={this.handleTabChange}
-        />
+      <div className={'w-100'}>
+        {this.props.isShowingAnswer && (
+          <QuestionTabs
+            isShowingAnswer={this.props.isShowingAnswer}
+            tabs={this.state.tabs}
+            handleTabChange={this.handleTabChange}
+          />
+        )}
         <CSSTransitionGroup
           transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
@@ -100,7 +102,7 @@ class InputContainer extends Component {
           component="div"
         >
           {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="absolute-l w-100">
+            <div id="tab1" className="absolute-l w-100 pb5">
               <InputField
                 isEnabled
                 hasSteppers
@@ -153,7 +155,7 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 1 && (
-            <div id="tab2" key="2" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+            <div id="tab2" key="2" className="absolute-l w-100 pb5">
               <InputField
                 hasSteppers
                 label="Você pretende viver até quantos anos?"
@@ -190,7 +192,7 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 2 && (
-            <div id="tab3" key="3" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+            <div id="tab3" key="3" className="absolute-l w-100 pb5">
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage

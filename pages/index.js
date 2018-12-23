@@ -14,6 +14,7 @@ class Index extends Component {
     super(props);
     this.state = {
       isShowingAnswer: false,
+      isShowingQuestions: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
       myCurrentMonthlySavings: 0,
@@ -62,6 +63,7 @@ class Index extends Component {
   }
 
   startApp = () => {
+    this.setState({ isShowingQuestions: true });
     logEvent('User', 'clicked start');
     const section = document.getElementById('questionsContainer');
     const scroll = () => {
@@ -186,23 +188,31 @@ class Index extends Component {
     return (
       <div id="pageWrapper" className="mw8-ns ph0-l ph4 center vh-100">
         <Header />
-        {!this.state.isShowingAnswer ? <Hero /> : <Answer {...this.state} />}
-        <Questions
-          {...this.state}
-          isShowingAnswer={this.state.isShowingAnswer}
-          startApp={this.startApp}
-          handleShowAnswer={this.handleShowAnswer}
-          handleResetRates={this.handleResetRates}
-          handleInput={this.handleInput}
-          handleInputButtons={this.handleInputButtons}
-          handleCurrencyInput={this.handleCurrencyInput}
-          handleTableInput={this.handleTableInput}
-          handleAddTableRow={this.handleAddTableRow}
-          handleRemoveTableRow={this.handleRemoveTableRow}
-          handleInvestmentSelector={this.handleInvestmentSelector}
-          handleInvestmentRateInput={this.handleInvestmentRateInput}
-          setFocusedInput={this.setFocusedInput}
-        />
+        {!this.state.isShowingAnswer ? (
+          <Hero startApp={this.startApp} />
+        ) : (
+          <Answer {...this.state} />
+        )}
+        <div id="questionsContainer">
+          {this.state.isShowingQuestions && (
+            <Questions
+              {...this.state}
+              isShowingAnswer={this.state.isShowingAnswer}
+              startApp={this.startApp}
+              handleShowAnswer={this.handleShowAnswer}
+              handleResetRates={this.handleResetRates}
+              handleInput={this.handleInput}
+              handleInputButtons={this.handleInputButtons}
+              handleCurrencyInput={this.handleCurrencyInput}
+              handleTableInput={this.handleTableInput}
+              handleAddTableRow={this.handleAddTableRow}
+              handleRemoveTableRow={this.handleRemoveTableRow}
+              handleInvestmentSelector={this.handleInvestmentSelector}
+              handleInvestmentRateInput={this.handleInvestmentRateInput}
+              setFocusedInput={this.setFocusedInput}
+            />
+          )}
+        </div>
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */

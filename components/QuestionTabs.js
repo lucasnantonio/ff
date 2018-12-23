@@ -7,7 +7,7 @@ class QuestionTabs extends Component {
         {this.props.tabs.map((item, index) => (
           <div
             id={item.label}
-            className={`${item.isSelected && 'bb b--black black'} 
+            className={`${item.isSelected && 'bb b--black bw1 black'} 
               ${this.props.isShowingAnswer ? 'black-30 pointer' : 'black-10'}
               ${this.props.isShowingAnswer && !item.isSelected && 'hover-black'}
                items-center ph3 pv1 mv2 f5 w-100 tc`}
