@@ -39,7 +39,12 @@ class InputContainer extends Component {
   render() {
     return (
       <div id="questionsContainer" className="flex flex-column">
-        <QuestionChunk isOpen title="Informações básicas">
+        <QuestionChunk
+          hasStartButton
+          isShowingStartButton={!this.props.isShowingAnswer}
+          title="Informações básicas"
+          isEnabled
+        >
           <InputField
             isEnabled
             hasSteppers
@@ -108,7 +113,14 @@ class InputContainer extends Component {
             label="Quanto você acha que sua renda vai aumentar ao ano?"
             handleInput={this.props.handleInput}
           />
-          <button onClick={this.props.handleShowCalculation}>Calcular</button>
+          {!this.props.isShowingAnswer && (
+            <button
+              className="pv3 br2 ph4 white ba0 bg-blue pointer"
+              onClick={this.props.handleShowAnswer}
+            >
+              Calcular
+            </button>
+          )}
         </QuestionChunk>
         <QuestionChunk isOpen title="Planeje grandes gastos">
           <InputTable

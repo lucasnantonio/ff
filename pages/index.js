@@ -13,7 +13,6 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowingIntro: true,
       isShowingAnswer: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
@@ -66,7 +65,8 @@ class Index extends Component {
     logEvent('User', 'clicked start');
   };
 
-  showFirstCalculation = () => {
+  handleShowAnswer = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     this.setState({ isShowingAnswer: true });
   };
 
@@ -184,9 +184,9 @@ class Index extends Component {
         {!this.state.isShowingAnswer ? <Hero /> : <Answer {...this.state} />}
         <Questions
           {...this.state}
-          isShowingCalculation={this.state.isShowingAnswer}
+          isShowingAnswer={this.state.isShowingAnswer}
           handleStartApp={this.startApp}
-          handleShowCalculation={this.showFirstCalculation}
+          handleShowAnswer={this.handleShowAnswer}
           handleResetRates={this.handleResetRates}
           handleInput={this.handleInput}
           handleInputButtons={this.handleInputButtons}
@@ -202,6 +202,9 @@ class Index extends Component {
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */
             background: transparent; /* optional: just make scrollbar invisible */
+          }
+          .ba0 {
+            border: 0px;
           }
           .r0 {
             right: 0;
@@ -252,6 +255,9 @@ class Index extends Component {
             /* display: none; <- Crashes Chrome on hover */
             -webkit-appearance: none;
             margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+          }
+          .bg-blue {
+            background-color: #5d56fb !important;
           }
         `}</style>
       </div>
