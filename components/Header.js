@@ -16,8 +16,8 @@ const Header = () => (
     <style jsx global>
       {`
         html {
-          font-size: 15px;
-          font-family: 'IBM Plex Sans', sans-serif;
+          font-size: 18px;
+          font-family: 'system-ui', sans-serif;
           font-weight: 100;
         }
         .titan {

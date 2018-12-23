@@ -5,6 +5,7 @@ import Questions from '../components/Questions';
 import OutPutContainer from '../components/OutPutContainer';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
+import Hero from '../components/Hero';
 import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
@@ -179,48 +180,12 @@ class Index extends Component {
 
   render() {
     return (
-      <div>
+      <div id="pageWrapper" className="mw8-ns ph0-ns ph3 center vh-100 debug">
         <Header />
-        <div id="pageWrapper" className="vh-100-l flex-l flex-column">
-          <Intro
-            isShowingIntro={this.state.isShowingIntro}
-            handleInput={this.handleInput}
-            handleBack={this.handleBack}
-            handleInputButtons={this.handleInputButtons}
-            startApp={this.startApp}
-            myCurrentAge={this.state.myCurrentAge}
-            isShowing={this.state.isShowingIntro}
-          />
-          <div
-            id="bottomWrapper"
-            className={` ${this.state.isShowingIntro ? 'dn' : 'flex-l flex-row-l h-100'}`}
-          >
-            <Questions
-              {...this.state}
-              isShowingCalculation={this.state.isShowingCalculation}
-              handleStartApp={this.startApp}
-              handleShowCalculation={this.showFirstCalculation}
-              handleResetRates={this.handleResetRates}
-              handleInput={this.handleInput}
-              handleInputButtons={this.handleInputButtons}
-              handleCurrencyInput={this.handleCurrencyInput}
-              handleTableInput={this.handleTableInput}
-              handleAddTableRow={this.handleAddTableRow}
-              handleRemoveTableRow={this.handleRemoveTableRow}
-              handleInvestmentSelector={this.handleInvestmentSelector}
-              handleInvestmentRateInput={this.handleInvestmentRateInput}
-              setFocusedInput={this.setFocusedInput}
-            />
-            {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
-          </div>
+        <Hero />
+        <div>
+          <p>hahahaha</p>
         </div>
-        <Pig
-          focusedInput={this.state.focusedInput}
-          myCurrentAge={this.state.myCurrentAge}
-          myCurrentMonthlySavings={this.state.myCurrentMonthlySavings}
-          myInvestments={this.state.myInvestments}
-          myRetirementIncome={this.state.myRetirementIncome}
-        />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */
