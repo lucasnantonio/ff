@@ -14,7 +14,7 @@ class Index extends Component {
     super(props);
     this.state = {
       isShowingIntro: true,
-      isShowingCalculation: false,
+      isShowingAnswer: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
       myCurrentMonthlySavings: 0,
@@ -67,11 +67,11 @@ class Index extends Component {
   };
 
   showFirstCalculation = () => {
-    this.setState({ isShowingCalculation: true });
+    this.setState({ isShowingAnswer: true });
   };
 
   handleBack = () => {
-    this.setState({ isShowingCalculation: false, isShowingIntro: true });
+    this.setState({ isShowingAnswer: false, isShowingIntro: true });
   };
 
   handleCurrencyInput = (e, floatValue) => {
@@ -181,11 +181,10 @@ class Index extends Component {
     return (
       <div id="pageWrapper" className="mw8-ns ph0-l ph4 center vh-100">
         <Header />
-        <Hero />
-        <Answer {...this.state} />
+        {!this.state.isShowingAnswer ? <Hero /> : <Answer {...this.state} />}
         <Questions
           {...this.state}
-          isShowingCalculation={this.state.isShowingCalculation}
+          isShowingCalculation={this.state.isShowingAnswer}
           handleStartApp={this.startApp}
           handleShowCalculation={this.showFirstCalculation}
           handleResetRates={this.handleResetRates}

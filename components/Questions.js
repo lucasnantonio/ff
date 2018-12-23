@@ -108,6 +108,7 @@ class InputContainer extends Component {
             label="Quanto você acha que sua renda vai aumentar ao ano?"
             handleInput={this.props.handleInput}
           />
+          <button onClick={this.props.handleShowCalculation}>Calcular</button>
         </QuestionChunk>
         <QuestionChunk isOpen title="Planeje grandes gastos">
           <InputTable

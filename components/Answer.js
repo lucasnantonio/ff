@@ -5,11 +5,8 @@ import RetirementSummary from './RetirementSummary';
 class OutPutContainer extends Component {
   render() {
     return (
-      <div
-        id="answersContainer"
-        className={'bg-green ph5-l ph3 pv5 w-50-l w-100 flex-l flex-column-l'}
-      >
-        {this.props.isShowingCalculation && (
+      <div id="answersContainer" className={''}>
+        {this.props.isShowingAnswer && (
           <React.Fragment>
             <RetirementSummary
               myInvestments={this.props.myInvestments}
