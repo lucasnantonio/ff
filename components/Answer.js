@@ -7,17 +7,23 @@ class OutPutContainer extends Component {
     return (
       <div id="answersContainer" className={''}>
         {this.props.isShowingAnswer && (
-          <React.Fragment>
-            <RetirementSummary
-              myInvestments={this.props.myInvestments}
-              retirementResults={this.props.retirementResults}
-            />
-            <RetirementChart
-              lifeEvents={this.props.lifeEvents}
-              myInvestments={this.props.myInvestments}
-              retirementResults={this.props.retirementResults}
-            />
-          </React.Fragment>
+          <div className="flex flex-row-ns flex-column vh-75 mt0-ns mt5">
+            <div className="w-100 f3-ns f5 tl-ns tc self-center">
+              <RetirementSummary
+                myInvestments={this.props.myInvestments}
+                retirementResults={this.props.retirementResults}
+                myRetirementIncome={this.props.myRetirementIncome}
+              />
+            </div>
+            <div className="w-100">
+              <RetirementChart
+                lifeEvents={this.props.lifeEvents}
+                myInvestments={this.props.myInvestments}
+                myRetirementIncome={this.props.myRetirementIncome}
+                retirementResults={this.props.retirementResults}
+              />
+            </div>
+          </div>
         )}
         <style jsx>
           {`

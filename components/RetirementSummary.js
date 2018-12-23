@@ -16,12 +16,12 @@ class RetirementSummary extends Component {
     const [y, m] = formatAge(age);
 
     return (
-      <div className="w-100 center white tc">
-        <h2 className="f3 mb2 white-80">Você vai se aposentar com</h2>
-        <h3 className="mv0 f1 lh-solid titan"> {y} anos</h3>
-        <h2 className="f3 mb2">
-          (R$ {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })})
+      <div className="w-100">
+        <h2 className="f1">
+          Você vai se aposentar aos {y} anos com R$
+          {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta.
         </h2>
+        <h3>A partir daí, você pode gastar R${this.props.myRetirementIncome} até o fim da vida.</h3>
       </div>
     );
   }
