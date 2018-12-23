@@ -95,25 +95,6 @@ class InputContainer extends Component {
             handleClick={this.props.handleInvestmentSelector}
             hiddenBorder={true}
           />
-          <InputField
-            hasSteppers
-            label="Você pretende viver até quantos anos?"
-            id="myLifeExpectancy"
-            value={this.props.myLifeExpectancy}
-            stepperIncrement="1"
-            min="1"
-            max="150"
-            handleInput={this.props.handleInput}
-            handleInputButtons={this.props.handleInputButtons}
-          />
-          <InputField
-            isPercentage
-            dataType="rate"
-            value={this.props.annualSavingsIncreaseRate}
-            id="annualSavingsIncreaseRate"
-            label="Quanto você acha que sua renda vai aumentar ao ano?"
-            handleInput={this.props.handleInput}
-          />
           {!this.props.isShowingAnswer && (
             <button
               className="pv3 br2 ph4 white ba0 bg-blue pointer"
@@ -139,7 +120,26 @@ class InputContainer extends Component {
             handleRemoveTableRow={this.props.handleRemoveTableRow}
           />
         </QuestionChunk>
-        <QuestionChunk isOpen title="Configurações de taxas">
+        <QuestionChunk isOpen title="Configurações avançadas">
+          <InputField
+            hasSteppers
+            label="Você pretende viver até quantos anos?"
+            id="myLifeExpectancy"
+            value={this.props.myLifeExpectancy}
+            stepperIncrement="1"
+            min="1"
+            max="150"
+            handleInput={this.props.handleInput}
+            handleInputButtons={this.props.handleInputButtons}
+          />
+          <InputField
+            isPercentage
+            dataType="rate"
+            value={this.props.annualSavingsIncreaseRate}
+            id="annualSavingsIncreaseRate"
+            label="Quanto você acha que sua renda vai aumentar ao ano?"
+            handleInput={this.props.handleInput}
+          />
           {this.props.myInvestments.map((item, index) => (
             <InputField
               isPercentage
