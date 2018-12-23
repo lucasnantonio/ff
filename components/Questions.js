@@ -34,8 +34,8 @@ class InputContainer extends Component {
         },
       ],
       tabs: [
-        { label: 'básico', isSelected: true },
-        { label: 'avançado', isSelected: false },
+        { label: 'perguntas básicas', isSelected: true },
+        { label: 'eventos de vida', isSelected: false },
         { label: 'taxas', isSelected: false },
       ],
     };
@@ -118,6 +118,17 @@ class InputContainer extends Component {
                 setFocusedInput={this.props.setFocusedInput}
               />
               <InputField
+                hasSteppers
+                label="Você pretende viver até quantos anos?"
+                id="myLifeExpectancy"
+                value={this.props.myLifeExpectancy}
+                stepperIncrement="1"
+                min="1"
+                max="200"
+                handleInput={this.props.handleInput}
+                handleInputButtons={this.props.handleInputButtons}
+              />
+              <InputField
                 isCurrency
                 label="Quanto você tem hoje para começar a investir?"
                 placeholder={this.props.myCurrentBalance}
@@ -137,7 +148,7 @@ class InputContainer extends Component {
               />
               <InputField
                 isCurrency
-                label="Quanto você quer tirar por mês ao se aposentar?"
+                label="Quanto você vai querer gastar por mês quando estiver aposentado?"
                 id="myRetirementIncome"
                 placeholder={this.props.myRetirementIncome}
                 value={this.props.myRetirementIncome}
@@ -156,25 +167,6 @@ class InputContainer extends Component {
           )}
           {this.state.currentTabIndex === 1 && (
             <div id="tab2" key="2" className="absolute-l w-100 pb5">
-              <InputField
-                hasSteppers
-                label="Você pretende viver até quantos anos?"
-                id="myLifeExpectancy"
-                value={this.props.myLifeExpectancy}
-                stepperIncrement="1"
-                min="1"
-                max="200"
-                handleInput={this.props.handleInput}
-                handleInputButtons={this.props.handleInputButtons}
-              />
-              <InputField
-                isPercentage
-                dataType="rate"
-                value={this.props.annualSavingsIncreaseRate}
-                id="annualSavingsIncreaseRate"
-                label="Quanto você acha que sua renda vai aumentar ao ano?"
-                handleInput={this.props.handleInput}
-              />
               <InputTable
                 id="lifeEvents"
                 table={this.props.lifeEvents}
@@ -206,6 +198,14 @@ class InputContainer extends Component {
                   setFocusedInput={this.props.setFocusedInput}
                 />
               ))}
+              <InputField
+                isPercentage
+                dataType="rate"
+                value={this.props.annualSavingsIncreaseRate}
+                id="annualSavingsIncreaseRate"
+                label="Quanto você acha que sua renda vai aumentar ao ano?"
+                handleInput={this.props.handleInput}
+              />
               <button
                 className="mt4 pa3 relative bg-white hover-bg-black hover-white br2 pointer"
                 onClick={this.props.handleResetRates}

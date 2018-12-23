@@ -10,6 +10,7 @@ class OutPutContainer extends Component {
           <div className="flex flex-row-ns flex-column vh-75-l mt0-ns pv4 mw7 center">
             <div className="w-100 f3-ns f5 tl-ns tc self-center">
               <RetirementSummary
+                myCurrentAge={this.props.myCurrentAge}
                 myInvestments={this.props.myInvestments}
                 retirementResults={this.props.retirementResults}
                 myRetirementIncome={this.props.myRetirementIncome}

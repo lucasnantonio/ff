@@ -3,10 +3,10 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import PigAnimated from './PigAnimated';
 
 const Hero = props => (
-  <div id="hero" className="vh-100 bg-blue pa0-l pa5">
+  <div id="hero" className="vh-100 bg-blue pa0-l ph5">
     <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100">
-      <div className="w-100 tl-ns tc">
-        <h1 className="f1-ns f2 white normal tracked-tight">
+      <div className="w-40-ns w-100 tl-ns tc">
+        <h1 className="f1-ns f2 white lh-solid normal tracked-tight">
           Descubra quando você vai se aposentar.
         </h1>
         <CSSTransitionGroup
@@ -16,16 +16,16 @@ const Hero = props => (
         >
           {!props.isShowingQuestions && (
             <button
-              style={{ backgroundColor: '#fc5a6f' }}
+              style={{ backgroundColor: '#fd719b' }}
               onClick={props.startApp}
-              className="ba0 mt4 ph5 pv4 white br2-ns pointer f3 normal relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100"
+              className="ba0 mt4 ph5 pv4 white br2-ns pointer f3-ns f4 b relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100"
             >
               Começar
             </button>
           )}
         </CSSTransitionGroup>
       </div>
-      <div className="w-100">
+      <div className="w-60-ns w-100">
         <PigAnimated />
       </div>
     </div>
