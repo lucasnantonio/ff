@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
-import OutPutContainer from '../components/OutPutContainer';
+import Answer from '../components/Answer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Pig from '../components/Pig';
@@ -182,6 +182,7 @@ class Index extends Component {
       <div id="pageWrapper" className="mw8-ns ph0-l ph4 center vh-100">
         <Header />
         <Hero />
+        <Answer />
         <Questions
           {...this.state}
           isShowingCalculation={this.state.isShowingCalculation}

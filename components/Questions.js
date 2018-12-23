@@ -38,7 +38,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className="flex flex-column">
+      <div id="questionsContainer" className="flex flex-column">
         <QuestionChunk isOpen title="Informações básicas">
           <InputField
             isEnabled
