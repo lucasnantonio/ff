@@ -96,7 +96,7 @@ class InputContainer extends Component {
             value={this.props.myLifeExpectancy}
             stepperIncrement="1"
             min="1"
-            max="100"
+            max="150"
             handleInput={this.props.handleInput}
             handleInputButtons={this.props.handleInputButtons}
           />

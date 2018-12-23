@@ -183,8 +183,20 @@ class Index extends Component {
         <Header />
         <Hero />
         <Questions
-          myInvestments={this.state.myInvestments}
+          {...this.state}
+          isShowingCalculation={this.state.isShowingCalculation}
+          handleStartApp={this.startApp}
+          handleShowCalculation={this.showFirstCalculation}
+          handleResetRates={this.handleResetRates}
+          handleInput={this.handleInput}
+          handleInputButtons={this.handleInputButtons}
+          handleCurrencyInput={this.handleCurrencyInput}
+          handleTableInput={this.handleTableInput}
+          handleAddTableRow={this.handleAddTableRow}
+          handleRemoveTableRow={this.handleRemoveTableRow}
           handleInvestmentSelector={this.handleInvestmentSelector}
+          handleInvestmentRateInput={this.handleInvestmentRateInput}
+          setFocusedInput={this.setFocusedInput}
         />
         <style jsx global>{`
           ::-webkit-scrollbar {
@@ -240,9 +252,6 @@ class Index extends Component {
             /* display: none; <- Crashes Chrome on hover */
             -webkit-appearance: none;
             margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-          }
-          #bottomWrapper {
-            transition: height 0.55s ease-in-out, width 0.55s ease-in-out;
           }
         `}</style>
       </div>
