@@ -11,6 +11,7 @@ class InputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isShowingLifeEventsTable: false,
       targetTabIndex: 0,
       currentTabIndex: 0,
       duration: 400,
@@ -34,8 +35,8 @@ class InputContainer extends Component {
         },
       ],
       tabs: [
-        { label: 'básico', isSelected: true },
-        { label: 'avançado', isSelected: false },
+        { label: 'perguntas básicas', isSelected: true },
+        { label: 'eventos de vida', isSelected: false },
         { label: 'taxas', isSelected: false },
       ],
     };
@@ -55,6 +56,10 @@ class InputContainer extends Component {
       timeoutVar = setTimeout(() => this.setState({ currentTabIndex: nextTabIndex }), duration);
     }
   }
+
+  showLifeEventsTable = () => {
+    this.setState({ isShowingLifeEventsTable: true });
+  };
 
   handleTabChange = (e, index) => {
     const { tabs } = this.state;
@@ -86,21 +91,23 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div id="inputContainer" className={'pa5-ns pa3 w-50-l w-100 flex flex-column'}>
-        <QuestionTabs
-          isShowingCalculation={this.props.isShowingCalculation}
-          tabs={this.state.tabs}
-          handleTabChange={this.handleTabChange}
-        />
+      <div className={'w-100'}>
+        {this.props.isShowingAnswer && (
+          <QuestionTabs
+            isShowingAnswer={this.props.isShowingAnswer}
+            tabs={this.state.tabs}
+            handleTabChange={this.handleTabChange}
+          />
+        )}
         <CSSTransitionGroup
           transitionName={this.state.direction}
           transitionEnterTimeout={this.state.duration}
           transitionLeaveTimeout={this.state.duration}
-          className="relative overflow-hidden h-100"
+          className="relative h-100"
           component="div"
         >
           {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+            <div id="tab1" className="absolute-l w-100 pb5">
               <InputField
                 isEnabled
                 hasSteppers
@@ -114,6 +121,17 @@ class InputContainer extends Component {
                 handleInputButtons={this.props.handleInputButtons}
                 hasTips
                 setFocusedInput={this.props.setFocusedInput}
+              />
+              <InputField
+                hasSteppers
+                label="Você pretende viver até quantos anos?"
+                id="myLifeExpectancy"
+                value={this.props.myLifeExpectancy}
+                stepperIncrement="1"
+                min="1"
+                max="200"
+                handleInput={this.props.handleInput}
+                handleInputButtons={this.props.handleInputButtons}
               />
               <InputField
                 isCurrency
@@ -135,7 +153,7 @@ class InputContainer extends Component {
               />
               <InputField
                 isCurrency
-                label="Quanto você quer tirar por mês ao se aposentar?"
+                label="Quanto você vai querer gastar por mês quando estiver aposentado?"
                 id="myRetirementIncome"
                 placeholder={this.props.myRetirementIncome}
                 value={this.props.myRetirementIncome}
@@ -153,44 +171,40 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 1 && (
-            <div id="tab2" key="2" className="absolute-l w-100 h-100-l flex-l flex-column-l">
-              <InputField
-                hasSteppers
-                label="Você pretende viver até quantos anos?"
-                id="myLifeExpectancy"
-                value={this.props.myLifeExpectancy}
-                stepperIncrement="1"
-                min="1"
-                max="100"
-                handleInput={this.props.handleInput}
-                handleInputButtons={this.props.handleInputButtons}
-              />
-              <InputField
-                isPercentage
-                dataType="rate"
-                value={this.props.annualSavingsIncreaseRate}
-                id="annualSavingsIncreaseRate"
-                label="Quanto você acha que sua renda vai aumentar ao ano?"
-                handleInput={this.props.handleInput}
-              />
-              <InputTable
-                id="lifeEvents"
-                table={this.props.lifeEvents}
-                fields={{
-                  label: '',
-                  age: 0,
-                  cost: 0,
-                }}
-                myInvestments={this.props.myInvestments}
-                retirementResults={this.props.retirementResults}
-                handleTableInput={this.props.handleTableInput}
-                handleAddTableRow={this.props.handleAddTableRow}
-                handleRemoveTableRow={this.props.handleRemoveTableRow}
-              />
+            <div id="tab2" key="2" className="absolute-l w-100 pb5 tc">
+              <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
+                Adicione eventos de vida custosos, como viagens, compras grandes, e cursos, para
+                deixar seu cálculo ainda mais preciso.
+              </p>
+              {!this.state.isShowingLifeEventsTable && (
+                <button
+                  style={{ backgroundColor: '#fd719b' }}
+                  className={'pv3 ph4 white br1 ba0 center pointer'}
+                  onClick={this.showLifeEventsTable}
+                >
+                  {'Criar um evento'}
+                </button>
+              )}
+              {this.state.isShowingLifeEventsTable && (
+                <InputTable
+                  id="lifeEvents"
+                  table={this.props.lifeEvents}
+                  fields={{
+                    label: '',
+                    age: 0,
+                    cost: 0,
+                  }}
+                  myInvestments={this.props.myInvestments}
+                  retirementResults={this.props.retirementResults}
+                  handleTableInput={this.props.handleTableInput}
+                  handleAddTableRow={this.props.handleAddTableRow}
+                  handleRemoveTableRow={this.props.handleRemoveTableRow}
+                />
+              )}
             </div>
           )}
           {this.state.currentTabIndex === 2 && (
-            <div id="tab3" key="3" className="absolute-l w-100 h-100-l flex-l flex-column-l">
+            <div id="tab3" key="3" className="absolute-l w-100 pb5">
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage
@@ -204,8 +218,16 @@ class InputContainer extends Component {
                   setFocusedInput={this.props.setFocusedInput}
                 />
               ))}
+              <InputField
+                isPercentage
+                dataType="rate"
+                value={this.props.annualSavingsIncreaseRate}
+                id="annualSavingsIncreaseRate"
+                label="Quanto você acha que sua renda vai aumentar ao ano?"
+                handleInput={this.props.handleInput}
+              />
               <button
-                className="mt4 ttu fw6 f7 pa3 relative bg-white hover-bg-black hover-white br-pill w4 pointer h4"
+                className="mt4 pa3 relative bg-white hover-bg-black hover-white br2 pointer"
                 onClick={this.props.handleResetRates}
               >
                 Resetar taxas
@@ -213,6 +235,24 @@ class InputContainer extends Component {
             </div>
           )}
         </CSSTransitionGroup>
+        {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
+          <CSSTransitionGroup
+            transitionAppear={true}
+            transitionAppearTimeout={200}
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={200}
+            component="div"
+            transitionName="slideInBottom"
+          >
+            <button
+              style={{ backgroundColor: '#f95c72' }}
+              className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
+              onClick={this.props.handleShowAnswer}
+            >
+              Calcular
+            </button>
+          </CSSTransitionGroup>
+        )}
         <style jsx>
           {`
             .right-to-left-enter {
@@ -256,6 +296,24 @@ class InputContainer extends Component {
             .left-to-right-leave.left-to-right-leave-active {
               transform: translateX(100%);
               transition: all ${this.state.duration}ms ease-in-out;
+              opacity: 0;
+            }
+            .slideInBottom-appear {
+              transform: translateY(100%);
+            }
+            .slideInBottom-appear-active {
+              transition: transform 0.2s ease-in;
+              transform: translateY(0%);
+            }
+            .slideInBottom-enter {
+              opacity: 0;
+            }
+            .slideInBottom-active {
+              opacity: 1;
+              background-color: black;
+            }
+
+            .slideInBottom-leave {
               opacity: 0;
             }
           `}

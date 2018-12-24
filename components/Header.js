@@ -4,10 +4,7 @@ const Header = () => (
   <header>
     <title>Quando vou me aposentar?</title>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600|Titan+One"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i" rel="stylesheet" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta
       name="description"
@@ -16,8 +13,8 @@ const Header = () => (
     <style jsx global>
       {`
         html {
-          font-size: 15px;
-          font-family: 'IBM Plex Sans', sans-serif;
+          font-size: 18px;
+          font-family: 'Muli', sans-serif;
           font-weight: 100;
         }
         .titan {

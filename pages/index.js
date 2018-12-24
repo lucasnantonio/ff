@@ -2,25 +2,27 @@ import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
-import OutPutContainer from '../components/OutPutContainer';
+import Answer from '../components/Answer';
 import Header from '../components/Header';
-import Intro from '../components/Intro';
+import Hero from '../components/Hero';
 import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
+import NavBar from '../components/NavBar';
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowingIntro: true,
-      isShowingCalculation: false,
+      isShowingAnswer: false,
+      isShowingQuestions: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
       myCurrentMonthlySavings: 0,
       myRetirementIncome: 0,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
+      selectedInvestment: false,
       myInvestments: [
         {
           label: 'poupança',
@@ -61,17 +63,31 @@ class Index extends Component {
     }
   }
 
-  startApp = () => {
-    this.setState({ isShowingIntro: false });
-    logEvent('User', 'clicked start');
+  resetApp = () => {
+    this.setState({
+      isShowingAnswer: false,
+      isShowingQuestions: false,
+      selectedInvestment: false,
+    });
   };
 
-  showFirstCalculation = () => {
-    this.setState({ isShowingCalculation: true });
+  startApp = () => {
+    this.setState({ isShowingQuestions: true });
+    logEvent('User', 'clicked start');
+    const section = document.getElementById('questionsContainer');
+    const scroll = () => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    setTimeout(scroll, 200);
+  };
+
+  handleShowAnswer = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    this.setState({ isShowingAnswer: true });
   };
 
   handleBack = () => {
-    this.setState({ isShowingCalculation: false, isShowingIntro: true });
+    this.setState({ isShowingAnswer: false, isShowingIntro: true });
   };
 
   handleCurrencyInput = (e, floatValue) => {
@@ -111,7 +127,7 @@ class Index extends Component {
       ...item,
       isSelected: index === itemIndex,
     }));
-    this.setState({ myInvestments: ressetedInvestment, isShowingCalculation: true });
+    this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
 
     // only for analytics
     const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
@@ -179,27 +195,21 @@ class Index extends Component {
 
   render() {
     return (
-      <div>
+      <div id="pageWrapper" className="center vh-100">
         <Header />
-        <div id="pageWrapper" className="vh-100-l flex-l flex-column">
-          <Intro
-            isShowingIntro={this.state.isShowingIntro}
-            handleInput={this.handleInput}
-            handleBack={this.handleBack}
-            handleInputButtons={this.handleInputButtons}
-            startApp={this.startApp}
-            myCurrentAge={this.state.myCurrentAge}
-            isShowing={this.state.isShowingIntro}
-          />
-          <div
-            id="bottomWrapper"
-            className={` ${this.state.isShowingIntro ? 'dn' : 'flex-l flex-row-l h-100'}`}
-          >
+        <NavBar resetApp={this.resetApp} />
+        {!this.state.isShowingAnswer ? (
+          <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
+        ) : (
+          <Answer {...this.state} />
+        )}
+        <div id="questionsContainer" className="mw7-ns ph0-l ph4 center">
+          {this.state.isShowingQuestions && (
             <Questions
               {...this.state}
-              isShowingCalculation={this.state.isShowingCalculation}
-              handleStartApp={this.startApp}
-              handleShowCalculation={this.showFirstCalculation}
+              isShowingAnswer={this.state.isShowingAnswer}
+              startApp={this.startApp}
+              handleShowAnswer={this.handleShowAnswer}
               handleResetRates={this.handleResetRates}
               handleInput={this.handleInput}
               handleInputButtons={this.handleInputButtons}
@@ -211,20 +221,18 @@ class Index extends Component {
               handleInvestmentRateInput={this.handleInvestmentRateInput}
               setFocusedInput={this.setFocusedInput}
             />
-            {!this.state.isShowingIntro && <OutPutContainer {...this.state} />}
-          </div>
+          )}
         </div>
-        <Pig
-          focusedInput={this.state.focusedInput}
-          myCurrentAge={this.state.myCurrentAge}
-          myCurrentMonthlySavings={this.state.myCurrentMonthlySavings}
-          myInvestments={this.state.myInvestments}
-          myRetirementIncome={this.state.myRetirementIncome}
-        />
         <style jsx global>{`
           ::-webkit-scrollbar {
             width: 0px; /* remove scrollbar space */
             background: transparent; /* optional: just make scrollbar invisible */
+          }
+          .ba0 {
+            border: 0px;
+          }
+          .l0 {
+            left: 0;
           }
           .r0 {
             right: 0;
@@ -276,8 +284,8 @@ class Index extends Component {
             -webkit-appearance: none;
             margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
           }
-          #bottomWrapper {
-            transition: height 0.55s ease-in-out, width 0.55s ease-in-out;
+          .bg-blue {
+            background-color: #5d56fb !important;
           }
         `}</style>
       </div>

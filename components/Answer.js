@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import RetirementChart from './RetirementChart';
 import RetirementSummary from './RetirementSummary';
+import DonationCall from './DonationCall';
 
 class OutPutContainer extends Component {
   render() {
     return (
-      <div
-        id="resultsWrapper"
-        className={'bg-green ph5-l ph3 pv5 w-50-l w-100 flex-l flex-column-l'}
-      >
-        {!this.props.isShowingIntro
-          && this.props.isShowingCalculation && (
-            <React.Fragment>
+      <div id="answersContainer" className={'bg-blue ph0-ns ph4 pv5'}>
+        {this.props.isShowingAnswer && (
+          <div className="flex flex-row-ns flex-column vh-75-l mt0-ns pv4 mw7 center ">
+            <div className="w-100 f3-ns f5 tl-ns tc self-center pr4-ns pr0">
               <RetirementSummary
+                myCurrentAge={this.props.myCurrentAge}
                 myInvestments={this.props.myInvestments}
                 retirementResults={this.props.retirementResults}
+                myRetirementIncome={this.props.myRetirementIncome}
               />
+            </div>
+            <div className="w-100">
               <RetirementChart
                 lifeEvents={this.props.lifeEvents}
                 myInvestments={this.props.myInvestments}
+                myRetirementIncome={this.props.myRetirementIncome}
                 retirementResults={this.props.retirementResults}
               />
-            </React.Fragment>
+            </div>
+            <div className="dn-ns dib">
+              <DonationCall />
+            </div>
+          </div>
         )}
         <style jsx>
           {`
