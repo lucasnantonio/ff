@@ -138,7 +138,7 @@ const PigAnimated = () => (
           transform: translateY(60px);
           animation-name: waterTop;
           animation-duration: 5.6s;
-          animation-delay: 2.8s;
+          animation-delay: -2.8s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
         }
@@ -146,7 +146,7 @@ const PigAnimated = () => (
           transform: translateX(100px) translateY(-50px);
           animation-name: waterLeft;
           animation-duration: 5.6s;
-          animation-delay: 2.8s;
+          animation-delay: -2.8s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
         }
@@ -154,7 +154,7 @@ const PigAnimated = () => (
           transform: translateX(-100px) translateY(-50px);
           animation-name: waterRight;
           animation-duration: 5.6s;
-          animation-delay: 2.8s;
+          animation-delay: -2.8s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
         }
@@ -168,7 +168,7 @@ const PigAnimated = () => (
 
         #barriga {
           animation-name: barriga;
-          animation-duration: 2s;
+          animation-duration: 4s;
           animation-iteration-count: infinite;
           animation-direction: alternate;
           animation-timing-function: ease-in-out;

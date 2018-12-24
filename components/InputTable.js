@@ -27,7 +27,7 @@ class InputTable extends Component {
       <div>
         <table className="w-100">
           <thead>
-            <tr className="h3">
+            <tr className="h3 f5-n f7">
               <td>nome do evento</td>
               <td>sua idade</td>
               <td>valor</td>
@@ -40,7 +40,7 @@ class InputTable extends Component {
                 <td className="w-third">
                   <input
                     placeholder="ex. volta ao mundo"
-                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f6"
+                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f7"
                     id="label"
                     type="text"
                     value={row.label}
@@ -50,7 +50,7 @@ class InputTable extends Component {
                 <td className="w-third">
                   <input
                     placeholder="35"
-                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f6"
+                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f7"
                     id="age"
                     type="number"
                     value={row.age}
@@ -60,7 +60,7 @@ class InputTable extends Component {
                 <td className="w-third">
                   <input
                     placeholder="200000"
-                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f6"
+                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f7"
                     id="cost"
                     type="number"
                     step="10000"
@@ -86,7 +86,7 @@ class InputTable extends Component {
         </table>
         <button
           style={{ backgroundColor: '#fd719b' }}
-          className={'pv3 ph4 white br1 ba0 mv4'}
+          className={'pv3 ph4 white br1 ba0 mv4 pointer'}
           onClick={handleAddTableRow(id, fields)}
         >
           {'+ Adicionar um evento'}
