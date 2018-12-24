@@ -8,6 +8,7 @@ import Hero from '../components/Hero';
 import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
+import NavBar from '../components/NavBar';
 
 class Index extends Component {
   constructor(props) {
@@ -61,6 +62,14 @@ class Index extends Component {
       this.setState({ retirementResults: nextRetirementResults });
     }
   }
+
+  resetApp = () => {
+    this.setState({
+      isShowingAnswer: false,
+      isShowingQuestions: false,
+      selectedInvestment: false,
+    });
+  };
 
   startApp = () => {
     this.setState({ isShowingQuestions: true });
@@ -188,6 +197,7 @@ class Index extends Component {
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header />
+        <NavBar resetApp={this.resetApp} />
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (

@@ -24,7 +24,7 @@ class RetirementSummary extends Component {
         <h3 className="f5-l f6 black-80 normal lh-copy white-80 measure-narrow center ml0-ns">
           <span className="normal">Em {2019 - this.props.myCurrentAge + y} você terá </span> R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}{' '}
-          <span className="normal">em conta.</span> A partir daí, poderá torrar R$
+          <span className="normal">em conta.</span> A partir daí, você poderá gastar R$
           {this.props.myRetirementIncome} por mês até o fim da vida.
         </h3>
         <div className="dn dib-ns">

@@ -13,16 +13,19 @@ const PigAnimated = () => (
         id="water-left"
         d="M111.65 392.777C81.0567 392.132 16.0959 378.474 0.998301 329.001"
         stroke="#0B1C48"
+        strokeWidth="3"
       />
       <path
         id="water-top"
         d="M120.999 117.959C158.928 95.3375 256.498 78.04 332.498 95.5402"
         stroke="#0B1C48"
+        strokeWidth="3"
       />
       <path
         id="water-right"
         d="M568.498 284.117C568.498 335.117 485.747 403.756 388.997 391.543"
         stroke="#0B1C48"
+        strokeWidth="3"
       />
       <g id="group">
         <path
@@ -176,7 +179,7 @@ const PigAnimated = () => (
         @keyframes waterRight {
           from {
             transform: translateX(-100px) translateY(-50px) scale(1);
-            opacity: 1;
+            opacity: 0.5;
           }
           to {
             transform: translateX(-30px) translateY(-20px) scale(1.1);
@@ -186,7 +189,7 @@ const PigAnimated = () => (
         @keyframes waterLeft {
           from {
             transform: translateX(100px) translateY(-50px) scale(1);
-            opacity: 1;
+            opacity: 0.5;
           }
           to {
             transform: translateX(30px) translateY(-20px) scale(1.1);
@@ -196,7 +199,7 @@ const PigAnimated = () => (
         @keyframes waterTop {
           from {
             transform: translateY(60px) scale(1);
-            opacity: 1;
+            opacity: 0.5;
           }
           to {
             transform: translateY(30px) scale(1);
