@@ -24,60 +24,66 @@ class InputTable extends Component {
     )[0][1];
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <td />
-            <td>evento</td>
-            <td>idade</td>
-            <td>valor</td>
-            <td />
-          </tr>
-        </thead>
-        <tbody>
-          {table.map((row, rowId) => (
-            <tr key={rowId}>
-              <td>
-                <button onClick={handleRemoveTableRow(rowId, id, table)}>{'-'}</button>
-              </td>
-              <td>
-                <input
-                  style={{ width: 100 }}
-                  id="label"
-                  type="text"
-                  value={row.label}
-                  onChange={handleTableInput(rowId, id, table, true)}
-                />
-              </td>
-              <td>
-                <input
-                  style={{ width: 100 }}
-                  id="age"
-                  type="number"
-                  value={row.age}
-                  onChange={handleTableInput(rowId, id, table)}
-                />
-              </td>
-              <td>
-                <input
-                  style={{ width: 100 }}
-                  id="cost"
-                  type="number"
-                  step="10000"
-                  value={row.cost}
-                  onChange={handleTableInput(rowId, id, table)}
-                />
-              </td>
-              <td>{events.length > rowId ? events[rowId].obs : ''}</td>
+      <div>
+        <table className="w-100">
+          <thead>
+            <tr>
+              <td>evento</td>
+              <td>idade</td>
+              <td>valor</td>
+              <td />
             </tr>
-          ))}
-          <tr>
-            <td>
-              <button onClick={handleAddTableRow(id, fields)}>{'+'}</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {table.map((row, rowId) => (
+              <tr key={rowId}>
+                <td className="w-third">
+                  <input
+                    className="w-100"
+                    id="label"
+                    type="text"
+                    value={row.label}
+                    onChange={handleTableInput(rowId, id, table, true)}
+                  />
+                </td>
+                <td className="w-third">
+                  <input
+                    className="w-100"
+                    id="age"
+                    type="number"
+                    value={row.age}
+                    onChange={handleTableInput(rowId, id, table)}
+                  />
+                </td>
+                <td className="w-third">
+                  <input
+                    className="w-100"
+                    id="cost"
+                    type="number"
+                    step="10000"
+                    value={row.cost}
+                    onChange={handleTableInput(rowId, id, table)}
+                  />
+                </td>
+                <td>
+                  <button onClick={handleRemoveTableRow(rowId, id, table)}>{'-'}</button>
+                </td>
+                <td>{events.length > rowId ? events[rowId].obs : ''}</td>
+              </tr>
+            ))}
+            <tr>
+              <td />
+            </tr>
+          </tbody>
+        </table>
+        <button
+          style={{ backgroundColor: '#fd719b' }}
+          className={'pv3 ph4 white br2 ba0'}
+          onClick={handleAddTableRow(id, fields)}
+        >
+          {'Criar um evento'}
+        </button>
+      </div>
     );
   }
 }
