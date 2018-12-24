@@ -172,9 +172,9 @@ class InputContainer extends Component {
           )}
           {this.state.currentTabIndex === 1 && (
             <div id="tab2" key="2" className="absolute-l w-100 pb5 tc">
-              <p className="f4 black-50 tc center mb4">
-                Adicione eventos de vida custosos, como viagens e cursos para deixar seu cálculo
-                ainda mais preciso.
+              <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
+                Adicione eventos de vida custosos, como viagens, compras grandes, e cursos, para
+                deixar seu cálculo ainda mais preciso.
               </p>
               {!this.state.isShowingLifeEventsTable && (
                 <button

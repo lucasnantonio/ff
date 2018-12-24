@@ -99,7 +99,7 @@ class InputField extends Component {
                 <input
                   data-type={this.props.dataType}
                   value={this.props.value}
-                  className={`bn bg-transparent f4 
+                  className={`bn bg-transparent f4-ns f5 
                     ${this.props.isPercentage ? 'tr' : 'tc'}
                     ${this.props.hasSteppers ? 'w3 mh3-l' : 'w-100'}
                     `}
