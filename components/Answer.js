@@ -8,10 +8,12 @@ class OutPutContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <RetirementSummaryFloating
-          retirementResults={this.props.retirementResults}
-          myInvestments={this.props.myInvestments}
-        />
+        {this.props.isShowingAnswer && (
+          <RetirementSummaryFloating
+            retirementResults={this.props.retirementResults}
+            myInvestments={this.props.myInvestments}
+          />
+        )}
         <div id="answersContainer" className={'bg-blue ph0-ns ph4 pv5'}>
           {this.props.isShowingAnswer && (
             <div className="flex flex-row-ns flex-column vh-75-l mt0-ns pv4 mw7 center ">
