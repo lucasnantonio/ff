@@ -10,7 +10,7 @@ function getYear() {
 
 const Index = () => (
   <div>
-    <Header />
+    <Header title="Sobre" />
     <NavBar />
     <div style={{ backgroundColor: '#5e5df7' }} className="w-100 pa5-ns pa4 pv6 tl white bg-blue">
       <div className="mw7 flex flex-row-l flex-column center justify-between">

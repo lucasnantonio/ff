@@ -196,7 +196,7 @@ class Index extends Component {
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
-        <Header />
+        <Header title="Aposentar.me"/>
         <NavBar resetApp={this.resetApp} />
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
@@ -223,71 +223,6 @@ class Index extends Component {
             />
           )}
         </div>
-        <style jsx global>{`
-          ::-webkit-scrollbar {
-            width: 0px; /* remove scrollbar space */
-            background: transparent; /* optional: just make scrollbar invisible */
-          }
-          .ba0 {
-            border: 0px;
-          }
-          .l0 {
-            left: 0;
-          }
-          .r0 {
-            right: 0;
-          }
-          .h0 {
-            height: 0;
-          }
-          ::selection {
-            color: white;
-            background-color: #fbadaf;
-            opacity: 1;
-          }
-          .noSelect {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-          }
-          .showing {
-            opacity: 1;
-          }
-          .hidden {
-            opacity: 0;
-          }
-          .absolute-bottom {
-            bottom: 4rem;
-            right: 0;
-          }
-          .absolute-top {
-            right: 0;
-            top: 4rem;
-          }
-          .mt-negative {
-            margin-top: -5rem;
-          }
-          input {
-            outline: none;
-            caret-color: #2ea776;
-            caret-width: 2px;
-          }
-          .checkmark {
-            transition: all 0.2s;
-          }
-          input::-webkit-outer-spin-button,
-          input::-webkit-inner-spin-button {
-            /* display: none; <- Crashes Chrome on hover */
-            -webkit-appearance: none;
-            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-          }
-          .bg-blue {
-            background-color: #5d56fb !important;
-          }
-        `}</style>
       </div>
     );
   }
