@@ -173,9 +173,9 @@ class Index extends Component {
     const { myInvestments } = this.state;
 
     const rates = {
-      poupança: 3,
-      'renda fixa': 6,
-      'renda variável': 8.5,
+      poupança: 1.5,
+      'renda fixa': 4.5,
+      'renda variável': 7.0,
     };
 
     const reseted = myInvestments.map(investment => ({
@@ -196,7 +196,7 @@ class Index extends Component {
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
-        <Header title="Aposentar.me"/>
+        <Header title="Aposentar.me" />
         <NavBar resetApp={this.resetApp} />
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
