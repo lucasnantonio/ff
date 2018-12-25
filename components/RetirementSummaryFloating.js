@@ -28,7 +28,10 @@ class RetirementSummaryFloating extends Component {
 
     return (
       this.state.isShowing && (
-        <div className="fixed w-100 pa4 bg-blue white z-max pointer" onClick={this.scrollBackUp}>
+        <div
+          className="fixed w-100 pa4-ns pa3 bg-blue white z-max pointer f5-ns f6"
+          onClick={this.scrollBackUp}
+        >
           <div className="mw7 center">
             <span className="normal "> Você vai se aposentar aos {y} anos. </span>
           </div>
