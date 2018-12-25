@@ -107,7 +107,12 @@ class InputContainer extends Component {
           component="div"
         >
           {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="absolute-l w-100 pb5">
+            <div
+              id="tab1"
+              role="tabpanel"
+              labelledBy={this.state.tabs[0].label}
+              className="absolute-l w-100 pb5"
+            >
               <InputField
                 isEnabled
                 hasSteppers
@@ -171,7 +176,13 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 1 && (
-            <div id="tab2" key="2" className="absolute-l w-100 pb5 tc">
+            <div
+              id="tab2"
+              role="tabpanel"
+              key="2"
+              labelledBy={this.state.tabs[1].label}
+              className="absolute-l w-100 pb5 tc"
+            >
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
                 Adicione eventos de vida custosos, como viagens, compras grandes, e cursos, para
                 deixar seu cálculo ainda mais preciso.
@@ -204,7 +215,13 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 2 && (
-            <div id="tab3" key="3" className="absolute-l w-100 pb5">
+            <div
+              id="tab3"
+              role="tabpanel"
+              key="3"
+              labelledBy={this.state.tabs[2].label}
+              className="absolute-l w-100 pb5"
+            >
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage

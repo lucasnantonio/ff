@@ -35,7 +35,7 @@ class InputField extends Component {
     this.handleDecrement = this.handleDecrement.bind(this);
   }
 
-  handleInput(e, floatValue, maskedValue) {
+  handleInput(e, floatValue) {
     this.props.handleInput(e, floatValue);
   }
 
@@ -86,12 +86,15 @@ class InputField extends Component {
   render() {
     return (
       <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
-        <InputLabel label={this.props.label} />
+        <InputLabel id={this.props.id} label={this.props.label} />
         <div className={'flex items-center'}>
           {this.props.hasSteppers && (
-            <div className="pointer flex items-center" onClick={this.handleDecrement}>
+            <button
+              className="pointer flex items-center ba0 bg-transparent"
+              onClick={this.handleDecrement}
+            >
               <MinusBtn />
-            </div>
+            </button>
           )}
           <div className={'bn flex flex-column justify-center pv2'}>
             {!this.props.isCurrency ? (
@@ -132,9 +135,12 @@ class InputField extends Component {
             )}
           </div>
           {this.props.hasSteppers && (
-            <div className="pointer flex items-center" onClick={this.handleIncrement}>
+            <button
+              className="pointer flex items-center ba0 bg-transparent"
+              onClick={this.handleIncrement}
+            >
               <PlusBtn />
-            </div>
+            </button>
           )}
         </div>
         <style jsx>{`

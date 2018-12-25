@@ -54,9 +54,9 @@ class RetirementChart extends Component {
       (investment, index) => this.props.myInvestments[index].isSelected,
     )[0];
 
-    const otherInvestments = retirementResults.filter(
-      (investment, index) => !this.props.myInvestments[index].isSelected,
-    );
+    // const otherInvestments = retirementResults.filter(
+    //   (investment, index) => !this.props.myInvestments[index].isSelected,
+    // );
 
     const selectedInvestmentSet = {
       label,
@@ -69,19 +69,19 @@ class RetirementChart extends Component {
       pointHitRadius: 2,
     };
 
-    const otherInvestmentsSets = otherInvestments.map((investment) => {
-      const [otherLabel, otherInvestmentData] = investment;
-      return {
-        label: otherLabel,
-        data: this.filterIntegerAge(otherInvestmentData),
-        backgroundColor: 'rgba(0, 0, 0 ,0)',
-        pointRadius: 0,
-        borderWidth: 1,
-        borderColor: 'rgba(255, 255, 255, 0.5)',
-        lineTension: 0,
-        pointHitRadius: 2,
-      };
-    });
+    // const otherInvestmentsSets = otherInvestments.map((investment) => {
+    //   const [otherLabel, otherInvestmentData] = investment;
+    //   return {
+    //     label: otherLabel,
+    //     data: this.filterIntegerAge(otherInvestmentData),
+    //     backgroundColor: 'rgba(0, 0, 0 ,0)',
+    //     pointRadius: 0,
+    //     borderWidth: 1,
+    //     borderColor: 'rgba(255, 255, 255, 0.5)',
+    //     lineTension: 0,
+    //     pointHitRadius: 2,
+    //   };
+    // });
 
     const retirementPoint = {
       label,

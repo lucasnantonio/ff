@@ -21,21 +21,21 @@ class RetirementSummaryFloating extends Component {
 
   render() {
     window.onscroll = () => this.setState({ isShowing: this.checkVisibility() });
-    const { age, balance } = this.props.retirementResults[
+    const { age } = this.props.retirementResults[
       this.getSelectedInvestmentIndex(this.props.myInvestments)
     ][1].retirement;
-    const [y, m] = formatAge(age);
+    const [y] = formatAge(age);
 
     return (
       this.state.isShowing && (
-        <div
-          className="fixed w-100 pa4-ns pa3 bg-blue white z-max pointer f5-ns f6"
+        <button
+          className="fixed w-100 pa4-ns pa3 bg-blue white z-max pointer f5-ns f6 ba0"
           onClick={this.scrollBackUp}
         >
           <div className="mw7 center">
             <span className="normal "> Você vai se aposentar aos {y} anos. </span>
           </div>
-        </div>
+        </button>
       )
     );
   }
