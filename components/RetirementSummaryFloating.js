@@ -11,7 +11,7 @@ class RetirementSummaryFloating extends Component {
   checkVisibility = () => {
     const el = document.getElementById('answersContainer');
     const height = el ? el.offsetHeight : null;
-    return window.pageYOffset > height;
+    this.setState({ isShowing: window.pageYOffset > height });
   };
 
   getSelectedInvestmentIndex = (array) => {
@@ -20,7 +20,7 @@ class RetirementSummaryFloating extends Component {
   };
 
   render() {
-    window.onscroll = () => this.setState({ isShowing: this.checkVisibility() });
+    window.onscroll = this.checkVisibility;
     const { age } = this.props.retirementResults[
       this.getSelectedInvestmentIndex(this.props.myInvestments)
     ][1].retirement;
