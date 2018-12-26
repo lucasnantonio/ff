@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class QuestionTabs extends Component {
   render() {
     return (
-      <div role="tablist" className="w-100 h3 mt5 mb4 flex justify-between">
+      <div role="tablist" className="w-100 h3 mt3 mb4 flex justify-between">
         {this.props.tabs.map((item, index) => (
           <button
             role="tab"
