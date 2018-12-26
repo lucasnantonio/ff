@@ -17,10 +17,10 @@ class Index extends Component {
       isShowingAnswer: false,
       isShowingQuestions: false,
       myCurrentBalance: 0,
-      myCurrentAge: undefined,
+      myCurrentAge: 18,
       myCurrentMonthlySavings: 0,
       myRetirementIncome: 0,
-      myLifeExpectancy: undefined,
+      myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,
       selectedInvestment: false,
       myInvestments: [

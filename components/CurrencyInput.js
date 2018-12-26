@@ -163,6 +163,13 @@ class IntlCurrencyInput extends Component {
   render() {
     return (
       <input
+        style={{
+          maxWidth: '12rem',
+          padding: '.2rem',
+          lineHeight: '1rem',
+          borderRadius: '.2rem',
+          height: '2.2rem',
+        }}
         {...this.allowedProps()}
         value={this.handleValue()}
         inputMode="numeric"

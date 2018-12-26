@@ -91,26 +91,6 @@ class InputTable extends Component {
         >
           {'+ Adicionar um evento'}
         </button>
-        <style jsx>
-          {`
-            input::-webkit-input-placeholder {
-              /* Chrome/Opera/Safari */
-              color: rbga(0, 0, 0, 0.4);
-            }
-            input::-moz-placeholder {
-              /* Firefox 19+ */
-              color: rbga(0, 0, 0, 0.4);
-            }
-            input:-ms-input-placeholder {
-              /* IE 10+ */
-              color: rbga(0, 0, 0, 0.4);
-            }
-            input:-moz-placeholder {
-              /* Firefox 18- */
-              color: rbga(0, 0, 0, 0.4);
-            }
-          `}
-        </style>
       </div>
     );
   }

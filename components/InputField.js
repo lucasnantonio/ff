@@ -28,6 +28,7 @@ class InputField extends Component {
       isHovered: false,
       isFocused: false,
       isEmpty: true,
+      hasBeenChanged: false,
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -38,6 +39,9 @@ class InputField extends Component {
 
   handleInput(e, floatValue) {
     this.props.handleInput(e, floatValue);
+    this.setState({
+      hasBeenChanged: true,
+    });
   }
 
   handleMouseEnter = () => {
@@ -81,7 +85,6 @@ class InputField extends Component {
         isEmpty: true,
       });
     }
-    if (this.props.hasTips) this.props.setFocusedInput('');
   }
 
   render() {
@@ -89,7 +92,7 @@ class InputField extends Component {
       <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
         <div className="flex w-100">
           <InputLabel id={this.props.id} label={this.props.label} />
-          <div className={'flex flex-column w-100'}>
+          <div className={'flex w-100 justify-end'}>
             {this.props.hasSteppers && (
               <button
                 className="pointer flex items-center ba0 bg-transparent"
@@ -99,16 +102,14 @@ class InputField extends Component {
               </button>
             )}
             {!this.props.isCurrency ? (
-              <div className="flex items-center w-100">
+              <div className="flex items-center w-100 justify-end">
                 <input
                   required
                   inputMode="numeric"
                   pattern="[0-9]*"
                   data-type={this.props.dataType}
                   value={this.props.value}
-                  className={`bn bg-transparent f4-ns f5 tr w3
-                    ${this.props.hasSteppers ? 'mh3-l' : 'w-100'}
-                    `}
+                  className={'bn pa2 br2 bg-transparent f4-ns f5 tr w3'}
                   min={this.props.min}
                   max={this.props.max}
                   onFocus={this.handleFocus}
@@ -147,21 +148,7 @@ class InputField extends Component {
             )}
           </div>
         </div>
-        <PigFeedback id={this.props.id} value={this.props.value} />
-        <style jsx>{`
-          input {
-            outline: none;
-          }
-          .checkmark {
-            transition: all 0.2s;
-          }
-          input::-webkit-outer-spin-button,
-          input::-webkit-inner-spin-button {
-            /* display: none; <- Crashes Chrome on hover */
-            -webkit-appearance: none;
-            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-          }
-        `}</style>
+        {this.state.hasBeenChanged && <PigFeedback id={this.props.id} value={this.props.value} />}
       </InputFieldWrapper>
     );
   }

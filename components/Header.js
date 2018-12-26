@@ -87,6 +87,37 @@ const Header = props => (
           caret-color: ${colors.redPink};
           caret-width: 2px;
         }
+        input {
+          outline: none;
+        }
+        input:focus {
+          background-color: ${colors.lightPink};
+        }
+        .checkmark {
+          transition: all 0.2s;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          /* display: none; <- Crashes Chrome on hover */
+          -webkit-appearance: none;
+          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+        input::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          color: rbga(0, 0, 0, 0.1);
+        }
+        input::-moz-placeholder {
+          /* Firefox 19+ */
+          color: rbga(0, 0, 0, 0.1);
+        }
+        input:-ms-input-placeholder {
+          /* IE 10+ */
+          color: rbga(0, 0, 0, 0.1);
+        }
+        input:-moz-placeholder {
+          /* Firefox 18- */
+          color: rbga(0, 0, 0, 0.1);
+        }
         .checkmark {
           transition: all 0.2s;
         }
