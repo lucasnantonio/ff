@@ -1,15 +1,31 @@
 import React from 'react';
 import Head from 'next/head';
+import colors from './Colors';
 
 const Header = props => (
   <Head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover"
+    />
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#5e5df7" />
     <title>{props.title}</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <link rel="icon" href="../static/favicon.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta
       name="description"
+      content="Descubra quando você vai atingir a sua independência financeira"
+    />
+    <meta name="og:title" content="Aposentar.me" />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content="https://aposentar.me" />
+    <meta name="og:image:type" content="image/png" />
+    <meta name="og:image" content="https://aposentar.me/static/aposentarme.png" />
+    <meta
+      name="og:description"
       content="Descubra quando você vai atingir a sua independência financeira"
     />
     <style>
@@ -18,10 +34,7 @@ const Header = props => (
           font-size: 18px;
           font-family: 'Muli', sans-serif;
           font-weight: 100;
-        }
-        .titan {
-          font-family: 'Titan One', serif;
-          font-weight: lighter;
+          color: ${colors.darkBrown};
         }
         ::-webkit-scrollbar {
           width: 0px; /* remove scrollbar space */
@@ -41,7 +54,7 @@ const Header = props => (
         }
         ::selection {
           color: white;
-          background-color: #fbadaf;
+          background-color: ${colors.redPink};
           opacity: 1;
         }
         .noSelect {
@@ -71,7 +84,7 @@ const Header = props => (
         }
         input {
           outline: none;
-          caret-color: #2ea776;
+          caret-color: ${colors.redPink};
           caret-width: 2px;
         }
         .checkmark {
@@ -82,9 +95,6 @@ const Header = props => (
           /* display: none; <- Crashes Chrome on hover */
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-        .bg-blue {
-          background-color: #5d56fb !important;
         }
       `}
     </style>

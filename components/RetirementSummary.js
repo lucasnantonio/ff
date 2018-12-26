@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { formatAge } from '../utils/math';
 import DonationCall from './DonationCall';
+import colors from './Colors';
 
 class RetirementSummary extends Component {
   state = {};
@@ -18,10 +19,10 @@ class RetirementSummary extends Component {
 
     return (
       <div className="w-100 flex flex-column ml0-ns center mr4">
-        <h2 className="f2-l f3 white tracked-tight lh-solid">
+        <h2 className="f2-l f3 tracked-tight lh-solid white">
           <span className="normal "> Você vai se aposentar aos </span> {y} anos.
         </h2>
-        <h3 className="f5-l f6 black-80 normal lh-copy white-80 measure-narrow center ml0-ns">
+        <h3 className="f5-l f6 black-80 normal lh-copy white-60 measure-narrow center ml0-ns">
           <span className="normal">Em {2019 - this.props.myCurrentAge + y} você terá </span> R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}{' '}
           <span className="normal">em conta.</span> A partir daí, você poderá gastar R$
