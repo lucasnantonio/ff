@@ -21,7 +21,7 @@ const Header = props => (
     <meta name="og:title" content="Aposentar.me" />
     <meta name="og:type" content="website" />
     <meta name="og:url" content="https://aposentar.me" />
-    <meta name="og:image:type" content="image/png">
+    <meta name="og:image:type" content="image/png" />
     <meta name="og:image" content="https://aposentar.me/static/aposentarme.png">
     <meta
       name="og:description"
