@@ -7,7 +7,7 @@ class PigFeedback extends Component {
     this.state = {};
   }
 
-  getFeedback = () => {
+  getFeedback = (id) => {
     const feedbacklist = {
       poupança: [
         {
@@ -101,13 +101,13 @@ class PigFeedback extends Component {
         },
       ],
     };
-    return feedbacklist;
+    return feedbacklist[id] && feedbacklist[id][0].message;
   };
 
   render() {
     return (
       <p style={{ color: colors.darkGreen }} className="f5 lh-copy w-100 mb0 measure">
-        {this.getFeedback()[this.props.id] && this.getFeedback()[this.props.id][0].message}
+        {this.getFeedback(this.props.id)}
       </p>
     );
   }
