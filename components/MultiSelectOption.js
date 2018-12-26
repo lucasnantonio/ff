@@ -5,8 +5,9 @@ class MultiSelectOption extends Component {
     return (
       <div>
         <input
+          required
+          form="basicquestions"
           name="myInvestment"
-          tabIndex="0"
           disabled={!this.props.isEnabled}
           id={`radio${this.props.label}`}
           type="radio"

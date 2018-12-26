@@ -113,10 +113,10 @@ class InputContainer extends Component {
               aria-labelledby={this.state.tabs[0].label}
               className="absolute-l w-100 pb5"
             >
-              <form action="">
+              <form id="basicquestions" action="">
                 <InputField
+                  form="basicquestions"
                   isEnabled
-                  hasSteppers
                   label="Quantos anos você tem?"
                   id="myCurrentAge"
                   value={this.props.myCurrentAge}
@@ -129,7 +129,6 @@ class InputContainer extends Component {
                   setFocusedInput={this.props.setFocusedInput}
                 />
                 <InputField
-                  hasSteppers
                   label="Você pretende viver até quantos anos?"
                   id="myLifeExpectancy"
                   value={this.props.myLifeExpectancy}
@@ -185,6 +184,8 @@ class InputContainer extends Component {
                   >
                     <button
                       type="submit"
+                      form="basicquestions"
+                      disabled={!this.canSubmit()}
                       style={{ backgroundColor: '#f95c72' }}
                       className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
                       onClick={this.props.handleShowAnswer}

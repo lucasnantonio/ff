@@ -9,19 +9,21 @@ const MultiSelect = props => (
     isShowingCalculation={props.isShowingCalculation}
     hiddenBorder={props.hiddenBorder}
   >
-    <InputLabel label={props.label} />
-    <div className="flex flex-row flex items-center-l mb0-ns mb3 justify-end-l justify-between w-100 mt0-ns mt4">
-      {props.options.map((item, index) => (
-        <MultiSelectOption
-          isEnabled={props.isEnabled}
-          isSelected={item.isSelected}
-          index={index}
-          handleClick={props.isEnabled && props.handleClick}
-          label={item.label}
-          key={index}
-        />
-      ))}
-    </div>
+    <fieldset className="bn flex justify-between w-100 items-center ma0 pa0">
+      <legend className="mw5 lh-copy-l f4-ns f5 fw3 mr4 black-70">{props.label}</legend>
+      <div className="flex flex-row flex items-center-l mb0-ns mb3 justify-end-l justify-between mt0-ns mt4">
+        {props.options.map((item, index) => (
+          <MultiSelectOption
+            isEnabled={props.isEnabled}
+            isSelected={item.isSelected}
+            index={index}
+            handleClick={props.isEnabled && props.handleClick}
+            label={item.label}
+            key={index}
+          />
+        ))}
+      </div>
+    </fieldset>
   </InputFieldWrapper>
 );
 
