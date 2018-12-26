@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import colors from './Colors';
 
 const Header = props => (
   <Head>
@@ -33,10 +34,7 @@ const Header = props => (
           font-size: 18px;
           font-family: 'Muli', sans-serif;
           font-weight: 100;
-        }
-        .titan {
-          font-family: 'Titan One', serif;
-          font-weight: lighter;
+          color: ${colors.darkBrown};
         }
         ::-webkit-scrollbar {
           width: 0px; /* remove scrollbar space */
@@ -56,7 +54,7 @@ const Header = props => (
         }
         ::selection {
           color: white;
-          background-color: #fbadaf;
+          background-color: ${colors.redPink};
           opacity: 1;
         }
         .noSelect {
@@ -86,7 +84,7 @@ const Header = props => (
         }
         input {
           outline: none;
-          caret-color: #2ea776;
+          caret-color: ${colors.redPink};
           caret-width: 2px;
         }
         .checkmark {
@@ -97,9 +95,6 @@ const Header = props => (
           /* display: none; <- Crashes Chrome on hover */
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-        .bg-blue {
-          background-color: #5d56fb !important;
         }
       `}
     </style>
