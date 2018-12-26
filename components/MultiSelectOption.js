@@ -33,7 +33,7 @@ class MultiSelectOption extends Component {
             }
             input[type="radio"]:focus+label {
               color: white;
-              background-color: ${colors.redPink}
+              background-color: ${colors.lightPink}
             } 
             input[type="radio"]:hover+label {
               background-color: ${colors.lightPink}
