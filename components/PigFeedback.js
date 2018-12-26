@@ -4,9 +4,15 @@ import colors from './Colors';
 
 const feedbacklist = {
   mySelectedInvestment: {
-    poupança: 'Poupança não é legal rapaz',
-    'renda fixa': 'Melhor...',
-    'renda variável': 'Agora sim',
+    poupança:
+      'A poupança é o investimento com o menor rendimento do mercado. Existem opções com a mesma segurança e rendimentos muito melhores. Apesar disso, 39% dos brasileiros que se preparam para aposentadoria deixam o dinheiro na poupança.',
+    'renda fixa':
+      'Investimentos de renda fixa, como Tesouro Direto, CDBs e outros, são uma boa opção de baixo risco para quem está focado no longo prazo.',
+    'renda variável':
+      'Investimentos de renda variável são uma boa opção para quem '
+      + 'está focado no longo prazo. Não é todo mundo que se sente '
+      + 'confortável em ver o dinheiro oscilando todo dia, portanto, é importante '
+      + 'checar o seu perfil de investimento.',
   },
   poupança: [
     {
@@ -22,11 +28,6 @@ const feedbacklist = {
       message:
         'Desde o ano 2000, a poupança teve essa ordem de rendimento apenas em 2006. Você está certo dessa taxa?',
       src: 'Fonte: www.ipeadata.gov.br',
-    },
-    {
-      lowerValue: 5.1,
-      upperValue: Number.POSITIVE_INFINITY,
-      message: 'Com esse rendimento na poupança eu nem trabalhava mais.',
     },
   ],
   'renda fixa': [
@@ -49,8 +50,7 @@ const feedbacklist = {
     {
       lowerValue: 20,
       upperValue: Number.POSITIVE_INFINITY,
-      message:
-        'Parabéns, temos um novo Warren Buffett. O retorno anual da Berkshire Hathaway é de 20,9%.',
+      message: 'Uau! Me conta a mágica que você está fazendo pra ter esse rendimento!',
       src: 'Fonte: Berkshire Hathaway. Annual Report, 2017.',
     },
   ],
@@ -70,10 +70,17 @@ const feedbacklist = {
   ],
   myCurrentMonthlySavings: [
     {
-      lowerValue: 0.01,
+      lowerValue: 1,
+      upperValue: 999,
+      message:
+        'Guardar uma quantia todo mês, mesmo que pequena, terá um impacto enorme na sua qualidade de vida lá na frente.',
+      reaction: 0,
+    },
+    {
+      lowerValue: 1000,
       upperValue: 10000,
       message:
-        'Sabia que apenas 31% dos brasileiros pouparam parte dos seus rendimentos nos últimos 12 meses? Você faz parte desse grupo.',
+        'Sabia que apenas 31% dos brasileiros pouparam parte dos seus rendimentos nos últimos 12 meses? Você faz parte desse grupo, parabéns!',
       src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
       reaction: 0,
     },
@@ -104,7 +111,7 @@ const feedbacklist = {
 class PigFeedback extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { render: false };
   }
 
   hasFeedback = (id) => {
@@ -129,6 +136,12 @@ class PigFeedback extends Component {
     return feedback;
   };
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ render: true });
+    }, 1000);
+  }
+
   render() {
     return (
       <CSSTransitionGroup
@@ -138,7 +151,7 @@ class PigFeedback extends Component {
         transitionEnterTimeout={500}
         transitionLeaveTimeout={500}
       >
-        {this.hasFeedback(this.props.id) && (
+        {this.hasFeedback(this.props.id) && this.state.render && (
           <p
             style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
             className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
@@ -146,7 +159,7 @@ class PigFeedback extends Component {
             {this.getFeedback(this.props.id)}
           </p>
         )}
-        {this.props.hasSelectedInvestment && (
+        {this.props.hasSelectedInvestment && this.state.render && (
           <p
             id="investmentTip"
             style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
