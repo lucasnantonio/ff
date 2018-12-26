@@ -147,7 +147,7 @@ class InputField extends Component {
             )}
           </div>
         </div>
-        <PigFeedback id={this.props.id} />
+        <PigFeedback id={this.props.id} value={this.props.value} />
         <style jsx>{`
           input {
             outline: none;
