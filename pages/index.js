@@ -197,7 +197,7 @@ class Index extends Component {
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
-        <NavBar resetApp={this.resetApp} />
+        <NavBar isShowingAnswer={this.state.isShowingAnswer} resetApp={this.resetApp} />
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (

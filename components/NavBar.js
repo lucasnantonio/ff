@@ -9,13 +9,13 @@ const NavBar = props => (
     <div className="flex mw7 center justify-between">
       <Link href="/">
         <button onClick={props.resetApp} className="bn bg-transparent b pointer link white">
-          <Logo />
+          <Logo isShowingAnswer={props.isShowingAnswer} />
         </button>
       </Link>
       <Link href="/sobre" tabIndex="0">
         <a
           href="#"
-          style={{ color: colors.redPink }}
+          style={{ color: !props.isShowingAnswer ? colors.redPink : 'rgba(255,255,255,.5' }}
           className="link white-40 pointer hover-white pa3"
         >
           sobre

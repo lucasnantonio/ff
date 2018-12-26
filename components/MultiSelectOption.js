@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
+import colors from './Colors';
 
 class MultiSelectOption extends Component {
   render() {
@@ -20,7 +22,7 @@ class MultiSelectOption extends Component {
         <label
           htmlFor={`radio${this.props.label}`}
           onClick={e => this.props.handleClick(e, this.props.index)}
-          className={`pa3 f7 ${this.props.isEnabled ? 'hover-bg-near-white pointer' : 'black-30'}`}
+          className={`pa3 br2 f7 ${this.props.isEnabled ? 'pointer' : 'black-30'}`}
         >
           {this.props.label}
         </label>
@@ -30,11 +32,15 @@ class MultiSelectOption extends Component {
               display: inline-block;
             }
             input[type="radio"]:focus+label {
-              background-color: #f7f7f7;
+              color: white;
+              background-color: ${colors.redPink}
+            } 
+            input[type="radio"]:hover+label {
+              background-color: ${colors.lightPink}
             } 
             input[type='radio']:checked+label {
-              border: solid 2px black;
-              color: black;
+              color: white;
+              background-color: ${colors.redPink}
             }
           `}
         </style>

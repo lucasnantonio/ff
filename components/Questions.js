@@ -4,6 +4,7 @@ import InputField from './InputField';
 import InputTable from './InputTable';
 import MultiSelect from './MultiSelect';
 import QuestionTabs from './QuestionTabs';
+import colors from './Colors';
 
 let timeoutVar = 0;
 
@@ -186,7 +187,7 @@ class InputContainer extends Component {
                       type="submit"
                       form="basicquestions"
                       disabled={!this.canSubmit()}
-                      style={{ backgroundColor: '#f95c72' }}
+                      style={{ backgroundColor: colors.darkGreen }}
                       className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
                       onClick={this.props.handleShowAnswer}
                     >

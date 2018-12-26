@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { formatAge } from '../utils/math';
+import colors from './Colors';
 
 class RetirementSummaryFloating extends Component {
   state = { isShowing: false };
@@ -29,7 +30,8 @@ class RetirementSummaryFloating extends Component {
     return (
       this.state.isShowing && (
         <button
-          className="fixed w-100 pa4-ns pa3 bg-blue white z-max pointer f5-ns f6 ba0"
+          style={{ backgroundColor: colors.darkGreen }}
+          className="fixed w-100 pa4-ns pa3 white z-max pointer f5-ns f6 ba0"
           onClick={this.scrollBackUp}
         >
           <div className="mw7 center">
