@@ -4,6 +4,7 @@ import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
 import InputFieldWrapper from './InputFieldWrapper';
+import colors from './Colors';
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -85,65 +86,70 @@ class InputField extends Component {
   render() {
     return (
       <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
-        <InputLabel id={this.props.id} label={this.props.label} />
-        <div className={'flex items-center w-100'}>
-          {this.props.hasSteppers && (
-            <button
-              className="pointer flex items-center ba0 bg-transparent"
-              onClick={this.handleDecrement}
-            >
-              <MinusBtn />
-            </button>
-          )}
-          {/* <div className={'bn flex flex-column justify-center pv2'}> */}
-          {!this.props.isCurrency ? (
-            <div className="flex items-center w-100">
-              <input
-                required
-                inputMode="numeric"
-                pattern="[0-9]*"
-                data-type={this.props.dataType}
-                value={this.props.value}
-                className={`bn bg-transparent f4-ns f5 tr w3
+        <div className="flex w-100">
+          <InputLabel id={this.props.id} label={this.props.label} />
+          <div className={'flex flex-column items-center w-100'}>
+            {this.props.hasSteppers && (
+              <button
+                className="pointer flex items-center ba0 bg-transparent"
+                onClick={this.handleDecrement}
+              >
+                <MinusBtn />
+              </button>
+            )}
+            {!this.props.isCurrency ? (
+              <div className="flex items-center w-100">
+                <input
+                  required
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  data-type={this.props.dataType}
+                  value={this.props.value}
+                  className={`bn bg-transparent f4-ns f5 tr w3
                     ${this.props.hasSteppers ? 'mh3-l' : 'w-100'}
                     `}
+                  min={this.props.min}
+                  max={this.props.max}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
+                  id={this.props.id}
+                  type="number"
+                  placeholder={this.props.placeholder}
+                  onChange={this.handleInput}
+                />
+                {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
+              </div>
+            ) : (
+              <IntlCurrencyInput
+                className={`${
+                  this.props.value === 0 ? 'black-20' : 'black'
+                } bn w-100 bg-transparent f4-ns f5 tr`}
+                defaultValue={this.props.placeholder}
                 min={this.props.min}
                 max={this.props.max}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
                 id={this.props.id}
-                type="number"
-                placeholder={this.props.placeholder}
+                currency="BRL"
+                config={currencyConfig}
                 onChange={this.handleInput}
               />
-              {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
-            </div>
-          ) : (
-            <IntlCurrencyInput
-              className={`${
-                this.props.value === 0 ? 'black-20' : 'black'
-              } bn w-100 bg-transparent f4-ns f5 tr`}
-              defaultValue={this.props.placeholder}
-              min={this.props.min}
-              max={this.props.max}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              id={this.props.id}
-              currency="BRL"
-              config={currencyConfig}
-              onChange={this.handleInput}
-            />
-          )}
-          {/* </div> */}
-          {this.props.hasSteppers && (
-            <button
-              className="pointer flex items-center ba0 bg-transparent"
-              onClick={this.handleIncrement}
-            >
-              <PlusBtn />
-            </button>
-          )}
+            )}
+            {/* </div> */}
+            {this.props.hasSteppers && (
+              <button
+                className="pointer flex items-center ba0 bg-transparent"
+                onClick={this.handleIncrement}
+              >
+                <PlusBtn />
+              </button>
+            )}
+          </div>
         </div>
+        <p style={{ color: colors.darkGreen }} className="f5 lh-copy w-100 mb0">
+          {' '}
+          hello you human!{' '}
+        </p>
         <style jsx>{`
           input {
             outline: none;
