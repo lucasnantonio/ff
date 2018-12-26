@@ -183,6 +183,7 @@ class InputContainer extends Component {
                   setFocusedInput={this.props.setFocusedInput}
                 />
                 <MultiSelect
+                  hasSelectedInvestment={this.props.selectedInvestment}
                   isEnabled={this.canSubmit()}
                   label="Onde você guarda seu dinheiro hoje?"
                   options={this.props.myInvestments}

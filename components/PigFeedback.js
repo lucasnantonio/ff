@@ -3,6 +3,11 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import colors from './Colors';
 
 const feedbacklist = {
+  mySelectedInvestment: {
+    poupança: 'Poupança não é legal rapaz',
+    'renda fixa': 'Melhor...',
+    'renda variável': 'Agora sim',
+  },
   poupança: [
     {
       lowerValue: 1.6,
@@ -118,6 +123,12 @@ class PigFeedback extends Component {
     return feedback && feedback[0] && feedback[0].message;
   };
 
+  getInvestmentFeedback = (options) => {
+    const selectedInvestment = options.filter(item => item.isSelected);
+    const feedback = feedbacklist.mySelectedInvestment[selectedInvestment[0].label];
+    return feedback;
+  };
+
   render() {
     return (
       <CSSTransitionGroup
@@ -133,6 +144,14 @@ class PigFeedback extends Component {
             className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
           >
             {this.getFeedback(this.props.id)}
+          </p>
+        )}
+        {this.props.hasSelectedInvestment && (
+          <p
+            style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
+            className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
+          >
+            {this.getInvestmentFeedback(this.props.investmentOptions)}
           </p>
         )}
         <style jsx>

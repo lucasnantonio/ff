@@ -2,6 +2,7 @@ import React from 'react';
 import InputLabel from './InputLabel';
 import InputFieldWrapper from './InputFieldWrapper';
 import MultiSelectOption from './MultiSelectOption';
+import PigFeedback from './PigFeedback';
 
 const MultiSelect = props => (
   <InputFieldWrapper
@@ -24,6 +25,10 @@ const MultiSelect = props => (
         ))}
       </div>
     </fieldset>
+    <PigFeedback
+      hasSelectedInvestment={props.hasSelectedInvestment}
+      investmentOptions={props.options}
+    />
   </InputFieldWrapper>
 );
 
