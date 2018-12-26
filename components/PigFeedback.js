@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import colors from './Colors';
-import IntlCurrencyInput from './CurrencyInput';
 
 const feedbacklist = {
   poupança: [
@@ -102,6 +102,14 @@ class PigFeedback extends Component {
     this.state = {};
   }
 
+  hasFeedback = (id) => {
+    const feedback = feedbacklist[id]
+      && feedbacklist[id].filter(
+        item => this.props.value > item.lowerValue && this.props.value < item.upperValue,
+      );
+    return feedback && feedback[0];
+  };
+
   getFeedback = (id) => {
     const feedback = feedbacklist[id]
       && feedbacklist[id].filter(
@@ -112,9 +120,71 @@ class PigFeedback extends Component {
 
   render() {
     return (
-      <p style={{ color: colors.darkGreen }} className="f5 lh-copy w-100 mb0 measure">
-        {this.getFeedback(this.props.id)}
-      </p>
+      <CSSTransitionGroup
+        transitionName="feedback"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={500}
+      >
+        {this.hasFeedback(this.props.id) && (
+          <p
+            style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
+            className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
+          >
+            {this.getFeedback(this.props.id)}
+          </p>
+        )}
+        <style jsx>
+          {`
+            p {
+              -moz-transition: all 0.5s cubic-bezier(0.72, 0.01, 0.58, 1.16);
+              -ms-transition: all 0.5s cubic-bezier(0.72, 0.01, 0.58, 1.16);
+              -o-transition: all 0.5s cubic-bezier(0.72, 0.01, 0.58, 1.16);
+              -webkit-transition: all 0.5s cubic-bezier(0.72, 0.01, 0.58, 1.16);
+              transition: all 0.5s cubic-bezier(0.72, 0.01, 0.58, 1.16);
+            }
+             {
+              .feedback-appear {
+                opacity: 0;
+                max-height: 0;
+                padding: 0 0;
+                transform: translateY(20px);
+              }
+              .feedback-appear.feedback-appear-active {
+                opacity: 1;
+                padding: 2rem 2rem;
+                max-height: 20rem;
+                transform: translateY(0px);
+              }
+              .feedback-leave {
+                opacity: 1;
+                padding: 2rem 2rem;
+                max-height: 20rem;
+                transform: translateY(0px);
+              }
+              .feedback-leave.feedback-leave-active {
+                opacity: 0;
+                padding: 0 0;
+                max-height: 0;
+                transform: translateY(20px);
+              }
+              .feedback-enter {
+                opacity: 0;
+                padding: 0 0;
+                max-height: 0;
+                transform: translateY(20px);
+              }
+              .feedback-enter.feedback-enter-active {
+                opacity: 1;
+                padding: 2rem 2rem;
+                max-height: 20rem;
+                transform: translateY(0px);
+              }
+            }
+          `}
+        </style>
+      </CSSTransitionGroup>
     );
   }
 }
