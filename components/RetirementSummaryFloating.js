@@ -10,7 +10,7 @@ class RetirementSummaryFloating extends Component {
 
   checkVisibility = () => {
     const el = document.getElementById('answersContainer');
-    const height = el.offsetHeight;
+    const height = el ? el.offsetHeight : null;
     return window.pageYOffset > height;
   };
 
