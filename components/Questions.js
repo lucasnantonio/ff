@@ -43,6 +43,19 @@ class InputContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    const scroll = () => {
+      const section = document.getElementById('questionsContainer');
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    const focus = () => {
+      const firstInput = document.getElementById('myCurrentAge');
+      firstInput.focus();
+    };
+    scroll();
+    setTimeout(focus, 1800);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { currentTabIndex } = this.state;
 
@@ -119,6 +132,7 @@ class InputContainer extends Component {
                   form="basicquestions"
                   isEnabled
                   label="Quantos anos você tem?"
+                  placeholder="18"
                   id="myCurrentAge"
                   value={this.props.myCurrentAge}
                   stepperIncrement="1"
@@ -133,6 +147,7 @@ class InputContainer extends Component {
                   label="Você pretende viver até quantos anos?"
                   id="myLifeExpectancy"
                   value={this.props.myLifeExpectancy}
+                  placeholder="100"
                   stepperIncrement="1"
                   min="1"
                   max="200"

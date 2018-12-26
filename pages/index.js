@@ -17,10 +17,10 @@ class Index extends Component {
       isShowingAnswer: false,
       isShowingQuestions: false,
       myCurrentBalance: 0,
-      myCurrentAge: 18,
+      myCurrentAge: undefined,
       myCurrentMonthlySavings: 0,
       myRetirementIncome: 0,
-      myLifeExpectancy: 100,
+      myLifeExpectancy: undefined,
       annualSavingsIncreaseRate: 1,
       selectedInvestment: false,
       myInvestments: [
@@ -74,11 +74,6 @@ class Index extends Component {
   startApp = () => {
     this.setState({ isShowingQuestions: true });
     logEvent('User', 'clicked start');
-    const section = document.getElementById('questionsContainer');
-    const scroll = () => {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-    setTimeout(scroll, 200);
   };
 
   handleShowAnswer = () => {
