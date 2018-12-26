@@ -10,7 +10,7 @@ class QuestionTabs extends Component {
             aria-selected={item.isSelected ? 'true' : 'false'}
             aria-controls={`tab${index + 1}`}
             id={item.label}
-            className={`items-center ph3 pv1 mv2 f5 w-100 tc ba0
+            className={`items-center ph3 pv1 mv2 f5 w-100 tc ba0 bg-transparent
               ${item.isSelected && 'black selectedTab'}
               ${this.props.isShowingAnswer ? 'black-30 pointer' : 'black-10'}
               ${this.props.isShowingAnswer && !item.isSelected && 'hover-black'}
