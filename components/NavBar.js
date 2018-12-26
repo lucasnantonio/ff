@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 const NavBar = props => (
   <div className="absolute white f5 pa4 w-100 ph4">
     <div className="flex mw7 center justify-between">
       <Link href="/">
-        <div onClick={props.resetApp} className="b pointer">
+        <a onClick={props.resetApp} className="b pointer link white">
           aposentar.me
-        </div>
+        </a>
       </Link>
       <Link href="/sobre">
-        <div className="link white-40 pointer hover-white"> sobre </div>
+        <a className="link white-40 pointer hover-white"> sobre </a>
       </Link>
     </div>
   </div>

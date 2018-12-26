@@ -107,71 +107,104 @@ class InputContainer extends Component {
           component="div"
         >
           {this.state.currentTabIndex === 0 && (
-            <div id="tab1" className="absolute-l w-100 pb5">
-              <InputField
-                isEnabled
-                hasSteppers
-                label="Quantos anos você tem?"
-                id="myCurrentAge"
-                value={this.props.myCurrentAge}
-                stepperIncrement="1"
-                min="1"
-                max="100"
-                handleInput={this.props.handleInput}
-                handleInputButtons={this.props.handleInputButtons}
-                hasTips
-                setFocusedInput={this.props.setFocusedInput}
-              />
-              <InputField
-                hasSteppers
-                label="Você pretende viver até quantos anos?"
-                id="myLifeExpectancy"
-                value={this.props.myLifeExpectancy}
-                stepperIncrement="1"
-                min="1"
-                max="200"
-                handleInput={this.props.handleInput}
-                handleInputButtons={this.props.handleInputButtons}
-              />
-              <InputField
-                isCurrency
-                label="Quanto você tem hoje para começar a investir?"
-                placeholder={this.props.myCurrentBalance}
-                value={this.props.myCurrentBalance}
-                id="myCurrentBalance"
-                handleInput={this.props.handleCurrencyInput}
-              />
-              <InputField
-                isCurrency
-                label="Quanto você consegue guardar todo mês?"
-                id="myCurrentMonthlySavings"
-                placeholder={this.props.myCurrentMonthlySavings}
-                value={this.props.myCurrentMonthlySavings}
-                handleInput={this.props.handleCurrencyInput}
-                hasTips
-                setFocusedInput={this.props.setFocusedInput}
-              />
-              <InputField
-                isCurrency
-                label="Quanto você vai querer gastar por mês quando estiver aposentado?"
-                id="myRetirementIncome"
-                placeholder={this.props.myRetirementIncome}
-                value={this.props.myRetirementIncome}
-                handleInput={this.props.handleCurrencyInput}
-                hasTips
-                setFocusedInput={this.props.setFocusedInput}
-              />
-              <MultiSelect
-                isEnabled={this.canSubmit()}
-                label="Onde você guarda seu dinheiro hoje?"
-                options={this.props.myInvestments}
-                handleClick={this.props.handleInvestmentSelector}
-                hiddenBorder={true}
-              />
+            <div
+              id="tab1"
+              role="tabpanel"
+              aria-labelledby={this.state.tabs[0].label}
+              className="absolute-l w-100 pb5"
+            >
+              <form id="basicquestions" action="">
+                <InputField
+                  form="basicquestions"
+                  isEnabled
+                  label="Quantos anos você tem?"
+                  id="myCurrentAge"
+                  value={this.props.myCurrentAge}
+                  stepperIncrement="1"
+                  min="1"
+                  max="100"
+                  handleInput={this.props.handleInput}
+                  handleInputButtons={this.props.handleInputButtons}
+                  hasTips
+                  setFocusedInput={this.props.setFocusedInput}
+                />
+                <InputField
+                  label="Você pretende viver até quantos anos?"
+                  id="myLifeExpectancy"
+                  value={this.props.myLifeExpectancy}
+                  stepperIncrement="1"
+                  min="1"
+                  max="200"
+                  handleInput={this.props.handleInput}
+                  handleInputButtons={this.props.handleInputButtons}
+                />
+                <InputField
+                  isCurrency
+                  label="Quanto você tem hoje para começar a investir?"
+                  placeholder={this.props.myCurrentBalance}
+                  value={this.props.myCurrentBalance}
+                  id="myCurrentBalance"
+                  handleInput={this.props.handleCurrencyInput}
+                />
+                <InputField
+                  isCurrency
+                  label="Quanto você consegue guardar todo mês?"
+                  id="myCurrentMonthlySavings"
+                  placeholder={this.props.myCurrentMonthlySavings}
+                  value={this.props.myCurrentMonthlySavings}
+                  handleInput={this.props.handleCurrencyInput}
+                  hasTips
+                  setFocusedInput={this.props.setFocusedInput}
+                />
+                <InputField
+                  isCurrency
+                  label="Quanto você vai querer gastar por mês quando estiver aposentado?"
+                  id="myRetirementIncome"
+                  placeholder={this.props.myRetirementIncome}
+                  value={this.props.myRetirementIncome}
+                  handleInput={this.props.handleCurrencyInput}
+                  hasTips
+                  setFocusedInput={this.props.setFocusedInput}
+                />
+                <MultiSelect
+                  isEnabled={this.canSubmit()}
+                  label="Onde você guarda seu dinheiro hoje?"
+                  options={this.props.myInvestments}
+                  handleClick={this.props.handleInvestmentSelector}
+                  hiddenBorder={true}
+                />
+                {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
+                  <CSSTransitionGroup
+                    transitionAppear={true}
+                    transitionAppearTimeout={200}
+                    transitionEnterTimeout={200}
+                    transitionLeaveTimeout={200}
+                    component="div"
+                    transitionName="slideInBottom"
+                  >
+                    <button
+                      type="submit"
+                      form="basicquestions"
+                      disabled={!this.canSubmit()}
+                      style={{ backgroundColor: '#f95c72' }}
+                      className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
+                      onClick={this.props.handleShowAnswer}
+                    >
+                      Calcular
+                    </button>
+                  </CSSTransitionGroup>
+                )}
+              </form>
             </div>
           )}
           {this.state.currentTabIndex === 1 && (
-            <div id="tab2" key="2" className="absolute-l w-100 pb5 tc">
+            <div
+              id="tab2"
+              role="tabpanel"
+              key="2"
+              aria-labelledby={this.state.tabs[1].label}
+              className="absolute-l w-100 pb5 tc"
+            >
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
                 Adicione eventos de vida custosos, como viagens, compras grandes, e cursos, para
                 deixar seu cálculo ainda mais preciso.
@@ -204,7 +237,13 @@ class InputContainer extends Component {
             </div>
           )}
           {this.state.currentTabIndex === 2 && (
-            <div id="tab3" key="3" className="absolute-l w-100 pb5">
+            <div
+              id="tab3"
+              role="tabpanel"
+              key="3"
+              aria-labelledby={this.state.tabs[2].label}
+              className="absolute-l w-100 pb5"
+            >
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage
@@ -235,24 +274,6 @@ class InputContainer extends Component {
             </div>
           )}
         </CSSTransitionGroup>
-        {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
-          <CSSTransitionGroup
-            transitionAppear={true}
-            transitionAppearTimeout={200}
-            transitionEnterTimeout={200}
-            transitionLeaveTimeout={200}
-            component="div"
-            transitionName="slideInBottom"
-          >
-            <button
-              style={{ backgroundColor: '#f95c72' }}
-              className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
-              onClick={this.props.handleShowAnswer}
-            >
-              Calcular
-            </button>
-          </CSSTransitionGroup>
-        )}
         <style jsx>
           {`
             .right-to-left-enter {

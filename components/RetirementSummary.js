@@ -14,7 +14,7 @@ class RetirementSummary extends Component {
     const { age, balance } = this.props.retirementResults[
       this.getSelectedInvestmentIndex(this.props.myInvestments)
     ][1].retirement;
-    const [y, m] = formatAge(age);
+    const [y] = formatAge(age);
 
     return (
       <div className="w-100 flex flex-column ml0-ns center mr4">
