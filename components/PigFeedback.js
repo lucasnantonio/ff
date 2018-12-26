@@ -148,6 +148,7 @@ class PigFeedback extends Component {
         )}
         {this.props.hasSelectedInvestment && (
           <p
+            id="investmentTip"
             style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
             className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
           >

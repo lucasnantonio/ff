@@ -124,6 +124,11 @@ class Index extends Component {
     }));
     this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
 
+    const investmentTip = document.getElementById('investmentTip');
+    if (investmentTip) {
+      investmentTip.scrollIntoView({ behavior: 'smooth' });
+    } 
+
     // only for analytics
     const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
     logEvent('User', 'Selected Investment');

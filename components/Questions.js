@@ -125,7 +125,7 @@ class InputContainer extends Component {
               id="tab1"
               role="tabpanel"
               aria-labelledby={this.state.tabs[0].label}
-              className="absolute-l w-100 pb5"
+              className="absolute-l w-100 pb6"
             >
               <form id="basicquestions" action="">
                 <InputField
