@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import IntlCurrencyInput from 'react-intl-currency-input';
-// import CurrencyInput from 'react-currency-input';
+import IntlCurrencyInput from './CurrencyInput';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
@@ -87,7 +86,7 @@ class InputField extends Component {
     return (
       <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
         <InputLabel id={this.props.id} label={this.props.label} />
-        <div className={'flex items-center'}>
+        <div className={'flex items-center w-100'}>
           {this.props.hasSteppers && (
             <button
               className="pointer flex items-center ba0 bg-transparent"
@@ -96,44 +95,46 @@ class InputField extends Component {
               <MinusBtn />
             </button>
           )}
-          <div className={'bn flex flex-column justify-center pv2'}>
-            {!this.props.isCurrency ? (
-              <div className="flex items-center">
-                <input
-                  data-type={this.props.dataType}
-                  value={this.props.value}
-                  className={`bn bg-transparent f4-ns f5 
-                    ${this.props.isPercentage ? 'tr' : 'tc'}
-                    ${this.props.hasSteppers ? 'w3 mh3-l' : 'w-100'}
+          {/* <div className={'bn flex flex-column justify-center pv2'}> */}
+          {!this.props.isCurrency ? (
+            <div className="flex items-center w-100">
+              <input
+                required
+                inputMode="numeric"
+                pattern="[0-9]*"
+                data-type={this.props.dataType}
+                value={this.props.value}
+                className={`bn bg-transparent f4-ns f5 tr w3
+                    ${this.props.hasSteppers ? 'mh3-l' : 'w-100'}
                     `}
-                  min={this.props.min}
-                  max={this.props.max}
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                  id={this.props.id}
-                  type="number"
-                  placeholder={this.props.placeholder}
-                  onChange={this.handleInput}
-                />
-                {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
-              </div>
-            ) : (
-              <IntlCurrencyInput
-                className={`${
-                  this.props.value === 0 ? 'black-20' : 'black'
-                } bn w-100 bg-transparent f4 tr`}
-                defaultValue={this.props.placeholder}
                 min={this.props.min}
                 max={this.props.max}
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
                 id={this.props.id}
-                currency="BRL"
-                config={currencyConfig}
+                type="number"
+                placeholder={this.props.placeholder}
                 onChange={this.handleInput}
               />
-            )}
-          </div>
+              {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
+            </div>
+          ) : (
+            <IntlCurrencyInput
+              className={`${
+                this.props.value === 0 ? 'black-20' : 'black'
+              } bn w-100 bg-transparent f4-ns f5 tr`}
+              defaultValue={this.props.placeholder}
+              min={this.props.min}
+              max={this.props.max}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              id={this.props.id}
+              currency="BRL"
+              config={currencyConfig}
+              onChange={this.handleInput}
+            />
+          )}
+          {/* </div> */}
           {this.props.hasSteppers && (
             <button
               className="pointer flex items-center ba0 bg-transparent"
