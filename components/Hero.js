@@ -6,7 +6,7 @@ import colors from './Colors';
 const Hero = props => (
   <div id="hero" style={{ backgroundColor: colors.lightPink }} className="vh-100 pa0-l ph4">
     <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5 pt5">
-      <div className="w-40-ns w-100 tl-ns tc">
+      <div className="w-40-ns w-100 tl-ns tc mb5-ns">
         <h1 style={{ color: colors.darkGreen }} className="f2-ns f3 lh-solid normal mt0">
           Descubra quando você vai se aposentar.
         </h1>
@@ -19,7 +19,7 @@ const Hero = props => (
             <button
               style={{ backgroundColor: colors.darkGreen }}
               onClick={props.startApp}
-              className="ba0 mt4 ph5 pv4 white br1-ns pointer f3-ns f4 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100"
+              className="ba0 mt4 ph4 pv3-ns pv4 white br-pill-ns pointer f3-ns f4 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100"
             >
               Começar
             </button>
