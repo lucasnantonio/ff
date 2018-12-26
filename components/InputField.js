@@ -4,6 +4,7 @@ import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
 import InputFieldWrapper from './InputFieldWrapper';
+import PigFeedback from './PigFeedback';
 import colors from './Colors';
 
 const currencyConfig = {
@@ -88,7 +89,7 @@ class InputField extends Component {
       <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
         <div className="flex w-100">
           <InputLabel id={this.props.id} label={this.props.label} />
-          <div className={'flex flex-column items-center w-100'}>
+          <div className={'flex flex-column w-100'}>
             {this.props.hasSteppers && (
               <button
                 className="pointer flex items-center ba0 bg-transparent"
@@ -146,10 +147,7 @@ class InputField extends Component {
             )}
           </div>
         </div>
-        <p style={{ color: colors.darkGreen }} className="f5 lh-copy w-100 mb0">
-          {' '}
-          hello you human!{' '}
-        </p>
+        <PigFeedback id={this.props.id} />
         <style jsx>{`
           input {
             outline: none;
