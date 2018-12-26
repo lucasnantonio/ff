@@ -32,7 +32,6 @@ class MultiSelectOption extends Component {
               display: inline-block;
             }
             input[type="radio"]:focus+label {
-              color: white;
               background-color: ${colors.lightPink}
             } 
             input[type="radio"]:hover+label {
