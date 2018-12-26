@@ -17,7 +17,7 @@ const Index = () => (
       style={{ backgroundColor: colors.lightPink, color: colors.darkBrown }}
       className="w-100 pa5-ns pa4 pv6 tl"
     >
-      <div className="mw7 flex flex-row-l flex-column center justify-between mt5">
+      <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
         <h1 className="normal f2 tracked-tight" style={{ color: colors.redPink }}>
           sobre{' '}
         </h1>
