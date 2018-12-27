@@ -30,7 +30,7 @@ class RetirementSummary extends Component {
           Em {2019 - this.props.myCurrentAge + y} você terá R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta. A partir daí,
           você poderá gastar R$
-          {this.props.myRetirementIncome} por mês até o fim da vida.
+          {this.props.myRetirementIncome} por mês até o os {this.props.myLifeExpectancy} anos.
         </h3>
         <div className="dn flex-ns mt4">
           <DonationCall />

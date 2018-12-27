@@ -38,7 +38,7 @@ class InputContainer extends Component {
       tabs: [
         { label: 'perguntas básicas', isSelected: true },
         { label: 'eventos de vida', isSelected: false },
-        { label: 'taxas', isSelected: false },
+        { label: 'configurações', isSelected: false },
       ],
     };
   }
@@ -143,17 +143,6 @@ class InputContainer extends Component {
                   handleInputButtons={this.props.handleInputButtons}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
-                />
-                <InputField
-                  label="Até qual idade você pretende se manter com sua aposentadoria?"
-                  id="myLifeExpectancy"
-                  value={this.props.myLifeExpectancy}
-                  placeholder="100"
-                  stepperIncrement="1"
-                  min="1"
-                  max="200"
-                  handleInput={this.props.handleInput}
-                  handleInputButtons={this.props.handleInputButtons}
                 />
                 <InputField
                   isCurrency
@@ -262,6 +251,17 @@ class InputContainer extends Component {
               aria-labelledby={this.state.tabs[2].label}
               className="absolute-l w-100 pb5"
             >
+              <InputField
+                label="Expectativa de vida"
+                id="myLifeExpectancy"
+                value={this.props.myLifeExpectancy}
+                placeholder="100"
+                stepperIncrement="1"
+                min="1"
+                max="200"
+                handleInput={this.props.handleInput}
+                handleInputButtons={this.props.handleInputButtons}
+              />
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage
