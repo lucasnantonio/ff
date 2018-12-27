@@ -31,7 +31,7 @@ class InputTable extends Component {
             <tr className="h3 f5-n f7">
               <td>nome do evento</td>
               <td>sua idade</td>
-              <td>valor</td>
+              <td>custo</td>
               <td />
             </tr>
           </thead>
