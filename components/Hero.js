@@ -14,7 +14,7 @@ const Hero = props => (
           Descubra quando você vai se aposentar.
         </h1>
         <p className="measure-narrow lh-copy o-50 f4 dib-ns dn" style={{ color: colors.darkBrown }}>
-          Planejar sua independência financeira nunca foi tão fácil.
+          Em poucos passos você terá mais clareza sobre seu futuro financeiro.
         </p>
         <CSSTransitionGroup
           transitionName="exit"
