@@ -12,13 +12,13 @@ const Signup = () => (
       target="_blank"
       noValidate
     >
-      <div id="mc_embed_signup_scroll flex flex-row" style={{ display: 'flex' }}>
-        <div className="mc-field-group">
+      <div id="mc_embed_signup_scroll" className="flex flex-row-l flex-column">
+        <div className="mc-field-group w-100">
           <input
             type="email"
             placeholder="email@gmail.com"
             name="EMAIL"
-            className="required email bg-near-white pa3 black-80 bn br-pill mr2"
+            className="required email bg-near-white pa3 black-80 bn br-pill mr2 w-100 tl-l tc"
             id="mce-EMAIL"
           />
         </div>
@@ -36,7 +36,7 @@ const Signup = () => (
             value="Inscrever"
             name="subscribe"
             id="mc-embedded-subscribe"
-            className="pa3 br-pill pill pointer bn white"
+            className="pa3 br-pill pill pointer bn white w-100 mt0-l mt3"
           />
         </div>
       </div>
