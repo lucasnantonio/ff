@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
+import Signup from '../components/Signup';
 import { initGA, logPageView } from '../utils/analytics';
 
 function getYear() {
@@ -77,8 +78,21 @@ const Index = () => (
               </button>
             </a>
           </div>
-
-          <h3 className="b mt5">Open source</h3>
+          <h3 className="b mt5">Inscreva-se na nossa newsletter</h3>
+          <Signup />
+          <h3 className="b mt5">Contato</h3>
+          <p className="measure mt0">
+            Para dúvidas e sugestões, nos envie um email clicando{' '}
+            <a
+              className="link"
+              style={{ color: colors.redPink }}
+              href="mailto:lucasneumann.fau@gmail.com?subject=[Contato aposentar-me]&cc=gstoaldo@gmail.com"
+            >
+              aqui
+            </a>
+            .
+          </p>
+          <h3 className="b mt4">Open source</h3>
           <p className="measure lh-copy">
             Nosso código é open-source, e está disponível para consulta e colaboração no{' '}
             <a
@@ -115,7 +129,7 @@ const Index = () => (
           <p className="measure lh-copy f7">
             Contribuições de&nbsp;
             <a
-              className="link"
+              className="link f7"
               style={{ color: colors.redPink }}
               target="_blank"
               href="https://github.com/rodrigorahal"
@@ -126,6 +140,13 @@ const Index = () => (
         </div>
       </div>
     </div>
+    <style jsx>
+      {`
+        button:hover {
+          background-color: ${colors.lightGreen} !important;
+        }
+      `}
+    </style>
   </div>
 );
 
