@@ -32,9 +32,9 @@ const Index = () => (
           </p>
           <h3 className="b mt4">Faça uma doação 🐷 </h3>
           <p className="measure lh-copy">
-            Criar o aposentar.me levou muito braço, café, noites viradas, e um custo monetário para
-            manter nosso servidores e domínios. Se nós te ajudamos a entender melhor seu futuro
-            financeiro, considere fazer uma doação para manter o projeto vivo.
+            O aposentar.me é fruto do esforço de dois amigos, muito trabalho, café, noites mal
+            dormidas e investimentos do próprio bolso. Considere fazer uma doação para manter o
+            projeto vivo. Juntos, podemos ajudar muita gente a entender seu futuro financeiro.
           </p>
           <div className="flex flex-row-ns flex-column w-100 justify-center mt4">
             <a target="_blank" href="https://nubank.com.br/pagar/9/cx4IwcOlys">
@@ -112,18 +112,18 @@ const Index = () => (
               className="link"
               style={{ color: colors.redPink }}
               target="_blank"
-              href="https://www.lucasn.com"
+              href="https://github.com/StollToaldo"
             >
-              Lucas Neumann&nbsp;
+              Guilherme Stoll&nbsp;
             </a>
             e&nbsp;
             <a
               className="link"
               style={{ color: colors.redPink }}
               target="_blank"
-              href="https://github.com/StollToaldo"
+              href="https://www.lucasn.com"
             >
-              Guilherme Stoll
+              Lucas Neumann
             </a>
           </p>
           <p className="measure lh-copy f7">
