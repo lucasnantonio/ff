@@ -5,11 +5,11 @@ import colors from './Colors';
 const feedbacklist = {
   mySelectedInvestment: {
     poupança:
-      'A poupança é o investimento com o menor rendimento do mercado. Existem opções com a mesma segurança e rendimentos muito melhores. Apesar disso, 39% dos brasileiros que se preparam para aposentadoria deixam o dinheiro na poupança.',
+      'Cuidado ao escolher a poupança como seu investimento principal. Existem opções com a mesma segurança e rendimentos muito melhores. Apesar disso, 39% dos brasileiros que se preparam para aposentadoria deixam o dinheiro na poupança. :(',
     'renda fixa':
-      'Investimentos de renda fixa, como Tesouro Direto, CDBs e outros, são uma boa opção de baixo risco para quem está focado no longo prazo.',
+      'Boa escolha! Investimentos de renda fixa, como Tesouro Direto, CDBs e outros, são uma boa opção de baixo risco para quem está focado no longo prazo.',
     'renda variável':
-      'Investimentos de renda variável são uma boa opção para quem '
+      'Ótimo! Investimentos de renda variável são uma boa opção para quem '
       + 'está focado no longo prazo. Não é todo mundo que se sente '
       + 'confortável em ver o dinheiro oscilando todo dia, portanto, é importante '
       + 'checar o seu perfil de investimento.',
@@ -59,13 +59,14 @@ const feedbacklist = {
       lowerValue: 0,
       upperValue: 29,
       message:
-        'Está começando cedo, parabéns. A idade média das pessoas que começam a poupar para a aposentadoria é 28 anos.',
+        'Está começando cedo, parabéns! A idade média das pessoas que começam a poupar para a aposentadoria é 28 anos. Esses anos iniciais de investimento fazem muita diferença lá na frente.',
       src: 'Fonte: SPC Brasil. O preparo para a aposentadoria no Brasil. Abril 2018.',
     },
     {
       lowerValue: 50,
       upperValue: 60,
-      message: 'Nunca é tarde para começar.',
+      message:
+        'Nunca é tarde para começar! Comece a poupar agora e garanta um futuro mais independente.',
     },
   ],
   myCurrentMonthlySavings: [
@@ -86,15 +87,10 @@ const feedbacklist = {
     },
     {
       lowerValue: 10000,
-      upperValue: 29999,
-      message: 'Aooow chefia. Tá cheio da nota, hein?!',
-      reaction: 1,
-    },
-    {
-      lowerValue: 30000,
       upperValue: Number.POSITIVE_INFINITY,
-      message: 'Ah, tá de sacanagem que você poupa tudo isso por mês.',
-      reaction: 2,
+      message:
+        'Uau! Com contribuições mensais desse tamanho, você vai atingir sua independência financeira rapidinho.',
+      reaction: 1,
     },
   ],
   myRetirementIncome: [
