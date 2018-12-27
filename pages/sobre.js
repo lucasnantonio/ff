@@ -20,12 +20,12 @@ const Index = () => (
       <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
         <h1
           className="normal f2 tracked-tight b"
-          style={{ color: colors.lightBrown, fontFamily: 'Montserrat, system-ui, sans-serif' }}
+          style={{ color: colors.darkGreen, fontFamily: 'Montserrat, system-ui, sans-serif' }}
         >
           sobre
         </h1>
         <div className="flex flex-column pt4">
-          <p className="measure lh-copy normal">
+          <p className="measure lh-copy normal mt0">
             Construímos este site pois acreditamos que a informação sobre planejamento financeiro
             pode ser mais divertida, acessível, educativa, e transparente.
           </p>
