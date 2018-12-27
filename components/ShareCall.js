@@ -12,7 +12,7 @@ import {
 
 const ShareCall = () => (
   <div className="flex flex-column">
-    <p className="f6 white-50">Compartilhe</p>
+    <p className="f6 white-50 tc">Compartilhe</p>
     <div className="flex">
       <div className="mr1 pointer grow">
         <FacebookShareButton
@@ -40,7 +40,7 @@ const ShareCall = () => (
           <TwitterIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
         </TwitterShareButton>
       </div>
-      <div className="mr1 pointer grow">
+      <div className="pointer grow">
         <WhatsappShareButton
           title="Eu já descobri quando vou me aposentar. E você?"
           separator=" — "

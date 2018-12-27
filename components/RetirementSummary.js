@@ -26,7 +26,7 @@ class RetirementSummary extends Component {
         >
           Você vai se aposentar aos {y} anos.
         </h2>
-        <h3 className="f5-l f6 black-80 normal lh-copy white-60 measure-narrow center ml0-ns mv0">
+        <h3 className="f5-l f6 black-80 normal lh-copy white measure-narrow center ml0-ns mv0">
           Em {2019 - this.props.myCurrentAge + y} você terá R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta. A partir daí,
           você poderá gastar R$

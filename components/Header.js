@@ -129,6 +129,7 @@ const Header = props => (
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
         }
+        button:focus{outline: none;}
       `}
     </style>
   </Head>
