@@ -145,7 +145,7 @@ class InputContainer extends Component {
                   setFocusedInput={this.props.setFocusedInput}
                 />
                 <InputField
-                  label="Você pretende viver até quantos anos?"
+                  label="Até qual idade você pretende se manter com sua aposentadoria?"
                   id="myLifeExpectancy"
                   value={this.props.myLifeExpectancy}
                   placeholder="100"
@@ -157,7 +157,7 @@ class InputContainer extends Component {
                 />
                 <InputField
                   isCurrency
-                  label="Quanto você tem hoje para começar a investir?"
+                  label="Quanto dinheiro você tem guardado hoje?"
                   placeholder={this.props.myCurrentBalance}
                   value={this.props.myCurrentBalance}
                   id="myCurrentBalance"
@@ -175,7 +175,7 @@ class InputContainer extends Component {
                 />
                 <InputField
                   isCurrency
-                  label="Quanto você vai querer gastar por mês quando estiver aposentado?"
+                  label="Quanto você espera gastar por mês quando estiver aposentado?"
                   id="myRetirementIncome"
                   placeholder={this.props.myRetirementIncome}
                   value={this.props.myRetirementIncome}
