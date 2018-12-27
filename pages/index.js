@@ -74,11 +74,6 @@ class Index extends Component {
   startApp = () => {
     this.setState({ isShowingQuestions: true });
     logEvent('User', 'clicked start');
-    const section = document.getElementById('questionsContainer');
-    const scroll = () => {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-    setTimeout(scroll, 200);
   };
 
   handleShowAnswer = () => {
@@ -128,6 +123,11 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
     this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
+
+    const investmentTip = document.getElementById('investmentTip');
+    if (investmentTip) {
+      investmentTip.scrollIntoView({ behavior: 'smooth' });
+    }
 
     // only for analytics
     const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
@@ -197,7 +197,7 @@ class Index extends Component {
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
-        <NavBar isShowingAnswer={this.state.isShowingAnswer} resetApp={this.resetApp} />
+        <NavBar isShowingAnswer={this.state.isShowingAnswer} />
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (

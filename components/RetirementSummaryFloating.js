@@ -35,7 +35,7 @@ class RetirementSummaryFloating extends Component {
           onClick={this.scrollBackUp}
         >
           <div className="mw7 center">
-            <span className="normal "> Você vai se aposentar aos {y} anos. </span>
+            <span className="white"> Você vai se aposentar aos {y} anos. </span>
           </div>
         </button>
       )

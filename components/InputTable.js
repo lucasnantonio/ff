@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import colors from './Colors';
 
 class InputTable extends Component {
   render() {
@@ -85,32 +86,12 @@ class InputTable extends Component {
           </tbody>
         </table>
         <button
-          style={{ backgroundColor: '#fd719b' }}
+          style={{ backgroundColor: colors.redPink }}
           className={'pv3 ph4 white br1 ba0 mv4 pointer'}
           onClick={handleAddTableRow(id, fields)}
         >
           {'+ Adicionar um evento'}
         </button>
-        <style jsx>
-          {`
-            input::-webkit-input-placeholder {
-              /* Chrome/Opera/Safari */
-              color: rbga(0, 0, 0, 0.4);
-            }
-            input::-moz-placeholder {
-              /* Firefox 19+ */
-              color: rbga(0, 0, 0, 0.4);
-            }
-            input:-ms-input-placeholder {
-              /* IE 10+ */
-              color: rbga(0, 0, 0, 0.4);
-            }
-            input:-moz-placeholder {
-              /* Firefox 18- */
-              color: rbga(0, 0, 0, 0.4);
-            }
-          `}
-        </style>
       </div>
     );
   }

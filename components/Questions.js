@@ -43,6 +43,19 @@ class InputContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    const scroll = () => {
+      const section = document.getElementById('questionsContainer');
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    const focus = () => {
+      const firstInput = document.getElementById('myCurrentAge');
+      firstInput.focus();
+    };
+    scroll();
+    setTimeout(focus, 1000);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { currentTabIndex } = this.state;
 
@@ -112,13 +125,15 @@ class InputContainer extends Component {
               id="tab1"
               role="tabpanel"
               aria-labelledby={this.state.tabs[0].label}
-              className="absolute-l w-100 pb5"
+              className="absolute-l w-100 pb6"
             >
               <form id="basicquestions" action="">
                 <InputField
+                  maxLength={2}
                   form="basicquestions"
                   isEnabled
                   label="Quantos anos você tem?"
+                  placeholder="18"
                   id="myCurrentAge"
                   value={this.props.myCurrentAge}
                   stepperIncrement="1"
@@ -133,6 +148,7 @@ class InputContainer extends Component {
                   label="Você pretende viver até quantos anos?"
                   id="myLifeExpectancy"
                   value={this.props.myLifeExpectancy}
+                  placeholder="100"
                   stepperIncrement="1"
                   min="1"
                   max="200"
@@ -168,6 +184,7 @@ class InputContainer extends Component {
                   setFocusedInput={this.props.setFocusedInput}
                 />
                 <MultiSelect
+                  hasSelectedInvestment={this.props.selectedInvestment}
                   isEnabled={this.canSubmit()}
                   label="Onde você guarda seu dinheiro hoje?"
                   options={this.props.myInvestments}
@@ -212,8 +229,8 @@ class InputContainer extends Component {
               </p>
               {!this.state.isShowingLifeEventsTable && (
                 <button
-                  style={{ backgroundColor: '#fd719b' }}
-                  className={'pv3 ph4 white br1 ba0 center pointer'}
+                  style={{ backgroundColor: colors.redPink }}
+                  className={'pv3 ph4 white br-pill ba0 center pointer'}
                   onClick={this.showLifeEventsTable}
                 >
                   {'Criar um evento'}
@@ -267,7 +284,7 @@ class InputContainer extends Component {
                 handleInput={this.props.handleInput}
               />
               <button
-                className="mt4 pa3 relative bg-white hover-bg-black hover-white br2 pointer"
+                className="mt4 pa3 relative bg-white hover-bg-black hover-white br-pill pointer"
                 onClick={this.props.handleResetRates}
               >
                 Resetar taxas

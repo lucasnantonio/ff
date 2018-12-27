@@ -12,7 +12,8 @@ const Header = props => (
     <meta charset="utf-8" />
     <meta name="theme-color" content="#5e5df7" />
     <title>{props.title}</title>
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Muli" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <link rel="icon" href="../static/favicon.ico" />
     <meta
@@ -30,7 +31,8 @@ const Header = props => (
     />
     <style>
       {`
-        html {
+        html,
+        html * {
           font-size: 18px;
           font-family: 'Muli', sans-serif;
           font-weight: 100;
@@ -86,6 +88,37 @@ const Header = props => (
           outline: none;
           caret-color: ${colors.redPink};
           caret-width: 2px;
+        }
+        input {
+          outline: none;
+        }
+        input:focus {
+          background-color: ${colors.lightPink};
+        }
+        .checkmark {
+          transition: all 0.2s;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          /* display: none; <- Crashes Chrome on hover */
+          -webkit-appearance: none;
+          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+        input::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          color: rbga(0, 0, 0, 0.1);
+        }
+        input::-moz-placeholder {
+          /* Firefox 19+ */
+          color: rbga(0, 0, 0, 0.1);
+        }
+        input:-ms-input-placeholder {
+          /* IE 10+ */
+          color: rbga(0, 0, 0, 0.1);
+        }
+        input:-moz-placeholder {
+          /* Firefox 18- */
+          color: rbga(0, 0, 0, 0.1);
         }
         .checkmark {
           transition: all 0.2s;
