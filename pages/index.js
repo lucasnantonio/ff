@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
+import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
 import Answer from '../components/Answer';
@@ -54,6 +55,7 @@ class Index extends Component {
       window.GA_INITIALIZED = true;
     }
     logPageView();
+    hotjar.initialize(1140598, 6);
   }
 
   componentDidUpdate(prevProps, prevState) {
