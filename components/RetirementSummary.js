@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { formatAge } from '../utils/math';
 import DonationCall from './DonationCall';
+import ShareCall from './ShareCall';
 import colors from './Colors';
 
 class RetirementSummary extends Component {
@@ -22,14 +23,15 @@ class RetirementSummary extends Component {
         <h2 className="f2-l f3 tracked-tight lh-solid white">
           <span className="normal "> Você vai se aposentar aos </span> {y} anos.
         </h2>
-        <h3 className="f5-l f6 black-80 normal lh-copy white-60 measure-narrow center ml0-ns">
+        <h3 className="f5-l f6 black-80 normal lh-copy white-60 measure-narrow center ml0-ns mv0">
           <span className="normal">Em {2019 - this.props.myCurrentAge + y} você terá </span> R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}{' '}
           <span className="normal">em conta.</span> A partir daí, você poderá gastar R$
           {this.props.myRetirementIncome} por mês até o fim da vida.
         </h3>
-        <div className="dn dib-ns">
+        <div className="dn flex-ns mt4">
           <DonationCall />
+          <ShareCall />
         </div>
       </div>
     );
