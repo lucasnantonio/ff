@@ -32,14 +32,14 @@ class MultiSelectOption extends Component {
               display: inline-block;
             }
             input[type="radio"]:focus+label {
-              background-color: ${colors.lightPink}
+              background-color: rgba(0,0,0,.1)
             } 
             input[type="radio"]:hover+label {
-              background-color: ${colors.lightPink}
+              background-color: rgba(0,0,0,.1)
             } 
             input[type='radio']:checked+label {
               color: white;
-              background-color: ${colors.redPink}
+              background-color: ${colors.darkGreen}
             }
           `}
         </style>

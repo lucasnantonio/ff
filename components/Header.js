@@ -12,7 +12,7 @@ const Header = props => (
     <meta charset="utf-8" />
     <meta name="theme-color" content="#5e5df7" />
     <title>{props.title}</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Muli" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700|Muli" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <link rel="icon" href="../static/favicon.ico" />
@@ -93,7 +93,7 @@ const Header = props => (
           outline: none;
         }
         input:focus {
-          background-color: ${colors.lightPink};
+          background-color: ${colors.white};
         }
         .checkmark {
           transition: all 0.2s;
@@ -129,6 +129,7 @@ const Header = props => (
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
         }
+        button:focus{outline: none;}
       `}
     </style>
   </Head>

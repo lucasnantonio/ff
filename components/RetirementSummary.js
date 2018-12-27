@@ -22,11 +22,11 @@ class RetirementSummary extends Component {
       <div className="w-100 flex flex-column ml0-ns center mr4">
         <h2
           className="f2-l f3 tracked-tight lh-solid white b"
-          style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
+          style={{ fontFamily: 'Work Sans, system-ui, sans-serif' }}
         >
           Você vai se aposentar aos {y} anos.
         </h2>
-        <h3 className="f5-l f6 black-80 normal lh-copy white-60 measure-narrow center ml0-ns mv0">
+        <h3 className="f5-l f6 black-80 normal lh-copy white measure-narrow center ml0-ns mv0">
           Em {2019 - this.props.myCurrentAge + y} você terá R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta. A partir daí,
           você poderá gastar R$

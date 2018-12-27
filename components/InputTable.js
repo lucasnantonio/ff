@@ -31,7 +31,7 @@ class InputTable extends Component {
             <tr className="h3 f5-n f7">
               <td>nome do evento</td>
               <td>sua idade</td>
-              <td>valor</td>
+              <td>custo</td>
               <td />
             </tr>
           </thead>
@@ -87,7 +87,7 @@ class InputTable extends Component {
         </table>
         <button
           style={{ backgroundColor: colors.redPink }}
-          className={'pv3 ph4 white br1 ba0 mv4 pointer'}
+          className={'pv3 ph4 white br-pill ba0 mv4 pointer'}
           onClick={handleAddTableRow(id, fields)}
         >
           {'+ Adicionar um evento'}
