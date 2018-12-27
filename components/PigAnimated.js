@@ -12,13 +12,13 @@ const PigAnimated = () => (
       <path
         id="water-left"
         d="M112.652 313.777C82.0587 313.132 17.0979 299.474 2.00025 250.001"
-        stroke="#CEB7AE"
+        stroke="#d5d5d5"
         strokeWidth="4"
       />
       <path
         id="water-right"
         d="M569.5 205.117C569.5 256.117 486.749 324.756 389.999 312.543"
-        stroke="#CEB7AE"
+        stroke="#d5d5d5"
         strokeWidth="4"
       />
       <path
@@ -26,18 +26,18 @@ const PigAnimated = () => (
         fillRule="evenodd"
         clipRule="evenodd"
         d="M213.729 14.6876C175.212 19.6373 141.649 29.5693 123.025 40.6768L120.977 37.2414C140.282 25.7273 174.469 15.6997 213.219 10.7203C252.014 5.73497 295.656 5.77359 333.949 14.5911L333.051 18.4891C295.345 9.80658 252.201 9.74384 213.729 14.6876Z"
-        fill="#CEB7AE"
+        fill="#d5d5d5"
       />
       <path
         id="water-left-2"
         d="M112.652 313.777C82.0587 313.132 17.0979 299.474 2.00025 250.001"
-        stroke="#CEB7AE"
+        stroke="#d5d5d5"
         strokeWidth="4"
       />
       <path
         id="water-right-2"
         d="M569.5 205.117C569.5 256.117 486.749 324.756 389.999 312.543"
-        stroke="#CEB7AE"
+        stroke="#d5d5d5"
         strokeWidth="4"
       />
       <path
@@ -45,7 +45,7 @@ const PigAnimated = () => (
         fillRule="evenodd"
         clipRule="evenodd"
         d="M213.729 14.6876C175.212 19.6373 141.649 29.5693 123.025 40.6768L120.977 37.2414C140.282 25.7273 174.469 15.6997 213.219 10.7203C252.014 5.73497 295.656 5.77359 333.949 14.5911L333.051 18.4891C295.345 9.80658 252.201 9.74384 213.729 14.6876Z"
-        fill="#CEB7AE"
+        fill="#d5d5d5"
       />
       <g id="group">
         <path

@@ -14,13 +14,13 @@ const Index = () => (
     <Header title="Sobre" />
     <NavBar />
     <div
-      style={{ backgroundColor: colors.lightPink, color: colors.darkBrown }}
+      style={{ backgroundColor: colors.white, color: colors.darkBrown }}
       className="w-100 pa5-ns pa4 pv6 tl"
     >
       <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
         <h1
           className="normal f2 tracked-tight b"
-          style={{ color: colors.darkGreen, fontFamily: 'Montserrat, system-ui, sans-serif' }}
+          style={{ color: colors.black, fontFamily: 'Work Sans, system-ui, sans-serif' }}
         >
           sobre
         </h1>

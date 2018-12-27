@@ -13,11 +13,7 @@ const NavBar = props => (
         </button>
       </Link>
       <Link href="/sobre" tabIndex="0">
-        <a
-          href="#"
-          style={{ color: !props.isShowingAnswer ? colors.redPink : 'rgba(255,255,255,.5' }}
-          className="link white-40 pointer hover-white pa3"
-        >
+        <a href="#" className="link black-40 hover-black pointer  pa3">
           sobre
         </a>
       </Link>
