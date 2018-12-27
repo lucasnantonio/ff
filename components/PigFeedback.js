@@ -17,7 +17,7 @@ const feedbacklist = {
   poupança: [
     {
       lowerValue: 1.6,
-      upperValue: 3.5,
+      upperValue: 3.4,
       message:
         'Você está otimista. O retorno médio real da poupança do ano 2000 até hoje foi de apenas 1.4% a.a.',
       src: 'Fonte: www.ipeadata.gov.br',
@@ -33,7 +33,7 @@ const feedbacklist = {
   'renda fixa': [
     {
       lowerValue: 5,
-      upperValue: 7,
+      upperValue: 6.9,
       message:
         'Você está otimista. O retorno médio real do tesouro SELIC do ano 2000 até hoje foi de apenas 4.7% a.a.',
       src: 'Fonte: www.ipeadata.gov.br',
@@ -70,7 +70,7 @@ const feedbacklist = {
   ],
   myCurrentMonthlySavings: [
     {
-      lowerValue: 1,
+      lowerValue: 10,
       upperValue: 999,
       message:
         'Guardar uma quantia todo mês, mesmo que pequena, terá um impacto enorme na sua qualidade de vida lá na frente.',
@@ -78,7 +78,7 @@ const feedbacklist = {
     },
     {
       lowerValue: 1000,
-      upperValue: 10000,
+      upperValue: 9999,
       message:
         'Sabia que apenas 31% dos brasileiros pouparam parte dos seus rendimentos nos últimos 12 meses? Você faz parte desse grupo, parabéns!',
       src: 'Fonte: Banco Central do Brasil. Série cidadania financeira. Novembro 2017.',
@@ -86,7 +86,7 @@ const feedbacklist = {
     },
     {
       lowerValue: 10000,
-      upperValue: 30000,
+      upperValue: 29999,
       message: 'Aooow chefia. Tá cheio da nota, hein?!',
       reaction: 1,
     },
@@ -117,7 +117,7 @@ class PigFeedback extends Component {
   hasFeedback = (id) => {
     const feedback = feedbacklist[id]
       && feedbacklist[id].filter(
-        item => this.props.value > item.lowerValue && this.props.value < item.upperValue,
+        item => this.props.value >= item.lowerValue && this.props.value <= item.upperValue,
       );
     return feedback && feedback[0];
   };
@@ -125,7 +125,7 @@ class PigFeedback extends Component {
   getFeedback = (id) => {
     const feedback = feedbacklist[id]
       && feedbacklist[id].filter(
-        item => this.props.value > item.lowerValue && this.props.value < item.upperValue,
+        item => this.props.value >= item.lowerValue && this.props.value <= item.upperValue,
       );
     return feedback && feedback[0] && feedback[0].message;
   };

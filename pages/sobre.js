@@ -18,8 +18,11 @@ const Index = () => (
       className="w-100 pa5-ns pa4 pv6 tl"
     >
       <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
-        <h1 className="normal f2 tracked-tight" style={{ color: colors.redPink }}>
-          sobre{' '}
+        <h1
+          className="normal f2 tracked-tight b"
+          style={{ color: colors.lightBrown, fontFamily: 'Montserrat, system-ui, sans-serif' }}
+        >
+          sobre
         </h1>
         <div className="flex flex-column pt4">
           <p className="measure lh-copy normal">
@@ -35,7 +38,7 @@ const Index = () => (
           <div className="flex flex-row-ns flex-column w-100 justify-center mt4">
             <a target="_blank" href="https://nubank.com.br/pagar/9/cx4IwcOlys">
               <button
-                style={{ backgroundColor: colors.redPink }}
+                style={{ backgroundColor: colors.darkGreen }}
                 className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
               >
                 R$1,00
@@ -43,7 +46,7 @@ const Index = () => (
             </a>
             <a target="_blank" href="https://nubank.com.br/pagar/9/zYodSW0aMz">
               <button
-                style={{ backgroundColor: colors.redPink }}
+                style={{ backgroundColor: colors.darkGreen }}
                 className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
               >
                 R$5,00
@@ -51,7 +54,7 @@ const Index = () => (
             </a>
             <a target="_blank" href="https://nubank.com.br/pagar/9/a62eLbpvFE">
               <button
-                style={{ backgroundColor: colors.redPink }}
+                style={{ backgroundColor: colors.darkGreen }}
                 className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
               >
                 R$25,00
@@ -59,7 +62,7 @@ const Index = () => (
             </a>
             <a target="_blank" href="https://nubank.com.br/pagar/9/Rmk77MkcvW">
               <button
-                style={{ backgroundColor: colors.redPink }}
+                style={{ backgroundColor: colors.darkGreen }}
                 className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
               >
                 R$50,00
@@ -67,7 +70,7 @@ const Index = () => (
             </a>
             <a target="_blank" href="https://nubank.com.br/pagar/9/8roiUAN3R3">
               <button
-                style={{ backgroundColor: colors.redPink }}
+                style={{ backgroundColor: colors.darkGreen }}
                 className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
               >
                 Outro valor :)

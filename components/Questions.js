@@ -129,6 +129,7 @@ class InputContainer extends Component {
             >
               <form id="basicquestions" action="">
                 <InputField
+                  maxLength={2}
                   form="basicquestions"
                   isEnabled
                   label="Quantos anos você tem?"
@@ -228,7 +229,7 @@ class InputContainer extends Component {
               </p>
               {!this.state.isShowingLifeEventsTable && (
                 <button
-                  style={{ backgroundColor: '#fd719b' }}
+                  style={{ backgroundColor: colors.redPink }}
                   className={'pv3 ph4 white br1 ba0 center pointer'}
                   onClick={this.showLifeEventsTable}
                 >

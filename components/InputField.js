@@ -105,6 +105,7 @@ class InputField extends Component {
               <div className="flex items-center w-100 justify-end">
                 <input
                   required
+                  maxLength={this.props.maxLength}
                   inputMode="numeric"
                   pattern="[0-9]*"
                   data-type={this.props.dataType}

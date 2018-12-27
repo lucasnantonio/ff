@@ -19,7 +19,7 @@ const ShareCall = () => (
           quote="Eu já descobri quando vou me aposentar. E você?"
           url="https://aposentar.me"
         >
-          <FacebookIcon size={32} round />
+          <FacebookIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
         </FacebookShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -28,7 +28,7 @@ const ShareCall = () => (
           description="Descubra quando você vai se aposentar."
           url="https://aposentar.me"
         >
-          <LinkedinIcon size={32} round />
+          <LinkedinIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
         </LinkedinShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -37,7 +37,7 @@ const ShareCall = () => (
           hashtags={['aposentadoria', 'independenciaFinanceira']}
           url="https://aposentar.me"
         >
-          <TwitterIcon size={32} round />
+          <TwitterIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
         </TwitterShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -46,7 +46,7 @@ const ShareCall = () => (
           separator=" — "
           url="https://aposentar.me"
         >
-          <WhatsappIcon size={32} round />
+          <WhatsappIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)', padding: '2rem' }} size={32} round />
         </WhatsappShareButton>
       </div>
     </div>

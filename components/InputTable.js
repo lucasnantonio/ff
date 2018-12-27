@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import colors from './Colors';
 
 class InputTable extends Component {
   render() {
@@ -85,7 +86,7 @@ class InputTable extends Component {
           </tbody>
         </table>
         <button
-          style={{ backgroundColor: '#fd719b' }}
+          style={{ backgroundColor: colors.redPink }}
           className={'pv3 ph4 white br1 ba0 mv4 pointer'}
           onClick={handleAddTableRow(id, fields)}
         >
