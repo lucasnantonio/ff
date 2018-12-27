@@ -11,9 +11,9 @@ import {
 } from 'react-share';
 
 const ShareCall = () => (
-  <div className="flex flex-column">
+  <div className="flex flex-column mt0-l mt4">
     <p className="f6 white-50 tc">Compartilhe</p>
-    <div className="flex">
+    <div className="flex-l dn">
       <div className="mr1 pointer grow">
         <FacebookShareButton
           quote="Eu já descobri quando vou me aposentar. E você?"
@@ -47,6 +47,46 @@ const ShareCall = () => (
           url="https://aposentar.me"
         >
           <WhatsappIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)', padding: '2rem' }} size={32} round />
+        </WhatsappShareButton>
+      </div>
+    </div>
+
+    {/* MOBILE */}
+
+    <div className="flex dn-l justify-center">
+      <div className="mr1 pointer grow">
+        <FacebookShareButton
+          quote="Eu já descobri quando vou me aposentar. E você?"
+          url="https://aposentar.me"
+        >
+          <FacebookIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={50} round />
+        </FacebookShareButton>
+      </div>
+      <div className="mr1 pointer grow">
+        <LinkedinShareButton
+          title="Aposentar.me"
+          description="Descubra quando você vai se aposentar."
+          url="https://aposentar.me"
+        >
+          <LinkedinIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={50} round />
+        </LinkedinShareButton>
+      </div>
+      <div className="mr1 pointer grow">
+        <TwitterShareButton
+          title="Descubra quando você vai se aposentar"
+          hashtags={['aposentadoria', 'independenciaFinanceira']}
+          url="https://aposentar.me"
+        >
+          <TwitterIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={50} round />
+        </TwitterShareButton>
+      </div>
+      <div className="pointer grow">
+        <WhatsappShareButton
+          title="Eu já descobri quando vou me aposentar. E você?"
+          separator=" — "
+          url="https://aposentar.me"
+        >
+          <WhatsappIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)', padding: '2rem' }} size={50} round />
         </WhatsappShareButton>
       </div>
     </div>
