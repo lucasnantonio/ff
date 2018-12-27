@@ -29,7 +29,7 @@ const Index = () => (
             Construímos este site pois acreditamos que a informação sobre planejamento financeiro
             pode ser mais divertida, acessível, educativa, e transparente.
           </p>
-          <h3 className="b mt4">Nos pague um cafézinho 🐷 </h3>
+          <h3 className="b mt4">Faça uma doação 🐷 </h3>
           <p className="measure lh-copy">
             Criar o aposentar.me levou muito braço, café, noites viradas, e um custo monetário para
             manter nosso servidores e domínios. Se nós te ajudamos a entender melhor seu futuro
@@ -39,7 +39,7 @@ const Index = () => (
             <a target="_blank" href="https://nubank.com.br/pagar/9/cx4IwcOlys">
               <button
                 style={{ backgroundColor: colors.darkGreen }}
-                className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
+                className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
               >
                 R$1,00
               </button>
@@ -47,7 +47,7 @@ const Index = () => (
             <a target="_blank" href="https://nubank.com.br/pagar/9/zYodSW0aMz">
               <button
                 style={{ backgroundColor: colors.darkGreen }}
-                className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
+                className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
               >
                 R$5,00
               </button>
@@ -55,7 +55,7 @@ const Index = () => (
             <a target="_blank" href="https://nubank.com.br/pagar/9/a62eLbpvFE">
               <button
                 style={{ backgroundColor: colors.darkGreen }}
-                className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
+                className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
               >
                 R$25,00
               </button>
@@ -63,7 +63,7 @@ const Index = () => (
             <a target="_blank" href="https://nubank.com.br/pagar/9/Rmk77MkcvW">
               <button
                 style={{ backgroundColor: colors.darkGreen }}
-                className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
+                className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
               >
                 R$50,00
               </button>
@@ -71,7 +71,7 @@ const Index = () => (
             <a target="_blank" href="https://nubank.com.br/pagar/9/8roiUAN3R3">
               <button
                 style={{ backgroundColor: colors.darkGreen }}
-                className="pa3 w-auto-ns w-100 bn f6 br1 pointer white tc mr2 mb3"
+                className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
               >
                 Outro valor :)
               </button>

@@ -230,7 +230,7 @@ class InputContainer extends Component {
               {!this.state.isShowingLifeEventsTable && (
                 <button
                   style={{ backgroundColor: colors.redPink }}
-                  className={'pv3 ph4 white br1 ba0 center pointer'}
+                  className={'pv3 ph4 white br-pill ba0 center pointer'}
                   onClick={this.showLifeEventsTable}
                 >
                   {'Criar um evento'}
@@ -284,7 +284,7 @@ class InputContainer extends Component {
                 handleInput={this.props.handleInput}
               />
               <button
-                className="mt4 pa3 relative bg-white hover-bg-black hover-white br2 pointer"
+                className="mt4 pa3 relative bg-white hover-bg-black hover-white br-pill pointer"
                 onClick={this.props.handleResetRates}
               >
                 Resetar taxas

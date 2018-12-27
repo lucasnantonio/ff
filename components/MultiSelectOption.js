@@ -22,7 +22,7 @@ class MultiSelectOption extends Component {
         <label
           htmlFor={`radio${this.props.label}`}
           onClick={e => this.props.handleClick(e, this.props.index)}
-          className={`pa3 br2 f7 ${this.props.isEnabled ? 'pointer' : 'black-30'}`}
+          className={`pa3 br-pill mr2 f7 ${this.props.isEnabled ? 'pointer' : 'black-30'}`}
         >
           {this.props.label}
         </label>

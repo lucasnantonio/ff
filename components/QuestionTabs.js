@@ -26,6 +26,9 @@ class QuestionTabs extends Component {
             .selectedTab {
               border-bottom: 2px solid black;
             }
+            button:focus {
+              outline: none;
+            }
           `}
         </style>
       </div>
