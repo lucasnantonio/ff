@@ -12,7 +12,7 @@ const Header = props => (
     <meta charset="utf-8" />
     <meta name="theme-color" content="#5e5df7" />
     <title>{props.title}</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Muli" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Muli" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <link rel="icon" href="../static/favicon.ico" />
@@ -29,7 +29,7 @@ const Header = props => (
       name="og:description"
       content="Descubra quando você vai atingir a sua independência financeira"
     />
-    <style jsx global>
+    <style>
       {`
         html,
         html * {
