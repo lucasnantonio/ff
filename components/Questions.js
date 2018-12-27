@@ -53,7 +53,7 @@ class InputContainer extends Component {
       firstInput.focus();
     };
     scroll();
-    setTimeout(focus, 1800);
+    setTimeout(focus, 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {
