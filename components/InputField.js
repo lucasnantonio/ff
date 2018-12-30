@@ -51,7 +51,9 @@ class InputField extends Component {
     this.setState({ isHovered: false });
   };
 
-  handleFocus() {
+  handleFocus(event) {
+    event.target.select();
+
     this.setState({
       isFocused: true,
     });
@@ -112,7 +114,7 @@ class InputField extends Component {
                   className={'bn pa2 br2 bg-transparent f4-ns f5 tr w3'}
                   min={this.props.min}
                   max={this.props.max}
-                  onFocus={this.handleFocus}
+                  onFocus={e => this.handleFocus(e)}
                   onBlur={this.handleBlur}
                   id={this.props.id}
                   type="number"
@@ -129,7 +131,7 @@ class InputField extends Component {
                 defaultValue={this.props.placeholder}
                 min={this.props.min}
                 max={this.props.max}
-                onFocus={this.handleFocus}
+                onFocus={e => this.handleFocus(e)}
                 onBlur={this.handleBlur}
                 id={this.props.id}
                 currency="BRL"
