@@ -64,7 +64,7 @@ class IntlCurrencyInput extends Component {
 
   calculateValues(inputFieldValue, config, currency) {
     // value must be divided by 100 to properly work with cents.
-    const value = this.normalizeValue(inputFieldValue) / 100;
+    const value = this.normalizeValue(inputFieldValue) / 1;
     const maskedValue = formatCurrency(value, config, currency);
 
     return [value, maskedValue];
@@ -83,7 +83,7 @@ class IntlCurrencyInput extends Component {
 
       return [value, maskedValue];
     }
-    return [this.normalizeValue(this.state.maskedValue) / 100, this.state.maskedValue];
+    return [this.normalizeValue(this.state.maskedValue) / 1, this.state.maskedValue];
   }
 
   handleChange(event) {

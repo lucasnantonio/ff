@@ -14,7 +14,7 @@ const currencyConfig = {
       BRL: {
         style: 'currency',
         currency: 'BRL',
-        minimumFractionDigits: 2,
+        minimumFractionDigits: 0,
         maximumFractionDigits: 2,
       },
     },
