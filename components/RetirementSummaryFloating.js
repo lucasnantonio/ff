@@ -45,24 +45,43 @@ class RetirementSummaryFloating extends Component {
           className="fixed w-100 pa4-ns pa3 white z-max pointer f5-ns f6 ba0"
           onClick={this.scrollBackUp}
         >
-          <div className="mw7 center w-100 flex justify-start">
-            <span className="white"> Você vai se aposentar aos {y} anos. </span>
-            <CSSTransitionGroup
-              transitionName="update"
-              transitionAppear={true}
-              transitionAppearTimeout={500}
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
-            >
-              {this.state.isShowingUpdateButton && (
-                <div
-                  className="ph3 black-50 bn pointer"
-                  style={{ transition: 'all .5s', overflow: 'hidden' }}
-                >
-                  Atualizado&nbsp;✓
-                </div>
-              )}
-            </CSSTransitionGroup>
+          <div className="flex justify-between mw7 center w-100 items-center">
+            <div className="flex flex-row-ns flex-column justify-start">
+              <span className="white"> Você vai se aposentar aos {y} anos. </span>
+              <CSSTransitionGroup
+                transitionName="update"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+              >
+                {this.state.isShowingUpdateButton && (
+                  <div
+                    className="ph3-ns mt0-ns mt2 black-50 bn pointer tl"
+                    style={{ transition: 'all .5s', overflow: 'hidden' }}
+                  >
+                    Atualizado&nbsp;✓
+                  </div>
+                )}
+              </CSSTransitionGroup>
+            </div>
+            <div className="mw1">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 29 29"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M14.5 1L28 14.2734L25.3872 16.8423L16.3475 7.95436V29H12.6525V7.95436L3.61278 16.8423L1 14.2734L14.5 1Z"
+                  fill="black"
+                  fillOpacity="0.2"
+                />
+              </svg>
+            </div>
           </div>
           <style jsx>
             {`
