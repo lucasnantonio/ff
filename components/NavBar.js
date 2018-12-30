@@ -12,7 +12,7 @@ const NavBar = props => (
           <Logo isShowingAnswer={props.isShowingAnswer} />
         </button>
       </Link>
-      <Link href="/sobre" tabIndex="0">
+      <Link href="/sobre">
         <a href="#" className="link black-40 hover-black pointer  pa3">
           sobre
         </a>
