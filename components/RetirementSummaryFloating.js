@@ -21,14 +21,20 @@ class RetirementSummaryFloating extends Component {
     return array.indexOf(selectedItem[0]);
   };
 
+  showUpdate = () => {
+    if (this.state.isShowingUpdateButton === false) {
+      this.setState({ isShowingUpdateButton: true });
+      setTimeout(() => this.setState({ isShowingUpdateButton: false }), 3000);
+    }
+  };
+
   componentDidUpdate = (prevProps, prevState) => {
     if (
       this.props.retirementResults !== prevProps.retirementResults
       || this.props.myInvestments !== prevProps.myInvestments
     ) {
-      this.state.isShowingUpdateButton === false && this.setState({ isShowingUpdateButton: true });
+      this.showUpdate();
     }
-    setTimeout(() => this.setState({ isShowingUpdateButton: false }), 10000);
   };
 
   render() {
@@ -47,7 +53,10 @@ class RetirementSummaryFloating extends Component {
         >
           <div className="flex justify-between mw7 center w-100 items-center">
             <div className="flex flex-row-ns flex-column justify-start">
-              <span className="white"> Você vai se aposentar aos {y} anos. </span>
+              <span className="white b" style={{ fontFamily: 'Work Sans, system-ui' }}>
+                {' '}
+                Você vai se aposentar aos {y} anos.{' '}
+              </span>
               <CSSTransitionGroup
                 transitionName="update"
                 transitionAppear={true}
@@ -57,8 +66,12 @@ class RetirementSummaryFloating extends Component {
               >
                 {this.state.isShowingUpdateButton && (
                   <div
+                    style={{
+                      fontFamily: 'Work Sans, system-ui',
+                      transition: 'all .5s',
+                      overflow: 'hidden',
+                    }}
                     className="ph3-ns mt0-ns mt2 black-50 bn pointer tl"
-                    style={{ transition: 'all .5s', overflow: 'hidden' }}
                   >
                     Atualizado&nbsp;✓
                   </div>
