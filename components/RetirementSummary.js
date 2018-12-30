@@ -27,11 +27,11 @@ class RetirementSummary extends Component {
           Aos {y} anos, você será livre financeiramente.
         </h2>
         <h3 className="f5-l f6 normal lh-copy white measure-narrow center ml0-ns mv0">
-          Em {2019 - this.props.myCurrentAge + y} você terá R$
-          {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta. A partir daí,
-          você poderá gastar R$
+          Você terá R$
+          {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta e poderá gastar
+          R$
           {this.props.myRetirementIncome.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} por
-          mês até o os {this.props.myLifeExpectancy} anos.
+          mês até o os {this.props.myLifeExpectancy}&nbsp;anos.
         </h3>
         <p className="f7 normal lh-copy white-50 measure center ml0-ns mv2">
           Esse valor não considera a pensão que você receberá do INSS, que pode ir até R$&nbsp;5645.
