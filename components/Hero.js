@@ -11,10 +11,10 @@ const Hero = props => (
           style={{ color: colors.black, fontFamily: 'Work Sans, sans-serif' }}
           className="f2-ns f3 lh-solid normal mt0 b tracked-tight"
         >
-          Descubra quando você vai se aposentar.
+          Descubra quando você será livre financeiramente.
         </h1>
         <p className="measure-narrow lh-copy o-50 f4 dib-ns dn" style={{ color: colors.darkBrown }}>
-          Em poucos passos você terá mais clareza sobre seu futuro financeiro.
+          Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu sossego no futuro.
         </p>
         <CSSTransitionGroup
           transitionName="exit"
