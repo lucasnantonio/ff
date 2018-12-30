@@ -107,11 +107,21 @@ const Header = props => (
         input {
           outline: none;
         }
-        input:focus {
-          background-color: ${colors.white};
+        input:focus::-webkit-input-placeholder
+        {
+            color: transparent;
         }
-        .checkmark {
-          transition: all 0.2s;
+        input:focus::-moz-placeholder {
+          /* Firefox 19+ */
+          color: transparent;
+        }
+        input:focus:::-ms-input-placeholder {
+          /* IE 10+ */
+          color: transparent;
+        }
+        input:focus::-moz-placeholder {
+          /* Firefox 18- */
+          color: transparent;
         }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
