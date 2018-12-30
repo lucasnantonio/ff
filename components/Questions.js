@@ -264,6 +264,15 @@ class InputContainer extends Component {
                 handleInput={this.props.handleInput}
                 handleInputButtons={this.props.handleInputButtons}
               />
+              <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
+                Os rendimentos abaixo são o resultado de muita pesquisa, da experiência de
+                grandes investidores e também de cálculos com base em dados históricos.
+                Faça alterações apenas se você souber muito bem o que está fazendo.
+              </p>
+              <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
+                Os cálculos consideram o rendimento REAL de cada aplicação, ou seja,
+                a inflação já deve ser descontada.
+              </p>
               {this.props.myInvestments.map((item, index) => (
                 <InputField
                   isPercentage
