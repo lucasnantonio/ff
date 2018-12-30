@@ -213,8 +213,8 @@ class InputContainer extends Component {
               className="absolute-l w-100 pb5 tc"
             >
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Adicione eventos de vida custosos, como viagens, compras grandes, e cursos, para
-                deixar seu cálculo ainda mais preciso.
+                Descubra o impacto que eventos custosos, como viagens, cursos, e grandes compras
+                podem ter na sua independência financeira.
               </p>
               {!this.state.isShowingLifeEventsTable && (
                 <button
