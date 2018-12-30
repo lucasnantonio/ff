@@ -99,7 +99,7 @@ class InputContainer extends Component {
 
   canSubmit = () => {
     const { myCurrentBalance, myCurrentMonthlySavings, myRetirementIncome } = this.props;
-    const requiredQuestions = [myCurrentBalance, myCurrentMonthlySavings, myRetirementIncome];
+    const requiredQuestions = [myRetirementIncome];
     return requiredQuestions.every(item => item !== 0);
   };
 
@@ -151,6 +151,7 @@ class InputContainer extends Component {
                   value={this.props.myCurrentBalance}
                   id="myCurrentBalance"
                   handleInput={this.props.handleCurrencyInput}
+                  acceptZero
                 />
                 <InputField
                   isCurrency
@@ -161,6 +162,7 @@ class InputContainer extends Component {
                   handleInput={this.props.handleCurrencyInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
+                  acceptZero
                 />
                 <InputField
                   isCurrency

@@ -19,7 +19,7 @@ class Index extends Component {
       isShowingQuestions: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
-      myCurrentMonthlySavings: 0,
+      myCurrentMonthlySavings: 100,
       myRetirementIncome: 0,
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 1,

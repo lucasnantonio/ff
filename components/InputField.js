@@ -5,7 +5,6 @@ import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
 import InputFieldWrapper from './InputFieldWrapper';
 import PigFeedback from './PigFeedback';
-import colors from './Colors';
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -125,7 +124,7 @@ class InputField extends Component {
             ) : (
               <IntlCurrencyInput
                 className={`${
-                  this.props.value === 0 ? 'black-20' : 'black'
+                  (this.props.value === 0 && !this.props.acceptZero) ? 'black-20' : 'black'
                 } bn w-100 bg-transparent f4-ns f5 tr`}
                 defaultValue={this.props.placeholder}
                 min={this.props.min}
