@@ -24,13 +24,14 @@ class RetirementSummary extends Component {
           className="f2-l f3 tracked-tight lh-solid white b"
           style={{ fontFamily: 'Work Sans, system-ui, sans-serif' }}
         >
-          Você vai se aposentar aos {y} anos.
+          Aos {y} anos, você será livre financeiramente.
         </h2>
         <h3 className="f5-l f6 black-80 normal lh-copy white measure-narrow center ml0-ns mv0">
           Em {2019 - this.props.myCurrentAge + y} você terá R$
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta. A partir daí,
           você poderá gastar R$
-          {this.props.myRetirementIncome} por mês até o os {this.props.myLifeExpectancy} anos.
+          {this.props.myRetirementIncome.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} por
+          mês até o os {this.props.myLifeExpectancy} anos.
         </h3>
         <div className="dn flex-ns mt4">
           <DonationCall />
