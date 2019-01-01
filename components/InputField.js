@@ -30,6 +30,7 @@ class InputField extends Component {
       hasBeenChanged: false,
     };
     this.handleInput = this.handleInput.bind(this);
+    this.handleCurrencyInput = this.handleCurrencyInput.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
@@ -39,6 +40,13 @@ class InputField extends Component {
   handleInput(e) {
     const { id, value } = e.target;
     this.props.handleInput(e, value === '' ? 0 : value);
+    this.setState({
+      hasBeenChanged: true,
+    });
+  }
+
+  handleCurrencyInput(e, floatValue) {
+    this.props.handleInput(e, floatValue);
     this.setState({
       hasBeenChanged: true,
     });
@@ -137,7 +145,7 @@ class InputField extends Component {
                 id={this.props.id}
                 currency="BRL"
                 config={currencyConfig}
-                onChange={this.handleInput}
+                onChange={this.handleCurrencyInput}
               />
             )}
             {/* </div> */}
