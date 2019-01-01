@@ -137,7 +137,7 @@ class InputContainer extends Component {
                   id="myCurrentAge"
                   value={this.props.myCurrentAge}
                   stepperIncrement="1"
-                  min="1"
+                  min="0"
                   max="100"
                   handleInput={this.props.handleInput}
                   handleInputButtons={this.props.handleInputButtons}

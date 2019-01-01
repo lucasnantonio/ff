@@ -99,9 +99,9 @@ class Index extends Component {
     this.setState({ [parentId]: parseFloat(parentValue) });
   };
 
-  handleInput = (e) => {
-    const { id, value } = e.target;
-    this.setState({ [id]: parseFloat(value) });
+  handleInput = (e, floatValue) => {
+    const { id } = e.target;
+    this.setState({ [id]: parseFloat(floatValue) });
   };
 
   handleInvestmentRateInput = (e) => {

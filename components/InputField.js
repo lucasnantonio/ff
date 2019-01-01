@@ -36,8 +36,9 @@ class InputField extends Component {
     this.handleDecrement = this.handleDecrement.bind(this);
   }
 
-  handleInput(e, floatValue) {
-    this.props.handleInput(e, floatValue);
+  handleInput(e) {
+    const { id, value } = e.target;
+    this.props.handleInput(e, value === '' ? 0 : value);
     this.setState({
       hasBeenChanged: true,
     });
@@ -117,7 +118,7 @@ class InputField extends Component {
                   onFocus={e => this.handleFocus(e)}
                   onBlur={this.handleBlur}
                   id={this.props.id}
-                  type="number"
+                  type="text"
                   placeholder={this.props.placeholder}
                   onChange={this.handleInput}
                 />
