@@ -21,7 +21,7 @@ const Index = () => (
       <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
         <h1
           className="normal f2 tracked-tight b"
-          style={{ color: colors.black, fontFamily: 'Work Sans, system-ui, sans-serif' }}
+          style={{ color: colors.black, fontFamily: 'Nunito, system-ui, sans-serif' }}
         >
           sobre
         </h1>

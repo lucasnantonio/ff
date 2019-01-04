@@ -8,12 +8,12 @@ const Hero = props => (
     <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5 pt5">
       <div className="w-40-ns w-100 tl-ns tc mb5-ns">
         <h1
-          style={{ color: colors.black, fontFamily: 'Work Sans, sans-serif' }}
+          style={{ color: colors.black, fontFamily: 'Nunito, sans-serif' }}
           className="f2-ns f3 lh-solid normal mt0 b tracked-tight"
         >
           Descubra quando você será livre financeiramente.
         </h1>
-        <p className="measure-narrow lh-copy o-50 f4 dib-ns dn" style={{ color: colors.darkBrown }}>
+        <p className="measure-narrow lh-copy f5 dib-ns dn" style={{ color: colors.gray }}>
           Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu sossego no futuro.
         </p>
         <CSSTransitionGroup
@@ -25,10 +25,11 @@ const Hero = props => (
             <button
               style={{
                 backgroundColor: colors.darkGreen,
-                fontFamily: 'Work Sans, system-ui, sans-serif',
+                color: colors.black,
+                fontFamily: 'Nunito, system-ui, sans-serif',
               }}
               onClick={props.startApp}
-              className="ba0 mt4 ph4 pv3-ns pv4 white br-pill-ns pointer f4 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
+              className="ba0 mt4 ph4 pv3-ns pv4 br-pill-ns pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
             >
               Começar
             </button>

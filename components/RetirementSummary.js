@@ -22,7 +22,7 @@ class RetirementSummary extends Component {
       <div className="w-100 flex flex-column ml0-ns center mr4">
         <h2
           className="f2-l f3 tracked-tight lh-solid white b"
-          style={{ fontFamily: 'Work Sans, system-ui, sans-serif' }}
+          style={{ fontFamily: 'Nunito, system-ui, sans-serif' }}
         >
           Aos {y} anos, você será livre financeiramente.
         </h2>

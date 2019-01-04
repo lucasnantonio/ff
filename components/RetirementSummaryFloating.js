@@ -53,7 +53,7 @@ class RetirementSummaryFloating extends Component {
         >
           <div className="flex justify-between mw7 center w-100 items-center">
             <div className="flex flex-row-ns flex-column justify-start">
-              <span className="white b" style={{ fontFamily: 'Work Sans, system-ui' }}>
+              <span className="white b" style={{ fontFamily: 'Nunito, system-ui' }}>
                 {' '}
                 Você vai se aposentar aos {y} anos.{' '}
               </span>
@@ -67,7 +67,7 @@ class RetirementSummaryFloating extends Component {
                 {this.state.isShowingUpdateButton && (
                   <div
                     style={{
-                      fontFamily: 'Work Sans, system-ui',
+                      fontFamily: 'Nunito, system-ui',
                       transition: 'all .5s',
                       overflow: 'hidden',
                     }}
