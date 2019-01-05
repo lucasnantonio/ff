@@ -13,7 +13,7 @@ const Hero = props => (
         >
           Descubra quando você será livre financeiramente.
         </h1>
-        <p className="measure-narrow lh-copy f5 dib-ns dn" style={{ color: colors.gray }}>
+        <p className="measure-narrow lh-copy f5 dib-ns dn" style={{ color: colors.mediumGray }}>
           Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu sossego no futuro.
         </p>
         <CSSTransitionGroup
@@ -25,18 +25,18 @@ const Hero = props => (
             <button
               style={{
                 backgroundColor: colors.darkGreen,
-                color: colors.black,
+                color: colors.white,
                 fontFamily: 'Nunito, system-ui, sans-serif',
               }}
               onClick={props.startApp}
-              className="ba0 mt4 ph4 pv3-ns pv4 br-pill-ns pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
+              className="ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
             >
               Começar
             </button>
           )}
         </CSSTransitionGroup>
       </div>
-      <div className="w-60-ns w-100">
+      <div className="w-60-ns w-100 pl5-l">
         <PigAnimated />
       </div>
     </div>
@@ -53,7 +53,10 @@ const Hero = props => (
             transform: translateY(-20%);
           }
           button:hover {
-            background-color: ${colors.lightGreen} !important;
+            background-color: ${colors.darkGreenHover} !important;
+          }
+          button:active {
+            background-color: ${colors.darkGreenActive} !important;
           }
         }
       `}

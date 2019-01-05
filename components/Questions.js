@@ -105,7 +105,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div className={'w-100'}>
+      <div className={'mw7-ns ph0-l ph4 center'}>
         {this.props.isShowingAnswer && (
           <QuestionTabs
             isShowingAnswer={this.props.isShowingAnswer}
@@ -125,7 +125,7 @@ class InputContainer extends Component {
               id="tab1"
               role="tabpanel"
               aria-labelledby={this.state.tabs[0].label}
-              className="absolute-l w-100 pb6"
+              className="w-100"
             >
               <form id="basicquestions" action="">
                 <InputField
@@ -265,13 +265,13 @@ class InputContainer extends Component {
                 handleInputButtons={this.props.handleInputButtons}
               />
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os rendimentos abaixo são o resultado de muita pesquisa, da experiência de
-                grandes investidores e também de cálculos com base em dados históricos.
-                Faça alterações apenas se você souber muito bem o que está fazendo.
+                Os rendimentos abaixo são o resultado de muita pesquisa, da experiência de grandes
+                investidores e também de cálculos com base em dados históricos. Faça alterações
+                apenas se você souber muito bem o que está fazendo.
               </p>
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os cálculos consideram o rendimento REAL de cada aplicação, ou seja,
-                a inflação já deve ser descontada.
+                Os cálculos consideram o rendimento REAL de cada aplicação, ou seja, a inflação já
+                deve ser descontada.
               </p>
               {this.props.myInvestments.map((item, index) => (
                 <InputField
