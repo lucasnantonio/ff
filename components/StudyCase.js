@@ -4,9 +4,11 @@ import { formatAge } from '../utils/math';
 
 const StudyCase = ({
   id, placeHolder, label, studyCase, studyCaseResults, handleInput,
+  currentRetirementAge,
 }) => (
     <div>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
+      <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos)</p>
       <InputField
         isCurrency
         label={label}

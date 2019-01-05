@@ -125,7 +125,6 @@ class Index extends Component {
 
   handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
     const { id } = e.target;
-    console.log(id, floatValue, studyCaseLabel);
 
     const updatedStudyCases = this.state.studyCases.map((item) => {
       if (item.label === studyCaseLabel) {
@@ -230,6 +229,14 @@ class Index extends Component {
     this.setState({ focusedInput: inputId });
   };
 
+  getSelectedInvestmentRetirementData() {
+    return (
+      this.state.retirementResults.filter(
+        (investment, index) => this.state.myInvestments[index].isSelected,
+      )[0][1]
+    );
+  }
+
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
@@ -247,6 +254,7 @@ class Index extends Component {
               studyCase={this.state.studyCases[0]}
               studyCaseResults={this.state.studyCasesResults[0]}
               handleInput={this.handleStudyCaseInput}
+              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
             />
             <StudyCase
               id={'myRetirementIncome'}
@@ -255,6 +263,7 @@ class Index extends Component {
               studyCase={this.state.studyCases[1]}
               studyCaseResults={this.state.studyCasesResults[1]}
               handleInput={this.handleStudyCaseInput}
+              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
             />
           </div>
         )}
