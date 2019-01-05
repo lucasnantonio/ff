@@ -5,7 +5,7 @@ import Questions from '../components/Questions';
 import Answer from '../components/Answer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import { getRetirementResults } from '../utils/math';
+import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 import NavBar from '../components/NavBar';
 
@@ -20,7 +20,7 @@ class Index extends Component {
       myCurrentMonthlySavings: 100,
       myRetirementIncome: 0,
       myLifeExpectancy: 100,
-      annualSavingsIncreaseRate: 1,
+      annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
       myInvestments: [
         {
@@ -39,9 +39,18 @@ class Index extends Component {
           isSelected: false,
         },
       ],
+      studyCases: [
+        {
+          label: 'case0',
+          myCurrentBalance: 100000,
+          rate: 7.0,
+        },
+      ],
       lifeEvents: [{}],
       retirementResults: false,
+      studyCasesResults: false,
       focusedInput: '',
+
     };
   }
 
@@ -58,8 +67,14 @@ class Index extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const nextRetirementResults = getRetirementResults(this.state);
+    const nextStudyCasesResults = getStudyCasesResults(this.state);
+
     if (JSON.stringify(prevState.retirementResults) !== JSON.stringify(nextRetirementResults)) {
       this.setState({ retirementResults: nextRetirementResults });
+    }
+
+    if (JSON.stringify(prevState.studyCasesResults) !== JSON.stringify(nextStudyCasesResults)) {
+      this.setState({ studyCasesResults: nextStudyCasesResults });
     }
   }
 

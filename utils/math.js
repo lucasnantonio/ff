@@ -85,17 +85,43 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
 }
 
 export function getRetirementResults(state) {
-  const { myInvestments, lifeEvents } = state;
-
   const currentBalance = parseFloat(state.myCurrentBalance);
   const savings = parseFloat(state.myCurrentMonthlySavings);
   const retirementIncome = parseFloat(state.myRetirementIncome);
   const lifeExpectancy = parseFloat(state.myLifeExpectancy);
   const myCurrentAge = parseFloat(state.myCurrentAge);
   const annualSavingsIncreaseRate = parseFloat(state.annualSavingsIncreaseRate);
+  const { myInvestments, lifeEvents } = state;
 
   return myInvestments.map((investment) => {
     const { label, rate } = investment;
+
+    return [
+      label,
+      getRetirementData(
+        fin.annualToMonthly(parseFloat(rate) / 100),
+        currentBalance,
+        savings,
+        fin.annualToMonthly(annualSavingsIncreaseRate / 100),
+        retirementIncome,
+        myCurrentAge * 12,
+        lifeExpectancy * 12,
+        lifeEvents,
+      ),
+    ];
+  });
+}
+
+export function getStudyCasesResults(state) {
+  return state.studyCases.map((studyCase) => {
+    const currentBalance = parseFloat(studyCase.myCurrentBalance || state.myCurrentBalance);
+    const savings = parseFloat(studyCase.myCurrentMonthlySavings || state.myCurrentMonthlySavings);
+    const retirementIncome = parseFloat(studyCase.myRetirementIncome || state.myRetirementIncome);
+    const lifeExpectancy = parseFloat(studyCase.myLifeExpectancy || state.myLifeExpectancy);
+    const myCurrentAge = parseFloat(studyCase.myCurrentAge || state.myCurrentAge);
+    const annualSavingsIncreaseRate = parseFloat(studyCase.annualSavingsIncreaseRate || state.annualSavingsIncreaseRate);
+    const { lifeEvents } = state;
+    const { label, rate } = studyCase;
 
     return [
       label,
