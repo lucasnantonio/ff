@@ -208,7 +208,7 @@ class Index extends Component {
         )}
         <div
           id="questionsContainer"
-          className={`center ${this.state.isShowingQuestions && 'pv5'} `}
+          className={`center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
           style={{ backgroundColor: colors.lightGray }}
         >
           {this.state.isShowingQuestions && (
