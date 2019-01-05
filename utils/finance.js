@@ -18,7 +18,7 @@ function NPER(rate, payment, present, future, type) {
   return Math.log(num / den) / Math.log(1 + rate);
 }
 
-export function getLifeEvent(age, lifeEvents) {
+export function getLifeEventCost(age, lifeEvents) {
   for (const e of lifeEvents) {
     if (parseFloat(e.age) * 12 === age) {
       return parseFloat(e.cost);
@@ -27,33 +27,17 @@ export function getLifeEvent(age, lifeEvents) {
   return 0;
 }
 
-export function retirementAge(iR, balance, initialSavings, savingsIncrese,
+export function retirementAge(iR, balance, initialSavings, savingsIncrease,
   retirementIncome, currentAge, lifeExpectancy, lifeEvents = []) {
   /* all variables must be in the same time unit (montly, annual, ...) */
   let t = 0;
   let retirementAge = currentAge;
   let savings = initialSavings;
-  let eventCost = 0;
-
-  balance += savings;
-  eventCost = getLifeEvent(retirementAge, lifeEvents);
-  if (eventCost < balance) {
-    balance -= eventCost;
-  }
-
-
-  const nper = NPER(iR, -retirementIncome, balance);
-  if (isNaN(nper) || retirementAge + nper >= lifeExpectancy) {
-    return [retirementAge + 1, balance];
-  }
-
-  savings *= (1 + savingsIncrese);
-  t += 1;
-  retirementAge += 1;
+  let eventCost;
 
   while (true) {
     balance = (1 + iR) * balance + savings;
-    eventCost = getLifeEvent(retirementAge, lifeEvents);
+    eventCost = getLifeEventCost(retirementAge, lifeEvents);
 
     if (eventCost < balance) {
       balance -= eventCost;
@@ -65,7 +49,7 @@ export function retirementAge(iR, balance, initialSavings, savingsIncrese,
       return [retirementAge + 1, balance];
     }
 
-    savings *= (1 + savingsIncrese);
+    savings *= (1 + savingsIncrease);
     t += 1;
     retirementAge += 1;
   }

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
 import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
 import Answer from '../components/Answer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 import NavBar from '../components/NavBar';

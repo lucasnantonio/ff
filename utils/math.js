@@ -4,75 +4,74 @@ export function toCurrency(value) {
   return (`R$ ${Number(value).toFixed(2)}`);
 }
 
-function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrese,
-  retirementIncome, currentAge, lifeExpectancy, lifeEvents) {
-  /* all variables in months */
-  const chartData = [];
-  const events = [];
-  let savings = initialSavings;
+function getLifeEventLog(age, lifeEvents, balance) {
+  const lifeEventCost = fin.getLifeEventCost(age, lifeEvents);
 
-  let balance = currentBalance;
-  let age = currentAge;
-  let m = 0;
-  let eventCost = 0;
-
-  const [retirementAge, retirementBalance] = fin.retirementAge(mIR, balance,
-    initialSavings, savingsIncrese, retirementIncome, currentAge,
-    lifeExpectancy, lifeEvents);
-
-  balance += savings;
-  chartData.push({ x: age / 12, y: balance });
-
-  eventCost = fin.getLifeEvent(age, lifeEvents);
-  if (eventCost > 0) {
-    if (eventCost > balance) {
-      events.push({
-        age: age / 12, balance, valid: false, obs: 'Dinheiro insuficiente. Evento Ignorado.',
-      });
-    } else {
-      events.push({
-        age: age / 12, balance, valid: true, obs: '',
-      });
-      balance -= fin.getLifeEvent(age, lifeEvents);
-      chartData.push({ x: age / 12, y: balance });
+  if (lifeEventCost > 0) {
+    if (lifeEventCost > balance) {
+      return {
+        age: age / 12,
+        balance,
+        valid: false,
+        obs: 'Dinheiro insuficiente. Evento Ignorado.',
+      };
     }
+    return {
+      age: age / 12,
+      balance,
+      valid: true,
+      obs: '',
+    };
   }
 
-  savings *= (1 + savingsIncrese);
-  age += 1;
-  m += 1;
+  return null;
+}
+
+function getBalanceAfterLifeEvent(age, lifeEvents, balance) {
+  const lifeEventCost = fin.getLifeEventCost(age, lifeEvents);
+
+  if (lifeEventCost > 0 && lifeEventCost < balance) {
+    return balance - lifeEventCost;
+  }
+  return balance;
+}
+
+function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
+  retirementIncome, currentAge, lifeExpectancy, lifeEvents) {
+  /* all variables in months */
+  let savings = initialSavings;
+  let balance = currentBalance;
+  let age = currentAge;
+  const chartData = [];
+  const lifeEventsLog = [];
+
+  // before retirement
+
+  const [retirementAge, retirementBalance] = fin.retirementAge(
+    mIR, balance, initialSavings, savingsIncrease, retirementIncome, currentAge,
+    lifeExpectancy, lifeEvents,
+  );
 
   while (age < retirementAge) {
     balance = (1 + mIR) * balance + savings;
     chartData.push({ x: age / 12, y: balance });
 
-    eventCost = fin.getLifeEvent(age, lifeEvents);
-    if (eventCost > 0) {
-      if (eventCost > balance) {
-        events.push({
-          age: age / 12, balance, valid: false, obs: 'Dinheiro insuficiente. Evento Ignorado.',
-        });
-      } else {
-        events.push({
-          age: age / 12, balance, valid: true, obs: '',
-        });
-        balance -= fin.getLifeEvent(age, lifeEvents);
-        chartData.push({ x: age / 12, y: balance });
-      }
-    }
+    // handle life events
+    const lifeEventLog = getLifeEventLog(age, lifeEvents, balance);
+    if (lifeEventLog !== null) { lifeEventsLog.push(lifeEventLog); }
+    balance = getBalanceAfterLifeEvent(age, lifeEvents, balance);
+    chartData.push({ x: age / 12, y: balance });
 
-    savings *= (1 + savingsIncrese);
+    savings *= (1 + savingsIncrease);
     age += 1;
-    m += 1;
   }
+
+  // after retirement
 
   while (age <= lifeExpectancy) {
     balance = (1 + mIR) * balance - retirementIncome;
-
     chartData.push({ x: age / 12, y: balance });
-
     age += 1;
-    m += 1;
   }
 
   return {
@@ -81,7 +80,7 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrese,
       age: retirementAge,
       balance: retirementBalance,
     },
-    events,
+    events: lifeEventsLog,
   };
 }
 
