@@ -212,7 +212,7 @@ class InputContainer extends Component {
               role="tabpanel"
               key="2"
               aria-labelledby={this.state.tabs[1].label}
-              className="absolute-l w-100 pb5 tc"
+              className="w-100 tc"
             >
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
                 Descubra o impacto que eventos custosos, como viagens, cursos, e grandes compras
@@ -251,7 +251,7 @@ class InputContainer extends Component {
               role="tabpanel"
               key="3"
               aria-labelledby={this.state.tabs[2].label}
-              className="absolute-l w-100 pb5"
+              className="w-100 pb5"
             >
               <InputField
                 label="Expectativa de vida"

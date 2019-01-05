@@ -39,7 +39,7 @@ class RetirementSummary extends Component {
         </h3>
         <p
           style={{ color: colors.mediumGray }}
-          className="f7 normal lh-copy measure center ml0-ns mv2"
+          className="f7 normal lh-copy measure center ml0-ns mv3"
         >
           Esse valor não considera a pensão que você receberá do INSS, que pode ir até R$&nbsp;5645.
         </p>
