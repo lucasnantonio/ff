@@ -11,7 +11,7 @@ const Header = props => (
     />
     <meta charset="utf-8" />
     <title>{props.title}</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,800" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <meta
