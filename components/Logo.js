@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import colors from './Colors';
 
 class Logo extends Component {
-  getColor = () => (this.props.isShowingAnswer ? 'white' : colors.black);
+  getColor = () => (this.props.isShowingAnswer ? colors.black : colors.black);
 
   render() {
     return (

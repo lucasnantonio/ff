@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import getRetirementChart from '../utils/charts';
+import colors from './Colors';
 
 class RetirementChart extends Component {
   constructor(props) {
@@ -61,10 +62,10 @@ class RetirementChart extends Component {
     const selectedInvestmentSet = {
       label,
       data: this.filterIntegerAge(investmentData),
-      backgroundColor: 'rgba(0, 0, 0 ,0.1)',
+      backgroundColor: colors.lightGreen,
       pointRadius: 0,
       borderWidth: 3,
-      borderColor: 'rgba(255, 255, 255, 1)',
+      borderColor: colors.darkGreen,
       lineTension: 0,
       pointHitRadius: 2,
     };
