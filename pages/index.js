@@ -3,6 +3,7 @@ import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
 import Answer from '../components/Answer';
+import StudyCase from '../components/StudyCase';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
@@ -42,7 +43,12 @@ class Index extends Component {
       studyCases: [
         {
           label: 'case0',
-          myCurrentBalance: 100000,
+          myCurrentMonthlySavings: undefined,
+          rate: 7.0,
+        },
+        {
+          label: 'case1',
+          myRetirementIncome: undefined,
           rate: 7.0,
         },
       ],
@@ -115,6 +121,22 @@ class Index extends Component {
   handleInput = (e, floatValue) => {
     const { id } = e.target;
     this.setState({ [id]: parseFloat(floatValue) });
+  };
+
+  handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
+    const { id } = e.target;
+    console.log(id, floatValue, studyCaseLabel);
+
+    const updatedStudyCases = this.state.studyCases.map((item) => {
+      if (item.label === studyCaseLabel) {
+        return {
+          ...item,
+          [id]: parseFloat(floatValue),
+        };
+      }
+      return item;
+    });
+    this.setState({ studyCases: updatedStudyCases });
   };
 
   handleInvestmentRateInput = (e) => {
@@ -216,7 +238,25 @@ class Index extends Component {
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
-          <Answer {...this.state} />
+          <div>
+            <Answer {...this.state} />
+            <StudyCase
+              id={'myCurrentMonthlySavings'}
+              placeHolder={this.state.myCurrentMonthlySavings}
+              label={'E se você aumentasse as suas economias?'}
+              studyCase={this.state.studyCases[0]}
+              studyCaseResults={this.state.studyCasesResults[0]}
+              handleInput={this.handleStudyCaseInput}
+            />
+            <StudyCase
+              id={'myRetirementIncome'}
+              placeHolder={this.state.myRetirementIncome}
+              label={'E se você fosse menos ganancioso?'}
+              studyCase={this.state.studyCases[1]}
+              studyCaseResults={this.state.studyCasesResults[1]}
+              handleInput={this.handleStudyCaseInput}
+            />
+          </div>
         )}
         <div id="questionsContainer" className="mw7-ns ph0-l ph4 center">
           {this.state.isShowingQuestions && (
