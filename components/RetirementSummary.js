@@ -41,7 +41,8 @@ class RetirementSummary extends Component {
           style={{ color: colors.mediumGray }}
           className="f7 normal lh-copy measure center ml0-ns mv3"
         >
-          Esse valor não considera a pensão que você receberá do INSS, que pode ir até R$&nbsp;5645.
+          Esse valor não considera a pensão que você receberá do INSS, que pode ir até R$&nbsp;5645
+          por mês.
         </p>
         <div className="dn flex-ns mt4">
           <DonationCall />

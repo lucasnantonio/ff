@@ -143,7 +143,10 @@ const Index = () => (
     <style jsx>
       {`
         button:hover {
-          background-color: ${colors.lightGreen} !important;
+          background-color: ${colors.darkGreenHover} !important;
+        }
+        button:active {
+          background-color: ${colors.darkGreenActive} !important;
         }
       `}
     </style>

@@ -52,6 +52,9 @@ const Hero = props => (
             transition: all 0.2s;
             transform: translateY(-20%);
           }
+          button {
+            transition: all 0.2s;
+          }
           button:hover {
             background-color: ${colors.darkGreenHover} !important;
           }

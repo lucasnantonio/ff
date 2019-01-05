@@ -3,7 +3,7 @@ import Colors from './Colors';
 import colors from './Colors';
 
 const PigAnimated = () => (
-  <div className="w-100">
+  <div id="group" className="w-100">
     <svg
       width="100%"
       height="100%"
@@ -17,185 +17,192 @@ const PigAnimated = () => (
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="255" cy="255" r="253" stroke={colors.lightGray2} strokeWidth="4" />
-      <circle cx="255" cy="255" r="188" stroke={colors.lightGray2} strokeWidth="4" />
-      <path
-        d="M171.702 103.671C253.673 57.9835 347.889 81.3689 393.946 164.003C440.003 246.637 420.461 357.228 338.489 402.916C256.517 448.604 152.729 418.653 106.672 336.019C60.6151 253.385 89.7297 149.359 171.702 103.671Z"
-        fill="#FF549A"
-      />
-      <ellipse
-        cx="250.069"
-        cy="292.872"
-        rx="3.15323"
-        ry="1.31054"
-        transform="rotate(-121.259 250.069 292.872)"
-        fill={colors.redPink}
-      />
-      <path
-        d="M189.5 128C171.978 144.661 174.902 140.176 160.216 157.108L225.678 188.794L254.974 146.27L313.661 106.893L305.92 101.56L311.403 93.6008L292.26 92.1486C270.477 92.9025 225.678 93.6008 189.5 128Z"
-        fill="#FFD0D3"
-      />
-      <path
-        d="M103.891 259.752C107.853 234.19 108.512 216.411 141.072 175.494L191.714 227.917L158.206 273.254L136.461 346.402L128.901 340.815L122.63 349.301L115.561 330.955C109.901 309.153 98.5213 294.396 103.891 259.752Z"
-        fill="#FFD0D3"
-      />
-      <path
-        d="M420 219C398.925 202.082 354.037 192.664 331.743 189.251L343.319 291.129L394.956 290.861L460.869 327.372L460.799 314.042L470.464 313.992L460.677 290.519C447.569 265.756 448.562 241.927 420 219Z"
-        fill="#FFD0D3"
-      />
-      <path
-        d="M279.583 413.828C257.086 400.481 239.662 363.967 228.09 344.66L318.605 318.821L338.509 366.469L395.026 414.086L383.746 418.798L387.471 427.716L363.841 427.112C337.827 423.913 310.072 431.916 279.583 413.828Z"
-        fill="#FFD0D3"
-      />
-      <path
-        d="M214.748 147.734C287.937 123.023 364.725 187.709 364.725 264.841C364.725 322.206 316.484 339.181 277.955 355.468C216.208 366.709 150.831 317.873 141.968 242.965C136.049 192.942 182.743 158.54 214.748 147.734Z"
-        fill="#FFD0D3"
-      />
-      <path
-        d="M124.222 89.2752C157.539 82.3906 190.126 103.808 197.009 137.112C203.891 170.417 174.113 202.184 140.796 209.069C128.082 211.696 83.2397 195.348 76.3577 162.044C69.4757 128.739 90.9053 96.1598 124.222 89.2752Z"
-        fill="#FFD0D3"
-      />
-      <path
-        d="M124.05 77.5852C122.157 82.8113 113.421 83.363 109.289 82.9856C95.4049 77.2593 102.63 62.2018 107.978 55.3888C114.124 60.6101 125.942 72.3592 124.05 77.5852Z"
-        fill="#FFADC0"
-      />
-      <path
-        d="M151.26 171.29C154.792 170.824 161.675 168.081 160.957 160.843"
-        stroke={colors.redPink}
-        strokeWidth="3.49834"
-      />
-      <path d="M85.1628 91.613L94.1161 84.9999" stroke={colors.black} strokeWidth="5.05316" />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M113.749 138.159C109.109 130.228 99.5402 127.197 92.3772 131.388C85.2142 135.579 83.1692 145.406 87.8095 153.336C92.4497 161.267 102.018 164.298 109.181 160.107C116.344 155.916 118.389 146.089 113.749 138.159ZM137.021 109.747C132.381 101.817 122.19 99.1496 114.26 103.79C106.329 108.43 103.662 118.621 108.302 126.551C112.942 134.482 123.133 137.149 131.064 132.509C138.994 127.869 141.661 117.678 137.021 109.747Z"
-        fill={colors.black}
-      />
-      <mask
-        id="mask0"
-        mask-type="alpha"
-        maskUnits="userSpaceOnUse"
-        x="73"
-        y="94"
-        width="79"
-        height="75"
-      >
+      <circle id="water1" cx="255" cy="255" r="253" stroke={colors.lightGray2} strokeWidth="4" />
+      <circle
+        id="water2"
+        cx="255"
+        cy="255"
+        r="253"
+        stroke={colors.lightGray2}
+        strokeWidth="4"
+      />{' '}
+      <g>
+        <path
+          d="M171.702 103.671C253.673 57.9835 347.889 81.3689 393.946 164.003C440.003 246.637 420.461 357.228 338.489 402.916C256.517 448.604 152.729 418.653 106.672 336.019C60.6151 253.385 89.7297 149.359 171.702 103.671Z"
+          fill="#FF549A"
+        />
+        <ellipse
+          cx="250.069"
+          cy="292.872"
+          rx="3.15323"
+          ry="1.31054"
+          transform="rotate(-121.259 250.069 292.872)"
+          fill={colors.redPink}
+        />
+        <path
+          d="M189.5 128C171.978 144.661 174.902 140.176 160.216 157.108L225.678 188.794L254.974 146.27L313.661 106.893L305.92 101.56L311.403 93.6008L292.26 92.1486C270.477 92.9025 225.678 93.6008 189.5 128Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="left-arm"
+          d="M103.891 259.752C107.853 234.19 108.512 216.411 141.072 175.494L191.714 227.917L158.206 273.254L136.461 346.402L128.901 340.815L122.63 349.301L115.561 330.955C109.901 309.153 98.5213 294.396 103.891 259.752Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="right-leg"
+          d="M420 219C398.925 202.082 354.037 192.664 331.743 189.251L343.319 291.129L394.956 290.861L460.869 327.372L460.799 314.042L470.464 313.992L460.677 290.519C447.569 265.756 448.562 241.927 420 219Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="left-leg"
+          d="M279.583 413.828C257.086 400.481 239.662 363.967 228.09 344.66L318.605 318.821L338.509 366.469L395.026 414.086L383.746 418.798L387.471 427.716L363.841 427.112C337.827 423.913 310.072 431.916 279.583 413.828Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="barriga"
+          d="M214.748 147.734C287.937 123.023 364.725 187.709 364.725 264.841C364.725 322.206 316.484 339.181 277.955 355.468C216.208 366.709 150.831 317.873 141.968 242.965C136.049 192.942 182.743 158.54 214.748 147.734Z"
+          fill="#FFD0D3"
+        />
+        <path
+          d="M124.222 89.2752C157.539 82.3906 190.126 103.808 197.009 137.112C203.891 170.417 174.113 202.184 140.796 209.069C128.082 211.696 83.2397 195.348 76.3577 162.044C69.4757 128.739 90.9053 96.1598 124.222 89.2752Z"
+          fill="#FFD0D3"
+        />
+        <path
+          d="M124.05 77.5852C122.157 82.8113 113.421 83.363 109.289 82.9856C95.4049 77.2593 102.63 62.2018 107.978 55.3888C114.124 60.6101 125.942 72.3592 124.05 77.5852Z"
+          fill="#FFADC0"
+        />
+        <path
+          d="M151.26 171.29C154.792 170.824 161.675 168.081 160.957 160.843"
+          stroke={colors.redPink}
+          strokeWidth="3.49834"
+        />
+        <path
+          d="M85.1628 91.613L94.1161 84.9999"
+          stroke={colors.black}
+          strokeWidth="5.05316"
+          strokeLinecap="round"
+        />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
           d="M113.749 138.159C109.109 130.228 99.5402 127.197 92.3772 131.388C85.2142 135.579 83.1692 145.406 87.8095 153.336C92.4497 161.267 102.018 164.298 109.181 160.107C116.344 155.916 118.389 146.089 113.749 138.159ZM137.021 109.747C132.381 101.817 122.19 99.1496 114.26 103.79C106.329 108.43 103.662 118.621 108.302 126.551C112.942 134.482 123.133 137.149 131.064 132.509C138.994 127.869 141.661 117.678 137.021 109.747Z"
-          fill="#021741"
+          fill={colors.black}
         />
-      </mask>
-      <g mask="url(#mask0)">
+        <mask
+          id="mask0"
+          mask-type="alpha"
+          maskUnits="userSpaceOnUse"
+          x="73"
+          y="94"
+          width="79"
+          height="75"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M113.749 138.159C109.109 130.228 99.5402 127.197 92.3772 131.388C85.2142 135.579 83.1692 145.406 87.8095 153.336C92.4497 161.267 102.018 164.298 109.181 160.107C116.344 155.916 118.389 146.089 113.749 138.159ZM137.021 109.747C132.381 101.817 122.19 99.1496 114.26 103.79C106.329 108.43 103.662 118.621 108.302 126.551C112.942 134.482 123.133 137.149 131.064 132.509C138.994 127.869 141.661 117.678 137.021 109.747Z"
+            fill="#021741"
+          />
+        </mask>
+        <g mask="url(#mask0)">
+          {/* <path
+            d="M83.3977 159.72C85.1824 156.205 95.8847 135.041 98.4985 130.163C101.498 124.566 103.31 121.385 107.015 116.519C111.121 111.127 115.716 106.053 120.075 100.861C122.34 98.1638 124.74 95.5364 126.745 92.6326C127.654 91.3177 129.719 88.2209 129.423 86.522"
+            stroke="white"
+            strokeWidth="18"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          /> */}
+        </g>
         <path
-          d="M83.3977 159.72C85.1824 156.205 95.8847 135.041 98.4985 130.163C101.498 124.566 103.31 121.385 107.015 116.519C111.121 111.127 115.716 106.053 120.075 100.861C122.34 98.1638 124.74 95.5364 126.745 92.6326C127.654 91.3177 129.719 88.2209 129.423 86.522"
-          stroke="white"
-          strokeWidth="18"
+          d="M117.128 136.013C125.435 126.15 136.438 121.75 147.009 130.654C157.579 139.558 155.758 151.692 147.45 161.555C139.143 171.417 127.495 175.274 116.924 166.369C106.354 157.465 108.82 145.875 117.128 136.013Z"
+          fill="white"
+        />
+        <ellipse
+          cx="124.025"
+          cy="156.088"
+          rx="2.90473"
+          ry="2.54164"
+          transform="rotate(-101.675 124.025 156.088)"
+          fill={colors.redPink}
+        />
+        <ellipse
+          cx="136.006"
+          cy="141.966"
+          rx="2.54164"
+          ry="2.90473"
+          transform="rotate(-101.675 136.006 141.966)"
+          fill={colors.redPink}
+        />
+        <ellipse
+          cx="189.359"
+          cy="252.077"
+          rx="2.54164"
+          ry="2.90473"
+          transform="rotate(-101.675 189.359 252.077)"
+          fill={colors.redPink}
+        />
+        <ellipse
+          cx="244.359"
+          cy="175.077"
+          rx="2.54164"
+          ry="2.90473"
+          transform="rotate(-101.675 244.359 175.077)"
+          fill={colors.redPink}
+        />
+        <path
+          d="M335.705 345.589C324.938 347.443 303.544 322.299 294.193 309.495C300.231 285.235 329.925 269.439 343.245 251.113C354.794 235.223 357.623 249.704 336.611 275.677C350.738 261.866 373.269 243.851 383.79 254.5C391.5 262.303 355.434 281.902 366.5 276.5C381.622 269.118 372.835 275.443 389.104 269.74C426.925 256.481 420.773 287.411 383.79 291.089C346.808 294.766 371.074 306.988 388.541 311.335C406.009 315.682 415.605 330.952 374.251 329.419C360.461 328.908 350.931 326.707 344.793 324.377C352.667 333.733 347.835 343.499 335.705 345.589Z"
+          fill="#1ED090"
+        />
+        <path
+          d="M66.503 132.657C72.1991 138.147 67.7933 149.655 64.8784 154.722C49.945 168.517 35.2216 152.538 28.9572 141.633C28.513 140.86 28.8405 139.89 29.6553 139.528C40.5576 134.679 61.0655 127.415 66.503 132.657Z"
+          fill="#FFADC0"
+        />
+        <path
+          d="M64.8088 127.572L66.4256 118.109"
+          stroke={colors.black}
+          strokeWidth="5.05316"
           strokeLinecap="round"
-          strokeLinejoin="round"
+        />
+        <path
+          d="M99.8088 147.572 L122.256 118.109"
+          stroke={colors.black}
+          strokeWidth="5.05316"
+          strokeLinecap="round"
         />
       </g>
-      <path
-        d="M117.128 136.013C125.435 126.15 136.438 121.75 147.009 130.654C157.579 139.558 155.758 151.692 147.45 161.555C139.143 171.417 127.495 175.274 116.924 166.369C106.354 157.465 108.82 145.875 117.128 136.013Z"
-        fill="white"
-      />
-      <ellipse
-        cx="124.025"
-        cy="156.088"
-        rx="2.90473"
-        ry="2.54164"
-        transform="rotate(-101.675 124.025 156.088)"
-        fill={colors.redPink}
-      />
-      <ellipse
-        cx="136.006"
-        cy="141.966"
-        rx="2.54164"
-        ry="2.90473"
-        transform="rotate(-101.675 136.006 141.966)"
-        fill={colors.redPink}
-      />
-      <ellipse
-        cx="189.359"
-        cy="252.077"
-        rx="2.54164"
-        ry="2.90473"
-        transform="rotate(-101.675 189.359 252.077)"
-        fill={colors.redPink}
-      />
-      <ellipse
-        cx="244.359"
-        cy="175.077"
-        rx="2.54164"
-        ry="2.90473"
-        transform="rotate(-101.675 244.359 175.077)"
-        fill={colors.redPink}
-      />
-      <path
-        d="M335.705 345.589C324.938 347.443 303.544 322.299 294.193 309.495C300.231 285.235 329.925 269.439 343.245 251.113C354.794 235.223 357.623 249.704 336.611 275.677C350.738 261.866 373.269 243.851 383.79 254.5C391.5 262.303 355.434 281.902 366.5 276.5C381.622 269.118 372.835 275.443 389.104 269.74C426.925 256.481 420.773 287.411 383.79 291.089C346.808 294.766 371.074 306.988 388.541 311.335C406.009 315.682 415.605 330.952 374.251 329.419C360.461 328.908 350.931 326.707 344.793 324.377C352.667 333.733 347.835 343.499 335.705 345.589Z"
-        fill="#1ED090"
-      />
-      <path
-        d="M66.503 132.657C72.1991 138.147 67.7933 149.655 64.8784 154.722C49.945 168.517 35.2216 152.538 28.9572 141.633C28.513 140.86 28.8405 139.89 29.6553 139.528C40.5576 134.679 61.0655 127.415 66.503 132.657Z"
-        fill="#FFADC0"
-      />
-      <path d="M64.8088 127.572L66.4256 118.109" stroke={colors.black} strokeWidth="5.05316" />
     </svg>
 
     <style jsx global>
       {`
-        #water-top {
-          transform: translateY(60px);
-          animation-name: waterTop;
+        #water1 {
+          animation-name: water1;
           animation-duration: 5.6s;
-          animation-delay: -2.8s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
+          transform-origin: center center;
+          -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+          -moz-transform-origin: center center;
         }
-        #water-left {
-          transform: translateX(100px) translateY(-50px);
-          animation-name: waterLeft;
+        #water2 {
+          animation-name: water2;
           animation-duration: 5.6s;
-          animation-delay: -2.8s;
+          animation-delay: .5s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
-        }
-        #water-right {
-          transform: translateX(-100px) translateY(-50px);
-          animation-name: waterRight;
-          animation-duration: 5.6s;
-          animation-delay: -2.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-        #water-top-2 {
-          transform: translateY(60px);
-          animation-name: waterTop;
-          animation-duration: 5.6s;
-          animation-delay: -1.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-        #water-left-2 {
-          transform: translateX(100px) translateY(-50px);
-          animation-name: waterLeft;
-          animation-duration: 5.6s;
-          animation-delay: -1.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-        #water-right-2 {
-          transform: translateX(-100px) translateY(-50px);
-          animation-name: waterRight;
-          animation-duration: 5.6s;
-          animation-delay: -1.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
+          transform-origin: center center;
+          -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+          -moz-transform-origin: center center;
         }
         #group {
+          transform-box: fill-box;
+          transform-origin: center center;
+          -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+          -moz-transform-origin: center center;
           animation-name: group;
-          animation-duration: 1.8s;
+          animation-duration: 50.8s;
           animation-iteration-count: infinite;
           animation-direction: alternate;
           animation-timing-function: ease-in-out;
@@ -208,52 +215,56 @@ const PigAnimated = () => (
           animation-direction: alternate;
           animation-timing-function: ease-in-out;
         }
-        @keyframes waterRight {
-          from {
-            transform: translateX(-100px) translateY(-50px) scale(1);
-            opacity: 0.9;
-          }
-          to {
-            transform: translateX(-30px) translateY(-20px) scale(1.1);
-            opacity: 0;
-          }
-        }
-        @keyframes waterLeft {
-          from {
-            transform: translateX(100px) translateY(-50px) scale(1);
-            opacity: 0.9;
-          }
-          to {
-            transform: translateX(30px) translateY(-20px) scale(1.1);
-            opacity: 0;
-          }
-        }
-        @keyframes waterTop {
-          from {
-            transform: translateY(60px) scale(1);
-            opacity: 0.9;
-          }
-          to {
-            transform: translateY(30px) scale(1);
-            opacity: 0;
-          }
-        }
         @keyframes group {
           from {
-            transform: translateY(0px);
+            transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
           }
           to {
-            transform: translateY(-10px);
+            transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
           }
         }
+
         @keyframes barriga {
           from {
-            transform: translateY(0px) scale(1);
+            transform: translateY(0px) translateX(0px) scale(.98);
+            -webkit-transform: translateY(0px) translateX(0px) scale(.98);
+            -moz-transform: translateY(0px) translateX(0px) scale(.98);
+            -ms-transform: translateY(0px) translateX(0px) scale(.98);
           }
           to {
-            transform: translateY(-20px) scale(1.08);
+            transform: translateY(-20px) translateX(-20px) scale(1.08);
+            -webkit-transform: translateY(-20px) translateX(-20px) scale(1.08);
+            -moz-transform: translateY(-20px) translateX(-20px) scale(1.08);
+            -ms-transform: translateY(-20px) translateX(-20px) scale(1.08);
           }
         }
+        @keyframes water2 {
+          from {
+            transform: scale(0.5);
+            opacity: 0.9;
+          }
+          to {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+      }
+        @keyframes water1 {
+          from {
+            transform: scale(0.5);
+            opacity: 0.9;
+          }
+          to {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+
+
       `}
     </style>
   </div>

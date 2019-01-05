@@ -195,7 +195,7 @@ class InputContainer extends Component {
                       type="submit"
                       form="basicquestions"
                       disabled={!this.canSubmit()}
-                      style={{ backgroundColor: colors.darkGreen }}
+                      style={{ backgroundColor: colors.redPink }}
                       className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
                       onClick={this.props.handleShowAnswer}
                     >
