@@ -1,237 +1,208 @@
 import React from 'react';
+import Colors from './Colors';
+import colors from './Colors';
 
 const PigAnimated = () => (
-  <div className="w-100">
+  <div id="group" className="w-100">
     <svg
       width="100%"
       height="100%"
-      viewBox="0 0 573 346"
+      viewBox="0 0 519 511"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        id="water-left"
-        d="M112.652 313.777C82.0587 313.132 17.0979 299.474 2.00025 250.001"
-        stroke="#d5d5d5"
+        d="M335.998 153.78C338.316 150.897 340.396 148.125 344.015 146.837C347.38 145.64 351.136 144.975 354.697 144.804C356.382 144.723 359.328 144.177 359.653 145.832C360.191 148.581 356.819 150.726 354.884 152.751C348.655 159.272 341.785 165.304 334.946 171.17C329.942 175.462 324.31 179.19 319.449 183.628C317.646 185.274 323.633 181.11 325.76 179.912C334.197 175.159 342.93 170.916 351.612 166.635C357.14 163.91 362.9 160.468 368.792 158.524C369.081 158.429 369.801 158.26 369.703 158.548C369.49 159.179 368.796 159.527 368.301 159.974C366.355 161.73 364.206 163.29 362.084 164.812C355.602 169.461 348.949 173.865 342.496 178.556C339.972 180.391 337.222 182.01 335.11 184.306C334.571 184.892 336.725 184.602 337.494 184.4C351.27 180.784 364.863 175.092 377.277 168.131C381.212 165.924 376.576 168.037 375.547 168.505"
+        stroke="black"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle id="water1" cx="255" cy="255" r="253" stroke={colors.lightGray2} strokeWidth="4" />
+      <circle
+        id="water2"
+        cx="255"
+        cy="255"
+        r="253"
+        stroke={colors.lightGray2}
         strokeWidth="4"
-      />
-      <path
-        id="water-right"
-        d="M569.5 205.117C569.5 256.117 486.749 324.756 389.999 312.543"
-        stroke="#d5d5d5"
-        strokeWidth="4"
-      />
-      <path
-        id="water-top"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M213.729 14.6876C175.212 19.6373 141.649 29.5693 123.025 40.6768L120.977 37.2414C140.282 25.7273 174.469 15.6997 213.219 10.7203C252.014 5.73497 295.656 5.77359 333.949 14.5911L333.051 18.4891C295.345 9.80658 252.201 9.74384 213.729 14.6876Z"
-        fill="#d5d5d5"
-      />
-      <path
-        id="water-left-2"
-        d="M112.652 313.777C82.0587 313.132 17.0979 299.474 2.00025 250.001"
-        stroke="#d5d5d5"
-        strokeWidth="4"
-      />
-      <path
-        id="water-right-2"
-        d="M569.5 205.117C569.5 256.117 486.749 324.756 389.999 312.543"
-        stroke="#d5d5d5"
-        strokeWidth="4"
-      />
-      <path
-        id="water-top-2"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M213.729 14.6876C175.212 19.6373 141.649 29.5693 123.025 40.6768L120.977 37.2414C140.282 25.7273 174.469 15.6997 213.219 10.7203C252.014 5.73497 295.656 5.77359 333.949 14.5911L333.051 18.4891C295.345 9.80658 252.201 9.74384 213.729 14.6876Z"
-        fill="#d5d5d5"
-      />
-      <g id="group">
+      />{' '}
+      <g>
+        <path
+          d="M171.702 103.671C253.673 57.9835 347.889 81.3689 393.946 164.003C440.003 246.637 420.461 357.228 338.489 402.916C256.517 448.604 152.729 418.653 106.672 336.019C60.6151 253.385 89.7297 149.359 171.702 103.671Z"
+          fill="#FF549A"
+        />
+        <ellipse
+          cx="250.069"
+          cy="292.872"
+          rx="3.15323"
+          ry="1.31054"
+          transform="rotate(-121.259 250.069 292.872)"
+          fill={colors.redPink}
+        />
+        <path
+          d="M189.5 128C171.978 144.661 174.902 140.176 160.216 157.108L225.678 188.794L254.974 146.27L313.661 106.893L305.92 101.56L311.403 93.6008L292.26 92.1486C270.477 92.9025 225.678 93.6008 189.5 128Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="left-arm"
+          d="M103.891 259.752C107.853 234.19 108.512 216.411 141.072 175.494L191.714 227.917L158.206 273.254L136.461 346.402L128.901 340.815L122.63 349.301L115.561 330.955C109.901 309.153 98.5213 294.396 103.891 259.752Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="right-leg"
+          d="M420 219C398.925 202.082 354.037 192.664 331.743 189.251L343.319 291.129L394.956 290.861L460.869 327.372L460.799 314.042L470.464 313.992L460.677 290.519C447.569 265.756 448.562 241.927 420 219Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="left-leg"
+          d="M279.583 413.828C257.086 400.481 239.662 363.967 228.09 344.66L318.605 318.821L338.509 366.469L395.026 414.086L383.746 418.798L387.471 427.716L363.841 427.112C337.827 423.913 310.072 431.916 279.583 413.828Z"
+          fill="#FFD0D3"
+        />
+        <path
+          id="barriga"
+          d="M214.748 147.734C287.937 123.023 364.725 187.709 364.725 264.841C364.725 322.206 316.484 339.181 277.955 355.468C216.208 366.709 150.831 317.873 141.968 242.965C136.049 192.942 182.743 158.54 214.748 147.734Z"
+          fill="#FFD0D3"
+        />
+        <path
+          d="M124.222 89.2752C157.539 82.3906 190.126 103.808 197.009 137.112C203.891 170.417 174.113 202.184 140.796 209.069C128.082 211.696 83.2397 195.348 76.3577 162.044C69.4757 128.739 90.9053 96.1598 124.222 89.2752Z"
+          fill="#FFD0D3"
+        />
+        <path
+          d="M124.05 77.5852C122.157 82.8113 113.421 83.363 109.289 82.9856C95.4049 77.2593 102.63 62.2018 107.978 55.3888C114.124 60.6101 125.942 72.3592 124.05 77.5852Z"
+          fill="#FFADC0"
+        />
+        <path
+          d="M151.26 171.29C154.792 170.824 161.675 168.081 160.957 160.843"
+          stroke={colors.redPink}
+          strokeWidth="3.49834"
+        />
+        <path
+          d="M85.1628 91.613L94.1161 84.9999"
+          stroke={colors.black}
+          strokeWidth="5.05316"
+          strokeLinecap="round"
+        />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
-          d="M511.984 175.939C512.06 174.671 512.089 173.397 512.071 172.12C511.207 113.043 408.407 66.6454 282.461 68.4877C156.515 70.3299 55.1167 119.714 55.9808 178.791C56.0055 180.478 56.1133 182.154 56.3023 183.819C56.2261 185.088 56.197 186.361 56.2156 187.639C57.0798 246.715 159.879 293.113 285.825 291.271C411.771 289.429 513.17 240.044 512.306 180.968C512.281 179.281 512.173 177.604 511.984 175.939Z"
-          fill="#FADC71"
+          d="M113.749 138.159C109.109 130.228 99.5402 127.197 92.3772 131.388C85.2142 135.579 83.1692 145.406 87.8095 153.336C92.4497 161.267 102.018 164.298 109.181 160.107C116.344 155.916 118.389 146.089 113.749 138.159ZM137.021 109.747C132.381 101.817 122.19 99.1496 114.26 103.79C106.329 108.43 103.662 118.621 108.302 126.551C112.942 134.482 123.133 137.149 131.064 132.509C138.994 127.869 141.661 117.678 137.021 109.747Z"
+          fill={colors.black}
         />
-        <path
-          fill="#F1C736"
-          d="M269.501 256C91.9011 256 61.1678 183.333 68.0011 147C6.50085 250.5 190.001 293.5 269.501 293.5C349.001 293.5 396.001 281.5 465.001 247C520.201 219.4 516.334 172.5 508.001 152.5C502.168 187 447.101 256 269.501 256Z"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M333.384 77.308C333.435 77.1074 333.457 76.899 333.446 76.6861C333.373 75.2926 331.925 74.2349 330.209 74.3237C328.536 74.4103 327.227 75.557 327.232 76.9076C284.469 76.3046 247.822 121.166 244.851 178.462C242.735 219.28 256.905 216.578 280.597 212.06C290.753 210.123 302.658 207.853 315.78 208.533C328.195 209.177 340.366 212.393 351.499 215.335C379.583 222.757 401.065 228.434 403.23 186.675C406.164 130.094 375.18 82.1764 333.384 77.308Z"
-          fill="#FFC1A7"
-        />
-        <g id="barriga">
+        <mask
+          id="mask0"
+          mask-type="alpha"
+          maskUnits="userSpaceOnUse"
+          x="73"
+          y="94"
+          width="79"
+          height="75"
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M346.181 208.046C350.635 195.768 351.281 180.045 348.158 159.843C339.122 101.388 287.187 60.8957 232.158 69.4021C177.13 77.9086 139.845 132.192 148.882 190.648C149.309 193.414 149.866 196.066 150.545 198.607C184.555 209.613 267.52 225.72 346.181 208.046Z"
-            fill="#FFC1A7"
+            d="M113.749 138.159C109.109 130.228 99.5402 127.197 92.3772 131.388C85.2142 135.579 83.1692 145.406 87.8095 153.336C92.4497 161.267 102.018 164.298 109.181 160.107C116.344 155.916 118.389 146.089 113.749 138.159ZM137.021 109.747C132.381 101.817 122.19 99.1496 114.26 103.79C106.329 108.43 103.662 118.621 108.302 126.551C112.942 134.482 123.133 137.149 131.064 132.509C138.994 127.869 141.661 117.678 137.021 109.747Z"
+            fill="#021741"
           />
-          <ellipse cx="240.03121" cy="80.46587" rx="3.15323" ry="1.31054" fill="#453E27" />
+        </mask>
+        <g mask="url(#mask0)">
+          {/* <path
+            d="M83.3977 159.72C85.1824 156.205 95.8847 135.041 98.4985 130.163C101.498 124.566 103.31 121.385 107.015 116.519C111.121 111.127 115.716 106.053 120.075 100.861C122.34 98.1638 124.74 95.5364 126.745 92.6326C127.654 91.3177 129.719 88.2209 129.423 86.522"
+            stroke="white"
+            strokeWidth="18"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          /> */}
         </g>
-        <circle
-          cx="354.173"
-          cy="132.126"
-          r="2.91528"
-          transform="rotate(-2.96296 354.173 132.126)"
-          fill="#FB7979"
-        />
         <path
-          d="M484.951 125.826C474.663 160.291 438.394 179.893 403.943 169.609C369.491 159.326 354.841 115.686 365.129 81.2211C369.055 68.0687 406.746 34.5179 441.198 44.8017C475.649 55.0855 495.238 91.3614 484.951 125.826Z"
-          fill="#FFC1A7"
-        />
-        <path
-          d="M468.681 73.2097C461.147 75.6226 453.103 66.2885 450.023 61.3198C444.955 41.6317 466.004 36.242 478.575 35.8952C479.467 35.8706 480.165 36.6186 480.098 37.5078C479.199 49.4056 475.874 70.9064 468.681 73.2097Z"
-          fill="#FFC1A7"
-        />
-        <path
-          d="M485.517 111.41C481.812 107.267 485.468 99.3129 487.758 95.8539C499.382 86.343 509.215 99.8422 512.679 107.781C505.169 110.717 489.221 115.554 485.517 111.41Z"
-          fill="#FFC1A7"
-        />
-        <path
-          d="M394.501 88.9105C395.23 92.4658 399.905 98.3272 412.777 93.3307"
-          stroke="#FB7979"
-          strokeWidth="3.49834"
-        />
-        <path d="M483.904 77.4803L485.483 88.4985" stroke="#453E27" strokeWidth="5.05316" />
-        <path d="M461.889 42.5134L469.455 48.4228" stroke="#453E27" strokeWidth="5.05316" />
-        <path
-          d="M453.691 40.6208C453.986 48.9147 446.782 55.9029 437.599 56.2295C428.416 56.556 420.733 50.0973 420.438 41.8035C420.143 33.5097 427.348 26.5214 436.531 26.1949C445.713 25.8683 453.396 32.327 453.691 40.6208Z"
-          fill="#453E27"
-        />
-        <circle
-          cx="450.993"
-          cy="73.5619"
-          r="16.637"
-          transform="rotate(-2.0369 450.993 73.5619)"
-          fill="#453E27"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M466.58 67.0915L451.034 90.2207C447.682 90.2863 444.536 89.4029 441.874 87.82L460.794 60.0808C463.331 61.8331 465.351 64.2531 466.58 67.0915Z"
-          fill="#FFEFEF"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M452.729 34.6097L438.09 56.1443C434.459 56.2493 431.067 55.2934 428.28 53.584L446.629 28.3936C449.255 29.8927 451.384 32.0448 452.729 34.6097Z"
-          fill="#FFEFEF"
-        />
-        <path
-          d="M434.479 53.4336C439.225 65.4235 437.884 77.1972 425.033 82.284C412.182 87.3709 402.361 80.0156 397.615 68.0257C392.869 56.0357 394.995 43.9516 407.846 38.8647C420.696 33.7778 429.733 41.4436 434.479 53.4336Z"
-          fill="#F18181"
+          d="M117.128 136.013C125.435 126.15 136.438 121.75 147.009 130.654C157.579 139.558 155.758 151.692 147.45 161.555C139.143 171.417 127.495 175.274 116.924 166.369C106.354 157.465 108.82 145.875 117.128 136.013Z"
+          fill="white"
         />
         <ellipse
-          cx="411.916"
-          cy="45.7547"
+          cx="124.025"
+          cy="156.088"
           rx="2.90473"
           ry="2.54164"
-          transform="rotate(16.6203 411.916 45.7547)"
-          fill="#454545"
+          transform="rotate(-101.675 124.025 156.088)"
+          fill={colors.redPink}
         />
         <ellipse
-          cx="420.321"
-          cy="64.5578"
+          cx="136.006"
+          cy="141.966"
           rx="2.54164"
           ry="2.90473"
-          transform="rotate(16.6203 420.321 64.5578)"
-          fill="#454545"
+          transform="rotate(-101.675 136.006 141.966)"
+          fill={colors.redPink}
+        />
+        <ellipse
+          cx="189.359"
+          cy="252.077"
+          rx="2.54164"
+          ry="2.90473"
+          transform="rotate(-101.675 189.359 252.077)"
+          fill={colors.redPink}
+        />
+        <ellipse
+          cx="244.359"
+          cy="175.077"
+          rx="2.54164"
+          ry="2.90473"
+          transform="rotate(-101.675 244.359 175.077)"
+          fill={colors.redPink}
         />
         <path
-          d="M458.001 206L479.001 194L503.698 154.715C469.58 134.416 423.156 158.677 417.445 171.33C424.249 180.301 437.241 198.525 439.445 200.359C441.649 202.193 453.268 201.339 458.001 206Z"
-          fill="#FADC71"
+          d="M335.705 345.589C324.938 347.443 303.544 322.299 294.193 309.495C300.231 285.235 329.925 269.439 343.245 251.113C354.794 235.223 357.623 249.704 336.611 275.677C350.738 261.866 373.269 243.851 383.79 254.5C391.5 262.303 355.434 281.902 366.5 276.5C381.622 269.118 372.835 275.443 389.104 269.74C426.925 256.481 420.773 287.411 383.79 291.089C346.808 294.766 371.074 306.988 388.541 311.335C406.009 315.682 415.605 330.952 374.251 329.419C360.461 328.908 350.931 326.707 344.793 324.377C352.667 333.733 347.835 343.499 335.705 345.589Z"
+          fill="#1ED090"
         />
         <path
-          d="M114.668 216.252C122.955 206.107 127.653 169.083 151.442 152.647C183.6 146.995 196.967 200.937 189 211C151.109 258.86 138.253 256.743 121 261.5L110 255.5L114.668 216.252Z"
-          fill="#453E27"
+          d="M66.503 132.657C72.1991 138.147 67.7933 149.655 64.8784 154.722C49.945 168.517 35.2216 152.538 28.9572 141.633C28.513 140.86 28.8405 139.89 29.6553 139.528C40.5576 134.679 61.0655 127.415 66.503 132.657Z"
+          fill="#FFADC0"
         />
         <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M93.9337 118.285L93.9916 118.243C93.9536 118.352 93.9349 118.368 93.9337 118.285ZM196.426 148.019L213.77 148.836L224.748 84.4948C122.003 15.3573 97.3666 105.887 94.2876 117.201C94.1439 117.729 94.0471 118.085 93.9916 118.243C100.858 113.369 104.411 110.812 108.244 108.78C114.36 105.539 121.187 103.636 143.319 95.7925L143.983 141.202C141.004 142.101 138.252 143.374 135.787 145.074C119.328 156.429 111.626 177.212 105.78 192.987C102.821 200.973 100.337 207.676 97.4327 211.223L80.25 264.473L88.9918 258.651L85.6616 272.48C98.4348 268.957 117.014 256.409 145.803 236.965C157.528 229.047 170.946 219.985 186.355 209.923C198.824 201.78 204.536 195.079 205.542 189.665C217.967 185.044 231.438 179.673 246.008 173.505C244.479 171.631 221.864 157.477 196.426 148.019Z"
-          fill="#FFC1A7"
+          d="M64.8088 127.572L66.4256 118.109"
+          stroke={colors.black}
+          strokeWidth="5.05316"
+          strokeLinecap="round"
         />
         <path
-          d="M413.941 239.718C426.357 222.082 416.189 188.527 418.5 170L353.7 180.507L354.455 223.349L327.878 278.361L330.5 290.5L347.5 287.5L366.5 275C384.865 263.905 397.114 263.619 413.941 239.718Z"
-          fill="#453E27"
-        />
-        <path
-          d="M404.464 231.054C416.796 208.591 417.673 165.744 419.894 142.093L343.929 155.141L344.893 209.859L318.582 279.985L328.543 279.81L328.724 290.051L346.121 279.5C364.433 265.42 387.753 261.497 404.464 231.054Z"
-          fill="#FFC1A7"
-        />
-        <path
-          d="M474 147C478.8 143.8 484 129.667 486 123C495.6 127 504.333 143.667 507.5 151.5C499.9 144.3 482 145.5 474 147Z"
-          fill="#453E27"
-        />
-        <path
-          d="M200 197C265 230.5 328.833 205.167 347 199.5C347 204.3 344.333 210.167 343 212.5C338.606 213.017 255.5 224.5 190 207.5L200 197Z"
-          fill="#453E27"
-        />
-        <path
-          d="M512.5 173C512.782 174.401 512.93 175.893 512.938 177.464C518.422 260.525 370.116 292 292 292C458.543 270.587 513.083 208.419 512.938 177.464C512.84 175.993 512.695 174.504 512.5 173Z"
-          fill="#453E27"
+          d="M99.8088 147.572 L122.256 118.109"
+          stroke={colors.black}
+          strokeWidth="5.05316"
+          strokeLinecap="round"
         />
       </g>
     </svg>
 
     <style jsx global>
       {`
-        #water-top {
-          transform: translateY(60px);
-          animation-name: waterTop;
+        #water1 {
+          animation-name: water1;
           animation-duration: 5.6s;
-          animation-delay: -2.8s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
+          transform-origin: center center;
+          -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+          -moz-transform-origin: center center;
         }
-        #water-left {
-          transform: translateX(100px) translateY(-50px);
-          animation-name: waterLeft;
+        #water2 {
+          animation-name: water2;
           animation-duration: 5.6s;
-          animation-delay: -2.8s;
+          animation-delay: .5s;
           animation-iteration-count: infinite;
           animation-timing-function: ease-in-out;
-        }
-        #water-right {
-          transform: translateX(-100px) translateY(-50px);
-          animation-name: waterRight;
-          animation-duration: 5.6s;
-          animation-delay: -2.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-        #water-top-2 {
-          transform: translateY(60px);
-          animation-name: waterTop;
-          animation-duration: 5.6s;
-          animation-delay: -1.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-        #water-left-2 {
-          transform: translateX(100px) translateY(-50px);
-          animation-name: waterLeft;
-          animation-duration: 5.6s;
-          animation-delay: -1.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-        #water-right-2 {
-          transform: translateX(-100px) translateY(-50px);
-          animation-name: waterRight;
-          animation-duration: 5.6s;
-          animation-delay: -1.8s;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
+          transform-origin: center center;
+          -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+          -moz-transform-origin: center center;
         }
         #group {
+          transform-box: fill-box;
+          transform-origin: center center;
+          -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+          -moz-transform-origin: center center;
           animation-name: group;
-          animation-duration: 1.8s;
+          animation-duration: 50.8s;
           animation-iteration-count: infinite;
           animation-direction: alternate;
           animation-timing-function: ease-in-out;
@@ -244,52 +215,56 @@ const PigAnimated = () => (
           animation-direction: alternate;
           animation-timing-function: ease-in-out;
         }
-        @keyframes waterRight {
-          from {
-            transform: translateX(-100px) translateY(-50px) scale(1);
-            opacity: 0.9;
-          }
-          to {
-            transform: translateX(-30px) translateY(-20px) scale(1.1);
-            opacity: 0;
-          }
-        }
-        @keyframes waterLeft {
-          from {
-            transform: translateX(100px) translateY(-50px) scale(1);
-            opacity: 0.9;
-          }
-          to {
-            transform: translateX(30px) translateY(-20px) scale(1.1);
-            opacity: 0;
-          }
-        }
-        @keyframes waterTop {
-          from {
-            transform: translateY(60px) scale(1);
-            opacity: 0.9;
-          }
-          to {
-            transform: translateY(30px) scale(1);
-            opacity: 0;
-          }
-        }
         @keyframes group {
           from {
-            transform: translateY(0px);
+            transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
           }
           to {
-            transform: translateY(-10px);
+            transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
           }
         }
+
         @keyframes barriga {
           from {
-            transform: translateY(0px) scale(1);
+            transform: translateY(0px) translateX(0px) scale(.98);
+            -webkit-transform: translateY(0px) translateX(0px) scale(.98);
+            -moz-transform: translateY(0px) translateX(0px) scale(.98);
+            -ms-transform: translateY(0px) translateX(0px) scale(.98);
           }
           to {
-            transform: translateY(-20px) scale(1.08);
+            transform: translateY(-20px) translateX(-20px) scale(1.08);
+            -webkit-transform: translateY(-20px) translateX(-20px) scale(1.08);
+            -moz-transform: translateY(-20px) translateX(-20px) scale(1.08);
+            -ms-transform: translateY(-20px) translateX(-20px) scale(1.08);
           }
         }
+        @keyframes water2 {
+          from {
+            transform: scale(0.5);
+            opacity: 0.9;
+          }
+          to {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+      }
+        @keyframes water1 {
+          from {
+            transform: scale(0.5);
+            opacity: 0.9;
+          }
+          to {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+
+
       `}
     </style>
   </div>

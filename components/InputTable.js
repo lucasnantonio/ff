@@ -41,7 +41,7 @@ class InputTable extends Component {
                 <td className="w-third">
                   <input
                     placeholder="ex. volta ao mundo"
-                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f7"
+                    className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="label"
                     type="text"
                     value={row.label}
@@ -51,7 +51,7 @@ class InputTable extends Component {
                 <td className="w-third">
                   <input
                     placeholder="35"
-                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f7"
+                    className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="age"
                     type="number"
                     value={row.age}
@@ -61,7 +61,7 @@ class InputTable extends Component {
                 <td className="w-third">
                   <input
                     placeholder="200000"
-                    className="w-100 black-80 tc pa3-ns pa2 bg-near-white br1 ba0 f5-ns f7"
+                    className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="cost"
                     type="number"
                     step="10000"

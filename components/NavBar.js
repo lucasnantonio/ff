@@ -13,11 +13,22 @@ const NavBar = props => (
         </button>
       </Link>
       <Link href="/sobre">
-        <a href="#" className="link black-40 hover-black pointer  pa3">
+        <a
+          style={{ transition: 'all .2s' }}
+          href="#"
+          className="link black-40 hover-black pointer pa3 br-pill"
+        >
           sobre
         </a>
       </Link>
     </div>
+    <style jsx>
+      {`
+        a:hover {
+          background-color: ${colors.lightGray};
+        }
+      `}
+    </style>
   </div>
 );
 

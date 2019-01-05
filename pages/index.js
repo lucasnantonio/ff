@@ -10,6 +10,7 @@ import Pig from '../components/Pig';
 import { getRetirementResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 import NavBar from '../components/NavBar';
+import colors from '../components/Colors';
 
 class Index extends Component {
   constructor(props) {
@@ -205,7 +206,11 @@ class Index extends Component {
         ) : (
           <Answer {...this.state} />
         )}
-        <div id="questionsContainer" className="mw7-ns ph0-l ph4 center">
+        <div
+          id="questionsContainer"
+          className={`w-100 center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
+          style={{ backgroundColor: colors.lightGray }}
+        >
           {this.state.isShowingQuestions && (
             <Questions
               {...this.state}
