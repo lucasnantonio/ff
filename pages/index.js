@@ -44,12 +44,14 @@ class Index extends Component {
         {
           label: 'case0',
           myCurrentMonthlySavings: undefined,
-          rate: 7.0,
         },
         {
           label: 'case1',
           myRetirementIncome: undefined,
-          rate: 7.0,
+        },
+        {
+          label: 'case2',
+          rate: 7,
         },
       ],
       lifeEvents: [{}],

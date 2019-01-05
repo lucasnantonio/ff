@@ -121,7 +121,12 @@ export function getStudyCasesResults(state) {
     const myCurrentAge = parseFloat(studyCase.myCurrentAge || state.myCurrentAge);
     const annualSavingsIncreaseRate = parseFloat(studyCase.annualSavingsIncreaseRate || state.annualSavingsIncreaseRate);
     const { lifeEvents } = state;
-    const { label, rate } = studyCase;
+    const { label } = studyCase;
+
+    if (state.myInvestments.filter(i => i.isSelected).length === 0) return false;
+
+    const selectedRate = state.myInvestments.filter(i => i.isSelected)[0].rate;
+    const rate = studyCase.rate || selectedRate;
 
     return [
       label,
