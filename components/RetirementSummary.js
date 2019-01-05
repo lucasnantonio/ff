@@ -31,7 +31,7 @@ class RetirementSummary extends Component {
           {balance.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} em conta e poderá gastar
           R$
           {this.props.myRetirementIncome.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} por
-          mês até o os {this.props.myLifeExpectancy}&nbsp;anos.
+          mês até os {this.props.myLifeExpectancy}&nbsp;anos.
         </h3>
         <p className="f7 normal lh-copy white-50 measure center ml0-ns mv2">
           Esse valor não considera a pensão que você receberá do INSS, que pode ir até R$&nbsp;5645.
