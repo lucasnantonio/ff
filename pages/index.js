@@ -82,6 +82,7 @@ class Index extends Component {
   handleShowAnswer = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     this.setState({ isShowingAnswer: true });
+    logEvent('User', 'clicked calculate');
   };
 
   handleBack = () => {
@@ -162,6 +163,7 @@ class Index extends Component {
     this.setState({
       [tableName]: [...this.state[tableName], fields],
     });
+    logEvent('User', 'added life event');
   };
 
   handleRemoveTableRow = (idx, tableName, table) => () => {
@@ -170,6 +172,7 @@ class Index extends Component {
       [tableName]: updatedTable,
       retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
     }));
+    logEvent('User', 'removed life event');
   };
 
   handleResetRates = () => {
@@ -190,6 +193,7 @@ class Index extends Component {
     this.setState(prevState => ({
       retirementResults: getRetirementResults({ ...prevState, myInvestments: reseted }),
     }));
+    logEvent('User', 'clicked reset taxas');
   };
 
   setFocusedInput = (inputId) => {
