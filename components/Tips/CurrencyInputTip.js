@@ -1,14 +1,16 @@
 import React from 'react';
-import InputField from './InputField';
-import { formatAge } from '../utils/math';
+import { formatAge } from '../../utils/math';
+import InputField from '../InputField';
+import RetirementChart from '../RetirementChart';
 
-const StudyCase = ({
-  id, placeHolder, label, studyCase, studyCaseResults, handleInput,
-  currentRetirementAge,
+const CurrencyInputTip = ({
+  id, placeHolder, label, text, studyCase, studyCaseResults, handleInput,
+  currentRetirementAge, myInvestments, retirementResults,
 }) => (
     <div>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
       <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
+      <p>{text}</p>
       <InputField
         isCurrency
         label={label}
@@ -18,7 +20,11 @@ const StudyCase = ({
         handleInput={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
         acceptZero
       />
+      <RetirementChart
+        primaryData={studyCaseResults}
+        secondaryData={retirementResults.filter((investment, index) => myInvestments[index].isSelected)[0]}
+      />
     </div>
 );
 
-export default StudyCase;
+export default CurrencyInputTip;

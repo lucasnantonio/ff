@@ -135,22 +135,37 @@ export function getRetirementResults(state) {
   });
 }
 
+function prioritizeTheFirst(first, second) {
+  return first === undefined ? second : first;
+}
+
+function prioritizeStudyCase(studyCase, state, id, float = true) {
+  const value = prioritizeTheFirst(studyCase[id], state[id]);
+
+  if (float) {
+    return parseFloat(value);
+  }
+
+  return value;
+}
+
 export function getStudyCasesResults(state) {
   return state.studyCases.map((studyCase) => {
-    const currentBalance = parseFloat(studyCase.myCurrentBalance || state.myCurrentBalance);
-    const savings = parseFloat(studyCase.myCurrentMonthlySavings || state.myCurrentMonthlySavings);
-    const retirementIncome = parseFloat(studyCase.myRetirementIncome || state.myRetirementIncome);
-    const lifeExpectancy = parseFloat(studyCase.myLifeExpectancy || state.myLifeExpectancy);
-    const myCurrentAge = parseFloat(studyCase.myCurrentAge || state.myCurrentAge);
-    const annualSavingsIncreaseRate = parseFloat(studyCase.annualSavingsIncreaseRate || state.annualSavingsIncreaseRate);
-    const leaveHeritage = studyCase.leaveHeritage === undefined ? state.leaveHeritage : studyCase.leaveHeritage;
+    const currentBalance = prioritizeStudyCase(studyCase, state, 'myCurrentBalance');
+    const savings = prioritizeStudyCase(studyCase, state, 'myCurrentMonthlySavings');
+    const retirementIncome = prioritizeStudyCase(studyCase, state, 'myRetirementIncome');
+    const lifeExpectancy = prioritizeStudyCase(studyCase, state, 'myLifeExpectancy');
+    const myCurrentAge = prioritizeStudyCase(studyCase, state, 'myCurrentAge');
+
+    const annualSavingsIncreaseRate = prioritizeStudyCase(studyCase, state, 'annualSavingsIncreaseRate', false);
+    const leaveHeritage = prioritizeStudyCase(studyCase, state, 'leaveHeritage', false);
     const { lifeEvents } = state;
     const { label } = studyCase;
 
     if (state.myInvestments.filter(i => i.isSelected).length === 0) return false;
 
     const selectedRate = state.myInvestments.filter(i => i.isSelected)[0].rate;
-    const rate = studyCase.rate || selectedRate;
+    const rate = prioritizeTheFirst(studyCase.rate, selectedRate);
 
     return [
       label,

@@ -3,13 +3,14 @@ import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
 import Answer from '../components/Answer';
-import StudyCase from '../components/StudyCase';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
+import CurrencyInputTip from '../components/Tips/CurrencyInputTip';
+import LeaveHeritageTip from '../components/Tips/LeaveHeritageTip';
 
 class Index extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Index extends Component {
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
-      leaveHeritage: true,
+      leaveHeritage: false,
       myInvestments: [
         {
           label: 'poupança',
@@ -46,15 +47,14 @@ class Index extends Component {
         {
           label: 'case0',
           myCurrentMonthlySavings: undefined,
-          leaveHeritage: false,
         },
         {
           label: 'case1',
-          myRetirementIncome: undefined,
+          myCurrentBalance: undefined,
         },
         {
           label: 'case2',
-          rate: 7,
+          leaveHeritage: false,
         },
       ],
       lifeEvents: [{}],
@@ -130,17 +130,18 @@ class Index extends Component {
   };
 
   handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
-    const { id } = e.target;
+    const { id, type, checked } = e.target;
 
     const updatedStudyCases = this.state.studyCases.map((item) => {
       if (item.label === studyCaseLabel) {
         return {
           ...item,
-          [id]: parseFloat(floatValue),
+          [id]: type === 'checkbox' ? checked : parseFloat(floatValue),
         };
       }
       return item;
     });
+
     this.setState({ studyCases: updatedStudyCases });
   };
 
@@ -246,6 +247,9 @@ class Index extends Component {
     );
   }
 
+  handle
+
+
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
@@ -256,23 +260,37 @@ class Index extends Component {
         ) : (
           <div>
             <Answer {...this.state} />
-            <StudyCase
+            <CurrencyInputTip
               id={'myCurrentMonthlySavings'}
               placeHolder={this.state.myCurrentMonthlySavings}
               label={'E se você aumentasse as suas economias?'}
+              text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina. Já imaginou se você conseguisse poupar mais ou aumentar a sua renda?'}
               studyCase={this.state.studyCases[0]}
               studyCaseResults={this.state.studyCasesResults[0]}
               handleInput={this.handleStudyCaseInput}
               currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+              myInvestments={this.state.myInvestments}
+              retirementResults={this.state.retirementResults}
             />
-            <StudyCase
-              id={'myRetirementIncome'}
-              placeHolder={this.state.myRetirementIncome}
-              label={'E se você fosse menos ganancioso?'}
+            <CurrencyInputTip
+              id={'myCurrentBalance'}
+              placeHolder={this.state.myCurrentBalance}
+              label={'E se você não tivesse nada guardado?'}
+              text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
               studyCase={this.state.studyCases[1]}
               studyCaseResults={this.state.studyCasesResults[1]}
               handleInput={this.handleStudyCaseInput}
               currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+              myInvestments={this.state.myInvestments}
+              retirementResults={this.state.retirementResults}
+            />
+            <LeaveHeritageTip
+              studyCase={this.state.studyCases[2]}
+              studyCaseResults={this.state.studyCasesResults[2]}
+              handleInput={this.handleStudyCaseInput}
+              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+              myInvestments={this.state.myInvestments}
+              retirementResults={this.state.retirementResults}
             />
           </div>
         )}
