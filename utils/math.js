@@ -171,6 +171,6 @@ export function getStudyCasesResults(state) {
 
 export function formatAge(ageInMonths) {
   const y = parseInt(ageInMonths / 12);
-  const m = parseInt((ageInMonths / 12) % y * 12);
+  const m = parseInt(ageInMonths - y * 12);
   return [y, m];
 }

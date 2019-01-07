@@ -8,7 +8,7 @@ const StudyCase = ({
 }) => (
     <div>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
-      <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos)</p>
+      <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
       <InputField
         isCurrency
         label={label}

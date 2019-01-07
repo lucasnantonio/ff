@@ -23,7 +23,7 @@ class Index extends Component {
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
-      leaveHeritage: false,
+      leaveHeritage: true,
       myInvestments: [
         {
           label: 'poupança',
