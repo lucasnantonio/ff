@@ -37,33 +37,55 @@ function getBalanceAfterLifeEvent(age, lifeEvents, balance) {
 }
 
 function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
-  retirementIncome, currentAge, lifeExpectancy, lifeEvents) {
+  retirementIncome, currentAge, lifeExpectancy, lifeEvents, leaveHeritage) {
   /* all variables in months */
   let savings = initialSavings;
   let balance = currentBalance;
   let age = currentAge;
   const chartData = [];
   const lifeEventsLog = [];
+  let retirementAge;
+  let retirementBalance;
 
   // before retirement
 
-  const [retirementAge, retirementBalance] = fin.retirementAge(
-    mIR, balance, initialSavings, savingsIncrease, retirementIncome, currentAge,
-    lifeExpectancy, lifeEvents,
-  );
+  if (!leaveHeritage) {
+    [retirementAge, retirementBalance] = fin.retirementAge(
+      mIR, balance, initialSavings, savingsIncrease, retirementIncome, currentAge,
+      lifeExpectancy, lifeEvents,
+    );
+  }
 
-  while (age < retirementAge) {
-    balance = (1 + mIR) * balance + savings;
-    chartData.push({ x: age / 12, y: balance });
+  if (!leaveHeritage) {
+    while (age <= retirementAge) {
+      balance = (1 + mIR) * balance + savings;
+      chartData.push({ x: age / 12, y: balance });
 
-    // handle life events
-    const lifeEventLog = getLifeEventLog(age, lifeEvents, balance);
-    if (lifeEventLog !== null) { lifeEventsLog.push(lifeEventLog); }
-    balance = getBalanceAfterLifeEvent(age, lifeEvents, balance);
-    chartData.push({ x: age / 12, y: balance });
+      // handle life events
+      const lifeEventLog = getLifeEventLog(age, lifeEvents, balance);
+      if (lifeEventLog !== null) { lifeEventsLog.push(lifeEventLog); }
+      balance = getBalanceAfterLifeEvent(age, lifeEvents, balance);
+      chartData.push({ x: age / 12, y: balance });
 
-    savings *= (1 + savingsIncrease);
-    age += 1;
+      savings *= (1 + savingsIncrease);
+      age += 1;
+    }
+  } else {
+    while (balance * mIR < retirementIncome) {
+      balance = (1 + mIR) * balance + savings;
+      chartData.push({ x: age / 12, y: balance });
+
+      // handle life events
+      const lifeEventLog = getLifeEventLog(age, lifeEvents, balance);
+      if (lifeEventLog !== null) { lifeEventsLog.push(lifeEventLog); }
+      balance = getBalanceAfterLifeEvent(age, lifeEvents, balance);
+      chartData.push({ x: age / 12, y: balance });
+
+      savings *= (1 + savingsIncrease);
+      retirementAge = age;
+      retirementBalance = balance;
+      age += 1;
+    }
   }
 
   // after retirement
@@ -91,7 +113,7 @@ export function getRetirementResults(state) {
   const lifeExpectancy = parseFloat(state.myLifeExpectancy);
   const myCurrentAge = parseFloat(state.myCurrentAge);
   const annualSavingsIncreaseRate = parseFloat(state.annualSavingsIncreaseRate);
-  const { myInvestments, lifeEvents } = state;
+  const { myInvestments, lifeEvents, leaveHeritage } = state;
 
   return myInvestments.map((investment) => {
     const { label, rate } = investment;
@@ -107,6 +129,7 @@ export function getRetirementResults(state) {
         myCurrentAge * 12,
         lifeExpectancy * 12,
         lifeEvents,
+        leaveHeritage,
       ),
     ];
   });
@@ -120,6 +143,7 @@ export function getStudyCasesResults(state) {
     const lifeExpectancy = parseFloat(studyCase.myLifeExpectancy || state.myLifeExpectancy);
     const myCurrentAge = parseFloat(studyCase.myCurrentAge || state.myCurrentAge);
     const annualSavingsIncreaseRate = parseFloat(studyCase.annualSavingsIncreaseRate || state.annualSavingsIncreaseRate);
+    const leaveHeritage = studyCase.leaveHeritage === undefined ? state.leaveHeritage : studyCase.leaveHeritage;
     const { lifeEvents } = state;
     const { label } = studyCase;
 
@@ -139,6 +163,7 @@ export function getStudyCasesResults(state) {
         myCurrentAge * 12,
         lifeExpectancy * 12,
         lifeEvents,
+        leaveHeritage,
       ),
     ];
   });

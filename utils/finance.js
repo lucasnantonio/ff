@@ -46,7 +46,7 @@ export function retirementAge(iR, balance, initialSavings, savingsIncrease,
     const nper = NPER(iR, -retirementIncome, balance);
 
     if (isNaN(nper) || retirementAge + (nper > 0 ? nper : 0) >= lifeExpectancy) {
-      return [retirementAge + 1, balance];
+      return [retirementAge, balance];
     }
 
     savings *= (1 + savingsIncrease);

@@ -23,6 +23,7 @@ class Index extends Component {
       myLifeExpectancy: 100,
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
+      leaveHeritage: false,
       myInvestments: [
         {
           label: 'poupança',
@@ -44,6 +45,7 @@ class Index extends Component {
         {
           label: 'case0',
           myCurrentMonthlySavings: undefined,
+          leaveHeritage: false,
         },
         {
           label: 'case1',
