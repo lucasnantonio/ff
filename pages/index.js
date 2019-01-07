@@ -11,6 +11,7 @@ import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
 import CurrencyInputTip from '../components/Tips/CurrencyInputTip';
 import LeaveHeritageTip from '../components/Tips/LeaveHeritageTip';
+import ChangeInvestmentTip from '../components/Tips/ChangeInvestmentTip';
 
 class Index extends Component {
   constructor(props) {
@@ -55,6 +56,10 @@ class Index extends Component {
         {
           label: 'case2',
           leaveHeritage: false,
+        },
+        {
+          label: 'case3',
+          selectedInvestment: undefined,
         },
       ],
       lifeEvents: [{}],
@@ -130,10 +135,18 @@ class Index extends Component {
   };
 
   handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
-    const { id, type, checked } = e.target;
+    const {
+      id, type, checked, value,
+    } = e.target;
 
     const updatedStudyCases = this.state.studyCases.map((item) => {
       if (item.label === studyCaseLabel) {
+        if (type === 'radio') {
+          return {
+            ...item,
+            [id]: value,
+          };
+        }
         return {
           ...item,
           [id]: type === 'checkbox' ? checked : parseFloat(floatValue),
@@ -165,6 +178,18 @@ class Index extends Component {
       ...item,
       isSelected: index === itemIndex,
     }));
+
+    const studyCases = this.state.studyCases.map((item) => {
+      if (item.label === 'case3') {
+        return {
+          label: item.label,
+          selectedInvestment: ressetedInvestment.filter(i => i.isSelected)[0].label,
+        };
+      }
+      return item;
+    });
+
+    this.setState({ studyCases });
     this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
 
     const investmentTip = document.getElementById('investmentTip');
@@ -247,9 +272,6 @@ class Index extends Component {
     );
   }
 
-  handle
-
-
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
@@ -288,6 +310,14 @@ class Index extends Component {
               <LeaveHeritageTip
                 studyCase={this.state.studyCases[2]}
                 studyCaseResults={this.state.studyCasesResults[2]}
+                handleInput={this.handleStudyCaseInput}
+                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                myInvestments={this.state.myInvestments}
+                retirementResults={this.state.retirementResults}
+              />
+              <ChangeInvestmentTip
+                studyCase={this.state.studyCases[3]}
+                studyCaseResults={this.state.studyCasesResults[3]}
                 handleInput={this.handleStudyCaseInput}
                 currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                 myInvestments={this.state.myInvestments}

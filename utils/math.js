@@ -164,8 +164,13 @@ export function getStudyCasesResults(state) {
 
     if (state.myInvestments.filter(i => i.isSelected).length === 0) return false;
 
+    let rate;
     const selectedRate = state.myInvestments.filter(i => i.isSelected)[0].rate;
-    const rate = prioritizeTheFirst(studyCase.rate, selectedRate);
+    if (studyCase.selectedInvestment === undefined) {
+      rate = selectedRate;
+    } else {
+      rate = state.myInvestments.filter(i => i.label === studyCase.selectedInvestment)[0].rate;
+    }
 
     return [
       label,
