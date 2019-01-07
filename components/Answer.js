@@ -18,7 +18,7 @@ class OutPutContainer extends Component {
         )}
         <div
           id="answersContainer"
-          style={{ backgroundColor: colors.darkGreen }}
+          style={{ backgroundColor: 'white' }}
           className={'ph0-ns ph4 pv5'}
         >
           {this.props.isShowingAnswer && (

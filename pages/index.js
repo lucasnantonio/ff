@@ -9,6 +9,7 @@ import Hero from '../components/Hero';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 import NavBar from '../components/NavBar';
+import colors from '../components/Colors';
 
 class Index extends Component {
   constructor(props) {
@@ -104,6 +105,7 @@ class Index extends Component {
   handleShowAnswer = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     this.setState({ isShowingAnswer: true });
+    logEvent('User', 'clicked calculate');
   };
 
   handleBack = () => {
@@ -199,6 +201,7 @@ class Index extends Component {
     this.setState({
       [tableName]: [...this.state[tableName], fields],
     });
+    logEvent('User', 'added life event');
   };
 
   handleRemoveTableRow = (idx, tableName, table) => () => {
@@ -207,6 +210,7 @@ class Index extends Component {
       [tableName]: updatedTable,
       retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
     }));
+    logEvent('User', 'removed life event');
   };
 
   handleResetRates = () => {
@@ -227,6 +231,7 @@ class Index extends Component {
     this.setState(prevState => ({
       retirementResults: getRetirementResults({ ...prevState, myInvestments: reseted }),
     }));
+    logEvent('User', 'clicked reset taxas');
   };
 
   setFocusedInput = (inputId) => {
@@ -271,7 +276,11 @@ class Index extends Component {
             />
           </div>
         )}
-        <div id="questionsContainer" className="mw7-ns ph0-l ph4 center">
+        <div
+          id="questionsContainer"
+          className={`w-100 center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
+          style={{ backgroundColor: colors.lightGray }}
+        >
           {this.state.isShowingQuestions && (
             <Questions
               {...this.state}

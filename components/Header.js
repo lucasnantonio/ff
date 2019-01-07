@@ -11,7 +11,7 @@ const Header = props => (
     />
     <meta charset="utf-8" />
     <title>{props.title}</title>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700|Muli" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     <meta
@@ -49,8 +49,8 @@ const Header = props => (
         html,
         html * {
           font-size: 18px;
-          font-family: 'Muli', sans-serif;
-          font-weight: 100;
+          font-family: 'Nunito', sans-serif;
+          font-weight: 400;
           color: ${colors.darkBrown};
         }
         ::-webkit-scrollbar {

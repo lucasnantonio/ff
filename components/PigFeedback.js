@@ -149,8 +149,12 @@ class PigFeedback extends Component {
       >
         {this.hasFeedback(this.props.id) && this.state.render && (
           <p
-            style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
-            className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
+            style={{
+              color: colors.darkGreenActive,
+              padding: '2rem 2rem',
+              border: `2px solid ${colors.lightGray2}`,
+            }}
+            className="pt2 mt4 overflow-hidden br3 f6-ns f7 lh-copy w-100 mb0 measure bg-white"
           >
             {this.getFeedback(this.props.id)}
           </p>
@@ -158,8 +162,12 @@ class PigFeedback extends Component {
         {this.props.hasSelectedInvestment && this.state.render && (
           <p
             id="investmentTip"
-            style={{ color: colors.darkGreen, padding: '2rem 2rem' }}
-            className="pt2 mt4 overflow-hidden ba b-green br3 f6-ns f7 lh-copy w-100 mb0 measure"
+            style={{
+              color: colors.darkGreenActive,
+              padding: '2rem 2rem',
+              border: `2px solid ${colors.lightGray2}`,
+            }}
+            className="bg-white pt2 mt4 overflow-hidden br3 f6-ns f7 lh-copy w-100 mb0 measure"
           >
             {this.getInvestmentFeedback(this.props.investmentOptions)}
           </p>

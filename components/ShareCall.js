@@ -9,17 +9,20 @@ import {
   LinkedinIcon,
   WhatsappIcon,
 } from 'react-share';
+import colors from './Colors';
 
 const ShareCall = () => (
   <div className="flex flex-column mt0-l mt4">
-    <p className="f6 white-50 tc">Compartilhe</p>
+    <p className="f6 tc" style={{ color: colors.mediumGray }}>
+      Compartilhe
+    </p>
     <div className="flex-l dn">
       <div className="mr1 pointer grow">
         <FacebookShareButton
           quote="Eu já descobri quando vou me aposentar. E você?"
           url="https://aposentar.me"
         >
-          <FacebookIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
+          <FacebookIcon iconBgStyle={{ fill: colors.darkGreen }} size={32} round />
         </FacebookShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -28,7 +31,7 @@ const ShareCall = () => (
           description="Descubra quando você vai se aposentar."
           url="https://aposentar.me"
         >
-          <LinkedinIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
+          <LinkedinIcon iconBgStyle={{ fill: colors.darkGreen }} size={32} round />
         </LinkedinShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -37,7 +40,7 @@ const ShareCall = () => (
           hashtags={['aposentadoria', 'independenciaFinanceira']}
           url="https://aposentar.me"
         >
-          <TwitterIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={32} round />
+          <TwitterIcon iconBgStyle={{ fill: colors.darkGreen }} size={32} round />
         </TwitterShareButton>
       </div>
       <div className="pointer grow">
@@ -46,7 +49,7 @@ const ShareCall = () => (
           separator=" — "
           url="https://aposentar.me"
         >
-          <WhatsappIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)', padding: '2rem' }} size={32} round />
+          <WhatsappIcon iconBgStyle={{ fill: colors.darkGreen, padding: '2rem' }} size={32} round />
         </WhatsappShareButton>
       </div>
     </div>
@@ -59,7 +62,7 @@ const ShareCall = () => (
           quote="Eu já descobri quando vou me aposentar. E você?"
           url="https://aposentar.me"
         >
-          <FacebookIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={50} round />
+          <FacebookIcon iconBgStyle={{ fill: colors.darkGreen }} size={50} round />
         </FacebookShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -68,7 +71,7 @@ const ShareCall = () => (
           description="Descubra quando você vai se aposentar."
           url="https://aposentar.me"
         >
-          <LinkedinIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={50} round />
+          <LinkedinIcon iconBgStyle={{ fill: colors.darkGreen }} size={50} round />
         </LinkedinShareButton>
       </div>
       <div className="mr1 pointer grow">
@@ -77,7 +80,7 @@ const ShareCall = () => (
           hashtags={['aposentadoria', 'independenciaFinanceira']}
           url="https://aposentar.me"
         >
-          <TwitterIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)' }} size={50} round />
+          <TwitterIcon iconBgStyle={{ fill: colors.darkGreen }} size={50} round />
         </TwitterShareButton>
       </div>
       <div className="pointer grow">
@@ -86,7 +89,7 @@ const ShareCall = () => (
           separator=" — "
           url="https://aposentar.me"
         >
-          <WhatsappIcon iconBgStyle={{ fill: 'rgba(0,0,0,.2)', padding: '2rem' }} size={50} round />
+          <WhatsappIcon iconBgStyle={{ fill: colors.darkGreen, padding: '2rem' }} size={50} round />
         </WhatsappShareButton>
       </div>
     </div>

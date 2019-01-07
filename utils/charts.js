@@ -1,7 +1,8 @@
 import Chart from 'chart.js';
 import toCurrency from './math.js';
+import colors from '../components/Colors';
 
-Chart.defaults.global.defaultFontColor = 'rgba(0,0,0,.4)';
+Chart.defaults.global.defaultFontColor = colors.mediumGray;
 Chart.defaults.global.defaultFontFamily = 'Poppins, system-ui';
 
 export default function getRetirementChart(ctx, handleHover) {
@@ -15,6 +16,8 @@ export default function getRetirementChart(ctx, handleHover) {
       layout: {
         padding: {
           top: 50,
+          left: 20,
+          right: 20,
         },
       },
       tooltips: {
@@ -72,7 +75,6 @@ export default function getRetirementChart(ctx, handleHover) {
       },
     },
   });
-
 
   return RetirementChart;
 }
