@@ -159,7 +159,7 @@ class InputField extends Component {
             )}
           </div>
         </div>
-        {this.state.hasBeenChanged && <PigFeedback id={this.props.id} value={this.props.value} />}
+        {(this.state.hasBeenChanged && !this.props.hideFeedback) && <PigFeedback id={this.props.id} value={this.props.value} />}
       </InputFieldWrapper>
     );
   }

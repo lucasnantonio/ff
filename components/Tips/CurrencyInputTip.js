@@ -8,9 +8,9 @@ const CurrencyInputTip = ({
   currentRetirementAge, myInvestments, retirementResults,
 }) => (
     <div>
+      <p>{text}</p>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
       <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
-      <p>{text}</p>
       <InputField
         isCurrency
         label={label}
@@ -19,6 +19,7 @@ const CurrencyInputTip = ({
         id={id}
         handleInput={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
         acceptZero
+        hideFeedback
       />
       <RetirementChart
         primaryData={studyCaseResults}

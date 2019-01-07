@@ -260,38 +260,40 @@ class Index extends Component {
         ) : (
           <div>
             <Answer {...this.state} />
-            <CurrencyInputTip
-              id={'myCurrentMonthlySavings'}
-              placeHolder={this.state.myCurrentMonthlySavings}
-              label={'E se você aumentasse as suas economias?'}
-              text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina. Já imaginou se você conseguisse poupar mais ou aumentar a sua renda?'}
-              studyCase={this.state.studyCases[0]}
-              studyCaseResults={this.state.studyCasesResults[0]}
-              handleInput={this.handleStudyCaseInput}
-              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-              myInvestments={this.state.myInvestments}
-              retirementResults={this.state.retirementResults}
-            />
-            <CurrencyInputTip
-              id={'myCurrentBalance'}
-              placeHolder={this.state.myCurrentBalance}
-              label={'E se você não tivesse nada guardado?'}
-              text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
-              studyCase={this.state.studyCases[1]}
-              studyCaseResults={this.state.studyCasesResults[1]}
-              handleInput={this.handleStudyCaseInput}
-              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-              myInvestments={this.state.myInvestments}
-              retirementResults={this.state.retirementResults}
-            />
-            <LeaveHeritageTip
-              studyCase={this.state.studyCases[2]}
-              studyCaseResults={this.state.studyCasesResults[2]}
-              handleInput={this.handleStudyCaseInput}
-              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-              myInvestments={this.state.myInvestments}
-              retirementResults={this.state.retirementResults}
-            />
+            <div className={'mw7-ns ph0-l ph4 center'}>
+              <CurrencyInputTip
+                id={'myCurrentMonthlySavings'}
+                placeHolder={this.state.myCurrentMonthlySavings}
+                label={'E se você aumentasse as suas economias?'}
+                text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina. Já imaginou se você conseguisse poupar mais ou aumentar a sua renda?'}
+                studyCase={this.state.studyCases[0]}
+                studyCaseResults={this.state.studyCasesResults[0]}
+                handleInput={this.handleStudyCaseInput}
+                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                myInvestments={this.state.myInvestments}
+                retirementResults={this.state.retirementResults}
+              />
+              <CurrencyInputTip
+                id={'myCurrentBalance'}
+                placeHolder={this.state.myCurrentBalance}
+                label={'E se você não tivesse nada guardado?'}
+                text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
+                studyCase={this.state.studyCases[1]}
+                studyCaseResults={this.state.studyCasesResults[1]}
+                handleInput={this.handleStudyCaseInput}
+                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                myInvestments={this.state.myInvestments}
+                retirementResults={this.state.retirementResults}
+              />
+              <LeaveHeritageTip
+                studyCase={this.state.studyCases[2]}
+                studyCaseResults={this.state.studyCasesResults[2]}
+                handleInput={this.handleStudyCaseInput}
+                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                myInvestments={this.state.myInvestments}
+                retirementResults={this.state.retirementResults}
+              />
+            </div>
           </div>
         )}
         <div
