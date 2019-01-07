@@ -97,16 +97,19 @@ class RetirementChart extends Component {
     }));
 
     // Secondary Set
-    const secondarySet = {
-      label: secondaryData[0],
-      data: secondaryData[1].timeHistory,
-      backgroundColor: colors.lightGreen,
-      pointRadius: 0,
-      borderWidth: 1,
-      borderColor: colors.darkGreen,
-      lineTension: 0,
-      pointHitRadius: 2,
-    };
+    let secondarySet = {};
+    if (secondaryData !== undefined) {
+      secondarySet = {
+        label: secondaryData[0],
+        data: secondaryData[1].timeHistory,
+        backgroundColor: colors.lightGreen,
+        pointRadius: 0,
+        borderWidth: 1,
+        borderColor: colors.darkGreen,
+        lineTension: 0,
+        pointHitRadius: 2,
+      };
+    }
 
     const minX = Math.min(...primarySet.data.map(v => v.x));
 

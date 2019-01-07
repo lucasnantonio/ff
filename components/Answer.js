@@ -35,7 +35,6 @@ class OutPutContainer extends Component {
               <div className="w-100">
                 <RetirementChart
                   primaryData={this.props.retirementResults.filter((investment, index) => this.props.myInvestments[index].isSelected)[0]}
-                  secondaryData={this.props.studyCasesResults[0]}
                 />
               </div>
               <div className="dn-ns dib">
