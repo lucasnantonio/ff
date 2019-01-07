@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RetirementChart2 from './RetirementChart2';
+import RetirementChart from './RetirementChart';
 import RetirementSummary from './RetirementSummary';
 import RetirementSummaryFloating from './RetirementSummaryFloating';
 import DonationCall from './DonationCall';
@@ -33,12 +33,9 @@ class OutPutContainer extends Component {
                 />
               </div>
               <div className="w-100">
-                <RetirementChart2
-                  lifeEvents={this.props.lifeEvents}
-                  primaryLabels={[this.props.myInvestments.filter(i => i.isSelected)[0].label]}
-                  secondaryLabels={['case0']}
-                  retirementResults={this.props.retirementResults}
-                  studyCasesResults={this.props.studyCasesResults}
+                <RetirementChart
+                  primaryData={this.props.retirementResults.filter((investment, index) => this.props.myInvestments[index].isSelected)[0]}
+                  secondaryData={this.props.studyCasesResults[0]}
                 />
               </div>
               <div className="dn-ns dib">
