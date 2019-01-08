@@ -13,6 +13,7 @@ import colors from '../components/Colors';
 import GeneralInputTip from '../components/Tips/GeneralInputTip';
 import LeaveHeritageTip from '../components/Tips/LeaveHeritageTip';
 import ChangeInvestmentTip from '../components/Tips/ChangeInvestmentTip';
+import OptimizedCase from '../components/Tips/OptimizedCase';
 
 class Index extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class Index extends Component {
         },
         {
           label: 'changeLeaveHeritage',
-          leaveHeritage: false,
+          leaveHeritage: undefined,
         },
         {
           label: 'changeSelectedInvestment',
@@ -64,6 +65,14 @@ class Index extends Component {
         },
         {
           label: 'changeCurrentAge',
+          myCurrentAge: undefined,
+        },
+        {
+          label: 'optimized',
+          myCurrentMonthlySavings: undefined,
+          myCurrentBalance: undefined,
+          leaveHeritage: undefined,
+          selectedInvestment: undefined,
           myCurrentAge: undefined,
         },
       ],
@@ -118,43 +127,19 @@ class Index extends Component {
     logEvent('User', 'clicked calculate');
 
     // update studyCases with user input
-    const studyCases = this.state.studyCases.map((item) => {
-      if (item.label === 'changeMonthlySavings') {
-        return {
-          label: item.label,
-          myCurrentMonthlySavings: this.state.myCurrentMonthlySavings,
-        };
-      }
+    const studyCases = this.state.studyCases.map(item => (
+      Object.assign({}, ...Object.keys(item).map((key) => {
+        if (key === 'label') {
+          return { [key]: item[key] };
+        }
 
-      if (item.label === 'changeCurrentBalance') {
-        return {
-          label: item.label,
-          myCurrentBalance: this.state.myCurrentBalance,
-        };
-      }
+        if (key === 'selectedInvestment') {
+          return { [key]: this.state.myInvestments.filter(i => i.isSelected)[0].label };
+        }
 
-      if (item.label === 'changeLeaveHeritage') {
-        return {
-          label: item.label,
-          leaveHeritage: this.state.leaveHeritage,
-        };
-      }
-
-      if (item.label === 'changeSelectedInvestment') {
-        return {
-          label: item.label,
-          selectedInvestment: this.state.myInvestments.filter(i => i.isSelected)[0].label,
-        };
-      }
-
-      if (item.label === 'changeCurrentAge') {
-        return {
-          label: item.label,
-          myCurrentAge: this.state.myCurrentAge,
-        };
-      }
-      return item;
-    });
+        return { [key]: this.state[key] };
+      }))
+    ));
     this.setState({ studyCases });
   };
 
@@ -185,7 +170,7 @@ class Index extends Component {
     } = e.target;
 
     const updatedStudyCases = this.state.studyCases.map((item) => {
-      if (item.label === studyCaseLabel) {
+      if (item.label === studyCaseLabel || (item.label === 'optimized' && id in item)) {
         if (type === 'radio') {
           return {
             ...item,
@@ -223,7 +208,6 @@ class Index extends Component {
       ...item,
       isSelected: index === itemIndex,
     }));
-
 
     this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
 
@@ -376,6 +360,12 @@ class Index extends Component {
                   currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                   myInvestments={this.state.myInvestments}
                   retirementResults={this.state.retirementResults}
+                />
+                <OptimizedCase
+                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'optimized')}
+                  retirementResults={this.state.retirementResults}
+                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                  myInvestments={this.state.myInvestments}
                 />
               </div>
           </div>
