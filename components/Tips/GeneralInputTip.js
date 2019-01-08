@@ -4,7 +4,7 @@ import InputField from '../InputField';
 import RetirementChart from '../RetirementChart';
 
 const GeneralInputTip = ({
-  id, placeHolder, label, text, studyCase, studyCaseResults, handleInput,
+  id, label, text, studyCase, studyCaseResults, handleInput,
   currentRetirementAge, myInvestments, retirementResults, isCurrency,
 }) => (
     <div>
@@ -14,7 +14,7 @@ const GeneralInputTip = ({
       <InputField
         isCurrency={isCurrency}
         label={label}
-        placeholder={placeHolder}
+        placeholder={studyCase[id]}
         value={studyCase[id]}
         id={id}
         handleInput={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
