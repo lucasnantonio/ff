@@ -1,4 +1,5 @@
 import * as fin from './finance';
+import { getObjectByLabel } from './utils';
 
 export function toCurrency(value) {
   return (`R$ ${Number(value).toFixed(2)}`);
@@ -113,26 +114,27 @@ export function getRetirementResults(state) {
   const lifeExpectancy = parseFloat(state.myLifeExpectancy);
   const myCurrentAge = parseFloat(state.myCurrentAge);
   const annualSavingsIncreaseRate = parseFloat(state.annualSavingsIncreaseRate);
-  const { myInvestments, lifeEvents, leaveHeritage } = state;
+  const {
+    myInvestments, lifeEvents, leaveHeritage, myWallet,
+  } = state;
 
-  return myInvestments.map((investment) => {
-    const { label, rate } = investment;
+  const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label]);
+  const rate = rates.reduce((a, b) => a + b, 0);
 
-    return [
-      label,
-      getRetirementData(
-        fin.annualToMonthly(parseFloat(rate) / 100),
-        currentBalance,
-        savings,
-        fin.annualToMonthly(annualSavingsIncreaseRate / 100),
-        retirementIncome,
-        myCurrentAge * 12,
-        lifeExpectancy * 12,
-        lifeEvents,
-        leaveHeritage,
-      ),
-    ];
-  });
+  return [[
+    'teste',
+    getRetirementData(
+      fin.annualToMonthly(parseFloat(rate) / 100),
+      currentBalance,
+      savings,
+      fin.annualToMonthly(annualSavingsIncreaseRate / 100),
+      retirementIncome,
+      myCurrentAge * 12,
+      lifeExpectancy * 12,
+      lifeEvents,
+      leaveHeritage,
+    ),
+  ]];
 }
 
 function prioritizeTheFirst(first, second) {

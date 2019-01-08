@@ -45,7 +45,7 @@ const ChangeInvestmetTip = ({
       </label>
       <RetirementChart
         primaryData={studyCaseResults}
-        secondaryData={retirementResults.filter((investment, index) => myInvestments[index].isSelected)[0]}
+        secondaryData={retirementResults[0]}
       />
     </div>
 );

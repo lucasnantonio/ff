@@ -23,7 +23,7 @@ const LeaveHeritageTip = ({
       <p>R$ {studyCaseResults[1].timeHistory[studyCaseResults[1].timeHistory.length - 1].y.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</p>
       <RetirementChart
         primaryData={studyCaseResults}
-        secondaryData={retirementResults.filter((investment, index) => myInvestments[index].isSelected)[0]}
+        secondaryData={retirementResults[0]}
       />
     </div>
 );

@@ -12,7 +12,7 @@ const OptimizedCase = ({
       <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
       <RetirementChart
         primaryData={studyCaseResults}
-        secondaryData={retirementResults.filter((investment, index) => myInvestments[index].isSelected)[0]}
+        secondaryData={retirementResults[0]}
       />
     </div>
 );

@@ -29,6 +29,11 @@ class Index extends Component {
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
       leaveHeritage: false,
+      myWallet: {
+        poupança: 0,
+        'renda fixa': 1,
+        'renda variável': 0,
+      },
       myInvestments: [
         {
           label: 'poupança',
@@ -284,11 +289,7 @@ class Index extends Component {
   };
 
   getSelectedInvestmentRetirementData() {
-    return (
-      this.state.retirementResults.filter(
-        (investment, index) => this.state.myInvestments[index].isSelected,
-      )[0][1]
-    );
+    return this.state.retirementResults[0][1];
   }
 
   render() {
