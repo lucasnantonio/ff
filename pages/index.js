@@ -30,9 +30,9 @@ class Index extends Component {
       selectedInvestment: false,
       leaveHeritage: false,
       myWallet: {
-        poupança: 0,
-        'renda fixa': 1,
-        'renda variável': 0,
+        poupança: undefined,
+        'renda fixa': undefined,
+        'renda variável': undefined,
       },
       myInvestments: [
         {
@@ -214,15 +214,27 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
 
-    this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
+    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
+
+    const myWallet = Object.assign(
+      {},
+      ...Object.keys(this.state.myWallet).map(key => (
+        { [key]: key === selectedInvestment.label ? 1 : 0 }
+      )),
+    );
+
+    this.setState({
+      myInvestments: ressetedInvestment,
+      selectedInvestment: true,
+      myWallet,
+    });
 
     const investmentTip = document.getElementById('investmentTip');
     if (investmentTip) {
       investmentTip.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // only for analytics
-    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
+
     logEvent('User', 'Selected Investment');
   };
 
