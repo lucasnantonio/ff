@@ -9,6 +9,7 @@ const ChangeInvestmetTip = ({
     <div>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
       <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
+      <p>E se você tentasse investir em outras aplicações?</p>
       <label>
         <input
           id={'selectedInvestment'}
