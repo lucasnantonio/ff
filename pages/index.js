@@ -29,10 +29,11 @@ class Index extends Component {
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
       leaveHeritage: false,
+      useWallet: false,
       myWallet: {
-        poupança: undefined,
-        'renda fixa': undefined,
-        'renda variável': undefined,
+        poupança: 0,
+        'renda fixa': 0,
+        'renda variável': 0,
       },
       myInvestments: [
         {
@@ -219,7 +220,7 @@ class Index extends Component {
     const myWallet = Object.assign(
       {},
       ...Object.keys(this.state.myWallet).map(key => (
-        { [key]: key === selectedInvestment.label ? 1 : 0 }
+        { [key]: key === selectedInvestment.label ? 100 : 0 }
       )),
     );
 
@@ -233,7 +234,6 @@ class Index extends Component {
     if (investmentTip) {
       investmentTip.scrollIntoView({ behavior: 'smooth' });
     }
-
 
     logEvent('User', 'Selected Investment');
   };
@@ -295,6 +295,17 @@ class Index extends Component {
     }));
     logEvent('User', 'clicked reset taxas');
   };
+
+  handleCheckbox = (event) => {
+    const { id, checked } = event.target;
+    this.setState({ [id]: checked });
+  }
+
+  handleWalletInput = (event) => {
+    const { id, value } = event.target;
+    const myWallet = { ...this.state.myWallet, [id]: parseFloat(value) };
+    this.setState({ myWallet });
+  }
 
   setFocusedInput = (inputId) => {
     this.setState({ focusedInput: inputId });
@@ -405,6 +416,8 @@ class Index extends Component {
               handleInvestmentSelector={this.handleInvestmentSelector}
               handleInvestmentRateInput={this.handleInvestmentRateInput}
               setFocusedInput={this.setFocusedInput}
+              handleCheckbox={this.handleCheckbox}
+              handleWalletInput={this.handleWalletInput}
             />
           )}
         </div>

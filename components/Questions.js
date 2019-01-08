@@ -182,6 +182,31 @@ class InputContainer extends Component {
                   handleClick={this.props.handleInvestmentSelector}
                   hiddenBorder={true}
                 />
+                <label>
+                  <input
+                    id="useWallet"
+                    type="checkbox"
+                    checked={this.props.useWallet}
+                    onChange={e => this.props.handleCheckbox(e)}
+
+                  />
+                  Tenho uma carteira diversificada
+                </label>
+                {
+                  Object.keys(this.props.myWallet).map((key, index) => (
+                    <InputField
+                      key={index}
+                      isPercentage
+                      dataType="rate"
+                      value={this.props.myWallet[key]}
+                      id={key}
+                      label={key}
+                      handleInput={this.props.handleWalletInput}
+                      setFocusedInput={this.props.setFocusedInput}
+                    />
+                  ))
+                }
+
                 {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
                   <CSSTransitionGroup
                     transitionAppear={true}

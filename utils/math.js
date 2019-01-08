@@ -118,7 +118,7 @@ export function getRetirementResults(state) {
     myInvestments, lifeEvents, leaveHeritage, myWallet,
   } = state;
 
-  const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label]);
+  const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);
   const rate = rates.reduce((a, b) => a + b, 0);
 
   return [[
