@@ -9,7 +9,7 @@ import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber } from '../utils/input';
 import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
-import CurrencyInputTip from '../components/Tips/CurrencyInputTip';
+import GeneralInputTip from '../components/Tips/GeneralInputTip';
 import LeaveHeritageTip from '../components/Tips/LeaveHeritageTip';
 import ChangeInvestmentTip from '../components/Tips/ChangeInvestmentTip';
 
@@ -61,6 +61,10 @@ class Index extends Component {
           label: 'case3',
           selectedInvestment: undefined,
         },
+        {
+          label: 'case4',
+          myCurrentAge: undefined,
+        },
       ],
       lifeEvents: [{}],
       retirementResults: false,
@@ -111,6 +115,23 @@ class Index extends Component {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     this.setState({ isShowingAnswer: true });
     logEvent('User', 'clicked calculate');
+
+    const studyCases = this.state.studyCases.map((item) => {
+      if (item.label === 'case3') {
+        return {
+          label: item.label,
+          selectedInvestment: this.state.myInvestments.filter(i => i.isSelected)[0].label,
+        };
+      }
+      if (item.label === 'case4') {
+        return {
+          label: item.label,
+          myCurrentAge: this.state.myCurrentAge,
+        };
+      }
+      return item;
+    });
+    this.setState({ studyCases });
   };
 
   handleBack = () => {
@@ -179,17 +200,7 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
 
-    const studyCases = this.state.studyCases.map((item) => {
-      if (item.label === 'case3') {
-        return {
-          label: item.label,
-          selectedInvestment: ressetedInvestment.filter(i => i.isSelected)[0].label,
-        };
-      }
-      return item;
-    });
 
-    this.setState({ studyCases });
     this.setState({ myInvestments: ressetedInvestment, selectedInvestment: true });
 
     const investmentTip = document.getElementById('investmentTip');
@@ -283,7 +294,7 @@ class Index extends Component {
           <div>
             <Answer {...this.state} />
             <div className={'mw7-ns ph0-l ph4 center'}>
-              <CurrencyInputTip
+              <GeneralInputTip
                 id={'myCurrentMonthlySavings'}
                 placeHolder={this.state.myCurrentMonthlySavings}
                 label={'E se você aumentasse as suas economias?'}
@@ -294,8 +305,9 @@ class Index extends Component {
                 currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                 myInvestments={this.state.myInvestments}
                 retirementResults={this.state.retirementResults}
+                isCurrency
               />
-              <CurrencyInputTip
+              <GeneralInputTip
                 id={'myCurrentBalance'}
                 placeHolder={this.state.myCurrentBalance}
                 label={'E se você não tivesse nada guardado?'}
@@ -306,6 +318,7 @@ class Index extends Component {
                 currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                 myInvestments={this.state.myInvestments}
                 retirementResults={this.state.retirementResults}
+                isCurrency
               />
               <LeaveHeritageTip
                 studyCase={this.state.studyCases[2]}
@@ -318,6 +331,18 @@ class Index extends Component {
               <ChangeInvestmentTip
                 studyCase={this.state.studyCases[3]}
                 studyCaseResults={this.state.studyCasesResults[3]}
+                handleInput={this.handleStudyCaseInput}
+                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                myInvestments={this.state.myInvestments}
+                retirementResults={this.state.retirementResults}
+              />
+              <GeneralInputTip
+                id={'myCurrentAge'}
+                placeHolder={this.state.myCurrentAge}
+                label={'Veja o que acontece se você mudar a sua idade.'}
+                text={'Quanto antes você começar, mais cedo você vai atingir a tranquilidade financeira.'}
+                studyCase={this.state.studyCases[4]}
+                studyCaseResults={this.state.studyCasesResults[4]}
                 handleInput={this.handleStudyCaseInput}
                 currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                 myInvestments={this.state.myInvestments}
