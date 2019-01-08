@@ -293,64 +293,74 @@ class Index extends Component {
         ) : (
           <div>
             <Answer {...this.state} />
-            <div className={'mw7-ns ph0-l ph4 center'}>
-              <GeneralInputTip
-                id={'myCurrentMonthlySavings'}
-                placeHolder={this.state.myCurrentMonthlySavings}
-                label={'E se você aumentasse as suas economias?'}
-                text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina. Já imaginou se você conseguisse poupar mais ou aumentar a sua renda?'}
-                studyCase={this.state.studyCases[0]}
-                studyCaseResults={this.state.studyCasesResults[0]}
-                handleInput={this.handleStudyCaseInput}
-                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                myInvestments={this.state.myInvestments}
-                retirementResults={this.state.retirementResults}
-                isCurrency
-              />
-              <GeneralInputTip
-                id={'myCurrentBalance'}
-                placeHolder={this.state.myCurrentBalance}
-                label={'E se você não tivesse nada guardado?'}
-                text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
-                studyCase={this.state.studyCases[1]}
-                studyCaseResults={this.state.studyCasesResults[1]}
-                handleInput={this.handleStudyCaseInput}
-                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                myInvestments={this.state.myInvestments}
-                retirementResults={this.state.retirementResults}
-                isCurrency
-              />
-              <LeaveHeritageTip
-                studyCase={this.state.studyCases[2]}
-                studyCaseResults={this.state.studyCasesResults[2]}
-                handleInput={this.handleStudyCaseInput}
-                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                myInvestments={this.state.myInvestments}
-                retirementResults={this.state.retirementResults}
-              />
-              <ChangeInvestmentTip
-                studyCase={this.state.studyCases[3]}
-                studyCaseResults={this.state.studyCasesResults[3]}
-                handleInput={this.handleStudyCaseInput}
-                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                myInvestments={this.state.myInvestments}
-                retirementResults={this.state.retirementResults}
-              />
-              <GeneralInputTip
-                id={'myCurrentAge'}
-                placeHolder={this.state.myCurrentAge}
-                label={'Veja o que acontece se você mudar a sua idade.'}
-                text={'Quanto antes você começar, mais cedo você vai atingir a tranquilidade financeira.'}
-                studyCase={this.state.studyCases[4]}
-                studyCaseResults={this.state.studyCasesResults[4]}
-                handleInput={this.handleStudyCaseInput}
-                currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                myInvestments={this.state.myInvestments}
-                retirementResults={this.state.retirementResults}
-              />
-            </div>
           </div>
         )}
+
+        {this.state.isShowingAnswer && (
+          <div style={{ backgroundColor: colors.lightGreen }} >
+            <div
+              className={'mw7-ns ph0-l ph4 center'}
+              >
+                <h2>Veja como melhorar o seu resultado:</h2>
+                <GeneralInputTip
+                  id={'myCurrentMonthlySavings'}
+                  placeHolder={this.state.myCurrentMonthlySavings}
+                  label={'E se você aumentasse as suas economias?'}
+                  text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina. Já imaginou se você conseguisse poupar mais ou aumentar a sua renda?'}
+                  studyCase={this.state.studyCases[0]}
+                  studyCaseResults={this.state.studyCasesResults[0]}
+                  handleInput={this.handleStudyCaseInput}
+                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                  myInvestments={this.state.myInvestments}
+                  retirementResults={this.state.retirementResults}
+                  isCurrency
+                />
+                <GeneralInputTip
+                  id={'myCurrentBalance'}
+                  placeHolder={this.state.myCurrentBalance}
+                  label={'E se você não tivesse nada guardado?'}
+                  text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
+                  studyCase={this.state.studyCases[1]}
+                  studyCaseResults={this.state.studyCasesResults[1]}
+                  handleInput={this.handleStudyCaseInput}
+                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                  myInvestments={this.state.myInvestments}
+                  retirementResults={this.state.retirementResults}
+                  isCurrency
+                />
+                <LeaveHeritageTip
+                  studyCase={this.state.studyCases[2]}
+                  studyCaseResults={this.state.studyCasesResults[2]}
+                  handleInput={this.handleStudyCaseInput}
+                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                  myInvestments={this.state.myInvestments}
+                  retirementResults={this.state.retirementResults}
+                />
+                <ChangeInvestmentTip
+                  studyCase={this.state.studyCases[3]}
+                  studyCaseResults={this.state.studyCasesResults[3]}
+                  handleInput={this.handleStudyCaseInput}
+                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                  myInvestments={this.state.myInvestments}
+                  retirementResults={this.state.retirementResults}
+                />
+                <GeneralInputTip
+                  id={'myCurrentAge'}
+                  placeHolder={this.state.myCurrentAge}
+                  label={'Veja o que acontece se você mudar a sua idade.'}
+                  text={'Quanto antes você começar, mais cedo você vai atingir a tranquilidade financeira.'}
+                  studyCase={this.state.studyCases[4]}
+                  studyCaseResults={this.state.studyCasesResults[4]}
+                  handleInput={this.handleStudyCaseInput}
+                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+                  myInvestments={this.state.myInvestments}
+                  retirementResults={this.state.retirementResults}
+                />
+              </div>
+
+          </div>
+        )}
+
         <div
           id="questionsContainer"
           className={`w-100 center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
