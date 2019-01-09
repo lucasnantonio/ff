@@ -67,7 +67,6 @@ class Index extends Component {
         },
         {
           label: 'changeSelectedInvestment',
-          selectedInvestment: undefined,
         },
         {
           label: 'changeCurrentAge',
@@ -78,7 +77,6 @@ class Index extends Component {
           myCurrentMonthlySavings: undefined,
           myCurrentBalance: undefined,
           leaveHeritage: undefined,
-          selectedInvestment: undefined,
           myCurrentAge: undefined,
         },
       ],
@@ -294,7 +292,7 @@ class Index extends Component {
 
   handleCheckbox = (event) => {
     const { id, checked } = event.target;
-    this.setState({ [id]: checked, selectedInvestment: checked });
+    this.setState({ [id]: checked });
   }
 
   handleWalletInput = (event) => {
@@ -342,7 +340,7 @@ class Index extends Component {
                   retirementResults={this.state.retirementResults}
                   isCurrency
                 />
-                <GeneralInputTip
+                {/* <GeneralInputTip
                   id={'myCurrentBalance'}
                   label={'E se você não tivesse nada guardado?'}
                   text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
@@ -386,7 +384,7 @@ class Index extends Component {
                   retirementResults={this.state.retirementResults}
                   currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                   myInvestments={this.state.myInvestments}
-                />
+                /> */}
               </div>
           </div>
         )}

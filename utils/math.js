@@ -152,7 +152,7 @@ function prioritizeStudyCase(studyCase, state, id, float = true) {
 }
 
 export function getStudyCasesResults(state) {
-  if (!state.selectedInvestment) return false;
+  if (!state.selectedInvestment && !state.useWallet && !state.studyCasesResults) return false;
 
   return state.studyCases.map((studyCase) => {
     const currentBalance = prioritizeStudyCase(studyCase, state, 'myCurrentBalance');

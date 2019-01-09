@@ -176,7 +176,7 @@ class InputContainer extends Component {
                 />
                 <MultiSelect
                   hasSelectedInvestment={this.props.selectedInvestment}
-                  isEnabled={this.canSubmit()}
+                  isEnabled={this.canSubmit() && !this.props.useWallet}
                   label="Onde você guarda seu dinheiro hoje?"
                   options={this.props.myInvestments}
                   handleClick={this.props.handleInvestmentSelector}
@@ -208,7 +208,7 @@ class InputContainer extends Component {
                   ))
                 }
 
-                {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
+                {this.canSubmit() && !this.props.isShowingAnswer && (this.props.selectedInvestment || this.props.useWallet) && (
                   <CSSTransitionGroup
                     transitionAppear={true}
                     transitionAppearTimeout={200}
