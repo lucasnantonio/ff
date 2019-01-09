@@ -185,11 +185,11 @@ class Index extends Component {
     this.setState({ studyCases: updatedStudyCases });
   };
 
-  handleStudyCaseWallet = (e, studyCaseLabel) => {
-    const { id, value } = e.target;
+  handleStudyCaseWallet = (e, floatValue, studyCaseLabel) => {
+    const { id } = e.target;
     const studyCases = this.state.studyCases.map((item) => {
       if (item.label === studyCaseLabel || (item.label === 'optimized' && 'myWallet' in item)) {
-        const myWallet = { ...item.myWallet, [id]: parseFloat(value) };
+        const myWallet = { ...item.myWallet, [id]: parseFloat(floatValue) };
         return {
           ...item,
           myWallet,
@@ -308,9 +308,9 @@ class Index extends Component {
     this.setState({ [id]: checked });
   }
 
-  handleWalletInput = (event) => {
-    const { id, value } = event.target;
-    const myWallet = { ...this.state.myWallet, [id]: parseFloat(value) };
+  handleWalletInput = (event, floatValue) => {
+    const { id } = event.target;
+    const myWallet = { ...this.state.myWallet, [id]: parseFloat(floatValue) };
     this.setState({ myWallet });
   }
 

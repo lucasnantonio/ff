@@ -4,8 +4,8 @@ import RetirementChart from '../RetirementChart';
 import InputField from '../InputField';
 
 const ChangeInvestmetTip = ({
-  studyCase, studyCaseResults, handleInput,
-  currentRetirementAge, myInvestments, retirementResults,
+  studyCase, studyCaseResults, handleInput, currentRetirementAge,
+  retirementResults,
 }) => (
     <div>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
@@ -20,7 +20,7 @@ const ChangeInvestmetTip = ({
             value={studyCase.myWallet[key]}
             id={key}
             label={key}
-            handleInput={e => handleInput(e, studyCase.label)}
+            handleInput={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
             // setFocusedInput={this.props.setFocusedInput}
             suffix={''}
             hideFeedback
