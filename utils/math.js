@@ -5,6 +5,13 @@ export function toCurrency(value) {
   return (`R$ ${Number(value).toFixed(2)}`);
 }
 
+function filterIntegerAge(timeHistory, retirementAge) {
+  // too many data points slows down the app.
+  return timeHistory.filter(
+    point => point.x === parseInt(point.x) || point.x === retirementAge / 12,
+  );
+}
+
 function getLifeEventLog(age, lifeEvents, balance) {
   const lifeEventCost = fin.getLifeEventCost(age, lifeEvents);
 
@@ -98,7 +105,7 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
   }
 
   return {
-    timeHistory: chartData,
+    timeHistory: filterIntegerAge(chartData, retirementAge),
     retirement: {
       age: retirementAge,
       balance: retirementBalance,
