@@ -204,6 +204,7 @@ class InputContainer extends Component {
                       handleInput={this.props.handleWalletInput}
                       setFocusedInput={this.props.setFocusedInput}
                       suffix={''}
+                      hideFeedback
                     />
                   ))
                 }

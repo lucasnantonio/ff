@@ -23,6 +23,7 @@ const ChangeInvestmetTip = ({
             handleInput={e => handleInput(e, studyCase.label)}
             // setFocusedInput={this.props.setFocusedInput}
             suffix={''}
+            hideFeedback
           />
       ))
       }
