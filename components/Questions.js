@@ -192,8 +192,8 @@ class InputContainer extends Component {
                   />
                   Tenho uma carteira diversificada
                 </label>
-                {
-                  Object.keys(this.props.myWallet).map((key, index) => (
+                { this.props.useWallet
+                  && Object.keys(this.props.myWallet).map((key, index) => (
                     <InputField
                       key={index}
                       isPercentage
@@ -203,6 +203,7 @@ class InputContainer extends Component {
                       label={key}
                       handleInput={this.props.handleWalletInput}
                       setFocusedInput={this.props.setFocusedInput}
+                      suffix={''}
                     />
                   ))
                 }
@@ -309,6 +310,7 @@ class InputContainer extends Component {
                   handleInput={this.props.handleInvestmentRateInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
+                  suffix={'ao ano'}
                 />
               ))}
               <InputField

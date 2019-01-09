@@ -152,6 +152,8 @@ function prioritizeStudyCase(studyCase, state, id, float = true) {
 }
 
 export function getStudyCasesResults(state) {
+  if (!state.selectedInvestment) return false;
+
   return state.studyCases.map((studyCase) => {
     const currentBalance = prioritizeStudyCase(studyCase, state, 'myCurrentBalance');
     const savings = prioritizeStudyCase(studyCase, state, 'myCurrentMonthlySavings');
@@ -161,18 +163,11 @@ export function getStudyCasesResults(state) {
 
     const annualSavingsIncreaseRate = prioritizeStudyCase(studyCase, state, 'annualSavingsIncreaseRate', false);
     const leaveHeritage = prioritizeStudyCase(studyCase, state, 'leaveHeritage', false);
-    const { lifeEvents } = state;
+    const { lifeEvents, myWallet, myInvestments } = state;
     const { label } = studyCase;
 
-    if (state.myInvestments.filter(i => i.isSelected).length === 0) return false;
-
-    let rate;
-    const selectedRate = state.myInvestments.filter(i => i.isSelected)[0].rate;
-    if (studyCase.selectedInvestment === undefined) {
-      rate = selectedRate;
-    } else {
-      rate = state.myInvestments.filter(i => i.label === studyCase.selectedInvestment)[0].rate;
-    }
+    const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);
+    const rate = rates.reduce((a, b) => a + b, 0);
 
     return [
       label,

@@ -138,11 +138,6 @@ class Index extends Component {
         if (key === 'label') {
           return { [key]: item[key] };
         }
-
-        if (key === 'selectedInvestment') {
-          return { [key]: this.state.myInvestments.filter(i => i.isSelected)[0].label };
-        }
-
         return { [key]: this.state[key] };
       }))
     ));
@@ -215,19 +210,20 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
 
-    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected)[0];
-
-    const myWallet = Object.assign(
-      {},
-      ...Object.keys(this.state.myWallet).map(key => (
-        { [key]: key === selectedInvestment.label ? 100 : 0 }
-      )),
-    );
+    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected);
+    if (selectedInvestment.length > 0) {
+      const myWallet = Object.assign(
+        {},
+        ...Object.keys(this.state.myWallet).map(key => (
+          { [key]: key === selectedInvestment[0].label ? 100 : 0 }
+        )),
+      );
+      this.setState({ myWallet });
+    }
 
     this.setState({
       myInvestments: ressetedInvestment,
       selectedInvestment: true,
-      myWallet,
     });
 
     const investmentTip = document.getElementById('investmentTip');
@@ -298,7 +294,7 @@ class Index extends Component {
 
   handleCheckbox = (event) => {
     const { id, checked } = event.target;
-    this.setState({ [id]: checked });
+    this.setState({ [id]: checked, selectedInvestment: checked });
   }
 
   handleWalletInput = (event) => {

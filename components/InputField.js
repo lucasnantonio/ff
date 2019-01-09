@@ -130,7 +130,7 @@ class InputField extends Component {
                   placeholder={this.props.placeholder}
                   onChange={this.handleInput}
                 />
-                {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
+                {(this.props.isPercentage) && <div className="nowrap">{`% ${this.props.suffix}`}</div>}
               </div>
             ) : (
               <IntlCurrencyInput

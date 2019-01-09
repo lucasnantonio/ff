@@ -159,7 +159,7 @@ class PigFeedback extends Component {
             {this.getFeedback(this.props.id)}
           </p>
         )}
-        {this.props.hasSelectedInvestment && this.state.render && (
+        {this.props.investmentOptions !== undefined && this.props.investmentOptions.filter(i => i.isSelected).length > 0 && this.state.render && (
           <p
             id="investmentTip"
             style={{
