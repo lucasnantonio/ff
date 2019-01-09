@@ -170,7 +170,8 @@ export function getStudyCasesResults(state) {
 
     const annualSavingsIncreaseRate = prioritizeStudyCase(studyCase, state, 'annualSavingsIncreaseRate', false);
     const leaveHeritage = prioritizeStudyCase(studyCase, state, 'leaveHeritage', false);
-    const { lifeEvents, myWallet, myInvestments } = state;
+    const myWallet = prioritizeStudyCase(studyCase, state, 'myWallet', false);
+    const { lifeEvents, myInvestments } = state;
     const { label } = studyCase;
 
     const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);

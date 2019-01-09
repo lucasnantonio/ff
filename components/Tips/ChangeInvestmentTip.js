@@ -1,6 +1,7 @@
 import React from 'react';
 import { formatAge, toCurrency } from '../../utils/math';
 import RetirementChart from '../RetirementChart';
+import InputField from '../InputField';
 
 const ChangeInvestmetTip = ({
   studyCase, studyCaseResults, handleInput,
@@ -10,39 +11,22 @@ const ChangeInvestmetTip = ({
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
       <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
       <p>E se você tentasse investir em outras aplicações?</p>
-      <label>
-        <input
-          id={'selectedInvestment'}
-          type="radio"
-          name="selectedInvestment"
-          value="poupança"
-          checked={studyCase.selectedInvestment === 'poupança'}
-          onChange={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
-        />
-          poupança
-      </label>
-      <label>
-        <input
-          id={'selectedInvestment'}
-          type="radio"
-          name="selectedInvestment"
-          value="renda fixa"
-          checked={studyCase.selectedInvestment === 'renda fixa'}
-          onChange={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
-        />
-          renda fixa
-      </label>
-      <label>
-        <input
-          id={'selectedInvestment'}
-          type="radio"
-          name="selectedInvestment"
-          value="renda variável"
-          checked={studyCase.selectedInvestment === 'renda variável'}
-          onChange={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
-        />
-          renda variável
-      </label>
+
+      { Object.keys(studyCase.myWallet).map((key, index) => (
+          <InputField
+            key={index}
+            isPercentage
+            dataType="rate"
+            value={studyCase.myWallet[key]}
+            id={key}
+            label={key}
+            handleInput={e => handleInput(e, studyCase.label)}
+            // setFocusedInput={this.props.setFocusedInput}
+            suffix={''}
+          />
+      ))
+      }
+
       <RetirementChart
         primaryData={studyCaseResults}
         secondaryData={retirementResults[0]}

@@ -67,6 +67,7 @@ class Index extends Component {
         },
         {
           label: 'changeSelectedInvestment',
+          myWallet: undefined,
         },
         {
           label: 'changeCurrentAge',
@@ -78,6 +79,7 @@ class Index extends Component {
           myCurrentBalance: undefined,
           leaveHeritage: undefined,
           myCurrentAge: undefined,
+          myWallet: undefined,
         },
       ],
       lifeEvents: [{}],
@@ -186,6 +188,21 @@ class Index extends Component {
 
     this.setState({ studyCases: updatedStudyCases });
   };
+
+  handleStudyCaseWallet = (e, studyCaseLabel) => {
+    const { id, value } = e.target;
+    const studyCases = this.state.studyCases.map((item) => {
+      if (item.label === studyCaseLabel || (item.label === 'optimized' && 'myWallet' in item)) {
+        const myWallet = { ...item.myWallet, [id]: parseFloat(value) };
+        return {
+          ...item,
+          myWallet,
+        };
+      }
+      return item;
+    });
+    this.setState({ studyCases });
+  }
 
   handleInvestmentRateInput = (e) => {
     const { id, value } = e.target;
@@ -340,7 +357,7 @@ class Index extends Component {
                   retirementResults={this.state.retirementResults}
                   isCurrency
                 />
-                {/* <GeneralInputTip
+                <GeneralInputTip
                   id={'myCurrentBalance'}
                   label={'E se você não tivesse nada guardado?'}
                   text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
@@ -363,7 +380,7 @@ class Index extends Component {
                 <ChangeInvestmentTip
                   studyCase={getObjectByLabel(this.state.studyCases, 'changeSelectedInvestment')}
                   studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'changeSelectedInvestment')}
-                  handleInput={this.handleStudyCaseInput}
+                  handleInput={this.handleStudyCaseWallet}
                   currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                   myInvestments={this.state.myInvestments}
                   retirementResults={this.state.retirementResults}
@@ -384,7 +401,7 @@ class Index extends Component {
                   retirementResults={this.state.retirementResults}
                   currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
                   myInvestments={this.state.myInvestments}
-                /> */}
+                />
               </div>
           </div>
         )}
