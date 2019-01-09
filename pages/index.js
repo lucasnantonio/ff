@@ -5,15 +5,11 @@ import Questions from '../components/Questions';
 import Answer from '../components/Answer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import { getRetirementResults, getStudyCasesResults } from '../utils/math';
-import { isNumber } from '../utils/input';
-import { getObjectByLabel, getResultsByLabel } from '../utils/utils';
+import TipsContainer from '../components/TipsContainer';
 import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
-import GeneralInputTip from '../components/Tips/GeneralInputTip';
-import LeaveHeritageTip from '../components/Tips/LeaveHeritageTip';
-import ChangeInvestmentTip from '../components/Tips/ChangeInvestmentTip';
-import OptimizedCase from '../components/Tips/OptimizedCase';
+import { getRetirementResults, getStudyCasesResults } from '../utils/math';
+import { isNumber } from '../utils/input';
 
 class Index extends Component {
   constructor(props) {
@@ -336,73 +332,15 @@ class Index extends Component {
         ) : (
           <div>
             <Answer {...this.state} />
-          </div>
-        )}
-
-        {this.state.isShowingAnswer && (
-          <div style={{ backgroundColor: colors.lightGreen }} >
-            <div
-              className={'mw7-ns ph0-l ph4 center'}
-              >
-                <h2>Veja como melhorar o seu resultado:</h2>
-                <GeneralInputTip
-                  id={'myCurrentMonthlySavings'}
-                  label={'E se você aumentasse as suas economias?'}
-                  text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina. Já imaginou se você conseguisse poupar mais ou aumentar a sua renda?'}
-                  studyCase={getObjectByLabel(this.state.studyCases, 'changeMonthlySavings')}
-                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'changeMonthlySavings')}
-                  handleInput={this.handleStudyCaseInput}
-                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                  myInvestments={this.state.myInvestments}
-                  retirementResults={this.state.retirementResults}
-                  isCurrency
-                />
-                <GeneralInputTip
-                  id={'myCurrentBalance'}
-                  label={'E se você não tivesse nada guardado?'}
-                  text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
-                  studyCase={getObjectByLabel(this.state.studyCases, 'changeCurrentBalance')}
-                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'changeCurrentBalance')}
-                  handleInput={this.handleStudyCaseInput}
-                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                  myInvestments={this.state.myInvestments}
-                  retirementResults={this.state.retirementResults}
-                  isCurrency
-                />
-                <LeaveHeritageTip
-                  studyCase={getObjectByLabel(this.state.studyCases, 'changeLeaveHeritage')}
-                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'changeLeaveHeritage')}
-                  handleInput={this.handleStudyCaseInput}
-                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                  myInvestments={this.state.myInvestments}
-                  retirementResults={this.state.retirementResults}
-                />
-                <ChangeInvestmentTip
-                  studyCase={getObjectByLabel(this.state.studyCases, 'changeSelectedInvestment')}
-                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'changeSelectedInvestment')}
-                  handleInput={this.handleStudyCaseWallet}
-                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                  myInvestments={this.state.myInvestments}
-                  retirementResults={this.state.retirementResults}
-                />
-                <GeneralInputTip
-                  id={'myCurrentAge'}
-                  label={'Veja o que acontece se você mudar a sua idade.'}
-                  text={'Quanto antes você começar, mais cedo você vai atingir a tranquilidade financeira.'}
-                  studyCase={getObjectByLabel(this.state.studyCases, 'changeCurrentAge')}
-                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'changeCurrentAge')}
-                  handleInput={this.handleStudyCaseInput}
-                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                  myInvestments={this.state.myInvestments}
-                  retirementResults={this.state.retirementResults}
-                />
-                <OptimizedCase
-                  studyCaseResults={getResultsByLabel(this.state.studyCasesResults, 'optimized')}
-                  retirementResults={this.state.retirementResults}
-                  currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
-                  myInvestments={this.state.myInvestments}
-                />
-              </div>
+            <TipsContainer
+              handleStudyCaseInput={this.handleStudyCaseInput}
+              handleStudyCaseWallet={this.handleStudyCaseWallet}
+              myInvestments={this.state.myInvestments}
+              studyCases={this.state.studyCases}
+              retirementResults={this.state.retirementResults}
+              studyCasesResults={this.state.studyCasesResults}
+              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+            />
           </div>
         )}
 
