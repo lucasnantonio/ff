@@ -321,6 +321,7 @@ class InputContainer extends Component {
                 id="annualSavingsIncreaseRate"
                 label="Quanto você acha que sua renda vai aumentar ao ano?"
                 handleInput={this.props.handleInput}
+                suffix={'ao ano'}
               />
               <button
                 className="mt4 pa3 relative bg-white hover-bg-black hover-white br-pill pointer"
