@@ -263,7 +263,6 @@ class InputContainer extends Component {
                     age: 0,
                     cost: 0,
                   }}
-                  myInvestments={this.props.myInvestments}
                   retirementResults={this.props.retirementResults}
                   handleTableInput={this.props.handleTableInput}
                   handleAddTableRow={this.props.handleAddTableRow}

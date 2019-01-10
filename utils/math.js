@@ -129,7 +129,7 @@ export function getRetirementResults(state) {
   const rate = rates.reduce((a, b) => a + b, 0);
 
   return [[
-    'teste',
+    'myRetirement', // Temp
     getRetirementData(
       fin.annualToMonthly(parseFloat(rate) / 100),
       currentBalance,

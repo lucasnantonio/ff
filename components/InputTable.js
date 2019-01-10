@@ -7,22 +7,15 @@ class InputTable extends Component {
       id,
       table,
       fields,
-      myInvestments,
       retirementResults,
       handleTableInput,
       handleAddTableRow,
       handleRemoveTableRow,
     } = this.props;
 
-    const selectedInvestment = myInvestments.filter(investment => investment.isSelected);
+    if (!retirementResults) return null;
 
-    if (selectedInvestment.length === 0) return null;
-
-    const selectedInvestmentLabel = selectedInvestment[0].label;
-
-    const { events } = retirementResults.filter(
-      investment => investment[0] === selectedInvestmentLabel,
-    )[0][1];
+    const { events } = retirementResults[0][1];
 
     return (
       <div>
