@@ -8,7 +8,7 @@ export function toCurrency(value) {
 function filterIntegerAge(timeHistory, retirementAge) {
   // too many data points slows down the app.
   return timeHistory.filter(
-    point => point.x === parseInt(point.x) || point.x === retirementAge / 12,
+    point => point.x === Math.floor(point.x) || point.x === retirementAge / 12,
   );
 }
 
@@ -58,7 +58,7 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
   // before retirement
 
   if (!leaveHeritage) {
-    [retirementAge, retirementBalance] = fin.retirementAge(
+    [retirementAge, retirementBalance] = fin.getRetirementAge(
       mIR, balance, initialSavings, savingsIncrease, retirementIncome, currentAge,
       lifeExpectancy, lifeEvents,
     );
@@ -195,7 +195,7 @@ export function getStudyCasesResults(state) {
 }
 
 export function formatAge(ageInMonths) {
-  const y = parseInt(ageInMonths / 12);
-  const m = parseInt(ageInMonths - y * 12);
+  const y = Math.floor(ageInMonths / 12);
+  const m = Math.floor(ageInMonths - y * 12);
   return [y, m];
 }

@@ -3,6 +3,7 @@ module.exports = {
   parser: 'babel-eslint',
   rules: {
     'react/prop-types': 0,
+    "linebreak-style": 0
   },
   plugins: ['jsx-a11y'],
   env: {

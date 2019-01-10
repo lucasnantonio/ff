@@ -138,7 +138,7 @@ class Index extends Component {
       }))
     ));
     this.setState({ studyCases });
-  };
+  };  
 
   handleBack = () => {
     this.setState({ isShowingAnswer: false, isShowingIntro: true });

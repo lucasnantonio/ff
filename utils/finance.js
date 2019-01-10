@@ -2,20 +2,12 @@ export function annualToMonthly(annualRate) {
   return (1 + annualRate) ** (1 / 12) - 1;
 }
 
-function NPER(rate, payment, present, future, type) {
-  // Initialize type
-  var type = (typeof type === 'undefined') ? 0 : type;
-
-  // Initialize future value
-  var future = (typeof future === 'undefined') ? 0 : future;
-
-  // Evaluate rate and periods (TODO: replace with secure expression evaluator)
-  rate = eval(rate);
-
-  // Return number of periods
-  const num = payment * (1 + rate * type) - future * rate;
-  const den = (present * rate + payment * (1 + rate * type));
-  return Math.log(num / den) / Math.log(1 + rate);
+function NPER(rate, payment, present) {
+  // NPER simplified formula. Return number of periods
+  if (rate === 0) {
+    return -present / payment;
+  }
+  return Math.log(payment / (present * rate + payment)) / Math.log(1 + rate);
 }
 
 export function getLifeEventCost(age, lifeEvents) {
@@ -27,10 +19,10 @@ export function getLifeEventCost(age, lifeEvents) {
   return 0;
 }
 
-export function retirementAge(iR, balance, initialSavings, savingsIncrease,
+export function getRetirementAge(iR, currentBalance, initialSavings, savingsIncrease,
   retirementIncome, currentAge, lifeExpectancy, lifeEvents = []) {
   /* all variables must be in the same time unit (montly, annual, ...) */
-  let t = 0;
+  let balance = currentBalance;
   let retirementAge = currentAge;
   let savings = initialSavings;
   let eventCost;
@@ -50,7 +42,6 @@ export function retirementAge(iR, balance, initialSavings, savingsIncrease,
     }
 
     savings *= (1 + savingsIncrease);
-    t += 1;
     retirementAge += 1;
   }
 
