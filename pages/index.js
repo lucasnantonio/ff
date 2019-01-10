@@ -138,7 +138,7 @@ class Index extends Component {
       }))
     ));
     this.setState({ studyCases });
-  };  
+  };
 
   handleBack = () => {
     this.setState({ isShowingAnswer: false, isShowingIntro: true });
@@ -254,7 +254,7 @@ class Index extends Component {
         if (idx === pidx) {
           return {
             ...row,
-            [field]: value,
+            [field]: textField ? value : parseFloat(value),
           };
         }
         return row;

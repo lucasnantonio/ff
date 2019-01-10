@@ -1,5 +1,5 @@
 export function annualToMonthly(annualRate) {
-  return (1 + annualRate) ** (1 / 12) - 1;
+  return ((1 + annualRate) ** (1 / 12)) - 1;
 }
 
 function NPER(rate, payment, present) {
@@ -11,12 +11,11 @@ function NPER(rate, payment, present) {
 }
 
 export function getLifeEventCost(age, lifeEvents) {
-  for (const e of lifeEvents) {
-    if (parseFloat(e.age) * 12 === age) {
-      return parseFloat(e.cost);
-    }
-  }
-  return 0;
+  const events = lifeEvents.filter(e => parseFloat(e.age) * 12 === age);
+
+  if (events.length === 0) return 0;
+
+  return parseFloat(events[0].cost);
 }
 
 export function getRetirementAge(iR, currentBalance, initialSavings, savingsIncrease,
@@ -44,6 +43,4 @@ export function getRetirementAge(iR, currentBalance, initialSavings, savingsIncr
     savings *= (1 + savingsIncrease);
     retirementAge += 1;
   }
-
-  return [null, null];
 }
