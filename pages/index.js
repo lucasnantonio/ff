@@ -262,13 +262,13 @@ class Index extends Component {
     logEvent('User', 'clicked reset taxas');
   };
 
-  handleCheckbox = (event) => {
-    const { id, checked } = event.target;
+  handleCheckbox = (e) => {
+    const { id, checked } = e.target;
     this.setState({ [id]: checked });
   }
 
-  handleWalletInput = (event, floatValue) => {
-    const { id } = event.target;
+  handleWalletInput = (e, floatValue) => {
+    const { id } = e.target;
     const value = floatValue === '' ? 0 : parseFloat(floatValue);
     const myWallet = { ...this.state.myWallet, [id]: value };
     this.setState({ myWallet });
@@ -278,9 +278,9 @@ class Index extends Component {
     this.setState({ focusedInput: inputId });
   };
 
-  handleTableInput = (idx, tableName, table, textField = false) => (event) => {
-    const { value } = event.target;
-    const field = event.target.id;
+  handleTableInput = (idx, tableName, table, textField = false) => (e) => {
+    const { value } = e.target;
+    const field = e.target.id;
 
     if (isNumber(value) || textField) {
       const updatedTable = table.map((row, pidx) => {
