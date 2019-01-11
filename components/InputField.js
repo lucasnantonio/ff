@@ -38,8 +38,8 @@ class InputField extends Component {
   }
 
   handleInput(e) {
-    const { id, value } = e.target;
-    this.props.handleInput(e, value === '' ? 0 : value);
+    const { value } = e.target;
+    this.props.handleInput(e, value);
     this.setState({
       hasBeenChanged: true,
     });

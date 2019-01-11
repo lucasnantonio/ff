@@ -9,7 +9,15 @@ import TipsContainer from '../components/TipsContainer';
 import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
-import { isNumber } from '../utils/input';
+import { isNumber, valueByInputType } from '../utils/input';
+
+function getRates(label) {
+  return {
+    poupança: 1.5,
+    'renda fixa': 4.5,
+    'renda variável': 7.0,
+  }[label];
+}
 
 class Index extends Component {
   constructor(props) {
@@ -34,17 +42,17 @@ class Index extends Component {
       myInvestments: [
         {
           label: 'poupança',
-          rate: 1.5,
+          rate: getRates('poupança'),
           isSelected: false,
         },
         {
           label: 'renda fixa',
-          rate: 4.5,
+          rate: getRates('renda fixa'),
           isSelected: false,
         },
         {
           label: 'renda variável',
-          rate: 7.0,
+          rate: getRates('renda variável'),
           isSelected: false,
         },
       ],
@@ -82,7 +90,6 @@ class Index extends Component {
       retirementResults: false,
       studyCasesResults: false,
       focusedInput: '',
-
     };
   }
 
@@ -115,6 +122,7 @@ class Index extends Component {
       isShowingAnswer: false,
       isShowingQuestions: false,
       selectedInvestment: false,
+      useWallet: false,
     });
   };
 
@@ -144,9 +152,9 @@ class Index extends Component {
     this.setState({ isShowingAnswer: false, isShowingIntro: true });
   };
 
-  handleCurrencyInput = (e, floatValue) => {
+  handleInput = (e, value) => {
     const { id } = e.target;
-    this.setState({ [id]: floatValue });
+    this.setState({ [id]: value === '' ? 0 : parseFloat(value) });
   };
 
   handleInputButtons = (e) => {
@@ -156,33 +164,23 @@ class Index extends Component {
     this.setState({ [parentId]: parseFloat(parentValue) });
   };
 
-  handleInput = (e, floatValue) => {
-    const { id } = e.target;
-    this.setState({ [id]: parseFloat(floatValue) });
-  };
-
   handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
     const {
       id, type, checked, value,
     } = e.target;
 
-    const updatedStudyCases = this.state.studyCases.map((item) => {
+    const studyCases = this.state.studyCases.map((item) => {
       if (item.label === studyCaseLabel || (item.label === 'optimized' && id in item)) {
-        if (type === 'radio') {
-          return {
-            ...item,
-            [id]: value,
-          };
-        }
+        // optimized case will mirror the other study cases values
         return {
           ...item,
-          [id]: type === 'checkbox' ? checked : parseFloat(floatValue),
+          [id]: valueByInputType(type, floatValue, value, checked),
         };
       }
       return item;
     });
 
-    this.setState({ studyCases: updatedStudyCases });
+    this.setState({ studyCases });
   };
 
   handleStudyCaseWallet = (e, floatValue, studyCaseLabel) => {
@@ -202,7 +200,7 @@ class Index extends Component {
 
   handleInvestmentRateInput = (e) => {
     const { id, value } = e.target;
-    const updateMyInvestments = this.state.myInvestments.map((item) => {
+    const myInvestments = this.state.myInvestments.map((item) => {
       if (item.label === id) {
         return {
           ...item,
@@ -211,18 +209,20 @@ class Index extends Component {
       }
       return item;
     });
-    this.setState({ myInvestments: updateMyInvestments });
+    this.setState({ myInvestments });
   };
 
   handleInvestmentSelector = (e, index) => {
     const investmentsState = this.state.myInvestments;
-    const ressetedInvestment = investmentsState.map((item, itemIndex) => ({
+    const myInvestments = investmentsState.map((item, itemIndex) => ({
       ...item,
       isSelected: index === itemIndex,
     }));
 
-    const selectedInvestment = ressetedInvestment.filter(i => i.isSelected);
+    const selectedInvestment = myInvestments.filter(i => i.isSelected);
     if (selectedInvestment.length > 0) {
+      // if some investment option is selected, allocate 100% in that investment
+      // and 0 % for the others
       const myWallet = Object.assign(
         {},
         ...Object.keys(this.state.myWallet).map(key => (
@@ -233,7 +233,7 @@ class Index extends Component {
     }
 
     this.setState({
-      myInvestments: ressetedInvestment,
+      myInvestments,
       selectedInvestment: true,
     });
 
@@ -283,23 +283,12 @@ class Index extends Component {
   };
 
   handleResetRates = () => {
-    const { myInvestments } = this.state;
-
-    const rates = {
-      poupança: 1.5,
-      'renda fixa': 4.5,
-      'renda variável': 7.0,
-    };
-
-    const reseted = myInvestments.map(investment => ({
+    const myInvestments = this.state.myInvestments.map(investment => ({
       ...investment,
-      rate: rates[investment.label],
+      rate: getRates(investment.label),
     }));
 
-    this.setState({ myInvestments: reseted });
-    this.setState(prevState => ({
-      retirementResults: getRetirementResults({ ...prevState, myInvestments: reseted }),
-    }));
+    this.setState({ myInvestments });
     logEvent('User', 'clicked reset taxas');
   };
 
@@ -318,10 +307,6 @@ class Index extends Component {
     this.setState({ focusedInput: inputId });
   };
 
-  getSelectedInvestmentRetirementData() {
-    return this.state.retirementResults[0][1];
-  }
-
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
@@ -339,7 +324,7 @@ class Index extends Component {
               studyCases={this.state.studyCases}
               retirementResults={this.state.retirementResults}
               studyCasesResults={this.state.studyCasesResults}
-              currentRetirementAge={this.getSelectedInvestmentRetirementData().retirement.age}
+              currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
             /> */}
           </div>
         )}

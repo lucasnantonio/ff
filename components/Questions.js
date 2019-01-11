@@ -150,7 +150,7 @@ class InputContainer extends Component {
                   placeholder={this.props.myCurrentBalance}
                   value={this.props.myCurrentBalance}
                   id="myCurrentBalance"
-                  handleInput={this.props.handleCurrencyInput}
+                  handleInput={this.props.handleInput}
                   acceptZero
                 />
                 <InputField
@@ -159,7 +159,7 @@ class InputContainer extends Component {
                   id="myCurrentMonthlySavings"
                   placeholder={this.props.myCurrentMonthlySavings}
                   value={this.props.myCurrentMonthlySavings}
-                  handleInput={this.props.handleCurrencyInput}
+                  handleInput={this.props.handleInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
                   acceptZero
@@ -170,7 +170,7 @@ class InputContainer extends Component {
                   id="myRetirementIncome"
                   placeholder={this.props.myRetirementIncome}
                   value={this.props.myRetirementIncome}
-                  handleInput={this.props.handleCurrencyInput}
+                  handleInput={this.props.handleInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
                 />
