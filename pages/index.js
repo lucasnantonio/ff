@@ -86,7 +86,11 @@ class Index extends Component {
         //   myWallet: undefined,
         // },
       ],
-      lifeEvents: [{}],
+      lifeEvents: [{
+        label: '',
+        age: 0,
+        cost: 0,
+      }],
       retirementResults: false,
       studyCasesResults: false,
       focusedInput: '',
