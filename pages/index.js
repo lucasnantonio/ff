@@ -117,6 +117,11 @@ class Index extends Component {
     }
   }
 
+  startApp = () => {
+    this.setState({ isShowingQuestions: true });
+    logEvent('User', 'clicked start');
+  };
+
   resetApp = () => {
     this.setState({
       isShowingAnswer: false,
@@ -126,16 +131,7 @@ class Index extends Component {
     });
   };
 
-  startApp = () => {
-    this.setState({ isShowingQuestions: true });
-    logEvent('User', 'clicked start');
-  };
-
-  handleShowAnswer = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    this.setState({ isShowingAnswer: true });
-    logEvent('User', 'clicked calculate');
-
+  assembleStudyCases() {
     // update studyCases with user input
     const studyCases = this.state.studyCases.map(item => (
       Object.assign({}, ...Object.keys(item).map((key) => {
@@ -146,6 +142,13 @@ class Index extends Component {
       }))
     ));
     this.setState({ studyCases });
+  }
+
+  handleShowAnswer = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    this.setState({ isShowingAnswer: true });
+    this.assembleStudyCases();
+    logEvent('User', 'clicked calculate');
   };
 
   handleBack = () => {
@@ -212,6 +215,18 @@ class Index extends Component {
     this.setState({ myInvestments });
   };
 
+  assembleMyWallet(selectedInvestmentLabel) {
+    // if some investment option is selected, allocate 100% in that investment
+    // and 0 % for the others
+    const myWallet = Object.assign(
+      {},
+      ...Object.keys(this.state.myWallet).map(key => (
+        { [key]: key === selectedInvestmentLabel ? 100 : 0 }
+      )),
+    );
+    this.setState({ myWallet });
+  }
+
   handleInvestmentSelector = (e, index) => {
     const investmentsState = this.state.myInvestments;
     const myInvestments = investmentsState.map((item, itemIndex) => ({
@@ -221,15 +236,7 @@ class Index extends Component {
 
     const selectedInvestment = myInvestments.filter(i => i.isSelected);
     if (selectedInvestment.length > 0) {
-      // if some investment option is selected, allocate 100% in that investment
-      // and 0 % for the others
-      const myWallet = Object.assign(
-        {},
-        ...Object.keys(this.state.myWallet).map(key => (
-          { [key]: key === selectedInvestment[0].label ? 100 : 0 }
-        )),
-      );
-      this.setState({ myWallet });
+      this.assembleMyWallet(selectedInvestment[0].label);
     }
 
     this.setState({
@@ -243,6 +250,32 @@ class Index extends Component {
     }
 
     logEvent('User', 'Selected Investment');
+  };
+
+  handleResetRates = () => {
+    const myInvestments = this.state.myInvestments.map(investment => ({
+      ...investment,
+      rate: getRates(investment.label),
+    }));
+
+    this.setState({ myInvestments });
+    logEvent('User', 'clicked reset taxas');
+  };
+
+  handleCheckbox = (event) => {
+    const { id, checked } = event.target;
+    this.setState({ [id]: checked });
+  }
+
+  handleWalletInput = (event, floatValue) => {
+    const { id } = event.target;
+    const value = floatValue === '' ? 0 : parseFloat(floatValue);
+    const myWallet = { ...this.state.myWallet, [id]: value };
+    this.setState({ myWallet });
+  }
+
+  setFocusedInput = (inputId) => {
+    this.setState({ focusedInput: inputId });
   };
 
   handleTableInput = (idx, tableName, table, textField = false) => (event) => {
@@ -280,31 +313,6 @@ class Index extends Component {
       retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
     }));
     logEvent('User', 'removed life event');
-  };
-
-  handleResetRates = () => {
-    const myInvestments = this.state.myInvestments.map(investment => ({
-      ...investment,
-      rate: getRates(investment.label),
-    }));
-
-    this.setState({ myInvestments });
-    logEvent('User', 'clicked reset taxas');
-  };
-
-  handleCheckbox = (event) => {
-    const { id, checked } = event.target;
-    this.setState({ [id]: checked });
-  }
-
-  handleWalletInput = (event, floatValue) => {
-    const { id } = event.target;
-    const myWallet = { ...this.state.myWallet, [id]: parseFloat(floatValue) };
-    this.setState({ myWallet });
-  }
-
-  setFocusedInput = (inputId) => {
-    this.setState({ focusedInput: inputId });
   };
 
   render() {
