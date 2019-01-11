@@ -11,6 +11,20 @@ function toCurrency(number) {
   return `R$ ${currency}`;
 }
 
+function getEventLog(events, lifeEventLabel) {
+  return events.filter(e => e.label === lifeEventLabel)[0];
+}
+
+function getStyle(hasEventLog, eventLog) {
+  if (!hasEventLog) return '';
+
+  if (eventLog.valid) {
+    return '';
+  }
+
+  return '1px solid red';
+}
+
 class InputTable extends Component {
   handleCurrencyInput(e, rowId, id, table) {
     const { value } = e.target;
@@ -32,6 +46,7 @@ class InputTable extends Component {
     if (!retirementResults) return null;
 
     const { events } = retirementResults[0][1];
+
     return (
       <div>
         <table className="w-100">
@@ -45,7 +60,10 @@ class InputTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {table.map((row, rowId) => (
+            {table.map((row, rowId) => {
+              const eventLog = getEventLog(events, row.label);
+              const hasEventLog = eventLog !== undefined;
+              return (
               <tr key={rowId}>
                 <td className="w-third">
                   <input
@@ -77,9 +95,9 @@ class InputTable extends Component {
                 </td>
                 <td
                   className="w-third"
-                  style={{ border: events.length > rowId ? (events[rowId].valid ? '' : '1px solid red') : '' }}
+                  style={{ border: getStyle(hasEventLog, eventLog) }}
                 >
-                  {events.length > rowId ? toCurrency(events[rowId].balance) : 'R$ -'}
+                  {hasEventLog ? toCurrency(eventLog.balance) : 'R$ -'}
                 </td>
                 <td>
                   <button
@@ -90,7 +108,8 @@ class InputTable extends Component {
                   </button>
                 </td>
               </tr>
-            ))}
+              );
+            })}
             <tr>
               <td />
             </tr>

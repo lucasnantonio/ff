@@ -17,7 +17,10 @@ function getLifeEventLog(age, lifeEvents, balance) {
 
   if (lifeEventCost === null) return null;
 
+  const lifeEvent = fin.getLifeEvents(age, lifeEvents)[0];
+
   return {
+    label: lifeEvent.label,
     age: age / 12,
     balance,
     valid: lifeEventCost <= balance,
