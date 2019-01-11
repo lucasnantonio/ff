@@ -89,7 +89,7 @@ class Index extends Component {
       lifeEvents: [{
         label: '',
         age: 0,
-        cost: 0,
+        cost: '0',
       }],
       retirementResults: false,
       studyCasesResults: false,
@@ -282,8 +282,7 @@ class Index extends Component {
     this.setState({ focusedInput: inputId });
   };
 
-  handleTableInput = (idx, tableName, table, textField = false) => (e) => {
-    const { value } = e.target;
+  handleTableInput = (e, value, idx, tableName, table, textField = false) => {
     const field = e.target.id;
 
     if (isNumber(value) || textField) {

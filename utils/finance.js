@@ -13,7 +13,7 @@ function NPER(rate, payment, present) {
 export function getLifeEventCost(age, lifeEvents) {
   const events = lifeEvents.filter(e => parseFloat(e.age) * 12 === age);
 
-  if (events.length === 0) return 0;
+  if (events.length === 0) return null;
 
   return parseFloat(events[0].cost);
 }

@@ -15,24 +15,13 @@ function filterIntegerAge(timeHistory, retirementAge) {
 function getLifeEventLog(age, lifeEvents, balance) {
   const lifeEventCost = fin.getLifeEventCost(age, lifeEvents);
 
-  if (lifeEventCost > 0) {
-    if (lifeEventCost > balance) {
-      return {
-        age: age / 12,
-        balance,
-        valid: false,
-        obs: 'Dinheiro insuficiente. Evento Ignorado.',
-      };
-    }
-    return {
-      age: age / 12,
-      balance,
-      valid: true,
-      obs: '',
-    };
-  }
+  if (lifeEventCost === null) return null;
 
-  return null;
+  return {
+    age: age / 12,
+    balance,
+    valid: lifeEventCost <= balance,
+  };
 }
 
 function getBalanceAfterLifeEvent(age, lifeEvents, balance) {
