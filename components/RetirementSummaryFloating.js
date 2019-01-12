@@ -39,9 +39,7 @@ class RetirementSummaryFloating extends Component {
 
   render() {
     window.onscroll = this.checkVisibility;
-    const { age } = this.props.retirementResults[
-      this.getSelectedInvestmentIndex(this.props.myInvestments)
-    ][1].retirement;
+    const { age } = this.props.retirementResults[0][1].retirement;
     const [y] = formatAge(age);
 
     return (

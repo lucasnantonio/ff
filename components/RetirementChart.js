@@ -29,12 +29,6 @@ class RetirementChart extends Component {
     this.setState({ [retirementIconName]: retirementIcon });
   };
 
-  filterIntegerAge(investmentData) {
-    return investmentData.timeHistory.filter(
-      point => point.x === parseInt(point.x) || point.x === investmentData.retirement.age / 12,
-    );
-  }
-
   async componentDidMount() {
     this.ctx = this.canvas.getContext('2d');
     this.chart = getRetirementChart(this.ctx, this.handleHover);
@@ -42,26 +36,19 @@ class RetirementChart extends Component {
     await this.loadIcon('deathIcon', '../static/death-icon.svg');
     await this.loadIcon('eventValidIcon', '../static/event-icon.svg');
     await this.loadIcon('eventNotValidIcon', '../static/event-not-valid-icon.svg');
-    this.updateChart(this.props.retirementResults);
+
+    this.updateChart(this.props.primaryData, this.props.secondaryData);
   }
 
   componentDidUpdate() {
-    this.updateChart(this.props.retirementResults);
+    this.updateChart(this.props.primaryData, this.props.secondaryData);
   }
 
-  updateChart(retirementResults) {
-    // selected investment
-    const [label, investmentData] = retirementResults.filter(
-      (investment, index) => this.props.myInvestments[index].isSelected,
-    )[0];
-
-    // const otherInvestments = retirementResults.filter(
-    //   (investment, index) => !this.props.myInvestments[index].isSelected,
-    // );
-
-    const selectedInvestmentSet = {
-      label,
-      data: this.filterIntegerAge(investmentData),
+  updateChart(primaryData, secondaryData) {
+    // Primary Set
+    const primarySet = {
+      label: primaryData[0],
+      data: primaryData[1].timeHistory,
       backgroundColor: colors.lightGreen,
       pointRadius: 0,
       borderWidth: 3,
@@ -70,26 +57,12 @@ class RetirementChart extends Component {
       pointHitRadius: 2,
     };
 
-    // const otherInvestmentsSets = otherInvestments.map((investment) => {
-    //   const [otherLabel, otherInvestmentData] = investment;
-    //   return {
-    //     label: otherLabel,
-    //     data: this.filterIntegerAge(otherInvestmentData),
-    //     backgroundColor: 'rgba(0, 0, 0 ,0)',
-    //     pointRadius: 0,
-    //     borderWidth: 1,
-    //     borderColor: 'rgba(255, 255, 255, 0.5)',
-    //     lineTension: 0,
-    //     pointHitRadius: 2,
-    //   };
-    // });
-
     const retirementPoint = {
-      label,
+      label: 'retirementPoint',
       data: [
         {
-          x: investmentData.retirement.age / 12,
-          y: investmentData.retirement.balance,
+          x: primaryData[1].retirement.age / 12,
+          y: primaryData[1].retirement.balance,
         },
       ],
       pointStyle: this.state.retirementIcon,
@@ -98,11 +71,11 @@ class RetirementChart extends Component {
     };
 
     const deathPoint = {
-      label,
+      label: 'deathPoint',
       data: [
         {
-          x: investmentData.timeHistory[investmentData.timeHistory.length - 1].x,
-          y: investmentData.timeHistory[investmentData.timeHistory.length - 1].y,
+          x: primaryData[1].timeHistory[primaryData[1].timeHistory.length - 1].x,
+          y: primaryData[1].timeHistory[primaryData[1].timeHistory.length - 1].y,
         },
       ],
       pointStyle: this.state.deathIcon,
@@ -110,8 +83,8 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     };
 
-    const eventSets = investmentData.events.map(e => ({
-      label,
+    const eventSets = primaryData[1].events.map((e, index) => ({
+      label: `event${index}`,
       data: [
         {
           x: e.age,
@@ -123,15 +96,30 @@ class RetirementChart extends Component {
       borderColor: 'rgba(0, 0, 0, 1)',
     }));
 
-    const minX = Math.min(...selectedInvestmentSet.data.map(v => v.x));
+    // Secondary Set
+    let secondarySet = {};
+    if (secondaryData !== undefined) {
+      secondarySet = {
+        label: secondaryData[0],
+        data: secondaryData[1].timeHistory,
+        backgroundColor: colors.lightGreen,
+        pointRadius: 0,
+        borderWidth: 1,
+        borderColor: colors.redPink,
+        lineTension: 0,
+        pointHitRadius: 2,
+      };
+    }
+
+    const minX = Math.min(...primarySet.data.map(v => v.x));
 
     this.chart.data = {
       datasets: [
         retirementPoint,
         deathPoint,
         ...eventSets,
-        selectedInvestmentSet,
-        // ...otherInvestmentsSets,
+        primarySet,
+        secondarySet,
       ],
     };
 

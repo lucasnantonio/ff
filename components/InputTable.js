@@ -1,28 +1,51 @@
 import React, { Component } from 'react';
 import colors from './Colors';
 
+function fromCurrency(currency) {
+  const number = Number(currency.replace(/[^0-9\,-]+/g, ''));
+  return number;
+}
+
+function toCurrency(number) {
+  const currency = number.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+  return `R$ ${currency}`;
+}
+
+function getEventLog(events, lifeEventLabel) {
+  return events.filter(e => e.label === lifeEventLabel)[0];
+}
+
+function getStyle(eventLog) {
+  if (eventLog === undefined) return '';
+
+  if (eventLog.valid) {
+    return '';
+  }
+
+  return '1px solid red';
+}
+
 class InputTable extends Component {
+  handleCurrencyInput(e, rowId, id, table) {
+    const { value } = e.target;
+
+    this.props.handleTableInput(e, fromCurrency(value), rowId, id, table);
+  }
+
   render() {
     const {
       id,
       table,
       fields,
-      myInvestments,
       retirementResults,
       handleTableInput,
       handleAddTableRow,
       handleRemoveTableRow,
     } = this.props;
 
-    const selectedInvestment = myInvestments.filter(investment => investment.isSelected);
+    if (!retirementResults) return null;
 
-    if (selectedInvestment.length === 0) return null;
-
-    const selectedInvestmentLabel = selectedInvestment[0].label;
-
-    const { events } = retirementResults.filter(
-      investment => investment[0] === selectedInvestmentLabel,
-    )[0][1];
+    const { events } = retirementResults[0][1];
 
     return (
       <div>
@@ -32,42 +55,48 @@ class InputTable extends Component {
               <td>nome do evento</td>
               <td>sua idade</td>
               <td>custo</td>
+              <td>disponível</td>
               <td />
             </tr>
           </thead>
           <tbody>
-            {table.map((row, rowId) => (
+            {table.map((row, rowId) => {
+              const eventLog = getEventLog(events, row.label);
+              return (
               <tr key={rowId}>
-                <td className="w-third">
+                <td className="w-25">
                   <input
                     placeholder="ex. volta ao mundo"
                     className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="label"
                     type="text"
                     value={row.label}
-                    onChange={handleTableInput(rowId, id, table, true)}
+                    onChange={e => handleTableInput(e, e.target.value, rowId, id, table, true)}
                   />
                 </td>
-                <td className="w-third">
+                <td className="w-25">
                   <input
-                    placeholder="35"
                     className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="age"
                     type="number"
                     value={row.age}
-                    onChange={handleTableInput(rowId, id, table)}
+                    onChange={e => handleTableInput(e, e.target.value, rowId, id, table)}
                   />
                 </td>
-                <td className="w-third">
+                <td className="w-25">
                   <input
-                    placeholder="200000"
                     className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="cost"
-                    type="number"
-                    step="10000"
-                    value={row.cost}
-                    onChange={handleTableInput(rowId, id, table)}
+                    type="text"
+                    value={toCurrency(row.cost)}
+                    onChange={e => this.handleCurrencyInput(e, rowId, id, table)}
                   />
+                </td>
+                <td
+                  className="w-25 bg-white"
+                  style={{ border: getStyle(eventLog) }}
+                >
+                  {eventLog !== undefined ? toCurrency(eventLog.balance) : 'R$ -'}
                 </td>
                 <td>
                   <button
@@ -77,9 +106,9 @@ class InputTable extends Component {
                     {'—'}
                   </button>
                 </td>
-                <td>{events.length > rowId ? events[rowId].obs : ''}</td>
               </tr>
-            ))}
+              );
+            })}
             <tr>
               <td />
             </tr>

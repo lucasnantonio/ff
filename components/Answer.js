@@ -34,10 +34,7 @@ class OutPutContainer extends Component {
               </div>
               <div className="w-100">
                 <RetirementChart
-                  lifeEvents={this.props.lifeEvents}
-                  myInvestments={this.props.myInvestments}
-                  myRetirementIncome={this.props.myRetirementIncome}
-                  retirementResults={this.props.retirementResults}
+                  primaryData={this.props.retirementResults[0]}
                 />
               </div>
               <div className="dn-ns dib">

@@ -3,7 +3,16 @@ export function isNumber(value, allowNegative = true) {
     if negative is allowed
   */
   return (
-    (!isNaN(value) && isFinite(value)) ||
-    (value === '' || (allowNegative && value === '-'))
+    (!isNaN(value) && isFinite(value))
+    || (value === '' || (allowNegative && value === '-'))
   );
+}
+
+export function valueByInputType(type, floatValue, value, checked) {
+  if (type === 'radio') {
+    return value;
+  } if (type === 'checkbox') {
+    return checked;
+  }
+  return parseFloat(floatValue);
 }

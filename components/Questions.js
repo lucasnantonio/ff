@@ -75,6 +75,11 @@ class InputContainer extends Component {
     this.setState({ isShowingLifeEventsTable: true });
   };
 
+  getSelectedInvestment = (options) => {
+    const selectedInvestment = options.filter(item => item.isSelected)[0];
+    return selectedInvestment && selectedInvestment.label;
+  };
+
   handleTabChange = (e, index) => {
     const { tabs } = this.state;
     const previousTab = tabs.filter(item => item.isSelected)[0];
@@ -150,7 +155,7 @@ class InputContainer extends Component {
                   placeholder={this.props.myCurrentBalance}
                   value={this.props.myCurrentBalance}
                   id="myCurrentBalance"
-                  handleInput={this.props.handleCurrencyInput}
+                  handleInput={this.props.handleInput}
                   acceptZero
                 />
                 <InputField
@@ -159,7 +164,7 @@ class InputContainer extends Component {
                   id="myCurrentMonthlySavings"
                   placeholder={this.props.myCurrentMonthlySavings}
                   value={this.props.myCurrentMonthlySavings}
-                  handleInput={this.props.handleCurrencyInput}
+                  handleInput={this.props.handleInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
                   acceptZero
@@ -170,38 +175,55 @@ class InputContainer extends Component {
                   id="myRetirementIncome"
                   placeholder={this.props.myRetirementIncome}
                   value={this.props.myRetirementIncome}
-                  handleInput={this.props.handleCurrencyInput}
+                  handleInput={this.props.handleInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
                 />
                 <MultiSelect
                   hasSelectedInvestment={this.props.selectedInvestment}
-                  isEnabled={this.canSubmit()}
+                  isEnabled={this.canSubmit() && !this.props.useWallet}
                   label="Onde você guarda seu dinheiro hoje?"
                   options={this.props.myInvestments}
                   handleClick={this.props.handleInvestmentSelector}
                   hiddenBorder={true}
                 />
-                {this.canSubmit() && !this.props.isShowingAnswer && this.props.selectedInvestment && (
-                  <CSSTransitionGroup
-                    transitionAppear={true}
-                    transitionAppearTimeout={200}
-                    transitionEnterTimeout={200}
-                    transitionLeaveTimeout={200}
-                    component="div"
-                    transitionName="slideInBottom"
-                  >
-                    <button
-                      type="submit"
-                      form="basicquestions"
-                      disabled={!this.canSubmit()}
-                      style={{ backgroundColor: colors.redPink }}
-                      className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
-                      onClick={this.props.handleShowAnswer}
+                {this.getSelectedInvestment(this.props.myInvestments) === 'carteira mista'
+                  && Object.keys(this.props.myWallet).map((key, index) => (
+                    <InputField
+                      key={index}
+                      isPercentage
+                      dataType="rate"
+                      value={this.props.myWallet[key]}
+                      id={key}
+                      label={key}
+                      handleInput={this.props.handleWalletInput}
+                      setFocusedInput={this.props.setFocusedInput}
+                      suffix={''}
+                      hideFeedback
+                    />
+                  ))}
+                {this.canSubmit()
+                  && !this.props.isShowingAnswer
+                  && (this.props.selectedInvestment || this.props.useWallet) && (
+                    <CSSTransitionGroup
+                      transitionAppear={true}
+                      transitionAppearTimeout={200}
+                      transitionEnterTimeout={200}
+                      transitionLeaveTimeout={200}
+                      component="div"
+                      transitionName="slideInBottom"
                     >
-                      Calcular
-                    </button>
-                  </CSSTransitionGroup>
+                      <button
+                        type="submit"
+                        form="basicquestions"
+                        disabled={!this.canSubmit()}
+                        style={{ backgroundColor: colors.redPink }}
+                        className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
+                        onClick={this.props.handleShowAnswer}
+                      >
+                        Calcular
+                      </button>
+                    </CSSTransitionGroup>
                 )}
               </form>
             </div>
@@ -236,7 +258,6 @@ class InputContainer extends Component {
                     age: 0,
                     cost: 0,
                   }}
-                  myInvestments={this.props.myInvestments}
                   retirementResults={this.props.retirementResults}
                   handleTableInput={this.props.handleTableInput}
                   handleAddTableRow={this.props.handleAddTableRow}
@@ -270,8 +291,8 @@ class InputContainer extends Component {
                 apenas se você souber muito bem o que está fazendo.
               </p>
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os cálculos consideram o rendimento REAL de cada aplicação, ou seja, a inflação já
-                deve ser descontada.
+                Os cálculos consideram o rendimento líquido REAL de cada aplicação, ou seja, a
+                inflação já deve ser descontada.
               </p>
               {this.props.myInvestments.map((item, index) => (
                 <InputField
@@ -284,6 +305,7 @@ class InputContainer extends Component {
                   handleInput={this.props.handleInvestmentRateInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
+                  suffix={'ao ano'}
                 />
               ))}
               <InputField
@@ -293,6 +315,7 @@ class InputContainer extends Component {
                 id="annualSavingsIncreaseRate"
                 label="Quanto você acha que sua renda vai aumentar ao ano?"
                 handleInput={this.props.handleInput}
+                suffix={'ao ano'}
               />
               <button
                 className="mt4 pa3 relative bg-white hover-bg-black hover-white br-pill pointer"
@@ -305,6 +328,20 @@ class InputContainer extends Component {
         </CSSTransitionGroup>
         <style jsx>
           {`
+            label {
+              display: inline-block;
+              border: 2px solid ${colors.lightGray2};
+            }
+            input[type='radio']:focus + label {
+              background-color: ${colors.lightGray2};
+            }
+            input[type='radio']:hover + label {
+              background-color: ${colors.lightGray2};
+            }
+            input[type='radio']:checked + label {
+              color: white;
+              background-color: ${colors.darkGreen};
+            }
             .right-to-left-enter {
               transform: translateX(100%);
               opacity: 0;

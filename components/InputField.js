@@ -38,8 +38,8 @@ class InputField extends Component {
   }
 
   handleInput(e) {
-    const { id, value } = e.target;
-    this.props.handleInput(e, value === '' ? 0 : value);
+    const { value } = e.target;
+    this.props.handleInput(e, value);
     this.setState({
       hasBeenChanged: true,
     });
@@ -130,7 +130,7 @@ class InputField extends Component {
                   placeholder={this.props.placeholder}
                   onChange={this.handleInput}
                 />
-                {this.props.isPercentage && <div className="nowrap">% ao ano</div>}
+                {(this.props.isPercentage) && <div className="nowrap">{`% ${this.props.suffix}`}</div>}
               </div>
             ) : (
               <IntlCurrencyInput
@@ -159,7 +159,7 @@ class InputField extends Component {
             )}
           </div>
         </div>
-        {this.state.hasBeenChanged && <PigFeedback id={this.props.id} value={this.props.value} />}
+        {(this.state.hasBeenChanged && !this.props.hideFeedback) && <PigFeedback id={this.props.id} value={this.props.value} />}
       </InputFieldWrapper>
     );
   }
