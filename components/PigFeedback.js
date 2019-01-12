@@ -13,6 +13,8 @@ const feedbacklist = {
       + 'está focado no longo prazo. Não é todo mundo que se sente '
       + 'confortável em ver o dinheiro oscilando todo dia, portanto, é importante '
       + 'checar o seu perfil de investimento.',
+    'carteira mista':
+      'Que bom! Você já diversifica seus investimentos! Ajuste as porcentagens abaixo:',
   },
   poupança: [
     {
@@ -159,18 +161,20 @@ class PigFeedback extends Component {
             {this.getFeedback(this.props.id)}
           </p>
         )}
-        {this.props.investmentOptions !== undefined && this.props.investmentOptions.filter(i => i.isSelected).length > 0 && this.state.render && (
-          <p
-            id="investmentTip"
-            style={{
-              color: colors.darkGreenActive,
-              padding: '2rem 2rem',
-              border: `2px solid ${colors.lightGray2}`,
-            }}
-            className="bg-white pt2 mt4 overflow-hidden br3 f6-ns f7 lh-copy w-100 mb0 measure"
-          >
-            {this.getInvestmentFeedback(this.props.investmentOptions)}
-          </p>
+        {this.props.investmentOptions !== undefined
+          && this.props.investmentOptions.filter(i => i.isSelected).length > 0
+          && this.state.render && (
+            <p
+              id="investmentTip"
+              style={{
+                color: colors.darkGreenActive,
+                padding: '2rem 2rem',
+                border: `2px solid ${colors.lightGray2}`,
+              }}
+              className="bg-white pt2 mt4 overflow-hidden br3 f6-ns f7 lh-copy w-100 mb0 measure"
+            >
+              {this.getInvestmentFeedback(this.props.investmentOptions)}
+            </p>
         )}
         <style jsx>
           {`

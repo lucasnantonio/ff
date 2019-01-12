@@ -55,6 +55,10 @@ class Index extends Component {
           rate: getRates('renda variável'),
           isSelected: false,
         },
+        {
+          label: 'carteira mista',
+          isSelected: false,
+        },
       ],
       studyCases: [
         // {

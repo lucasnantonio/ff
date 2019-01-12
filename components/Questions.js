@@ -75,6 +75,11 @@ class InputContainer extends Component {
     this.setState({ isShowingLifeEventsTable: true });
   };
 
+  getSelectedInvestment = (options) => {
+    const selectedInvestment = options.filter(item => item.isSelected)[0];
+    return selectedInvestment && selectedInvestment.label;
+  };
+
   handleTabChange = (e, index) => {
     const { tabs } = this.state;
     const previousTab = tabs.filter(item => item.isSelected)[0];
@@ -182,17 +187,7 @@ class InputContainer extends Component {
                   handleClick={this.props.handleInvestmentSelector}
                   hiddenBorder={true}
                 />
-                <label>
-                  <input
-                    id="useWallet"
-                    type="checkbox"
-                    checked={this.props.useWallet}
-                    onChange={e => this.props.handleCheckbox(e)}
-
-                  />
-                  Tenho uma carteira diversificada
-                </label>
-                { this.props.useWallet
+                {this.getSelectedInvestment(this.props.myInvestments) === 'carteira mista'
                   && Object.keys(this.props.myWallet).map((key, index) => (
                     <InputField
                       key={index}
@@ -206,29 +201,29 @@ class InputContainer extends Component {
                       suffix={''}
                       hideFeedback
                     />
-                  ))
-                }
-
-                {this.canSubmit() && !this.props.isShowingAnswer && (this.props.selectedInvestment || this.props.useWallet) && (
-                  <CSSTransitionGroup
-                    transitionAppear={true}
-                    transitionAppearTimeout={200}
-                    transitionEnterTimeout={200}
-                    transitionLeaveTimeout={200}
-                    component="div"
-                    transitionName="slideInBottom"
-                  >
-                    <button
-                      type="submit"
-                      form="basicquestions"
-                      disabled={!this.canSubmit()}
-                      style={{ backgroundColor: colors.redPink }}
-                      className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
-                      onClick={this.props.handleShowAnswer}
+                  ))}
+                {this.canSubmit()
+                  && !this.props.isShowingAnswer
+                  && (this.props.selectedInvestment || this.props.useWallet) && (
+                    <CSSTransitionGroup
+                      transitionAppear={true}
+                      transitionAppearTimeout={200}
+                      transitionEnterTimeout={200}
+                      transitionLeaveTimeout={200}
+                      component="div"
+                      transitionName="slideInBottom"
                     >
-                      Calcular
-                    </button>
-                  </CSSTransitionGroup>
+                      <button
+                        type="submit"
+                        form="basicquestions"
+                        disabled={!this.canSubmit()}
+                        style={{ backgroundColor: colors.redPink }}
+                        className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
+                        onClick={this.props.handleShowAnswer}
+                      >
+                        Calcular
+                      </button>
+                    </CSSTransitionGroup>
                 )}
               </form>
             </div>
@@ -296,8 +291,8 @@ class InputContainer extends Component {
                 apenas se você souber muito bem o que está fazendo.
               </p>
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os cálculos consideram o rendimento líquido REAL de cada aplicação, ou seja, a inflação já
-                deve ser descontada.
+                Os cálculos consideram o rendimento líquido REAL de cada aplicação, ou seja, a
+                inflação já deve ser descontada.
               </p>
               {this.props.myInvestments.map((item, index) => (
                 <InputField
@@ -333,6 +328,20 @@ class InputContainer extends Component {
         </CSSTransitionGroup>
         <style jsx>
           {`
+            label {
+              display: inline-block;
+              border: 2px solid ${colors.lightGray2};
+            }
+            input[type='radio']:focus + label {
+              background-color: ${colors.lightGray2};
+            }
+            input[type='radio']:hover + label {
+              background-color: ${colors.lightGray2};
+            }
+            input[type='radio']:checked + label {
+              color: white;
+              background-color: ${colors.darkGreen};
+            }
             .right-to-left-enter {
               transform: translateX(100%);
               opacity: 0;
