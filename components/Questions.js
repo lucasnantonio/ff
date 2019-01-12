@@ -296,7 +296,7 @@ class InputContainer extends Component {
                 apenas se você souber muito bem o que está fazendo.
               </p>
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os cálculos consideram o rendimento REAL de cada aplicação, ou seja, a inflação já
+                Os cálculos consideram o rendimento líquido REAL de cada aplicação, ou seja, a inflação já
                 deve ser descontada.
               </p>
               {this.props.myInvestments.map((item, index) => (

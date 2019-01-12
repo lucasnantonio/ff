@@ -15,8 +15,8 @@ function getEventLog(events, lifeEventLabel) {
   return events.filter(e => e.label === lifeEventLabel)[0];
 }
 
-function getStyle(hasEventLog, eventLog) {
-  if (!hasEventLog) return '';
+function getStyle(eventLog) {
+  if (eventLog === undefined) return '';
 
   if (eventLog.valid) {
     return '';
@@ -62,10 +62,9 @@ class InputTable extends Component {
           <tbody>
             {table.map((row, rowId) => {
               const eventLog = getEventLog(events, row.label);
-              const hasEventLog = eventLog !== undefined;
               return (
               <tr key={rowId}>
-                <td className="w-third">
+                <td className="w-25">
                   <input
                     placeholder="ex. volta ao mundo"
                     className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
@@ -75,7 +74,7 @@ class InputTable extends Component {
                     onChange={e => handleTableInput(e, e.target.value, rowId, id, table, true)}
                   />
                 </td>
-                <td className="w-third">
+                <td className="w-25">
                   <input
                     className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="age"
@@ -84,7 +83,7 @@ class InputTable extends Component {
                     onChange={e => handleTableInput(e, e.target.value, rowId, id, table)}
                   />
                 </td>
-                <td className="w-third">
+                <td className="w-25">
                   <input
                     className="w-100 black-80 tc pa3-ns pa2 bg-white br1 ba0 f5-ns f7"
                     id="cost"
@@ -94,10 +93,10 @@ class InputTable extends Component {
                   />
                 </td>
                 <td
-                  className="w-third"
-                  style={{ border: getStyle(hasEventLog, eventLog) }}
+                  className="w-25 bg-white"
+                  style={{ border: getStyle(eventLog) }}
                 >
-                  {hasEventLog ? toCurrency(eventLog.balance) : 'R$ -'}
+                  {eventLog !== undefined ? toCurrency(eventLog.balance) : 'R$ -'}
                 </td>
                 <td>
                   <button
