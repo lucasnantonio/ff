@@ -14,7 +14,7 @@ const feedbacklist = {
       + 'confortável em ver o dinheiro oscilando todo dia, portanto, é importante '
       + 'checar o seu perfil de investimento.',
     'carteira mista':
-      'Que bom! Você já diversifica seus investimentos! Ajuste as porcentagens abaixo:',
+      'Que bom! Você já diversifica seus investimentos! Preencha abaixo de acordo com quanto você investe em cada parte da sua carteira:',
   },
   poupança: [
     {
