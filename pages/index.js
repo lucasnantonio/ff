@@ -258,11 +258,6 @@ class Index extends Component {
     logEvent('User', 'clicked reset taxas');
   };
 
-  handleCheckbox = (e) => {
-    const { id, checked } = e.target;
-    this.setState({ [id]: checked });
-  }
-
   handleWalletInput = (e, floatValue) => {
     const { id } = e.target;
     const value = floatValue === '' ? 0 : parseFloat(floatValue);
@@ -353,7 +348,6 @@ class Index extends Component {
               handleInvestmentSelector={this.handleInvestmentSelector}
               handleInvestmentRateInput={this.handleInvestmentRateInput}
               setFocusedInput={this.setFocusedInput}
-              handleCheckbox={this.handleCheckbox}
               handleWalletInput={this.handleWalletInput}
             />
           )}
