@@ -44,20 +44,25 @@ class Index extends Component {
           label: 'poupança',
           rate: getRates('poupança'),
           isSelected: false,
+          isWallet: false,
         },
         {
           label: 'renda fixa',
           rate: getRates('renda fixa'),
           isSelected: false,
+          isWallet: false,
         },
         {
           label: 'renda variável',
           rate: getRates('renda variável'),
           isSelected: false,
+          isWallet: false,
         },
         {
+          // just a placeholder, not a real investment
           label: 'carteira mista',
           isSelected: false,
+          isWallet: true,
         },
       ],
       studyCases: [
@@ -223,29 +228,12 @@ class Index extends Component {
     this.setState({ myInvestments });
   };
 
-  assembleMyWallet(selectedInvestmentLabel) {
-    // if some investment option is selected, allocate 100% in that investment
-    // and 0 % for the others
-    const myWallet = Object.assign(
-      {},
-      ...Object.keys(this.state.myWallet).map(key => (
-        { [key]: key === selectedInvestmentLabel ? 100 : 0 }
-      )),
-    );
-    this.setState({ myWallet });
-  }
-
   handleInvestmentSelector = (e, index) => {
     const investmentsState = this.state.myInvestments;
     const myInvestments = investmentsState.map((item, itemIndex) => ({
       ...item,
       isSelected: index === itemIndex,
     }));
-
-    const selectedInvestment = myInvestments.filter(i => i.isSelected);
-    if (selectedInvestment.length > 0) {
-      this.assembleMyWallet(selectedInvestment[0].label);
-    }
 
     this.setState({
       myInvestments,

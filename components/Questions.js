@@ -181,7 +181,7 @@ class InputContainer extends Component {
                 />
                 <MultiSelect
                   hasSelectedInvestment={this.props.selectedInvestment}
-                  isEnabled={this.canSubmit() && !this.props.useWallet}
+                  isEnabled={this.canSubmit()}
                   label="Onde você guarda seu dinheiro hoje?"
                   options={this.props.myInvestments}
                   handleClick={this.props.handleInvestmentSelector}
@@ -204,7 +204,7 @@ class InputContainer extends Component {
                   ))}
                 {this.canSubmit()
                   && !this.props.isShowingAnswer
-                  && (this.props.selectedInvestment || this.props.useWallet) && (
+                  && (this.props.selectedInvestment) && (
                     <CSSTransitionGroup
                       transitionAppear={true}
                       transitionAppearTimeout={200}
@@ -294,8 +294,8 @@ class InputContainer extends Component {
                 Os cálculos consideram o rendimento líquido REAL de cada aplicação, ou seja, a
                 inflação já deve ser descontada.
               </p>
-              {this.props.myInvestments.map((item, index) => (
-                <InputField
+              {this.props.myInvestments.map((item, index) => (item.isWallet ? null
+                : <InputField
                   isPercentage
                   dataType="rate"
                   key={index}
@@ -306,8 +306,7 @@ class InputContainer extends Component {
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
                   suffix={'ao ano'}
-                />
-              ))}
+                />))}
               <InputField
                 isPercentage
                 dataType="rate"

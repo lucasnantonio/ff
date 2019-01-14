@@ -1,5 +1,5 @@
 import * as fin from './finance';
-import { getObjectByLabel } from './utils';
+import { getObjectByLabel, getSelectedInvestment } from './utils';
 
 export function toCurrency(value) {
   return (`R$ ${Number(value).toFixed(2)}`);
@@ -106,6 +106,12 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
   };
 }
 
+function getWalletRate(myInvestments, myWallet) {
+  const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);
+  const rate = rates.reduce((a, b) => a + b, 0);
+  return rate;
+}
+
 export function getRetirementResults(state) {
   const currentBalance = parseFloat(state.myCurrentBalance);
   const savings = parseFloat(state.myCurrentMonthlySavings);
@@ -117,8 +123,16 @@ export function getRetirementResults(state) {
     myInvestments, lifeEvents, leaveHeritage, myWallet,
   } = state;
 
-  const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);
-  const rate = rates.reduce((a, b) => a + b, 0);
+  const selectedInvestment = getSelectedInvestment(myInvestments);
+
+  if (selectedInvestment === undefined) return false;
+
+  let rate;
+  if (selectedInvestment.isWallet) {
+    rate = getWalletRate(myInvestments, myWallet);
+  } else {
+    ({ rate } = selectedInvestment);
+  }
 
   return [[
     'myRetirement', // Temp
@@ -151,7 +165,7 @@ function prioritizeStudyCase(studyCase, state, id, float = true) {
 }
 
 export function getStudyCasesResults(state) {
-  if (!state.selectedInvestment && !state.useWallet && !state.studyCasesResults) return false;
+  if (!state.selectedInvestment && !state.studyCasesResults) return false;
 
   return state.studyCases.map((studyCase) => {
     const currentBalance = prioritizeStudyCase(studyCase, state, 'myCurrentBalance');
@@ -166,8 +180,16 @@ export function getStudyCasesResults(state) {
     const { lifeEvents, myInvestments } = state;
     const { label } = studyCase;
 
-    const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);
-    const rate = rates.reduce((a, b) => a + b, 0);
+    const selectedInvestment = getSelectedInvestment(myInvestments);
+
+    if (selectedInvestment === undefined) return false;
+
+    let rate;
+    if (selectedInvestment.isWallet) {
+      rate = getWalletRate(myInvestments, myWallet);
+    } else {
+      ({ rate } = selectedInvestment);
+    }
 
     return [
       label,
