@@ -66,34 +66,34 @@ class Index extends Component {
         },
       ],
       studyCases: [
-        // {
-        //   label: 'changeMonthlySavings',
-        //   myCurrentMonthlySavings: undefined,
-        // },
-        // {
-        //   label: 'changeCurrentBalance',
-        //   myCurrentBalance: undefined,
-        // },
-        // {
-        //   label: 'changeLeaveHeritage',
-        //   leaveHeritage: undefined,
-        // },
-        // {
-        //   label: 'changeSelectedInvestment',
-        //   myWallet: undefined,
-        // },
-        // {
-        //   label: 'changeCurrentAge',
-        //   myCurrentAge: undefined,
-        // },
-        // {
-        //   label: 'optimized',
-        //   myCurrentMonthlySavings: undefined,
-        //   myCurrentBalance: undefined,
-        //   leaveHeritage: undefined,
-        //   myCurrentAge: undefined,
-        //   myWallet: undefined,
-        // },
+        {
+          label: 'changeMonthlySavings',
+          myCurrentMonthlySavings: undefined,
+        },
+        {
+          label: 'changeCurrentBalance',
+          myCurrentBalance: undefined,
+        },
+        {
+          label: 'changeLeaveHeritage',
+          leaveHeritage: undefined,
+        },
+        {
+          label: 'changeSelectedInvestment',
+          myWallet: undefined,
+        },
+        {
+          label: 'changeCurrentAge',
+          myCurrentAge: undefined,
+        },
+        {
+          label: 'optimized',
+          myCurrentMonthlySavings: undefined,
+          myCurrentBalance: undefined,
+          leaveHeritage: undefined,
+          myCurrentAge: undefined,
+          myWallet: undefined,
+        },
       ],
       lifeEvents: [{
         label: '',
@@ -228,12 +228,26 @@ class Index extends Component {
     this.setState({ myInvestments });
   };
 
+  assembleMyWallet(selectedInvestmentLabel) {
+    // if some investment option is selected, allocate 100% in that investment
+    // and 0 % for the others
+    const myWallet = Object.assign(
+      {},
+      ...Object.keys(this.state.myWallet).map(key => (
+        { [key]: key === selectedInvestmentLabel ? 100 : 0 }
+      )),
+    );
+    this.setState({ myWallet });
+  }
+
   handleInvestmentSelector = (e, index) => {
     const investmentsState = this.state.myInvestments;
     const myInvestments = investmentsState.map((item, itemIndex) => ({
       ...item,
       isSelected: index === itemIndex,
     }));
+
+    this.assembleMyWallet(myInvestments[index].label);
 
     this.setState({
       myInvestments,
@@ -315,7 +329,7 @@ class Index extends Component {
         ) : (
           <div>
             <Answer {...this.state} />
-            {/* <TipsContainer
+            <TipsContainer
               handleStudyCaseInput={this.handleStudyCaseInput}
               handleStudyCaseWallet={this.handleStudyCaseWallet}
               myInvestments={this.state.myInvestments}
@@ -323,7 +337,7 @@ class Index extends Component {
               retirementResults={this.state.retirementResults}
               studyCasesResults={this.state.studyCasesResults}
               currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
-            /> */}
+            />
           </div>
         )}
 

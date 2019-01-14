@@ -127,12 +127,7 @@ export function getRetirementResults(state) {
 
   if (selectedInvestment === undefined) return false;
 
-  let rate;
-  if (selectedInvestment.isWallet) {
-    rate = getWalletRate(myInvestments, myWallet);
-  } else {
-    ({ rate } = selectedInvestment);
-  }
+  const rate = getWalletRate(myInvestments, myWallet);
 
   return [[
     'myRetirement', // Temp
@@ -180,16 +175,7 @@ export function getStudyCasesResults(state) {
     const { lifeEvents, myInvestments } = state;
     const { label } = studyCase;
 
-    const selectedInvestment = getSelectedInvestment(myInvestments);
-
-    if (selectedInvestment === undefined) return false;
-
-    let rate;
-    if (selectedInvestment.isWallet) {
-      rate = getWalletRate(myInvestments, myWallet);
-    } else {
-      ({ rate } = selectedInvestment);
-    }
+    const rate = getWalletRate(myInvestments, myWallet);
 
     return [
       label,
