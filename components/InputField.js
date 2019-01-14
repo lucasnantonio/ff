@@ -5,6 +5,7 @@ import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
 import InputFieldWrapper from './InputFieldWrapper';
 import PigFeedback from './PigFeedback';
+import colors from './Colors';
 
 const currencyConfig = {
   locale: 'pt-BR',
@@ -159,6 +160,14 @@ class InputField extends Component {
             )}
           </div>
         </div>
+        {this.props.helperText === undefined
+          ? null
+          : <div className="flex w-100">
+              <span className="lh-copy f5 dib-ns" style={{ color: colors.mediumGray }}>
+                {this.props.helperText}
+              </span>
+            </div>
+        }
         {(this.state.hasBeenChanged && !this.props.hideFeedback) && <PigFeedback id={this.props.id} value={this.props.value} />}
       </InputFieldWrapper>
     );
