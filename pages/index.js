@@ -33,7 +33,6 @@ class Index extends Component {
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
       leaveHeritage: false,
-      useWallet: false,
       myWallet: {
         poupança: 0,
         'renda fixa': 0,
@@ -140,7 +139,6 @@ class Index extends Component {
       isShowingAnswer: false,
       isShowingQuestions: false,
       selectedInvestment: false,
-      useWallet: false,
     });
   };
 
