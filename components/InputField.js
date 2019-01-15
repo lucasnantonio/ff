@@ -131,12 +131,14 @@ class InputField extends Component {
                   placeholder={this.props.placeholder}
                   onChange={this.handleInput}
                 />
-                {(this.props.isPercentage) && <div className="nowrap">{`% ${this.props.suffix}`}</div>}
+                {this.props.isPercentage && (
+                  <div className="nowrap">{`% ${this.props.suffix}`}</div>
+                )}
               </div>
             ) : (
               <IntlCurrencyInput
                 className={`${
-                  (this.props.value === 0 && !this.props.acceptZero) ? 'black-20' : 'black'
+                  this.props.value === 0 && !this.props.acceptZero ? 'black-20' : 'black'
                 } bn w-100 bg-transparent f4-ns f5 tr`}
                 defaultValue={this.props.placeholder}
                 min={this.props.min}
@@ -160,15 +162,19 @@ class InputField extends Component {
             )}
           </div>
         </div>
-        {this.props.helperText === undefined
-          ? null
-          : <div className="flex w-100">
-              <span className="lh-copy f5 dib-ns" style={{ color: colors.mediumGray }}>
-                {this.props.helperText}
-              </span>
-            </div>
-        }
-        {(this.state.hasBeenChanged && !this.props.hideFeedback) && <PigFeedback id={this.props.id} value={this.props.value} />}
+        {this.props.helperText === undefined ? null : (
+          <div className="flex w-100">
+            <span
+              className="lh-copy f6-l f7 dib-ns mt3 measure-narrow"
+              style={{ color: colors.mediumGray }}
+            >
+              {this.props.helperText}
+            </span>
+          </div>
+        )}
+        {this.state.hasBeenChanged && !this.props.hideFeedback && (
+          <PigFeedback id={this.props.id} value={this.props.value} />
+        )}
       </InputFieldWrapper>
     );
   }
