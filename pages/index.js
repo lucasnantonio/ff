@@ -33,7 +33,6 @@ class Index extends Component {
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
       leaveHeritage: false,
-      useWallet: false,
       myWallet: {
         poupança: 0,
         'renda fixa': 0,
@@ -44,20 +43,25 @@ class Index extends Component {
           label: 'poupança',
           rate: getRates('poupança'),
           isSelected: false,
+          isWallet: false,
         },
         {
           label: 'renda fixa',
           rate: getRates('renda fixa'),
           isSelected: false,
+          isWallet: false,
         },
         {
           label: 'renda variável',
           rate: getRates('renda variável'),
           isSelected: false,
+          isWallet: false,
         },
         {
+          // just a placeholder, not a real investment
           label: 'carteira mista',
           isSelected: false,
+          isWallet: true,
         },
       ],
       studyCases: [
@@ -135,7 +139,6 @@ class Index extends Component {
       isShowingAnswer: false,
       isShowingQuestions: false,
       selectedInvestment: false,
-      useWallet: false,
     });
   };
 
@@ -242,10 +245,7 @@ class Index extends Component {
       isSelected: index === itemIndex,
     }));
 
-    const selectedInvestment = myInvestments.filter(i => i.isSelected);
-    if (selectedInvestment.length > 0) {
-      this.assembleMyWallet(selectedInvestment[0].label);
-    }
+    this.assembleMyWallet(myInvestments[index].label);
 
     this.setState({
       myInvestments,
@@ -269,11 +269,6 @@ class Index extends Component {
     this.setState({ myInvestments });
     logEvent('User', 'clicked reset taxas');
   };
-
-  handleCheckbox = (e) => {
-    const { id, checked } = e.target;
-    this.setState({ [id]: checked });
-  }
 
   handleWalletInput = (e, floatValue) => {
     const { id } = e.target;
@@ -365,7 +360,6 @@ class Index extends Component {
               handleInvestmentSelector={this.handleInvestmentSelector}
               handleInvestmentRateInput={this.handleInvestmentRateInput}
               setFocusedInput={this.setFocusedInput}
-              handleCheckbox={this.handleCheckbox}
               handleWalletInput={this.handleWalletInput}
             />
           )}

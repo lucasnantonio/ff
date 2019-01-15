@@ -17,7 +17,6 @@ const MultiSelect = props => (
           {props.options.map((item, index) => (
             <MultiSelectOption
               isEnabled={props.isEnabled}
-              isSelected={item.isSelected}
               index={index}
               handleClick={props.isEnabled && props.handleClick}
               label={item.label}
