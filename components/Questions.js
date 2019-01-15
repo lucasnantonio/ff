@@ -178,6 +178,7 @@ class InputContainer extends Component {
                   handleInput={this.props.handleInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
+                  helperText={'Considere que o dinheiro do futuro vale o mesmo que hoje. Nós já incluímos a inflação na conta.'}
                 />
                 <MultiSelect
                   hasSelectedInvestment={this.props.selectedInvestment}
