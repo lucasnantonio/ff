@@ -33,11 +33,20 @@ class Index extends Component {
       annualSavingsIncreaseRate: 0,
       selectedInvestment: false,
       leaveHeritage: false,
-      myWallet: {
-        poupança: 0,
-        'renda fixa': 0,
-        'renda variável': 0,
-      },
+      myWallet: [
+        {
+          label: 'poupança',
+          allocation: 0,
+        },
+        {
+          label: 'renda fixa',
+          allocation: 0,
+        },
+        {
+          label: 'renda variável',
+          allocation: 0,
+        },
+      ],
       myInvestments: [
         {
           label: 'poupança',
@@ -229,12 +238,13 @@ class Index extends Component {
   assembleMyWallet(selectedInvestmentLabel) {
     // if some investment option is selected, allocate 100% in that investment
     // and 0 % for the others
-    const myWallet = Object.assign(
-      {},
-      ...Object.keys(this.state.myWallet).map(key => (
-        { [key]: key === selectedInvestmentLabel ? 100 : 0 }
-      )),
-    );
+    const myWallet = this.state.myWallet.map(item => (
+      {
+        ...item,
+        allocation: item.label === selectedInvestmentLabel ? 100 : 0,
+      }
+    ));
+
     this.setState({ myWallet });
   }
 
@@ -273,7 +283,18 @@ class Index extends Component {
   handleWalletInput = (e, floatValue) => {
     const { id } = e.target;
     const value = floatValue === '' ? 0 : parseFloat(floatValue);
-    const myWallet = { ...this.state.myWallet, [id]: value };
+
+    const myWallet = this.state.myWallet.map((item) => {
+      if (item.label === id) {
+        return {
+          ...item,
+          allocation: value,
+        };
+      }
+      return item;
+    });
+
+
     this.setState({ myWallet });
   }
 

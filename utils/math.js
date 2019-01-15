@@ -107,7 +107,7 @@ function getRetirementData(mIR, currentBalance, initialSavings, savingsIncrease,
 }
 
 function getWalletRate(myInvestments, myWallet) {
-  const rates = Object.keys(myWallet).map(label => getObjectByLabel(myInvestments, label).rate * myWallet[label] / 100);
+  const rates = myWallet.map(item => getObjectByLabel(myInvestments, item.label).rate * item.allocation / 100);
   const rate = rates.reduce((a, b) => a + b, 0);
   return rate;
 }
