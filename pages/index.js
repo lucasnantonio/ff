@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import React, { Component } from 'react';
 import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
@@ -10,6 +11,16 @@ import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber, valueByInputType } from '../utils/input';
+
+const config = {
+  apiKey: 'AIzaSyDOE7569y6GCsyHKXsqmaIjDg6IPTSuFgU',
+  authDomain: 'aposentarme.firebaseapp.com',
+  databaseURL: 'https://aposentarme.firebaseio.com',
+  projectId: 'aposentarme',
+  storageBucket: 'aposentarme.appspot.com',
+  messagingSenderId: '417078957584',
+};
+
 
 function getRates(label) {
   return {
@@ -94,11 +105,13 @@ class Index extends Component {
         //   myWallet: undefined,
         // },
       ],
-      lifeEvents: [{
-        label: '',
-        age: 0,
-        cost: '0',
-      }],
+      lifeEvents: [
+        {
+          label: '',
+          age: 0,
+          cost: '0',
+        },
+      ],
       retirementResults: false,
       studyCasesResults: false,
       focusedInput: '',
@@ -106,6 +119,12 @@ class Index extends Component {
   }
 
   componentDidMount() {
+    firebase.initializeApp(config);
+    let data = firebase.database().ref().once('value')
+    .then(function(snapshot){
+      return snapshot.val()
+    })
+    console.log(data)
     if (process.env.NODE_ENV === 'development') return null;
 
     if (!window.GA_INITIALIZED) {
@@ -144,13 +163,14 @@ class Index extends Component {
 
   assembleStudyCases() {
     // update studyCases with user input
-    const studyCases = this.state.studyCases.map(item => (
-      Object.assign({}, ...Object.keys(item).map((key) => {
+    const studyCases = this.state.studyCases.map(item => Object.assign(
+      {},
+      ...Object.keys(item).map((key) => {
         if (key === 'label') {
           return { [key]: item[key] };
         }
         return { [key]: this.state[key] };
-      }))
+      }),
     ));
     this.setState({ studyCases });
   }
@@ -164,11 +184,6 @@ class Index extends Component {
 
   handleBack = () => {
     this.setState({ isShowingAnswer: false, isShowingIntro: true });
-  };
-
-  handleInput = (e, value) => {
-    const { id } = e.target;
-    this.setState({ [id]: value === '' ? 0 : parseFloat(value) });
   };
 
   handleInputButtons = (e) => {
@@ -210,7 +225,7 @@ class Index extends Component {
       return item;
     });
     this.setState({ studyCases });
-  }
+  };
 
   handleInvestmentRateInput = (e) => {
     const { id, value } = e.target;
@@ -231,9 +246,9 @@ class Index extends Component {
     // and 0 % for the others
     const myWallet = Object.assign(
       {},
-      ...Object.keys(this.state.myWallet).map(key => (
-        { [key]: key === selectedInvestmentLabel ? 100 : 0 }
-      )),
+      ...Object.keys(this.state.myWallet).map(key => ({
+        [key]: key === selectedInvestmentLabel ? 100 : 0,
+      })),
     );
     this.setState({ myWallet });
   }
@@ -274,8 +289,14 @@ class Index extends Component {
     const { id } = e.target;
     const value = floatValue === '' ? 0 : parseFloat(floatValue);
     const myWallet = { ...this.state.myWallet, [id]: value };
+    console.log(this.state.myWallet, myWallet);
     this.setState({ myWallet });
-  }
+  };
+
+  handleInput = (e, value) => {
+    const { id } = e.target;
+    this.setState({ [id]: value === '' ? 0 : parseFloat(value) });
+  };
 
   setFocusedInput = (inputId) => {
     this.setState({ focusedInput: inputId });

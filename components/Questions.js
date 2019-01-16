@@ -191,7 +191,7 @@ class InputContainer extends Component {
                 {this.getSelectedInvestment(this.props.myInvestments) === 'carteira mista'
                   && Object.keys(this.props.myWallet).map((key, index) => (
                     <InputField
-                      key={index}
+                      key={key}
                       isPercentage
                       dataType="rate"
                       value={this.props.myWallet[key]}
