@@ -189,14 +189,14 @@ class InputContainer extends Component {
                   hiddenBorder={true}
                 />
                 {this.getSelectedInvestment(this.props.myInvestments) === 'carteira mista'
-                  && Object.keys(this.props.myWallet).map((key, index) => (
+                  && this.props.myWallet.map((item, index) => (
                     <InputField
                       key={index}
                       isPercentage
                       dataType="rate"
-                      value={this.props.myWallet[key]}
-                      id={key}
-                      label={key}
+                      value={item.allocation}
+                      id={item.label}
+                      label={item.label}
                       handleInput={this.props.handleWalletInput}
                       setFocusedInput={this.props.setFocusedInput}
                       suffix={''}
