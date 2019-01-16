@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 import React, { Component } from 'react';
 import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
@@ -11,6 +10,9 @@ import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber, valueByInputType } from '../utils/input';
+import { loadFirebase } from '../lib/db';
+
+const firebase = loadFirebase();
 
 function getRates(label) {
   return {
@@ -18,21 +20,6 @@ function getRates(label) {
     'renda fixa': 4.5,
     'renda variável': 7.0,
   }[label];
-}
-
-function initializeFirebase() {
-  const config = {
-    apiKey: 'AIzaSyDOE7569y6GCsyHKXsqmaIjDg6IPTSuFgU',
-    authDomain: 'aposentarme.firebaseapp.com',
-    databaseURL: 'https://aposentarme.firebaseio.com',
-    projectId: 'aposentarme',
-    storageBucket: 'aposentarme.appspot.com',
-    messagingSenderId: '417078957584',
-  };
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(config);
-  }
 }
 
 function updateUserCount() {
@@ -370,8 +357,6 @@ class Index extends Component {
   };
 
   render() {
-    initializeFirebase();
-
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
