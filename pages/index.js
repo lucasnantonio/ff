@@ -12,22 +12,22 @@ import colors from '../components/Colors';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber, valueByInputType } from '../utils/input';
 
-const config = {
-  apiKey: 'AIzaSyDOE7569y6GCsyHKXsqmaIjDg6IPTSuFgU',
-  authDomain: 'aposentarme.firebaseapp.com',
-  databaseURL: 'https://aposentarme.firebaseio.com',
-  projectId: 'aposentarme',
-  storageBucket: 'aposentarme.appspot.com',
-  messagingSenderId: '417078957584',
-};
-
-
 function getRates(label) {
   return {
     poupança: 1.5,
     'renda fixa': 4.5,
     'renda variável': 7.0,
   }[label];
+}
+
+function initializeFirebase() {
+  const config = {
+    // get from firebase console
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
 }
 
 class Index extends Component {
@@ -118,13 +118,8 @@ class Index extends Component {
     };
   }
 
+
   componentDidMount() {
-    firebase.initializeApp(config);
-    let data = firebase.database().ref().once('value')
-    .then(function(snapshot){
-      return snapshot.val()
-    })
-    console.log(data)
     if (process.env.NODE_ENV === 'development') return null;
 
     if (!window.GA_INITIALIZED) {
@@ -339,6 +334,8 @@ class Index extends Component {
   };
 
   render() {
+    initializeFirebase();
+
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
