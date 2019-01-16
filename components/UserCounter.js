@@ -20,7 +20,7 @@ class UserCounter extends Component {
       return <h1>Loading...</h1>;
     }
 
-    return <h1>{this.state.userCount}</h1>;
+    return <h1>{this.state.userCount} pessoas já calcularam a sua aposentadoria</h1>;
   }
 }
 
