@@ -22,12 +22,24 @@ function getRates(label) {
 
 function initializeFirebase() {
   const config = {
-    // get from firebase console
+    apiKey: 'AIzaSyDOE7569y6GCsyHKXsqmaIjDg6IPTSuFgU',
+    authDomain: 'aposentarme.firebaseapp.com',
+    databaseURL: 'https://aposentarme.firebaseio.com',
+    projectId: 'aposentarme',
+    storageBucket: 'aposentarme.appspot.com',
+    messagingSenderId: '417078957584',
   };
 
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
+}
+
+function updateUserCount() {
+  const database = firebase.database();
+  const ref = database.ref('analytics/clickedCalculate');
+
+  ref.transaction(current => (current || 0) + 1);
 }
 
 class Index extends Component {
@@ -175,6 +187,7 @@ class Index extends Component {
     this.setState({ isShowingAnswer: true });
     this.assembleStudyCases();
     logEvent('User', 'clicked calculate');
+    updateUserCount();
   };
 
   handleBack = () => {
