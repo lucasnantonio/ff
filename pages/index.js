@@ -22,6 +22,12 @@ function getRates(label) {
 
 function initializeFirebase() {
   const config = {
+    apiKey: 'AIzaSyDOE7569y6GCsyHKXsqmaIjDg6IPTSuFgU',
+    authDomain: 'aposentarme.firebaseapp.com',
+    databaseURL: 'https://aposentarme.firebaseio.com',
+    projectId: 'aposentarme',
+    storageBucket: 'aposentarme.appspot.com',
+    messagingSenderId: '417078957584',
   };
 
   if (!firebase.apps.length) {
