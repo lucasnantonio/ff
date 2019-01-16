@@ -13,6 +13,7 @@ import { isNumber, valueByInputType } from '../utils/input';
 import { loadFirebase } from '../lib/db';
 
 const firebase = loadFirebase();
+const database = firebase.database();
 
 function getRates(label) {
   return {
@@ -23,7 +24,6 @@ function getRates(label) {
 }
 
 function updateUserCount() {
-  const database = firebase.database();
   const ref = database.ref('analytics/clickedCalculate');
 
   ref.transaction(current => (current || 0) + 1);
@@ -44,9 +44,7 @@ function saveForm(state) {
     [key]: state[key],
   }), {});
 
-  const database = firebase.database();
   const ref = database.ref('forms');
-
   const newFormRef = ref.push();
   newFormRef.set(form);
 }
@@ -136,18 +134,26 @@ class Index extends Component {
       retirementResults: false,
       studyCasesResults: false,
       focusedInput: '',
+
+      // firebase
+      userCount: undefined,
     };
   }
 
-
   componentDidMount() {
-    if (process.env.NODE_ENV === 'development') return null;
+    // Firebase
+    const ref = database.ref('analytics/clickedCalculate');
+    ref.on('value', snap => this.setState({ userCount: snap.val() }));
 
+    // Google Analytics
+    if (process.env.NODE_ENV === 'development') return null;
     if (!window.GA_INITIALIZED) {
       initGA();
       window.GA_INITIALIZED = true;
     }
     logPageView();
+
+    // Hotjar
     hotjar.initialize(1140598, 6);
   }
 
@@ -362,7 +368,11 @@ class Index extends Component {
         <Header title="Aposentar.me" />
         <NavBar isShowingAnswer={this.state.isShowingAnswer} />
         {!this.state.isShowingAnswer ? (
-          <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
+          <Hero
+            startApp={this.startApp}
+            isShowingQuestions={this.state.isShowingQuestions}
+            userCount={this.state.userCount}
+          />
         ) : (
           <div>
             <Answer {...this.state} />
