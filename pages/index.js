@@ -42,6 +42,28 @@ function updateUserCount() {
   ref.transaction(current => (current || 0) + 1);
 }
 
+function saveForm(state) {
+  const fieldsToSave = [
+    'myCurrentBalance',
+    'myCurrentAge',
+    'myCurrentMonthlySavings',
+    'myRetirementIncome',
+    'myLifeExpectancy',
+    'myWallet',
+  ];
+
+  const form = fieldsToSave.reduce((obj, key) => ({
+    ...obj,
+    [key]: state[key],
+  }), {});
+
+  const database = firebase.database();
+  const ref = database.ref('forms');
+
+  const newFormRef = ref.push();
+  newFormRef.set(form);
+}
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -188,6 +210,7 @@ class Index extends Component {
     this.assembleStudyCases();
     logEvent('User', 'clicked calculate');
     updateUserCount();
+    saveForm(this.state);
   };
 
   handleBack = () => {
