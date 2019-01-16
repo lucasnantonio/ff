@@ -10,7 +10,8 @@ import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber, valueByInputType } from '../utils/input';
-import { loadFirebase } from '../lib/db';
+
+import { loadFirebase, updateUserCount, saveUserForm } from '../lib/db';
 
 const firebase = loadFirebase();
 const database = firebase.database();
@@ -21,32 +22,6 @@ function getRates(label) {
     'renda fixa': 4.5,
     'renda variável': 7.0,
   }[label];
-}
-
-function updateUserCount() {
-  const ref = database.ref('analytics/clickedCalculate');
-
-  ref.transaction(current => (current || 0) + 1);
-}
-
-function saveForm(state) {
-  const fieldsToSave = [
-    'myCurrentBalance',
-    'myCurrentAge',
-    'myCurrentMonthlySavings',
-    'myRetirementIncome',
-    'myLifeExpectancy',
-    'myWallet',
-  ];
-
-  const form = fieldsToSave.reduce((obj, key) => ({
-    ...obj,
-    [key]: state[key],
-  }), {});
-
-  const ref = database.ref('forms');
-  const newFormRef = ref.push();
-  newFormRef.set(form);
 }
 
 class Index extends Component {
@@ -202,8 +177,8 @@ class Index extends Component {
     this.setState({ isShowingAnswer: true });
     this.assembleStudyCases();
     logEvent('User', 'clicked calculate');
-    updateUserCount();
-    saveForm(this.state);
+    updateUserCount(database);
+    saveUserForm(database, this.state);
   };
 
   handleBack = () => {
