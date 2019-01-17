@@ -1,4 +1,5 @@
 module.exports = {
+  target: 'serverless',
   webpack(cfg) {
     const originalEntry = cfg.entry;
     cfg.entry = async () => {
