@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "name": "ff",
-  "type": "static"
+  "builds": [{ "src": "package.json", "use": "@now/next" }]
 }
