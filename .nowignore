@@ -1,4 +1,2 @@
-node_modules
-Dockerfile
 .next
-yarn.lock
+node_modules
