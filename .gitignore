@@ -4,3 +4,4 @@ out/
 
 # misc
 .env
+*.cache
