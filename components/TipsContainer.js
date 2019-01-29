@@ -36,7 +36,7 @@ class TipsContainer extends Component {
             retirementResults={this.props.retirementResults}
             isCurrency
           />
-          <LeaveHeritageTip
+          {/* <LeaveHeritageTip
             studyCase={getObjectByLabel(this.props.studyCases, 'changeLeaveHeritage')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeLeaveHeritage')}
             handleInput={this.props.handleStudyCaseInput}
@@ -68,7 +68,7 @@ class TipsContainer extends Component {
             retirementResults={this.props.retirementResults}
             currentRetirementAge={this.props.currentRetirementAge}
             myInvestments={this.props.myInvestments}
-          />
+          /> */}
         </StepperContainer>
       </React.Fragment>
     );

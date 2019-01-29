@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StepperButton from './StepperButton';
+import StepperMarks from './StepperMarks';
 
 class StepperContainer extends Component {
   constructor(props) {
@@ -21,13 +22,14 @@ class StepperContainer extends Component {
   render() {
     const { step, nSteps } = this.state;
     return (
-      <div className={'flex items-center pa4 debug'}>
+      <div className={'flex flex-wrap items-center pa4 debug'}>
+        <StepperMarks style={{ width: '100%' }} step={step} nSteps={nSteps} />
         <StepperButton
           disabled={step === 0}
           onClick={() => this.handleStep(-1)}>
             VOLTAR
         </StepperButton>
-        <div style={{ flexGrow: 1 }}>
+        <div style={{ flexBasis: 0, flexGrow: 1 }}>
           {this.props.children[step]}
         </div>
         <StepperButton
