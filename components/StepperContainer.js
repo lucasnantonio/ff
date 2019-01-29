@@ -22,12 +22,13 @@ class StepperContainer extends Component {
   render() {
     const { step, nSteps } = this.state;
     return (
-      <div className={'flex flex-wrap items-center pa4 debug'}>
+      <div className={'flex flex-wrap items-center ba ma5 debug'}>
         <StepperMarks style={{ width: '100%' }} step={step} nSteps={nSteps} />
+        <div className={'flex w-100'}>
         <StepperButton
           disabled={step === 0}
           onClick={() => this.handleStep(-1)}>
-            VOLTAR
+            {'<'}
         </StepperButton>
         <div style={{ flexBasis: 0, flexGrow: 1 }}>
           {this.props.children[step]}
@@ -35,8 +36,9 @@ class StepperContainer extends Component {
         <StepperButton
           disabled={step === nSteps - 1}
           onClick={() => this.handleStep(1)}>
-            AVANÇAR
+            {'>'}
         </StepperButton>
+        </div>
       </div>
     );
   }
