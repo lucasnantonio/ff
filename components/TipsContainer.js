@@ -4,14 +4,14 @@ import LeaveHeritageTip from './Tips/LeaveHeritageTip';
 import ChangeInvestmentTip from './Tips/ChangeInvestmentTip';
 import OptimizedCase from './Tips/OptimizedCase';
 import { getObjectByLabel, getResultsByLabel } from '../utils/utils';
+import StepperContainer from './StepperContainer';
 
 class TipsContainer extends Component {
   render() {
     return (
-      <div
-        className={'mw7-ns ph0-l ph4 center'}
-        >
-          <h2>Veja como melhorar o seu resultado:</h2>
+      <React.Fragment>
+        <h2>Veja como melhorar o seu resultado:</h2>
+        <StepperContainer>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
             label={'E se você aumentasse as suas economias?'}
@@ -69,7 +69,8 @@ class TipsContainer extends Component {
             currentRetirementAge={this.props.currentRetirementAge}
             myInvestments={this.props.myInvestments}
           />
-        </div>
+        </StepperContainer>
+      </React.Fragment>
     );
   }
 }
