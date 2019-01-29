@@ -22,23 +22,23 @@ class StepperContainer extends Component {
   render() {
     const { step, nSteps } = this.state;
     return (
-      <div className={'flex flex-wrap items-center ba ma5 debug'}>
-        <StepperMarks style={{ width: '100%' }} step={step} nSteps={nSteps} />
-        <div className={'flex w-100'}>
+      <div className={'flex items-center justify-center pa5'}>
         <StepperButton
           disabled={step === 0}
           onClick={() => this.handleStep(-1)}>
             {'<'}
         </StepperButton>
-        <div style={{ flexBasis: 0, flexGrow: 1 }}>
-          {this.props.children[step]}
+        <div className={'flex flex-wrap mw7-ns w-100 ba pa4'} style={{ flexBasis: 0, flexGrow: 1 }}>
+          <StepperMarks style={{ width: '100%' }} step={step} nSteps={nSteps} />
+          <div className={'w-100'}>
+            {this.props.children[step]}
+          </div>
         </div>
         <StepperButton
           disabled={step === nSteps - 1}
           onClick={() => this.handleStep(1)}>
             {'>'}
         </StepperButton>
-        </div>
       </div>
     );
   }

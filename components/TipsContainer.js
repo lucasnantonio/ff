@@ -10,7 +10,7 @@ class TipsContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Veja como melhorar o seu resultado:</h2>
+        <h1 className={'ml7-ns'}>Veja como melhorar o seu resultado:</h1>
         <StepperContainer>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
