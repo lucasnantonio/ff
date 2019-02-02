@@ -15,8 +15,6 @@ const TipLayout = (props) => {
     <div className={'w-50'}>
       <p>{props.actionText}</p>
       {props.children}
-      <p>({deltaAge} anos e {deltaMonths} meses)</p>
-      <p>{newAge} anos</p>
     </div>
     <div className={'w-50'}>
       <RetirementChart
@@ -24,6 +22,9 @@ const TipLayout = (props) => {
         secondaryData={props.retirementResults[0]}
       />
     </div>
+    {(deltaAge !== 0 || deltaMonths !== 0) && (
+      <p>Você acabou de adiantar ({deltaAge} anos e {deltaMonths} meses). Liberdade financeira aos {newAge} anos. </p>
+    ) }
   </div>
   );
 };

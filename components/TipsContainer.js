@@ -14,7 +14,7 @@ class TipsContainer extends Component {
         <StepperContainer>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
-            text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina?'}
+            text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina.'}
             actionText={'Experimente poupar mais ou aumentar a sua renda.'}
             studyCase={getObjectByLabel(this.props.studyCases, 'changeMonthlySavings')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeMonthlySavings')}
