@@ -16,3 +16,13 @@ export function valueByInputType(type, floatValue, value, checked) {
   }
   return parseFloat(floatValue);
 }
+
+export function fromCurrency(currency) {
+  const number = Number(currency.replace(/[^0-9\,-]+/g, ''));
+  return number;
+}
+
+export function toCurrency(number) {
+  const currency = number.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+  return `R$ ${currency}`;
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Input from './Input/Input';
-import IntlCurrencyInput from './Input/CurrencyInput';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
 import InputLabel from './InputLabel';
@@ -8,60 +7,33 @@ import InputFieldWrapper from './InputFieldWrapper';
 import PigFeedback from './PigFeedback';
 import colors from './Colors';
 
-const currencyConfig = {
-  locale: 'pt-BR',
-  formats: {
-    number: {
-      BRL: {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
-      },
-    },
-  },
-};
-
 class InputField extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hasBeenChanged: false,
     };
-    this.handleInput = this.handleInput.bind(this);
-    this.handleCurrencyInput = this.handleCurrencyInput.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleIncrement = this.handleIncrement.bind(this);
-    this.handleDecrement = this.handleDecrement.bind(this);
   }
 
-  handleInput(e) {
-    const { value } = e.target;
-    this.props.handleInput(e, value);
-    this.setState({
-      hasBeenChanged: true,
-    });
-  }
-
-  handleCurrencyInput(e, floatValue) {
+  handleInput = (e, floatValue) => {
     this.props.handleInput(e, floatValue);
     this.setState({
       hasBeenChanged: true,
     });
   }
 
-  handleFocus() {
+  handleFocus = () => {
     if (this.props.hasTips) this.props.setFocusedInput(this.props.id);
   }
 
-  handleIncrement(e) {
+  handleIncrement = (e) => {
     const input = e.target.parentElement.parentElement.querySelectorAll('input')[0];
     input.stepUp();
     input.focus();
     this.props.handleInputButtons(e);
   }
 
-  handleDecrement(e) {
+  handleDecrement = (e) => {
     const input = e.target.parentElement.parentElement.querySelectorAll('input')[0];
     input.stepDown();
     input.focus();
@@ -82,7 +54,6 @@ class InputField extends Component {
                 <MinusBtn />
               </button>
             )}
-            {!this.props.isCurrency ? (
               <Input
                 id={this.props.id}
                 required
@@ -93,27 +64,14 @@ class InputField extends Component {
                 value={this.props.value}
                 min={this.props.min}
                 max={this.props.max}
-                onFocus={e => this.handleFocus(e)}
                 placeholder={this.props.placeholder}
-                onChange={this.handleInput}
                 isPercentage={this.props.isPercentage}
                 suffix={this.props.suffix}
-              />
-            ) : (
-              <IntlCurrencyInput
-                className={`${
-                  this.props.value === 0 && !this.props.acceptZero ? 'black-20' : 'black'
-                } bn w-100 bg-transparent f4-ns f5 tr`}
-                defaultValue={this.props.placeholder}
-                min={this.props.min}
-                max={this.props.max}
+                isCurrency={this.props.isCurrency}
+                acceptZero={this.props.acceptZero}
                 onFocus={e => this.handleFocus(e)}
-                id={this.props.id}
-                currency="BRL"
-                config={currencyConfig}
-                onChange={this.handleCurrencyInput}
+                onChange={this.handleInput}
               />
-            )}
             {this.props.hasSteppers && (
               <button
                 className="pointer flex items-center ba0 bg-transparent"

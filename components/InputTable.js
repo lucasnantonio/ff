@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import colors from './Colors';
-
-function fromCurrency(currency) {
-  const number = Number(currency.replace(/[^0-9\,-]+/g, ''));
-  return number;
-}
-
-function toCurrency(number) {
-  const currency = number.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
-  return `R$ ${currency}`;
-}
+import { fromCurrency, toCurrency } from '../utils/input';
 
 function getEventLog(events, lifeEventLabel) {
   return events.filter(e => e.label === lifeEventLabel)[0];
