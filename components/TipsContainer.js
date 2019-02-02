@@ -25,6 +25,8 @@ class TipsContainer extends Component {
             isCurrency
           />
           <ChangeInvestmentTip
+            text={'Aonde você aplica o seu dinheiro pode ter um impacto muito grande.'}
+            actionText={'Experimente diversificar os seus investimentos.'}
             studyCase={getObjectByLabel(this.props.studyCases, 'changeSelectedInvestment')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeSelectedInvestment')}
             handleInput={this.props.handleStudyCaseWallet}

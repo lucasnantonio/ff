@@ -1,36 +1,31 @@
 import React from 'react';
-import { formatAge } from '../../utils/math';
-import RetirementChart from '../RetirementChart';
 import InputField from '../InputField';
+import TipLayout from './TipLayout';
 
-const ChangeInvestmetTip = ({
-  studyCase, studyCaseResults, handleInput, currentRetirementAge,
-  retirementResults,
-}) => (
+const ChangeInvestmetTip = props => (
+  <TipLayout
+    text={props.text}
+    actionText={props.actionText}
+    currentRetirementAge={props.currentRetirementAge}
+    retirementResults={props.retirementResults}
+    studyCaseResults={props.studyCaseResults}
+  >
     <div>
-      <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
-      <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
-      <p>E se você diversificasse os seus investimentos?</p>
-
-      {studyCase.myWallet.map((elem, index) => (
+      {props.studyCase.myWallet.map((elem, index) => (
         <InputField
           key={index}
           dataType="rate"
           value={elem.allocation}
           id={elem.label}
           label={elem.label}
-          handleInput={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
-          suffix={' %'}
+          handleInput={(e, floatValue) => props.handleInput(e, floatValue, props.studyCase.label)}
+          suffix={'%'}
           hideFeedback
           acceptZero
         />
       ))}
-
-      <RetirementChart
-        primaryData={studyCaseResults}
-        secondaryData={retirementResults[0]}
-      />
     </div>
+  </TipLayout>
 );
 
 export default ChangeInvestmetTip;
