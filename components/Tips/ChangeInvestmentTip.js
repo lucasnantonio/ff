@@ -1,5 +1,5 @@
 import React from 'react';
-import InputField from '../InputField';
+import Input from '../Input/Input';
 import TipLayout from './TipLayout';
 
 const ChangeInvestmetTip = props => (
@@ -12,17 +12,17 @@ const ChangeInvestmetTip = props => (
   >
     <div>
       {props.studyCase.myWallet.map((elem, index) => (
-        <InputField
-          key={index}
-          dataType="rate"
-          value={elem.allocation}
-          id={elem.label}
-          label={elem.label}
-          handleInput={(e, floatValue) => props.handleInput(e, floatValue, props.studyCase.label)}
-          suffix={'%'}
-          hideFeedback
-          acceptZero
-        />
+        <div key={index} className={'flex items-center mb2'}>
+          <span className={'w-75'}>{elem.label}</span>
+          <Input
+            value={elem.allocation}
+            id={elem.label}
+            onChange={(e, floatValue) => props.handleInput(e, floatValue, props.studyCase.label)}
+            suffix={'%'}
+            hideFeedback
+            acceptZero
+          />
+        </div>
       ))}
     </div>
   </TipLayout>
