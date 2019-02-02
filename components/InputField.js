@@ -83,25 +83,22 @@ class InputField extends Component {
               </button>
             )}
             {!this.props.isCurrency ? (
-              <div className="flex items-center w-100 justify-end">
-                <Input
-                  id={this.props.id}
-                  required
-                  maxLength={this.props.maxLength}
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  data-type={this.props.dataType}
-                  value={this.props.value}
-                  min={this.props.min}
-                  max={this.props.max}
-                  onFocus={e => this.handleFocus(e)}
-                  placeholder={this.props.placeholder}
-                  onChange={this.handleInput}
-                />
-                {this.props.isPercentage && (
-                  <div className="nowrap">{`% ${this.props.suffix}`}</div>
-                )}
-              </div>
+              <Input
+                id={this.props.id}
+                required
+                maxLength={this.props.maxLength}
+                inputMode="numeric"
+                pattern="[0-9]*"
+                data-type={this.props.dataType}
+                value={this.props.value}
+                min={this.props.min}
+                max={this.props.max}
+                onFocus={e => this.handleFocus(e)}
+                placeholder={this.props.placeholder}
+                onChange={this.handleInput}
+                isPercentage={this.props.isPercentage}
+                suffix={this.props.suffix}
+              />
             ) : (
               <IntlCurrencyInput
                 className={`${
@@ -117,7 +114,6 @@ class InputField extends Component {
                 onChange={this.handleCurrencyInput}
               />
             )}
-            {/* </div> */}
             {this.props.hasSteppers && (
               <button
                 className="pointer flex items-center ba0 bg-transparent"

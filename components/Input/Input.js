@@ -8,22 +8,27 @@ class Input extends Component {
 
   render() {
     return (
-      <input
-        className={'bn pa2 br2 bg-transparent f4-ns f5 tr w3'}
-        id={this.props.id}
-        required
-        maxLength={this.props.maxLength}
-        inputMode="numeric"
-        pattern="[0-9]*"
-        data-type={this.props.dataType}
-        value={this.props.value}
-        placeholder={this.props.placeholder}
-        min={this.props.min}
-        max={this.props.max}
-        type="text"
-        onChange={e => this.props.onChange(e)}
-        onFocus={e => this.handleFocus(e)}
-      />
+      <div className={'flex items-center w-100 justify-end'}>
+        <input
+          className={'bn pa2 br2 bg-transparent f4-ns f5 tr w3'}
+          id={this.props.id}
+          required
+          maxLength={this.props.maxLength}
+          inputMode="numeric"
+          pattern="[0-9]*"
+          data-type={this.props.dataType}
+          value={this.props.value}
+          placeholder={this.props.placeholder}
+          min={this.props.min}
+          max={this.props.max}
+          type="text"
+          onChange={e => this.props.onChange(e)}
+          onFocus={e => this.handleFocus(e)}
+        />
+        {this.props.isPercentage && (
+          <div className="nowrap">{`% ${this.props.suffix}`}</div>
+        )}
+      </div>
     );
   }
 }
