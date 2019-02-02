@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from './Input/Input';
 import IntlCurrencyInput from './CurrencyInput';
 import MinusBtn from './MinusBtn';
 import PlusBtn from './PlusBtn';
@@ -25,15 +26,11 @@ class InputField extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovered: false,
-      isFocused: false,
-      isEmpty: true,
       hasBeenChanged: false,
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleCurrencyInput = this.handleCurrencyInput.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleDecrement = this.handleDecrement.bind(this);
   }
@@ -53,20 +50,7 @@ class InputField extends Component {
     });
   }
 
-  handleMouseEnter = () => {
-    this.setState({ isHovered: true });
-  };
-
-  handleMouseLeave = () => {
-    this.setState({ isHovered: false });
-  };
-
-  handleFocus(event) {
-    event.target.select();
-
-    this.setState({
-      isFocused: true,
-    });
+  handleFocus() {
     if (this.props.hasTips) this.props.setFocusedInput(this.props.id);
   }
 
@@ -84,25 +68,11 @@ class InputField extends Component {
     this.props.handleInputButtons(e);
   }
 
-  handleBlur(e) {
-    if (e.target.value.length !== 0) {
-      this.setState({
-        isEmpty: false,
-        isFocused: true,
-      });
-    } else {
-      this.setState({
-        isFocused: false,
-        isEmpty: true,
-      });
-    }
-  }
-
   render() {
     return (
       <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
         <div className="flex w-100">
-          <InputLabel id={this.props.id} label={this.props.label} />
+          {this.props.label && <InputLabel id={this.props.id} label={this.props.label} />}
           <div className={'flex w-100 justify-end'}>
             {this.props.hasSteppers && (
               <button
@@ -114,20 +84,17 @@ class InputField extends Component {
             )}
             {!this.props.isCurrency ? (
               <div className="flex items-center w-100 justify-end">
-                <input
+                <Input
+                  id={this.props.id}
                   required
                   maxLength={this.props.maxLength}
                   inputMode="numeric"
                   pattern="[0-9]*"
                   data-type={this.props.dataType}
                   value={this.props.value}
-                  className={'bn pa2 br2 bg-transparent f4-ns f5 tr w3'}
                   min={this.props.min}
                   max={this.props.max}
                   onFocus={e => this.handleFocus(e)}
-                  onBlur={this.handleBlur}
-                  id={this.props.id}
-                  type="text"
                   placeholder={this.props.placeholder}
                   onChange={this.handleInput}
                 />
@@ -144,7 +111,6 @@ class InputField extends Component {
                 min={this.props.min}
                 max={this.props.max}
                 onFocus={e => this.handleFocus(e)}
-                onBlur={this.handleBlur}
                 id={this.props.id}
                 currency="BRL"
                 config={currencyConfig}
