@@ -9,8 +9,9 @@ import StepperContainer from './StepperContainer';
 class TipsContainer extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className={'pt5'}>
         <h1 className={'ml7-ns'}>Veja como melhorar o seu resultado:</h1>
+        <button onClick={() => this.props.handleShowTips(false)}>Voltar para resultado inicial</button>
         <StepperContainer>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
@@ -74,7 +75,7 @@ class TipsContainer extends Component {
             myInvestments={this.props.myInvestments}
           />
         </StepperContainer>
-      </React.Fragment>
+      </div>
     );
   }
 }

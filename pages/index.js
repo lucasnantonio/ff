@@ -25,6 +25,7 @@ class Index extends Component {
     this.state = {
       isShowingAnswer: false,
       isShowingQuestions: false,
+      isShowingTips: false,
       myCurrentBalance: 0,
       myCurrentAge: 18,
       myCurrentMonthlySavings: 100,
@@ -346,6 +347,10 @@ class Index extends Component {
     logEvent('User', 'removed life event');
   };
 
+  handleShowTips = (value) => {
+    this.setState({ isShowingTips: value });
+  }
+
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
@@ -354,45 +359,51 @@ class Index extends Component {
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
-          <div>
-            <Answer {...this.state} />
-            <TipsContainer
-              handleStudyCaseInput={this.handleStudyCaseInput}
-              handleStudyCaseWallet={this.handleStudyCaseWallet}
-              myInvestments={this.state.myInvestments}
-              studyCases={this.state.studyCases}
-              retirementResults={this.state.retirementResults}
-              studyCasesResults={this.state.studyCasesResults}
-              currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
-            />
-          </div>
+          <React.Fragment>
+            {!this.state.isShowingTips ? (
+              <Answer {...this.state} handleShowTips={this.handleShowTips} />
+            ) : (
+              <TipsContainer
+                handleStudyCaseInput={this.handleStudyCaseInput}
+                handleStudyCaseWallet={this.handleStudyCaseWallet}
+                myInvestments={this.state.myInvestments}
+                studyCases={this.state.studyCases}
+                retirementResults={this.state.retirementResults}
+                studyCasesResults={this.state.studyCasesResults}
+                currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
+                handleShowTips={this.handleShowTips}
+              />
+            )}
+          </React.Fragment>
         )}
 
-        <div
-          id="questionsContainer"
-          className={`w-100 center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
-          style={{ backgroundColor: colors.lightGray }}
-        >
-          {this.state.isShowingQuestions && (
-            <Questions
-              {...this.state}
-              isShowingAnswer={this.state.isShowingAnswer}
-              startApp={this.startApp}
-              handleShowAnswer={this.handleShowAnswer}
-              handleResetRates={this.handleResetRates}
-              handleInput={this.handleInput}
-              handleInputButtons={this.handleInputButtons}
-              handleCurrencyInput={this.handleCurrencyInput}
-              handleTableInput={this.handleTableInput}
-              handleAddTableRow={this.handleAddTableRow}
-              handleRemoveTableRow={this.handleRemoveTableRow}
-              handleInvestmentSelector={this.handleInvestmentSelector}
-              handleInvestmentRateInput={this.handleInvestmentRateInput}
-              setFocusedInput={this.setFocusedInput}
-              handleWalletInput={this.handleWalletInput}
-            />
-          )}
-        </div>
+        {!this.state.isShowingTips
+          && <div
+            id="questionsContainer"
+            className={`w-100 center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
+            style={{ backgroundColor: colors.lightGray }}
+          >
+            {this.state.isShowingQuestions && (
+              <Questions
+                {...this.state}
+                isShowingAnswer={this.state.isShowingAnswer}
+                startApp={this.startApp}
+                handleShowAnswer={this.handleShowAnswer}
+                handleResetRates={this.handleResetRates}
+                handleInput={this.handleInput}
+                handleInputButtons={this.handleInputButtons}
+                handleCurrencyInput={this.handleCurrencyInput}
+                handleTableInput={this.handleTableInput}
+                handleAddTableRow={this.handleAddTableRow}
+                handleRemoveTableRow={this.handleRemoveTableRow}
+                handleInvestmentSelector={this.handleInvestmentSelector}
+                handleInvestmentRateInput={this.handleInvestmentRateInput}
+                setFocusedInput={this.setFocusedInput}
+                handleWalletInput={this.handleWalletInput}
+              />
+            )}
+          </div>
+        }
       </div>
     );
   }
