@@ -10,9 +10,8 @@ class TipsContainer extends Component {
   render() {
     return (
       <div className={'pt5'}>
-        <h1 className={'ml7-ns'}>Veja como melhorar o seu resultado:</h1>
         <button onClick={() => this.props.handleShowTips(false)}>Voltar para resultado inicial</button>
-        <StepperContainer>
+        <StepperContainer handleShowTips={this.props.handleShowTips}>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
             text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina.'}
