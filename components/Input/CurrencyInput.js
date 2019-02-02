@@ -4,7 +4,7 @@ import {
   string, func, object, number, bool,
 } from 'prop-types';
 
-import formatCurrency from '../utils/formatcurrency';
+import formatCurrency from '../../utils/formatcurrency';
 
 const defaultConfig = {
   locale: 'en-US',
