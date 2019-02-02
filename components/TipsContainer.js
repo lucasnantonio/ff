@@ -10,7 +10,6 @@ class TipsContainer extends Component {
   render() {
     return (
       <div className={'pt5'}>
-        <button onClick={() => this.props.handleShowTips(false)}>Voltar para resultado inicial</button>
         <StepperContainer handleShowTips={this.props.handleShowTips}>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
