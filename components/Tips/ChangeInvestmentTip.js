@@ -15,14 +15,13 @@ const ChangeInvestmetTip = ({
       { Object.keys(studyCase.myWallet).map((key, index) => (
           <InputField
             key={index}
-            isPercentage
             dataType="rate"
             value={studyCase.myWallet[key]}
             id={key}
             label={key}
             handleInput={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
             // setFocusedInput={this.props.setFocusedInput}
-            suffix={''}
+            suffix={'%'}
             hideFeedback
           />
       ))

@@ -192,15 +192,15 @@ class InputContainer extends Component {
                   && this.props.myWallet.map((item, index) => (
                     <InputField
                       key={index}
-                      isPercentage
                       dataType="rate"
                       value={item.allocation}
                       id={item.label}
                       label={item.label}
                       handleInput={this.props.handleWalletInput}
                       setFocusedInput={this.props.setFocusedInput}
-                      suffix={''}
+                      suffix={'%'}
                       hideFeedback
+                      acceptZero
                     />
                   ))}
                 {this.canSubmit()
@@ -297,7 +297,6 @@ class InputContainer extends Component {
               </p>
               {this.props.myInvestments.map((item, index) => (item.isWallet ? null
                 : <InputField
-                  isPercentage
                   dataType="rate"
                   key={index}
                   value={item.rate}
@@ -306,16 +305,15 @@ class InputContainer extends Component {
                   handleInput={this.props.handleInvestmentRateInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
-                  suffix={'ao ano'}
+                  suffix={'% ao ano'}
                 />))}
               <InputField
-                isPercentage
                 dataType="rate"
                 value={this.props.annualSavingsIncreaseRate}
                 id="annualSavingsIncreaseRate"
                 label="Quanto você acha que sua renda vai aumentar ao ano?"
                 handleInput={this.props.handleInput}
-                suffix={'ao ano'}
+                suffix={'% ao ano'}
               />
               <button
                 className="mt4 pa3 relative bg-white hover-bg-black hover-white br-pill pointer"

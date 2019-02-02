@@ -65,7 +65,6 @@ class InputField extends Component {
                 min={this.props.min}
                 max={this.props.max}
                 placeholder={this.props.placeholder}
-                isPercentage={this.props.isPercentage}
                 suffix={this.props.suffix}
                 isCurrency={this.props.isCurrency}
                 acceptZero={this.props.acceptZero}

@@ -13,17 +13,17 @@ class Input extends Component {
     return this.props.onChange(e, floatValue);
   }
 
-  getInputClassName() {
-    const color = this.props.value === 0 && !this.props.acceptZero ? 'black-20' : 'black';
-    return `bn pa20 br2 bg-transparent f4-ns f5 tr w-100 + ${color}`;
+  getColor() {
+    return this.props.value === 0 && !this.props.acceptZero ? 'black-20' : 'black';
   }
 
   render() {
     const { value } = this.props;
+    const color = this.getColor();
     return (
       <div className={'flex items-center w-100 justify-end'}>
         <input
-          className={this.getInputClassName()}
+          className={`bn pa20 br2 bg-transparent f4-ns f5 tr w-100 ${color}`}
           id={this.props.id}
           required
           maxLength={this.props.maxLength}
@@ -37,9 +37,10 @@ class Input extends Component {
           type="text"
           onChange={e => this.handleChange(e)}
           onFocus={e => this.handleFocus(e)}
+          autoComplete="off"
         />
-        {this.props.isPercentage && (
-          <div className="nowrap">{`% ${this.props.suffix}`}</div>
+        {this.props.suffix && (
+          <div className={`nowrap ${color}`}>{this.props.suffix}</div>
         )}
       </div>
     );
