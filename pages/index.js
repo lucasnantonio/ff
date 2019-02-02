@@ -210,7 +210,15 @@ class Index extends Component {
     const { id } = e.target;
     const studyCases = this.state.studyCases.map((item) => {
       if (item.label === studyCaseLabel || (item.label === 'optimized' && 'myWallet' in item)) {
-        const myWallet = { ...item.myWallet, [id]: parseFloat(floatValue) };
+        const myWallet = item.myWallet.map((elem) => {
+          if (elem.label === id) {
+            return {
+              ...elem,
+              allocation: parseFloat(floatValue),
+            };
+          }
+          return elem;
+        });
         return {
           ...item,
           myWallet,

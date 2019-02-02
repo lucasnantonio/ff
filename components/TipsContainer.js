@@ -24,7 +24,15 @@ class TipsContainer extends Component {
             retirementResults={this.props.retirementResults}
             isCurrency
           />
-          <GeneralInputTip
+          <ChangeInvestmentTip
+            studyCase={getObjectByLabel(this.props.studyCases, 'changeSelectedInvestment')}
+            studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeSelectedInvestment')}
+            handleInput={this.props.handleStudyCaseWallet}
+            currentRetirementAge={this.props.currentRetirementAge}
+            myInvestments={this.props.myInvestments}
+            retirementResults={this.props.retirementResults}
+          />
+          {/* <GeneralInputTip
             id={'myCurrentBalance'}
             label={'E se você não tivesse nada guardado?'}
             text={'Parabéns por ter conseguido poupar até agora. Já imaginou se você não tivesse guardado nada até agora?'}
@@ -35,7 +43,7 @@ class TipsContainer extends Component {
             myInvestments={this.props.myInvestments}
             retirementResults={this.props.retirementResults}
             isCurrency
-          />
+          /> */}
           {/* <LeaveHeritageTip
             studyCase={getObjectByLabel(this.props.studyCases, 'changeLeaveHeritage')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeLeaveHeritage')}
@@ -44,14 +52,7 @@ class TipsContainer extends Component {
             myInvestments={this.props.myInvestments}
             retirementResults={this.props.retirementResults}
           />
-          <ChangeInvestmentTip
-            studyCase={getObjectByLabel(this.props.studyCases, 'changeSelectedInvestment')}
-            studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeSelectedInvestment')}
-            handleInput={this.props.handleStudyCaseWallet}
-            currentRetirementAge={this.props.currentRetirementAge}
-            myInvestments={this.props.myInvestments}
-            retirementResults={this.props.retirementResults}
-          />
+
           <GeneralInputTip
             id={'myCurrentAge'}
             label={'Veja o que acontece se você mudar a sua idade.'}
@@ -63,12 +64,13 @@ class TipsContainer extends Component {
             myInvestments={this.props.myInvestments}
             retirementResults={this.props.retirementResults}
           />
-          <OptimizedCase
+           */}
+           <OptimizedCase
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'optimized')}
             retirementResults={this.props.retirementResults}
             currentRetirementAge={this.props.currentRetirementAge}
             myInvestments={this.props.myInvestments}
-          /> */}
+          />
         </StepperContainer>
       </React.Fragment>
     );
