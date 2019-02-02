@@ -21,7 +21,7 @@ class Input extends Component {
     const { value } = this.props;
     const color = this.getColor();
     return (
-      <div className={'flex items-center w-100 justify-end'}>
+      <div className={'flex items-center w-100 justify-end'} style={this.props.style}>
         <input
           className={`bn pa20 br2 bg-transparent f4-ns f5 tr w-100 ${color}`}
           id={this.props.id}

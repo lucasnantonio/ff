@@ -49,7 +49,7 @@ class RetirementChart extends Component {
     const primarySet = {
       label: primaryData[0],
       data: primaryData[1].timeHistory,
-      backgroundColor: colors.lightGreen,
+      backgroundColor: colors.lightGreenTransparent,
       pointRadius: 0,
       borderWidth: 3,
       borderColor: colors.darkGreen,
