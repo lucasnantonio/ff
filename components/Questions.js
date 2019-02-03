@@ -44,6 +44,9 @@ class InputContainer extends Component {
   }
 
   componentDidMount() {
+    // prevent scroll animation when getting back from Tips
+    if (this.props.isShowingAnswer) return null;
+
     const scroll = () => {
       const section = document.getElementById('questionsContainer');
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });

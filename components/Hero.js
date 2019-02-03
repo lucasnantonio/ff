@@ -18,8 +18,8 @@ const Hero = props => (
         </p>
         <CSSTransitionGroup
           transitionName="exit"
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}
         >
           {!props.isShowingQuestions && (
             <button

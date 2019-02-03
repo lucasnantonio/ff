@@ -39,7 +39,12 @@ class OutPutContainer extends Component {
               <ShareCall />
             </div>
           </div>
-          <button onClick={() => this.props.handleShowTips(true)}>Ver dicas</button>
+          <button
+            className={'absolute'}
+            style={{ top: '50%', right: 0 }}
+            onClick={() => this.props.handleShowTips(true)}>
+              Ver dicas
+          </button>
           <style jsx>
             {`
               .bg-green {
