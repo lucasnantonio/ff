@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
@@ -356,26 +357,61 @@ class Index extends Component {
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
         <NavBar isShowingAnswer={this.state.isShowingAnswer} />
+
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
-          <React.Fragment>
-            {!this.state.isShowingTips ? (
-              <Answer {...this.state} handleShowTips={this.handleShowTips} />
-            ) : (
-              <TipsContainer
-                handleStudyCaseInput={this.handleStudyCaseInput}
-                handleStudyCaseWallet={this.handleStudyCaseWallet}
-                myInvestments={this.state.myInvestments}
-                studyCases={this.state.studyCases}
-                retirementResults={this.state.retirementResults}
-                studyCasesResults={this.state.studyCasesResults}
-                currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
-                handleShowTips={this.handleShowTips}
-              />
-            )}
-          </React.Fragment>
-        )}
+          <CSSTransitionGroup
+            transitionName={'slide'}
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={200}
+            component="div"
+          >
+            {!this.state.isShowingTips
+              && <Answer key="answer" {...this.state} handleShowTips={this.handleShowTips} />
+            }
+
+            {this.state.isShowingTips
+              && <TipsContainer
+              key="tips"
+              handleStudyCaseInput={this.handleStudyCaseInput}
+              handleStudyCaseWallet={this.handleStudyCaseWallet}
+              myInvestments={this.state.myInvestments}
+              studyCases={this.state.studyCases}
+              retirementResults={this.state.retirementResults}
+              studyCasesResults={this.state.studyCasesResults}
+              currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
+              handleShowTips={this.handleShowTips}
+            />
+            }
+            <style jsx global>
+              {`
+                .slide-enter {
+                  transform: translateX(100%);
+                  opacity: 0;
+                }
+
+                .slide-enter.slide-enter-active {
+                  transform: translateX(0px);
+                  transition: all 200ms ease-in-out;
+                  opacity: 1;
+                }
+
+                .slide-leave {
+                  transform: translateX(0px);
+                  opacity: 1;
+                }
+
+                .slide-leave.slide-leave-active {
+                  transform: translateX(-100%);
+                  transition: all 200ms ease-in-out;
+                  opacity: 0;
+                }
+              `}
+            </style>
+          </CSSTransitionGroup>
+        )
+        }
 
         {!this.state.isShowingTips
           && <div
