@@ -9,7 +9,7 @@ import StepperContainer from './StepperContainer';
 class TipsContainer extends Component {
   render() {
     return (
-      <div style={{ paddingTop: '8rem', minWidth: '100%', maxHeight: '100vh' }}>
+      <div style={{ paddingTop: '8rem', minWidth: '100%' }}>
         <StepperContainer handleShowTips={this.props.handleShowTips}>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
@@ -67,10 +67,12 @@ class TipsContainer extends Component {
           />
            */}
            <OptimizedCase
+            text={'Resultado Final.'}
+            actionText={''}
+            studyCase={getObjectByLabel(this.props.studyCases, 'optimized')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'optimized')}
-            retirementResults={this.props.retirementResults}
             currentRetirementAge={this.props.currentRetirementAge}
-            myInvestments={this.props.myInvestments}
+            retirementResults={this.props.retirementResults}
           />
         </StepperContainer>
       </div>
