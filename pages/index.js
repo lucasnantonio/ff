@@ -376,6 +376,7 @@ class Index extends Component {
             style={{
               transform: `translateX(${offset})`,
               transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+              maxHeight: '100vh',
             }}
             >
               <Answer key="answer" {...this.state} handleShowTips={this.handleShowTips} />

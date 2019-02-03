@@ -27,7 +27,7 @@ class StepperContainer extends Component {
           onClick={step === 0 ? () => this.props.handleShowTips(false) : () => this.handleStep(-1)}>
             {'<'}
         </StepperButton>
-        <div className={'flex flex-wrap mw7-ns w-100 ba pa4'} style={{ flexBasis: 0, flexGrow: 1 }}>
+        <div className={'flex flex-wrap mw7-ns h-100 w-100 ba pa4'} style={{ flexBasis: 0, flexGrow: 1 }}>
           <div className={'w-100'}>
             {this.props.children[step]}
           </div>
