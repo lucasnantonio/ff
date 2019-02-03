@@ -9,7 +9,7 @@ import StepperContainer from './StepperContainer';
 class TipsContainer extends Component {
   render() {
     return (
-      <div className={'pt5'}>
+      <div style={{ paddingTop: '8rem', minWidth: '100%' }}>
         <StepperContainer handleShowTips={this.props.handleShowTips}>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}

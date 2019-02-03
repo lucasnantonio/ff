@@ -6,6 +6,7 @@ import Questions from '../components/Questions';
 import Answer from '../components/Answer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import RetirementSummaryFloating from '../components/RetirementSummaryFloating';
 import TipsContainer from '../components/TipsContainer';
 import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
@@ -353,63 +354,43 @@ class Index extends Component {
   }
 
   render() {
+    const offset = this.state.isShowingTips ? '-100%' : '0';
+    const duration = 20000;
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
         <NavBar isShowingAnswer={this.state.isShowingAnswer} />
 
+        {this.state.isShowingAnswer
+          && <RetirementSummaryFloating
+            retirementResults={this.state.retirementResults}
+            myInvestments={this.state.myInvestments}
+          />
+        }
+
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
-          <CSSTransitionGroup
-            transitionName={'slide'}
-            transitionEnterTimeout={200}
-            transitionLeaveTimeout={200}
-            component="div"
-          >
-            {!this.state.isShowingTips
-              && <Answer key="answer" {...this.state} handleShowTips={this.handleShowTips} />
-            }
-
-            {this.state.isShowingTips
-              && <TipsContainer
-              key="tips"
-              handleStudyCaseInput={this.handleStudyCaseInput}
-              handleStudyCaseWallet={this.handleStudyCaseWallet}
-              myInvestments={this.state.myInvestments}
-              studyCases={this.state.studyCases}
-              retirementResults={this.state.retirementResults}
-              studyCasesResults={this.state.studyCasesResults}
-              currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
-              handleShowTips={this.handleShowTips}
-            />
-            }
-            <style jsx global>
-              {`
-                .slide-enter {
-                  transform: translateX(100%);
-                  opacity: 0;
-                }
-
-                .slide-enter.slide-enter-active {
-                  transform: translateX(0px);
-                  transition: all 200ms ease-in-out;
-                  opacity: 1;
-                }
-
-                .slide-leave {
-                  transform: translateX(0px);
-                  opacity: 1;
-                }
-
-                .slide-leave.slide-leave-active {
-                  transform: translateX(-100%);
-                  transition: all 200ms ease-in-out;
-                  opacity: 0;
-                }
-              `}
-            </style>
-          </CSSTransitionGroup>
+          <div
+            className={'flex slide'}
+            style={{
+              transform: `translateX(${offset})`,
+              transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+            }}
+            >
+              <Answer key="answer" {...this.state} handleShowTips={this.handleShowTips} />
+              <TipsContainer
+                key="tips"
+                handleStudyCaseInput={this.handleStudyCaseInput}
+                handleStudyCaseWallet={this.handleStudyCaseWallet}
+                myInvestments={this.state.myInvestments}
+                studyCases={this.state.studyCases}
+                retirementResults={this.state.retirementResults}
+                studyCasesResults={this.state.studyCasesResults}
+                currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
+                handleShowTips={this.handleShowTips}
+              />
+          </div>
         )
         }
 
