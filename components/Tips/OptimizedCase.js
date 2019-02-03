@@ -4,9 +4,9 @@ import RetirementChart from '../RetirementChart';
 import colors from '../Colors';
 
 const OptimizedCase = ({
-  studyCaseResults, retirementResults, currentRetirementAge, myInvestments,
+  studyCaseResults, retirementResults, currentRetirementAge,
 }) => (
-    <div style={{ backgroundColor: colors.mediumPink }}>
+    <div style={{ backgroundColor: colors.mediumPink, minWidth: '100%' }}>
       <p>Com essas modificações, você pode atingir a liberdade financeira com:</p>
       <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
       <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>

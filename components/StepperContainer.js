@@ -22,22 +22,31 @@ class StepperContainer extends Component {
   render() {
     const { step, nSteps } = this.state;
     return (
-      <div className={'flex items-center justify-center ph5'}>
+      <div className={'flex flex-wrap items-center justify-center ph5'}>
+        <StepperMarks step={step} nSteps={nSteps} />
         <StepperButton
           onClick={step === 0 ? () => this.props.handleShowTips(false) : () => this.handleStep(-1)}>
             {'<'}
         </StepperButton>
-        <div className={'flex flex-wrap mw7-ns h-100 w-100 ba pa4'} style={{ flexBasis: 0, flexGrow: 1 }}>
-          <div className={'w-100'}>
-            {this.props.children[step]}
-          </div>
-          <StepperMarks style={{ width: '100%' }} step={step} nSteps={nSteps} />
-        </div>
         <StepperButton
           disabled={step === nSteps - 1}
           onClick={() => this.handleStep(1)}>
             {'>'}
         </StepperButton>
+        {/* Content */}
+        <div className={'mw7-ns w-100 ba bw4 overflow-hidden'}>
+        <div
+          className={'flex w-100'}
+          style={{
+            // flexBasis: 0,
+            // flexGrow: 1,
+            transform: `translateX(${-step * 100}%)`,
+            transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+          }}
+        >
+          {this.props.children}
+        </div>
+        </div>
       </div>
     );
   }
