@@ -9,8 +9,8 @@ class OutPutContainer extends Component {
     return (
       <div
         id="answersContainer"
-        className={'absolute ph0-ns ph4 pv5'}
-        style={{ minWidth: '100%' }}
+        className={'absolute w-100 ph0-ns ph4 pv5'}
+        style={{ maxHeight: '100vh' }}
       >
         <div className="flex flex-row-ns flex-column mt0-ns pv5-l pt5 pb0 mw7 center ">
           <div className="w-100 f3-ns f5 tl-ns tc self-center pr5-ns pr0">

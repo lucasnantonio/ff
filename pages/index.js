@@ -355,7 +355,7 @@ class Index extends Component {
 
   render() {
     const direction = this.state.isShowingTips ? 1 : -1;
-    const duration = 2000;
+    const duration = 400;
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />

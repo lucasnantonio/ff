@@ -10,8 +10,8 @@ class TipsContainer extends Component {
   render() {
     return (
       <div
-        className={'absolute'}
-        style={{ paddingTop: '8rem', minWidth: '100%' }}
+        className={'absolute w-100'}
+        style={{ paddingTop: '8rem', maxHeight: '100vh' }}
         >
         <StepperContainer handleShowTips={this.props.handleShowTips}>
           <GeneralInputTip
