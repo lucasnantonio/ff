@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spring } from 'react-spring';
 import { formatAge } from '../../utils/math';
 import RetirementChart from '../RetirementChart';
 
@@ -22,9 +23,14 @@ const TipLayout = (props) => {
         secondaryData={props.retirementResults[0]}
       />
     </div>
-    {(deltaAge !== 0 || deltaMonths !== 0) && (
-      <p>Você acabou de adiantar ({deltaAge} anos e {deltaMonths} meses). Liberdade financeira aos {newAge} anos. </p>
-    ) }
+    <Spring
+      from={{ number: 0 }}
+      to={{ number: deltaAge }}
+      config={{ delay: 400, precision: 0 }}
+
+      >
+      {props => <div className={'f2 w-100'}>{props.number.toFixed(0)} anos</div>}
+    </Spring>
   </div>
   );
 };
