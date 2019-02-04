@@ -9,7 +9,7 @@ class OutPutContainer extends Component {
     return (
       <div
         id="answersContainer"
-        className={'ph0-ns ph4 pv5'}
+        className={'absolute ph0-ns ph4 pv5'}
         style={{ minWidth: '100%' }}
       >
         <div className="flex flex-row-ns flex-column mt0-ns pv5-l pt5 pb0 mw7 center ">

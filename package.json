@@ -36,6 +36,7 @@
     "react-hotjar": "^1.0.11",
     "react-particles-js": "^2.3.0",
     "react-share": "^2.4.0",
+    "react-spring": "^7.2.10",
     "tachyons": "^4.11.1"
   },
   "devDependencies": {

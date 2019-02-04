@@ -354,8 +354,8 @@ class Index extends Component {
   }
 
   render() {
-    const offset = this.state.isShowingTips ? '-100%' : '0';
-    const duration = 20000;
+    const direction = this.state.isShowingTips ? 1 : -1;
+    const duration = 2000;
     return (
       <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
@@ -371,27 +371,58 @@ class Index extends Component {
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
-          <div
-            className={'flex'}
-            style={{
-              transform: `translateX(${offset})`,
-              transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
-              maxHeight: '100vh',
-            }}
+          <CSSTransitionGroup
+            transitionName={'slide'}
+            transitionEnterTimeout={duration}
+            transitionLeaveTimeout={duration}
+            className="relative h-100"
+            component="div"
             >
-              <Answer key="answer" {...this.state} handleShowTips={this.handleShowTips} />
-              <TipsContainer
-                key="tips"
-                handleStudyCaseInput={this.handleStudyCaseInput}
-                handleStudyCaseWallet={this.handleStudyCaseWallet}
-                myInvestments={this.state.myInvestments}
-                studyCases={this.state.studyCases}
-                retirementResults={this.state.retirementResults}
-                studyCasesResults={this.state.studyCasesResults}
-                currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
-                handleShowTips={this.handleShowTips}
-              />
-          </div>
+              {!this.state.isShowingTips ? (
+                <Answer
+                  key="answer"
+                  {...this.state}
+                  handleShowTips={this.handleShowTips}
+                />
+              ) : (
+                <TipsContainer
+                  key="tips"
+                  handleStudyCaseInput={this.handleStudyCaseInput}
+                  handleStudyCaseWallet={this.handleStudyCaseWallet}
+                  myInvestments={this.state.myInvestments}
+                  studyCases={this.state.studyCases}
+                  retirementResults={this.state.retirementResults}
+                  studyCasesResults={this.state.studyCasesResults}
+                  currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
+                  handleShowTips={this.handleShowTips}
+                />
+              )}
+            <style jsx global>
+            {`
+              .slide-enter {
+                transform: translateX(${direction * 100}%);
+                opacity: 0;
+              }
+  
+              .slide-enter-active {
+                transform: translateX(0px);
+                transition: all ${duration}ms ease-in-out;
+                opacity: 1;
+              }
+  
+              .slide-leave {
+                transform: translateX(0px);
+                opacity: 1;
+              }
+  
+              .slide-leave-active {
+                transform: translateX(${-direction * 100}%);
+                transition: all ${duration}ms ease-in-out;
+                opacity: 0;
+              }
+            `}
+            </style>
+          </CSSTransitionGroup>
         )
         }
 
