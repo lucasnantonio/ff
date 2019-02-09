@@ -2,7 +2,7 @@ import React from 'react';
 
 const StepperMarks = props => (
   <div
-      className={'flex items-center justify-center h3 ma2 w-100'}
+      className={'flex items-center justify-center'}
       style={props.style}
     >
       {/* render steps */}

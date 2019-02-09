@@ -2,7 +2,7 @@ import React from 'react';
 
 const StepperButton = props => (
   <button
-    className={'w3 h3 br-100 ma2 ba b--black z-max'}
+    className={'w3 h3 br-100 ba b--black'}
     style={{
       ...props.style,
       background: 'none',

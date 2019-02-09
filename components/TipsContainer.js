@@ -10,7 +10,8 @@ class TipsContainer extends Component {
   render() {
     return (
       <div
-        className={'w-100 ph4 overflow-hidden'}
+        id={'TipsContainer'}
+        className={'w-100 ph4 ph6-l'}
         style={{ paddingTop: '8rem', minWidth: '100%' }}
         >
         <StepperContainer handleShowTips={this.props.handleShowTips}>
