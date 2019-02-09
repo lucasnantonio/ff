@@ -11,7 +11,7 @@ const TipLayout = (props) => {
   const newAge = formatAge(props.studyCaseResults[1].retirement.age)[0];
 
   return (
-  <div className={'flex flex-wrap ba'} style={{ minWidth: '100%' }}>
+  <div className={'flex flex-wrap ba h-100'} style={{ minWidth: '100%' }}>
     <p className={'w-100'}>{props.text}</p>
     <div className={'w-50'}>
       <p>{props.actionText}</p>

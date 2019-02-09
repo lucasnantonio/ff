@@ -1,17 +1,17 @@
 import React from 'react';
 
-const StepperMarks = ({ step, nSteps, style }) => (
+const StepperMarks = props => (
   <div
-      className={'flex items-center justify-center h-100 w-100'}
-      style={style}
+      className={'flex items-center justify-center h3 ma2 w-100'}
+      style={props.style}
     >
       {/* render steps */}
-      {[...Array(nSteps)].map((elem, index) => (
+      {[...Array(props.nSteps)].map((elem, index) => (
         <div
           key={index}
           className={`
             ba br-100 hstep ma1
-            ${index === step && 'bg-black'}
+            ${index === props.step && 'bg-black'}
           `}
           style={{ height: '0.5rem', width: '0.5rem' }}
         />

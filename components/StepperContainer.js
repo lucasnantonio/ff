@@ -27,40 +27,46 @@ class StepperContainer extends Component {
 
   render() {
     const { step, nSteps, direction } = this.state;
-    const duration = 20000;
+    const duration = 400;
     return (
-      <div className={'flex flex-wrap items-center justify-center ph5'}>
-        <StepperMarks step={step} nSteps={nSteps} />
+      <div className={'relative w-100'} style={{ height: 'calc(100vh - 8rem)' }}>
+        <StepperMarks
+          style={{ position: 'absolute', bottom: 0 }}
+          step={step}
+          nSteps={nSteps}
+        />
         <StepperButton
-          onClick={step === 0 ? () => this.props.handleShowTips(false) : () => this.handleStep(-1)}>
+          style={{ position: 'absolute', left: 0, bottom: 0 }}
+          onClick={step === 0 ? () => this.props.handleShowTips(false) : () => this.handleStep(-1)}
+        >
             {'<'}
+        </StepperButton>
+        <StepperButton
+          style={{ position: 'absolute', right: 0, bottom: 0 }}
+          disabled={step === nSteps - 1}
+          onClick={() => this.handleStep(1)}>
+            {'>'}
         </StepperButton>
 
         {/* Content */}
-        <div className={'relative mw7-ns w-100'}>
-          <Transition
-            items={this.state.step}
-            from={{
-              position: 'absolute',
-              opacity: 0,
-              transform: `translate3d(${direction * 100}%,0,0)`,
-            }}
-            enter={{ opacity: 1, transform: 'translate3d(0%,0,0)' }}
-            leave={{ opacity: 0, transform: `translate3d(${-direction * 100}%,0,0)` }}>
-              {step => (
-                props => <div style={props}>{this.props.children[step]}</div>
-              )
-              }
-          </Transition>
-        </div>
-        {/* <CSSTransitionGroup
+        <CSSTransitionGroup
           transitionName={'slide2'}
           transitionEnterTimeout={duration}
           transitionLeaveTimeout={duration}
-          className="relative"
           component="div"
+          className="relative mt0-ns pv5-l pt5 pb0 mw7 center debug"
+          style={{ height: 'calc(100% - 4rem)' }}
         >
-          {this.props.children[step]}
+          {this.props.children.map((children, index) => {
+            if (index === step) {
+              return (
+                <div key={index} className={'absolute top-0 bottom-0'}>
+                  {children}
+                </div>
+              );
+            }
+            return null;
+          })}
           <style jsx global>
               {`
                 .slide2-enter {
@@ -86,12 +92,8 @@ class StepperContainer extends Component {
                 }
               `}
             </style>
-        </CSSTransitionGroup> */}
-        <StepperButton
-          disabled={step === nSteps - 1}
-          onClick={() => this.handleStep(1)}>
-            {'>'}
-        </StepperButton>
+        </CSSTransitionGroup>
+
       </div>
     );
   }
