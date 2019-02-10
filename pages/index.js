@@ -115,6 +115,7 @@ class Index extends Component {
       studyCasesResults: false,
       focusedInput: '',
       resettingStepper: false,
+      applyTips: false,
     };
   }
 
@@ -360,9 +361,13 @@ class Index extends Component {
       const optimizedCase = getObjectByLabel(this.state.studyCases, 'optimized');
       const updatedInputs = { ...optimizedCase };
       delete updatedInputs.label;
-      this.setState(updatedInputs);
+      this.setState({ ...updatedInputs, applyTips: doApply });
     }
-    setTimeout(() => this.setState({ isShowingTips: false, resettingStepper: false }), 1000);
+    setTimeout(() => this.setState({
+      isShowingTips: false,
+      resettingStepper: false,
+      applyTips: false,
+    }), 3000);
   }
 
   render() {
@@ -405,6 +410,7 @@ class Index extends Component {
               handleShowTips={this.handleShowTips}
               handleApplyTips={this.handleApplyTips}
               resettingStepper={this.state.resettingStepper}
+              applyTips={this.state.applyTips}
             />
           </div>
         )

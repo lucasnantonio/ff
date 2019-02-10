@@ -9,6 +9,9 @@ const GeneralInputTip = props => (
     currentRetirementAge={props.currentRetirementAge}
     retirementResults={props.retirementResults}
     studyCaseResults={props.studyCaseResults}
+    step={props.step}
+    myStep={props.myStep}
+    applyTips={props.applyTips}
   >
     <Input
       isCurrency={props.isCurrency}

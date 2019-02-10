@@ -29,6 +29,8 @@ class TipsContainer extends Component {
             myInvestments={this.props.myInvestments}
             retirementResults={this.props.retirementResults}
             isCurrency
+            myStep={0}
+            applyTips={this.props.applyTips}
           />
           <ChangeInvestmentTip
             text={'Aonde você aplica o seu dinheiro pode ter um impacto muito grande.'}
@@ -39,6 +41,8 @@ class TipsContainer extends Component {
             currentRetirementAge={this.props.currentRetirementAge}
             myInvestments={this.props.myInvestments}
             retirementResults={this.props.retirementResults}
+            myStep={1}
+            applyTips={this.props.applyTips}
           />
           {/* <GeneralInputTip
             id={'myCurrentBalance'}

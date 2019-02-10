@@ -19,7 +19,7 @@ class StepperContainer extends Component {
       clearTimeout(timeoutVar);
       timeoutVar = setTimeout(
         () => this.setState({ step: prevState.step - 1 }),
-        step === nSteps - 1 ? 0 : 300,
+        step === nSteps - 1 ? 0 : 900,
       );
     }
   }
@@ -36,8 +36,8 @@ class StepperContainer extends Component {
     const { step, nSteps } = this.state;
     return (
       <div
-        className={'flex flex-column w-100 pv4 overflow-hidden'}
-        style={{ height: 'calc(100vh - 8rem)' }}
+        className={'flex flex-column w-100 pv4'}
+        style={{ height: 'calc(100vh - 8rem)', overflowX: 'hidden' }}
       >
         <div
           className={'w-100 mw7 center'}
@@ -51,7 +51,7 @@ class StepperContainer extends Component {
               transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
             }}
           >
-            {this.props.children}
+            {this.props.children.map(child => React.cloneElement(child, { step }))}
           </div>
         </div>
 

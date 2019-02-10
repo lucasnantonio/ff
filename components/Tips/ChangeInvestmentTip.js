@@ -9,6 +9,9 @@ const ChangeInvestmetTip = props => (
     currentRetirementAge={props.currentRetirementAge}
     retirementResults={props.retirementResults}
     studyCaseResults={props.studyCaseResults}
+    step={props.step}
+    myStep={props.myStep}
+    applyTips={props.applyTips}
   >
     <div>
       {props.studyCase.myWallet.map((elem, index) => (
