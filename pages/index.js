@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { hotjar } from 'react-hotjar';
 import { initGA, logPageView, logEvent } from '../utils/analytics';
 import Questions from '../components/Questions';
@@ -12,6 +11,7 @@ import NavBar from '../components/NavBar';
 import colors from '../components/Colors';
 import { getRetirementResults, getStudyCasesResults } from '../utils/math';
 import { isNumber, valueByInputType } from '../utils/input';
+import { getObjectByLabel } from '../utils/utils';
 
 function getRates(label) {
   return {
@@ -353,6 +353,16 @@ class Index extends Component {
     this.setState({ isShowingTips: value });
   }
 
+  handleApplyTips = (doApply) => {
+    if (doApply) {
+      const optimizedCase = getObjectByLabel(this.state.studyCases, 'optimized');
+      const updatedInputs = { ...optimizedCase };
+      delete updatedInputs.label;
+      this.setState(updatedInputs);
+    }
+    this.setState({ isShowingTips: false });
+  }
+
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
@@ -391,6 +401,7 @@ class Index extends Component {
               studyCasesResults={this.state.studyCasesResults}
               currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
               handleShowTips={this.handleShowTips}
+              handleApplyTips={this.handleApplyTips}
             />
           </div>
         )

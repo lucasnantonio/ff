@@ -77,6 +77,7 @@ class TipsContainer extends Component {
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'optimized')}
             currentRetirementAge={this.props.currentRetirementAge}
             retirementResults={this.props.retirementResults}
+            handleApplyTips={this.props.handleApplyTips}
           />
         </StepperContainer>
       </div>
