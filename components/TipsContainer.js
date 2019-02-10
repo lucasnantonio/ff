@@ -14,7 +14,10 @@ class TipsContainer extends Component {
         className={'w-100 ph4 ph6-l'}
         style={{ paddingTop: '8rem', minWidth: '100%' }}
         >
-        <StepperContainer handleShowTips={this.props.handleShowTips}>
+        <StepperContainer
+          handleShowTips={this.props.handleShowTips}
+          resettingStepper={this.props.resettingStepper}
+        >
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
             text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina.'}

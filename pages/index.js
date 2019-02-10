@@ -114,6 +114,7 @@ class Index extends Component {
       retirementResults: false,
       studyCasesResults: false,
       focusedInput: '',
+      resettingStepper: false,
     };
   }
 
@@ -354,13 +355,14 @@ class Index extends Component {
   }
 
   handleApplyTips = (doApply) => {
+    this.setState({ resettingStepper: true });
     if (doApply) {
       const optimizedCase = getObjectByLabel(this.state.studyCases, 'optimized');
       const updatedInputs = { ...optimizedCase };
       delete updatedInputs.label;
       this.setState(updatedInputs);
     }
-    this.setState({ isShowingTips: false });
+    setTimeout(() => this.setState({ isShowingTips: false, resettingStepper: false }), 1000);
   }
 
   render() {
@@ -402,6 +404,7 @@ class Index extends Component {
               currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
               handleShowTips={this.handleShowTips}
               handleApplyTips={this.handleApplyTips}
+              resettingStepper={this.state.resettingStepper}
             />
           </div>
         )

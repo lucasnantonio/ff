@@ -2,14 +2,26 @@ import React, { Component } from 'react';
 import StepperButton from './StepperButton';
 import StepperMarks from './StepperMarks';
 
+let timeoutVar;
+
 class StepperContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       step: 0,
       nSteps: this.props.children.length,
-      direction: 1,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { step, nSteps } = this.state;
+    if (this.props.resettingStepper && prevState.step > 0) {
+      clearTimeout(timeoutVar);
+      timeoutVar = setTimeout(
+        () => this.setState({ step: prevState.step - 1 }),
+        step === nSteps - 1 ? 0 : 300,
+      );
+    }
   }
 
   handleStep(increment) {
@@ -36,7 +48,7 @@ class StepperContainer extends Component {
             style={{
               left: `-${1 + 2 * 1 * step}rem`,
               transform: `translateX(${-step * 100}%)`,
-              transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955',
+              transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
             }}
           >
             {this.props.children}
