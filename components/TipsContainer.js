@@ -98,11 +98,17 @@ class TipsContainer extends Component {
           />
 
           <GeneralTextTip
-            title={'Extra'}>
-            <p>Falar um pouco sobre consumir apenas os rendimentos</p>
+            title={'Viver de rendimentos'}>
+            <p>Não sei se você reparou, mas a linha do gráfico começa a cair após a aposentadoria.
+              Isso significa que você estará consumindo mais do que os rendimentos das suas aplicações,
+              até que você não tenha nenhum dinheiro.
+            </p>
+            <p>Para que essa curva nunca caia, é necessário viver apenas com os rendimentos, para isso,
+              é preciso esperar mais um pouco até a aposentadoria.</p>
           </GeneralTextTip>
 
           <LeaveHeritageTip
+            actionText={'Veja o quanto mais você deve esperar até viver apenas com os rendimentos.'}
             studyCase={getObjectByLabel(this.props.studyCases, 'changeLeaveHeritage')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeLeaveHeritage')}
             handleInput={this.props.handleStudyCaseInput}
