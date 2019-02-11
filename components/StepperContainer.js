@@ -35,6 +35,7 @@ class StepperContainer extends Component {
 
   render() {
     const { step, nSteps } = this.state;
+    const transitionDuration = 0;
     return (
       <div
         className={'flex flex-column w-100 pv4'}
@@ -49,7 +50,7 @@ class StepperContainer extends Component {
             style={{
               left: `-${1 + 2 * 1 * step}rem`,
               transform: `translateX(${-step * 100}%)`,
-              transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+              transition: `transform ${transitionDuration}ms cubic-bezier(0.455, 0.03, 0.515, 0.955)`,
             }}
           >
             {this.props.children.map((child, index) => React.cloneElement(child, { step, key: index }))}

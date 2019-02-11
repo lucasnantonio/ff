@@ -356,7 +356,7 @@ class Index extends Component {
   }
 
   handleApplyTips = (doApply) => {
-    const delay = 0;
+    const delay = 900;
     this.setState({ resettingStepper: true });
     if (doApply) {
       const optimizedCase = getObjectByLabel(this.state.studyCases, 'optimized');
