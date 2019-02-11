@@ -1,31 +1,27 @@
 import React from 'react';
-import { formatAge, toCurrency } from '../../utils/math';
-import RetirementChart from '../RetirementChart';
+import TipLayout from './TipLayout';
 
-const LeaveHeritageTip = ({
-  studyCase, studyCaseResults, handleInput,
-  currentRetirementAge, myInvestments, retirementResults,
-}) => (
-    <div>
-      <p>{formatAge(studyCaseResults[1].retirement.age)[0]} anos</p>
-      <p>({formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[0]} anos e {formatAge(studyCaseResults[1].retirement.age - currentRetirementAge)[1]} meses)</p>
-      <p>Não sei se você reparou, mas calculamos o tempo de aposentadoria sem
-      deixar nenhuma herança. Já pensou em deixar alguma herança? O tempo para
-      se aposentar vai aumentar ainda mais dependendo do tipo de investimento.</p>
-      <input
+const LeaveHeritageTip = props => (
+  <TipLayout
+    text={props.text}
+    actionText={props.actionText}
+    currentRetirementAge={props.currentRetirementAge}
+    retirementResults={props.retirementResults}
+    studyCaseResults={props.studyCaseResults}
+    step={props.step}
+    myStep={props.myStep}
+    applyTips={props.applyTips}
+  >
+    <input
       id={'leaveHeritage'}
       name="leaveHeritage"
       type="checkbox"
-      checked={studyCase.leaveHeritage}
-      onChange={(e, floatValue) => handleInput(e, floatValue, studyCase.label)}
+      checked={props.studyCase.leaveHeritage}
+      onChange={(e, floatValue) => props.handleInput(e, floatValue, props.studyCase.label)}
       />
       <p>Valor da herança:</p>
-      <p>R$ {studyCaseResults[1].timeHistory[studyCaseResults[1].timeHistory.length - 1].y.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</p>
-      <RetirementChart
-        primaryData={studyCaseResults}
-        secondaryData={retirementResults[0]}
-      />
-    </div>
+      <p>R$ {props.studyCaseResults[1].timeHistory[props.studyCaseResults[1].timeHistory.length - 1].y.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</p>
+  </TipLayout>
 );
 
 export default LeaveHeritageTip;

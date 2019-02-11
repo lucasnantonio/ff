@@ -45,7 +45,6 @@ class TipsContainer extends Component {
           </GeneralTextTip>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
-            text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina.'}
             actionText={'Experimente poupar mais ou aumentar a sua renda.'}
             studyCase={getObjectByLabel(this.props.studyCases, 'changeMonthlySavings')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeMonthlySavings')}
@@ -57,8 +56,36 @@ class TipsContainer extends Component {
             myStep={0}
             applyTips={this.props.applyTips}
           />
+
+          <GeneralTextTip
+            title={'Tempo'}>
+            <p>Você já deve ter ouvido falar que [quanto antes começar, melhor], mas qual será a
+              diferença que isso faz?
+            </p>
+            <p>Se você ainda não guarda dinheiro pensando na aposentadoria, experimente ver a
+              a diferença que faz se você começar daqui 5, 10 ou 15 anos.
+            </p>
+          </GeneralTextTip>
+
+          <GeneralInputTip
+            id={'myCurrentAge'}
+            actionText={'Veja o que acontece se você começar a poupar só daqui a alguns anos.'}
+            studyCase={getObjectByLabel(this.props.studyCases, 'changeCurrentAge')}
+            studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeCurrentAge')}
+            handleInput={this.props.handleStudyCaseInput}
+            currentRetirementAge={this.props.currentRetirementAge}
+            myInvestments={this.props.myInvestments}
+            retirementResults={this.props.retirementResults}
+            myStep={1}
+            applyTips={this.props.applyTips}
+          />
+
+          <GeneralTextTip
+            title={'Rendimentos'}>
+            <p>Falar um pouco sobre cada investimento</p>
+          </GeneralTextTip>
+
           <ChangeInvestmentTip
-            text={'Aonde você aplica o seu dinheiro pode ter um impacto muito grande.'}
             actionText={'Experimente diversificar os seus investimentos.'}
             studyCase={getObjectByLabel(this.props.studyCases, 'changeSelectedInvestment')}
             studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeSelectedInvestment')}
@@ -66,9 +93,26 @@ class TipsContainer extends Component {
             currentRetirementAge={this.props.currentRetirementAge}
             myInvestments={this.props.myInvestments}
             retirementResults={this.props.retirementResults}
-            myStep={1}
+            myStep={2}
             applyTips={this.props.applyTips}
           />
+
+          <GeneralTextTip
+            title={'Extra'}>
+            <p>Falar um pouco sobre consumir apenas os rendimentos</p>
+          </GeneralTextTip>
+
+          <LeaveHeritageTip
+            studyCase={getObjectByLabel(this.props.studyCases, 'changeLeaveHeritage')}
+            studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeLeaveHeritage')}
+            handleInput={this.props.handleStudyCaseInput}
+            currentRetirementAge={this.props.currentRetirementAge}
+            myInvestments={this.props.myInvestments}
+            retirementResults={this.props.retirementResults}
+            myStep={3}
+            applyTips={this.props.applyTips}
+          />
+
           {/* <GeneralInputTip
             id={'myCurrentBalance'}
             label={'E se você não tivesse nada guardado?'}
@@ -81,27 +125,7 @@ class TipsContainer extends Component {
             retirementResults={this.props.retirementResults}
             isCurrency
           /> */}
-          {/* <LeaveHeritageTip
-            studyCase={getObjectByLabel(this.props.studyCases, 'changeLeaveHeritage')}
-            studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeLeaveHeritage')}
-            handleInput={this.props.handleStudyCaseInput}
-            currentRetirementAge={this.props.currentRetirementAge}
-            myInvestments={this.props.myInvestments}
-            retirementResults={this.props.retirementResults}
-          />
 
-          <GeneralInputTip
-            id={'myCurrentAge'}
-            label={'Veja o que acontece se você mudar a sua idade.'}
-            text={'Quanto antes você começar, mais cedo você vai atingir a tranquilidade financeira.'}
-            studyCase={getObjectByLabel(this.props.studyCases, 'changeCurrentAge')}
-            studyCaseResults={getResultsByLabel(this.props.studyCasesResults, 'changeCurrentAge')}
-            handleInput={this.props.handleStudyCaseInput}
-            currentRetirementAge={this.props.currentRetirementAge}
-            myInvestments={this.props.myInvestments}
-            retirementResults={this.props.retirementResults}
-          />
-           */}
            <OptimizedCase
             text={'Resultado Final.'}
             actionText={''}
