@@ -14,12 +14,13 @@ class StepperContainer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const delay = 0;
     const { step, nSteps } = this.state;
     if (this.props.resettingStepper && prevState.step > 0) {
       clearTimeout(timeoutVar);
       timeoutVar = setTimeout(
         () => this.setState({ step: prevState.step - 1 }),
-        step === nSteps - 1 ? 0 : 900,
+        step === nSteps - 1 ? 0 : delay,
       );
     }
   }
@@ -51,7 +52,7 @@ class StepperContainer extends Component {
               transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955)',
             }}
           >
-            {this.props.children.map(child => React.cloneElement(child, { step }))}
+            {this.props.children.map((child, index) => React.cloneElement(child, { step, key: index }))}
           </div>
         </div>
 

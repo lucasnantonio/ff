@@ -17,7 +17,7 @@ const TipLayout = (props) => {
     style={{ minWidth: '100%' }}
   >
 
-    <CSSTransitionGroup
+    {/* <CSSTransitionGroup
       transitionName={'stamp'}
       transitionEnterTimeout={1000}
       transitionLeaveTimeout={1000}
@@ -40,7 +40,7 @@ const TipLayout = (props) => {
         }
       `}
       </style>
-    </CSSTransitionGroup>
+    </CSSTransitionGroup> */}
 
 
     <p className={'w-100'}>{props.text}</p>

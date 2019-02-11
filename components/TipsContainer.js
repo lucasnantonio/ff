@@ -5,6 +5,7 @@ import ChangeInvestmentTip from './Tips/ChangeInvestmentTip';
 import OptimizedCase from './Tips/OptimizedCase';
 import { getObjectByLabel, getResultsByLabel } from '../utils/utils';
 import StepperContainer from './StepperContainer';
+import GeneralTextTip from './Tips/GeneralTextTip';
 
 class TipsContainer extends Component {
   render() {
@@ -18,6 +19,30 @@ class TipsContainer extends Component {
           handleShowTips={this.props.handleShowTips}
           resettingStepper={this.props.resettingStepper}
         >
+          <GeneralTextTip
+            title={'Introdução'}>
+            <p>O objetivo agora é mexer em algumas variáveis e mostrar o impacto de cada uma delas
+              no tempo até a independência financeira.</p>
+            <p>No final você poderá aplicar essas mudanças no seu resultado.</p>
+          </GeneralTextTip>
+          <GeneralTextTip
+            title={'Introdução'}>
+            <p>O tempo até a aposentadoria é governado por basicamente 3 variáveis:</p>
+            <ul>
+              <li>aporte (inicial e mensal)</li>
+              <li>tempo</li>
+              <li>rendimentos</li>
+            </ul>
+            <p>Vamos explorar um pouco dessas variáveis...</p>
+          </GeneralTextTip>
+          <GeneralTextTip
+            title={'Aporte'}>
+            <p>O aporte talvez seja a variável que esteja mais sob o nosso controle e uma das que
+              pode ter o maior impacto. Não é difícil imaginar uma situação que poderíamos
+              economizar um pouco mais de dinheiro por mês, conseguir uma renda extra ou quem sabe
+              um novo emprego. Esse dinheiro extra pode ser investido para adiantar a sua
+              independência financeira.</p>
+          </GeneralTextTip>
           <GeneralInputTip
             id={'myCurrentMonthlySavings'}
             text={'Aumentar o seu aporte mensal pode ter um impacto muito maior do que você imagina.'}
