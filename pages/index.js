@@ -387,33 +387,30 @@ class Index extends Component {
         {!this.state.isShowingAnswer ? (
           <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
         ) : (
-          <div
-            className="flex"
-            style={{
-              transform: `translateX(${this.state.isShowingTips ? '-100%' : '0'})`,
-              transition: 'transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955',
-            }}
-          >
-            <Answer
-              key="answer"
-              {...this.state}
-              handleShowTips={this.handleShowTips}
-            />
-            <TipsContainer
-              key="tips"
-              handleStudyCaseInput={this.handleStudyCaseInput}
-              handleStudyCaseWallet={this.handleStudyCaseWallet}
-              myInvestments={this.state.myInvestments}
-              studyCases={this.state.studyCases}
-              retirementResults={this.state.retirementResults}
-              studyCasesResults={this.state.studyCasesResults}
-              currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
-              handleShowTips={this.handleShowTips}
-              handleApplyTips={this.handleApplyTips}
-              resettingStepper={this.state.resettingStepper}
-              applyTips={this.state.applyTips}
-            />
-          </div>
+          <React.Fragment>
+            {!this.state.isShowingTips ? (
+              <Answer
+                key="answer"
+                {...this.state}
+                handleShowTips={this.handleShowTips}
+              />
+            ) : (
+              <TipsContainer
+                key="tips"
+                handleStudyCaseInput={this.handleStudyCaseInput}
+                handleStudyCaseWallet={this.handleStudyCaseWallet}
+                myInvestments={this.state.myInvestments}
+                studyCases={this.state.studyCases}
+                retirementResults={this.state.retirementResults}
+                studyCasesResults={this.state.studyCasesResults}
+                currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
+                handleShowTips={this.handleShowTips}
+                handleApplyTips={this.handleApplyTips}
+                resettingStepper={this.state.resettingStepper}
+                applyTips={this.state.applyTips}
+              />
+            )}
+          </React.Fragment>
         )
         }
 
