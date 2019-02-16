@@ -13,7 +13,7 @@ const TipLayout = (props) => {
 
   return (
   <div
-    className={'relative flex flex-wrap ba h-100 mh3 pa3'}
+    className={'relative flex flex-wrap ba br4 h-100 mh3 pa3'}
     style={{ minWidth: '100%' }}
   >
 

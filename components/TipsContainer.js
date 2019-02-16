@@ -82,7 +82,13 @@ class TipsContainer extends Component {
 
           <GeneralTextTip
             title={'Rendimentos'}>
-            <p>Falar um pouco sobre cada investimento</p>
+            <p>Depois que começa a sobrar um dinheiro por mês, o próximo passo é investir.</p>
+            <p>Todos os tipos de aplicações: Poupança, renda fixa e renda váriavel tem a sua
+              importância na carteira de quem busca a independência financeira.</p>
+            <p>Não tem problema nenhum deixar uma pequena quantidade na poupança, tipo aquele dinheiro
+              que vai ser utilizado para pagar as contas ou para emergências. Aquele dinheiro que vai
+              ser utilizado para a sua aposentadoria pode ser destinado a aplicações de maior rendimento.
+            </p>
           </GeneralTextTip>
 
           <ChangeInvestmentTip
