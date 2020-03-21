@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import InputField from './InputField';
-import InputTable from './InputTable';
-import MultiSelect from './MultiSelect';
-import QuestionTabs from './QuestionTabs';
-import colors from './Colors';
+import React, { Component } from "react";
+import CSSTransitionGroup from "react-addons-css-transition-group";
+import InputField from "./InputField";
+import InputTable from "./InputTable";
+import MultiSelect from "./MultiSelect";
+import QuestionTabs from "./QuestionTabs";
+import colors from "./Colors";
 
 let timeoutVar = 0;
 
@@ -16,58 +16,64 @@ class InputContainer extends Component {
       targetTabIndex: 0,
       currentTabIndex: 0,
       duration: 400,
-      direction: '',
+      direction: "",
       questions: [
         {
-          id: 'myCurrentAge',
-          isEmpty: false,
+          id: "myCurrentAge",
+          isEmpty: false
         },
         {
-          id: 'myCurrentBalance',
-          isEmpty: true,
+          id: "myCurrentBalance",
+          isEmpty: true
         },
         {
-          id: 'myCurrentMonthlySavings',
-          isEmpty: true,
+          id: "myCurrentMonthlySavings",
+          isEmpty: true
         },
         {
-          id: 'myRetirementIncome',
-          isEmpty: true,
-        },
+          id: "myRetirementIncome",
+          isEmpty: true
+        }
       ],
       tabs: [
-        { label: 'perguntas básicas', isSelected: true },
-        { label: 'eventos de vida', isSelected: false },
-        { label: 'configurações', isSelected: false },
-      ],
+        { label: "perguntas básicas", isSelected: true },
+        { label: "eventos de vida", isSelected: false },
+        { label: "configurações", isSelected: false }
+      ]
     };
   }
 
-  componentDidMount() {
-    const scroll = () => {
-      const section = document.getElementById('questionsContainer');
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-    const focus = () => {
-      const firstInput = document.getElementById('myCurrentAge');
-      firstInput.focus();
-    };
-    scroll();
-    setTimeout(focus, 1000);
-  }
+  // componentDidMount() {
+  //   const scroll = () => {
+  //     const section = document.getElementById("questionsContainer");
+  //     section.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   };
+  //   const focus = () => {
+  //     const firstInput = document.getElementById("myCurrentAge");
+  //     firstInput.focus();
+  //   };
+  //   scroll();
+  //   setTimeout(focus, 1000);
+  // }
 
   componentDidUpdate(prevProps, prevState) {
     const { currentTabIndex } = this.state;
 
     if (currentTabIndex !== this.state.targetTabIndex) {
-      const nextTabIndex = currentTabIndex + (currentTabIndex < this.state.targetTabIndex ? 1 : -1);
+      const nextTabIndex =
+        currentTabIndex +
+        (currentTabIndex < this.state.targetTabIndex ? 1 : -1);
 
       // wait for the animation to end before changing to the next tab
       // if it is the first animation, start it right away.
-      const duration = currentTabIndex === prevState.targetTabIndex ? 0 : this.state.duration;
+      const duration =
+        currentTabIndex === prevState.targetTabIndex ? 0 : this.state.duration;
 
       clearTimeout(timeoutVar);
-      timeoutVar = setTimeout(() => this.setState({ currentTabIndex: nextTabIndex }), duration);
+      timeoutVar = setTimeout(
+        () => this.setState({ currentTabIndex: nextTabIndex }),
+        duration
+      );
     }
   }
 
@@ -75,7 +81,7 @@ class InputContainer extends Component {
     this.setState({ isShowingLifeEventsTable: true });
   };
 
-  getSelectedInvestment = (options) => {
+  getSelectedInvestment = options => {
     const selectedInvestment = options.filter(item => item.isSelected)[0];
     return selectedInvestment && selectedInvestment.label;
   };
@@ -84,33 +90,39 @@ class InputContainer extends Component {
     const { tabs } = this.state;
     const previousTab = tabs.filter(item => item.isSelected)[0];
     const previousTabIndex = tabs.indexOf(previousTab);
-    const animationDirection = previousTabIndex >= index ? 'left-to-right' : 'right-to-left';
+    const animationDirection =
+      previousTabIndex >= index ? "left-to-right" : "right-to-left";
 
     const nTabTransitions = Math.abs(index - previousTabIndex);
     const duration = 400 / nTabTransitions; // so that the total transition time is constant
 
     const newState = tabs.map((item, itemIndex) => ({
       ...item,
-      isSelected: index === itemIndex,
+      isSelected: index === itemIndex
     }));
 
     this.setState({
       tabs: newState,
       direction: animationDirection,
       targetTabIndex: index,
-      duration,
+      duration
     });
   };
 
   canSubmit = () => {
-    const { myCurrentBalance, myCurrentMonthlySavings, myRetirementIncome } = this.props;
+    const {
+      myCurrentBalance,
+      myCurrentMonthlySavings,
+      myRetirementIncome
+    } = this.props;
     const requiredQuestions = [myRetirementIncome];
     return requiredQuestions.every(item => item !== 0);
   };
 
   render() {
+    console.log(this.props);
     return (
-      <div className={'mw7-ns ph0-l ph4 center'}>
+      <div className={"mw7-ns ph0-l ph4 center"}>
         {this.props.isShowingAnswer && (
           <QuestionTabs
             isShowingAnswer={this.props.isShowingAnswer}
@@ -178,7 +190,9 @@ class InputContainer extends Component {
                   handleInput={this.props.handleInput}
                   hasTips
                   setFocusedInput={this.props.setFocusedInput}
-                  helperText={'Considere que o dinheiro do futuro vale o mesmo que hoje. Nós já incluímos a inflação na conta.'}
+                  helperText={
+                    "Considere que o dinheiro do futuro vale o mesmo que hoje. Nós já incluímos a inflação na conta."
+                  }
                 />
                 <MultiSelect
                   hasSelectedInvestment={this.props.selectedInvestment}
@@ -188,8 +202,9 @@ class InputContainer extends Component {
                   handleClick={this.props.handleInvestmentSelector}
                   hiddenBorder={true}
                 />
-                {this.getSelectedInvestment(this.props.myInvestments) === 'carteira mista'
-                  && this.props.myWallet.map((item, index) => (
+                {this.getSelectedInvestment(this.props.myInvestments) ===
+                  "carteira mista" &&
+                  this.props.myWallet.map((item, index) => (
                     <InputField
                       key={index}
                       isPercentage
@@ -199,13 +214,13 @@ class InputContainer extends Component {
                       label={item.label}
                       handleInput={this.props.handleWalletInput}
                       setFocusedInput={this.props.setFocusedInput}
-                      suffix={''}
+                      suffix={""}
                       hideFeedback
                     />
                   ))}
-                {this.canSubmit()
-                  && !this.props.isShowingAnswer
-                  && (this.props.selectedInvestment) && (
+                {this.canSubmit() &&
+                  !this.props.isShowingAnswer &&
+                  this.props.selectedInvestment && (
                     <CSSTransitionGroup
                       transitionAppear={true}
                       transitionAppearTimeout={200}
@@ -225,7 +240,7 @@ class InputContainer extends Component {
                         Calcular
                       </button>
                     </CSSTransitionGroup>
-                )}
+                  )}
               </form>
             </div>
           )}
@@ -238,16 +253,16 @@ class InputContainer extends Component {
               className="w-100 tc"
             >
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Descubra o impacto que eventos custosos, como viagens, cursos, e grandes compras
-                podem ter na sua independência financeira.
+                Descubra o impacto que eventos custosos, como viagens, cursos, e
+                grandes compras podem ter na sua independência financeira.
               </p>
               {!this.state.isShowingLifeEventsTable && (
                 <button
                   style={{ backgroundColor: colors.redPink }}
-                  className={'pv3 ph4 white br-pill ba0 center pointer'}
+                  className={"pv3 ph4 white br-pill ba0 center pointer"}
                   onClick={this.showLifeEventsTable}
                 >
-                  {'Criar um evento'}
+                  {"Criar um evento"}
                 </button>
               )}
               {this.state.isShowingLifeEventsTable && (
@@ -255,9 +270,9 @@ class InputContainer extends Component {
                   id="lifeEvents"
                   table={this.props.lifeEvents}
                   fields={{
-                    label: '',
+                    label: "",
                     age: 0,
-                    cost: 0,
+                    cost: 0
                   }}
                   retirementResults={this.props.retirementResults}
                   handleTableInput={this.props.handleTableInput}
@@ -287,27 +302,31 @@ class InputContainer extends Component {
                 handleInputButtons={this.props.handleInputButtons}
               />
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os rendimentos abaixo são o resultado de muita pesquisa, da experiência de grandes
-                investidores e também de cálculos com base em dados históricos. Faça alterações
-                apenas se você souber muito bem o que está fazendo.
+                Os rendimentos abaixo são o resultado de muita pesquisa, da
+                experiência de grandes investidores e também de cálculos com
+                base em dados históricos. Faça alterações apenas se você souber
+                muito bem o que está fazendo.
               </p>
               <p className="f4-ns f5 black-50 tc center mv5 measure lh-copy">
-                Os cálculos consideram o rendimento líquido REAL de cada aplicação, ou seja, a
-                inflação já deve ser descontada.
+                Os cálculos consideram o rendimento líquido REAL de cada
+                aplicação, ou seja, a inflação já deve ser descontada.
               </p>
-              {this.props.myInvestments.map((item, index) => (item.isWallet ? null
-                : <InputField
-                  isPercentage
-                  dataType="rate"
-                  key={index}
-                  value={item.rate}
-                  id={item.label}
-                  label={`Rendimento anual da ${item.label}`}
-                  handleInput={this.props.handleInvestmentRateInput}
-                  hasTips
-                  setFocusedInput={this.props.setFocusedInput}
-                  suffix={'ao ano'}
-                />))}
+              {this.props.myInvestments.map((item, index) =>
+                item.isWallet ? null : (
+                  <InputField
+                    isPercentage
+                    dataType="rate"
+                    key={index}
+                    value={item.rate}
+                    id={item.label}
+                    label={`Rendimento anual da ${item.label}`}
+                    handleInput={this.props.handleInvestmentRateInput}
+                    hasTips
+                    setFocusedInput={this.props.setFocusedInput}
+                    suffix={"ao ano"}
+                  />
+                )
+              )}
               <InputField
                 isPercentage
                 dataType="rate"
@@ -315,7 +334,7 @@ class InputContainer extends Component {
                 id="annualSavingsIncreaseRate"
                 label="Quanto você acha que sua renda vai aumentar ao ano?"
                 handleInput={this.props.handleInput}
-                suffix={'ao ano'}
+                suffix={"ao ano"}
               />
               <button
                 className="mt4 pa3 relative bg-white hover-bg-black hover-white br-pill pointer"
@@ -332,13 +351,13 @@ class InputContainer extends Component {
               display: inline-block;
               border: 2px solid ${colors.lightGray2};
             }
-            input[type='radio']:focus + label {
+            input[type="radio"]:focus + label {
               background-color: ${colors.lightGray2};
             }
-            input[type='radio']:hover + label {
+            input[type="radio"]:hover + label {
               background-color: ${colors.lightGray2};
             }
-            input[type='radio']:checked + label {
+            input[type="radio"]:checked + label {
               color: white;
               background-color: ${colors.darkGreen};
             }
