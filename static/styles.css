@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Chocolate";
+  src: url("./fonts/D") format("embedded-opentype"),
+    /* IE6-IE8 */ url("./fonts/DottiesVanilla-Black.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./fonts/DottiesVanilla-Black.woff")
+      format("woff");
+}
+h1,
+.chocolate {
+  font-family: "Chocolate" !important;
+}
