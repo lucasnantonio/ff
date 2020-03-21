@@ -72,11 +72,11 @@ function MyApp({ Component, pageProps }) {
       cost: "0"
     }
   ]);
-  const [currentBalance, setCurrentBalance] = useState(0);
-  const [currentAge, setCurrentAge] = useState(18);
-  const [currentMonthlySavings, setCurrentMonthlySavings] = useState(100);
-  const [retirementIncome, setRetirementIncome] = useState(2000);
-  const [lifeExpectancy, setLifeExpectancy] = useState(90);
+  const [myCurrentBalance, setCurrentBalance] = useState(0);
+  const [myCurrentAge, setCurrentAge] = useState(18);
+  const [myCurrentMonthlySavings, setCurrentMonthlySavings] = useState(100);
+  const [myRetirementIncome, setRetirementIncome] = useState(2000);
+  const [myLifeExpectancy, setLifeExpectancy] = useState(90);
   const [annualSavingsIncreaseRate, setAnnualSavingsIncreaseRate] = useState(0);
   const [selectedInvestment, setSelectedInvestment] = useState(false);
   const [leaveHeritage, setLeaveHeritage] = useState(false);
@@ -293,7 +293,9 @@ function MyApp({ Component, pageProps }) {
     logEvent("User", "removed life event");
   }
   function handleInput(e, value) {
+    console.log(myCurrentBalance);
     const { id } = e.target;
+    if (id === )
     setFocusedInput({ [id]: value === "" ? 0 : parseFloat(value) });
   }
 
@@ -318,6 +320,24 @@ function MyApp({ Component, pageProps }) {
           setFocusedInput={setFocusedInput}
           myInvestments={investments}
           selectedInvestment={selectedInvestment}
+          myCurrentBalance={myCurrentBalance}
+          setCurrentBalance={setCurrentBalance}
+          myCurrentAge={myCurrentAge}
+          setCurrentAge={setCurrentAge}
+          myCurrentMonthlySavings={myCurrentMonthlySavings}
+          setCurrentMonthlySavings={setCurrentMonthlySavings}
+          myRetirementIncome={myRetirementIncome}
+          setRetirementIncome={setRetirementIncome}
+          myLifeExpectancy={myLifeExpectancy}
+          setLifeExpectancy={setLifeExpectancy}
+          annualSavingsIncreaseRate={annualSavingsIncreaseRate}
+          setAnnualSavingsIncreaseRate={setAnnualSavingsIncreaseRate}
+          selectedInvestment={selectedInvestment}
+          setSelectedInvestment={setSelectedInvestment}
+          leaveHeritage={leaveHeritage}
+          setLeaveHeritage={setLeaveHeritage}
+          wallet={wallet}
+          setWallet={setWallet}
           {...pageProps}
         />
       </div>

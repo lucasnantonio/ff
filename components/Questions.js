@@ -120,7 +120,6 @@ class InputContainer extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className={"mw7-ns ph0-l ph4 center"}>
         {this.props.isShowingAnswer && (
