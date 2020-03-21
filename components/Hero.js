@@ -1,7 +1,5 @@
 import React from "react";
-import CSSTransitionGroup from "react-addons-css-transition-group";
-import PigAnimated from "./PigAnimated";
-import colors from "./Colors";
+import Link from "next/link";
 
 const Hero = props => (
   <div
@@ -21,30 +19,22 @@ const Hero = props => (
           Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu
           sossego no futuro.
         </p>
-        <CSSTransitionGroup
-          transitionName="exit"
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}
-        >
-          {!props.isShowingQuestions && (
-            <button
-              style={{
-                backgroundColor: "#ffe252",
-                color: "black",
-                fontFamily: "Chocolate Bold, system-ui, sans-serif"
-              }}
-              onClick={props.startApp}
-              className="fw6 ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
-            >
-              Começar
-            </button>
-          )}
-        </CSSTransitionGroup>
+        <Link href="/calculadora">
+          <button
+            style={{
+              backgroundColor: "#ffe252",
+              color: "black",
+              fontFamily: "Chocolate Bold, system-ui, sans-serif"
+            }}
+            onClick={props.startApp}
+            className="fw6 ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
+          >
+            Começar
+          </button>
+        </Link>
       </div>
       <div className="w-60-ns w-100 pl4-l">
-        {/* <img className="w-100" src="../static/3dpig.png"></img> */}
         <iframe
-          // style={{ marginTop: "-400px" }}
           id="d0e763cb-faed-49a2-9e5e-8ed9524593ce"
           src="https://www.vectary.com/viewer/v1/?model=d0e763cb-faed-49a2-9e5e-8ed9524593ce&env=theskyisonfire&turntable=0.3&showInteractionPrompt=0"
           frameborder="0"
@@ -53,24 +43,6 @@ const Hero = props => (
         ></iframe>
       </div>
     </div>
-    <style jsx>
-      {`
-         {
-          .exit-active {
-            opacity: 1;
-            transform: translateY(0%);
-          }
-          .exit-leave {
-            opacity: 0;
-            transition: all 0.2s;
-            transform: translateY(-20%);
-          }
-          button {
-            transition: all 0.2s;
-          }
-        }
-      `}
-    </style>
   </div>
 );
 

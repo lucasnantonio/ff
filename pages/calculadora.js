@@ -4,7 +4,6 @@ import { initGA, logPageView, logEvent } from "../utils/analytics";
 import Questions from "../components/Questions";
 import Answer from "../components/Answer";
 import Header from "../components/Header";
-import Hero from "../components/Hero";
 import TipsContainer from "../components/TipsContainer";
 import NavBar from "../components/NavBar";
 import colors from "../components/Colors";
@@ -361,17 +360,9 @@ class Calculadora extends Component {
   render() {
     return (
       <div id="pageWrapper" className="center vh-100">
-        <Header title="Aposentar.me" />
-        <NavBar isShowingAnswer={this.state.isShowingAnswer} />
-        {!this.state.isShowingAnswer ? (
-          <Hero
-            startApp={this.startApp}
-            isShowingQuestions={this.state.isShowingQuestions}
-          />
-        ) : (
-          <div>
-            <Answer {...this.state} />
-            {/* <TipsContainer
+        <div>
+          <Answer {...this.state} />
+          {/* <TipsContainer
               handleStudyCaseInput={this.handleStudyCaseInput}
               handleStudyCaseWallet={this.handleStudyCaseWallet}
               myInvestments={this.state.myInvestments}
@@ -380,9 +371,8 @@ class Calculadora extends Component {
               studyCasesResults={this.state.studyCasesResults}
               currentRetirementAge={this.state.retirementResults[0][1].retirement.age}
             /> */}
-          </div>
+        </div>
         )}
-
         <div
           id="questionsContainer"
           className={`w-100 center ${this.state.isShowingQuestions &&
