@@ -1,5 +1,5 @@
-import React from 'react';
-import colors from './Colors';
+import React from "react";
+import colors from "./Colors";
 
 const Signup = () => (
   <div id="mc_embed_signup">
@@ -23,11 +23,27 @@ const Signup = () => (
           />
         </div>
         <div id="mce-responses" className="">
-          <div className="response" id="mce-error-response" style={{ display: 'none' }} />
-          <div className="response" id="mce-success-response" style={{ display: 'none' }} />
+          <div
+            className="response"
+            id="mce-error-response"
+            style={{ display: "none" }}
+          />
+          <div
+            className="response"
+            id="mce-success-response"
+            style={{ display: "none" }}
+          />
         </div>
-        <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
-          <input type="text" name="b_08c392fa31074215393d10f76_c8cee3a16e" tabIndex="-1" value="" />
+        <div
+          style={{ position: "absolute", left: "-5000px" }}
+          aria-hidden="true"
+        >
+          <input
+            type="text"
+            name="b_08c392fa31074215393d10f76_c8cee3a16e"
+            tabIndex="-1"
+            value=""
+          />
         </div>
         <div className="">
           <input
@@ -36,7 +52,7 @@ const Signup = () => (
             value="Inscrever"
             name="subscribe"
             id="mc-embedded-subscribe"
-            className="pa3 br-pill pill pointer bn white w-100 mt0-l mt3"
+            className="pa3 br-pill pill pointer bn white w-100 mt0-l mt3 ml2-l ml0"
           />
         </div>
       </div>

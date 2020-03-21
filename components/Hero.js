@@ -6,10 +6,10 @@ import colors from "./Colors";
 const Hero = props => (
   <div
     id="hero"
-    style={{ backgroundColor: "lightblue" }}
-    className="vh-100 pa0-l ph4"
+    style={{ backgroundColor: "skyblue" }}
+    className="vh-100 pa0-l ph3"
   >
-    <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5 pt5">
+    <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5">
       <div className="w-50-ns w-100 tl-ns tc mb5-ns">
         <h1 className="black-80 f2-ns f3 lh-solid normal mt0 b">
           Descubra quando você será livre financeiramente.
@@ -29,19 +29,19 @@ const Hero = props => (
           {!props.isShowingQuestions && (
             <button
               style={{
-                backgroundColor: "gold",
+                backgroundColor: "#ffe252",
                 color: "black",
-                fontFamily: "Nunito, system-ui, sans-serif"
+                fontFamily: "Chocolate Bold, system-ui, sans-serif"
               }}
               onClick={props.startApp}
-              className="grow fw6 ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
+              className="fw6 ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
             >
               Começar
             </button>
           )}
         </CSSTransitionGroup>
       </div>
-      <div className="w-60-ns w-100 pl5-l">
+      <div className="w-60-ns w-100 pl4-l">
         {/* <img className="w-100" src="../static/3dpig.png"></img> */}
         <iframe
           // style={{ marginTop: "-400px" }}

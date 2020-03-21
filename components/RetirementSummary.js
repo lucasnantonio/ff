@@ -18,7 +18,7 @@ class RetirementSummary extends Component {
 
     return (
       <div className="w-100 flex flex-column ml0-ns center mr4">
-        <h1 className="f2-l f3 tracked-tight lh-solid b">
+        <h1 className="f2-l f3 lh-solid b">
           Aos&nbsp;
           <span
             className="f2-l f3 lh-solid b"
@@ -26,12 +26,9 @@ class RetirementSummary extends Component {
           >
             {y} anos
           </span>
-          , você será livre financeiramente.
+          , <br></br> você será livre financeiramente.
         </h1>
-        <h3
-          style={{ color: colors.mediumGray }}
-          className="f5-l f6 normal lh-copy measure-narrow center ml0-ns mv0"
-        >
+        <h3 className="black-90 f5 normal lh-copy measure-narrow center ml0-ns mv0">
           Você terá R$
           {balance.toLocaleString("pt-BR", { maximumFractionDigits: 0 })} em
           conta e poderá gastar R$
@@ -42,7 +39,7 @@ class RetirementSummary extends Component {
         </h3>
         <p
           style={{ color: colors.mediumGray }}
-          className="f7 normal lh-copy measure center ml0-ns mv3"
+          className="bt bw1 b--near-white pt3 mt3 f6 normal lh-copy measure center ml0-ns mv3"
         >
           Esse valor não considera a pensão que você receberá do INSS, que pode
           ir até R$&nbsp;5645 por mês.

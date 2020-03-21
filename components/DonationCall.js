@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import colors from './Colors';
+import React from "react";
+import Link from "next/link";
+import colors from "./Colors";
 
 const DonationCall = () => (
   <div className="flex flex-column mr2 mt0-l mt4">

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import Link from 'next/link';
-import Logo from './Logo';
-import colors from './Colors';
+import React from "react";
+import Link from "next/link";
+import Logo from "./Logo";
+import colors from "./Colors";
 
 const NavBar = props => (
   <div className="absolute white f5 pa4 w-100 ph4">
@@ -14,11 +14,11 @@ const NavBar = props => (
       </Link>
       <Link href="/sobre">
         <a
-          style={{ transition: 'all .2s' }}
+          style={{ transition: "all .2s" }}
           href="#"
-          className="link black-40 hover-black pointer pa3 br-pill"
+          className="f7 link black-40 hover-black pointer pa3 br-pill chocolate-bold"
         >
-          sobre
+          Sobre
         </a>
       </Link>
     </div>
