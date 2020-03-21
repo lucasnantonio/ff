@@ -4,12 +4,8 @@ import PigAnimated from "./PigAnimated";
 import colors from "./Colors";
 
 const Hero = props => (
-  <div
-    id="hero"
-    style={{ backgroundColor: "#CCEEFD" }}
-    className="h-100 pt0-l pt5 ph3"
-  >
-    <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5">
+  <div id="hero" style={{ backgroundColor: "#CCEEFD" }} className="h-100 ph3">
+    <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pv5-ns pv4">
       <div className="w-50-ns w-100 tl-ns tc mb5-ns">
         <h1 className="black-80 f2-ns f3 lh-solid normal mt0 mb0 mb3-ns b">
           Descubra quando você será livre financeiramente.
@@ -21,25 +17,19 @@ const Hero = props => (
           Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu
           sossego no futuro.
         </p>
-        <CSSTransitionGroup
-          transitionName="exit"
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}
+
+        {/* {!props.isShowingQuestions && ( */}
+        <button
+          style={{
+            backgroundColor: "#F7CBDC",
+            color: "black",
+            fontFamily: "Chocolate Bold, system-ui, sans-serif"
+          }}
+          onClick={props.startApp}
+          className="fw6 ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
         >
-          {!props.isShowingQuestions && (
-            <button
-              style={{
-                backgroundColor: "#F7CBDC",
-                color: "black",
-                fontFamily: "Chocolate Bold, system-ui, sans-serif"
-              }}
-              onClick={props.startApp}
-              className="fw6 ba0 mt4 ph4 pv3-ns pv4 br-pill-l pointer f5 relative-ns fixed bottom-0 r0 l0 w-auto-ns w-100 b"
-            >
-              Começar
-            </button>
-          )}
-        </CSSTransitionGroup>
+          Começar
+        </button>
       </div>
       <div className="w-60-ns w-100 pl4-l">
         {/* <img className="w-100" src="../static/3dpig.png"></img> */}
