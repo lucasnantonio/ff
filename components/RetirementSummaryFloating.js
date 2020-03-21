@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import { formatAge } from '../utils/math';
-import colors from './Colors';
+import React, { Component } from "react";
+import CSSTransitionGroup from "react-addons-css-transition-group";
+import { formatAge } from "../utils/math";
+import colors from "./Colors";
 
 class RetirementSummaryFloating extends Component {
   state = { isShowing: false, isShowingUpdateButton: false };
 
   scrollBackUp = () => {
-    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+    window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   };
 
   checkVisibility = () => {
-    const el = document.getElementById('answersContainer');
+    const el = document.getElementById("answersContainer");
     const height = el ? el.offsetHeight : null;
     this.setState({ isShowing: window.pageYOffset > height });
   };
 
-  getSelectedInvestmentIndex = (array) => {
+  getSelectedInvestmentIndex = array => {
     const selectedItem = array.filter(item => item.isSelected);
     return array.indexOf(selectedItem[0]);
   };
@@ -30,8 +30,8 @@ class RetirementSummaryFloating extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     if (
-      this.props.retirementResults !== prevProps.retirementResults
-      || this.props.myInvestments !== prevProps.myInvestments
+      this.props.retirementResults !== prevProps.retirementResults ||
+      this.props.myInvestments !== prevProps.myInvestments
     ) {
       this.showUpdate();
     }
@@ -45,15 +45,18 @@ class RetirementSummaryFloating extends Component {
     return (
       this.state.isShowing && (
         <button
-          style={{ backgroundColor: colors.darkGreen }}
+          style={{ backgroundColor: colors.darkGreen, top: "0px" }}
           className="fixed w-100 pa4-ns pa3 white z-max pointer f5-ns f6 ba0"
           onClick={this.scrollBackUp}
         >
           <div className="flex justify-between mw7 center w-100 items-center">
             <div className="flex flex-row-ns flex-column justify-start">
-              <span className="white b" style={{ fontFamily: 'Nunito, system-ui' }}>
-                {' '}
-                Você vai se aposentar aos {y} anos.{' '}
+              <span
+                className="white b"
+                style={{ fontFamily: "Nunito, system-ui" }}
+              >
+                {" "}
+                Você vai se aposentar aos {y} anos.{" "}
               </span>
               <CSSTransitionGroup
                 transitionName="update"
@@ -65,9 +68,9 @@ class RetirementSummaryFloating extends Component {
                 {this.state.isShowingUpdateButton && (
                   <div
                     style={{
-                      fontFamily: 'Nunito, system-ui',
-                      transition: 'all .5s',
-                      overflow: 'hidden',
+                      fontFamily: "Nunito, system-ui",
+                      transition: "all .5s",
+                      overflow: "hidden"
                     }}
                     className="ph3-ns mt0-ns mt2 black-50 bn pointer tl"
                   >

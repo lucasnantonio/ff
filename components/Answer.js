@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import RetirementChart from './RetirementChart';
-import RetirementSummary from './RetirementSummary';
-import RetirementSummaryFloating from './RetirementSummaryFloating';
-import DonationCall from './DonationCall';
-import ShareCall from './ShareCall';
-import colors from './Colors';
+import React, { Component } from "react";
+import RetirementChart from "./RetirementChart";
+import RetirementSummary from "./RetirementSummary";
+import RetirementSummaryFloating from "./RetirementSummaryFloating";
+import DonationCall from "./DonationCall";
+import ShareCall from "./ShareCall";
+import colors from "./Colors";
 
 class OutPutContainer extends Component {
   render() {
@@ -18,8 +18,8 @@ class OutPutContainer extends Component {
         )}
         <div
           id="answersContainer"
-          style={{ backgroundColor: 'white' }}
-          className={'ph0-ns ph4 pv5'}
+          style={{ backgroundColor: "white" }}
+          className={"ph0-ns ph4 pb5"}
         >
           {this.props.isShowingAnswer && (
             <div className="flex flex-row-ns flex-column mt0-ns pv5-l pt5 pb0 mw7 center ">

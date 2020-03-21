@@ -5,10 +5,16 @@ import Logo from "./Logo";
 import colors from "./Colors";
 
 const NavBar = props => (
-  <div className="absolute white f5 pa4 w-100 ph4">
+  <div
+    style={{ background: "#ECF8FE" }}
+    className="white f5 ph4 pv3-ns pv2 w-100 ph4"
+  >
     <div className="flex mw7 center justify-between">
       <Link href="/">
-        <button className="bn bg-transparent b pointer link white ph0">
+        <button
+          onClick={() => props.resetApp()}
+          className="bn bg-transparent b pointer link white ph0"
+        >
           <Logo isShowingAnswer={props.isShowingAnswer} />
         </button>
       </Link>

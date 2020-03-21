@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { hotjar } from 'react-hotjar';
-import { initGA, logPageView, logEvent } from '../utils/analytics';
-import Questions from '../components/Questions';
-import Answer from '../components/Answer';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import TipsContainer from '../components/TipsContainer';
-import NavBar from '../components/NavBar';
-import colors from '../components/Colors';
-import { getRetirementResults, getStudyCasesResults } from '../utils/math';
-import { isNumber, valueByInputType } from '../utils/input';
+import React, { Component } from "react";
+import { hotjar } from "react-hotjar";
+import { initGA, logPageView, logEvent } from "../utils/analytics";
+import Questions from "../components/Questions";
+import Answer from "../components/Answer";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import TipsContainer from "../components/TipsContainer";
+import NavBar from "../components/NavBar";
+import colors from "../components/Colors";
+import { getRetirementResults, getStudyCasesResults } from "../utils/math";
+import { isNumber, valueByInputType } from "../utils/input";
 
 function getRates(label) {
   return {
     poupança: 1.5,
-    'renda fixa': 4.5,
-    'renda variável': 7.0,
+    "renda fixa": 4.5,
+    "renda variável": 7.0
   }[label];
 }
 
@@ -35,43 +35,43 @@ class Index extends Component {
       leaveHeritage: false,
       myWallet: [
         {
-          label: 'poupança',
-          allocation: 0,
+          label: "poupança",
+          allocation: 0
         },
         {
-          label: 'renda fixa',
-          allocation: 0,
+          label: "renda fixa",
+          allocation: 0
         },
         {
-          label: 'renda variável',
-          allocation: 0,
-        },
+          label: "renda variável",
+          allocation: 0
+        }
       ],
       myInvestments: [
         {
-          label: 'poupança',
-          rate: getRates('poupança'),
+          label: "poupança",
+          rate: getRates("poupança"),
           isSelected: false,
-          isWallet: false,
+          isWallet: false
         },
         {
-          label: 'renda fixa',
-          rate: getRates('renda fixa'),
+          label: "renda fixa",
+          rate: getRates("renda fixa"),
           isSelected: false,
-          isWallet: false,
+          isWallet: false
         },
         {
-          label: 'renda variável',
-          rate: getRates('renda variável'),
+          label: "renda variável",
+          rate: getRates("renda variável"),
           isSelected: false,
-          isWallet: false,
+          isWallet: false
         },
         {
           // just a placeholder, not a real investment
-          label: 'carteira mista',
+          label: "carteira mista",
           isSelected: false,
-          isWallet: true,
-        },
+          isWallet: true
+        }
       ],
       studyCases: [
         // {
@@ -103,19 +103,21 @@ class Index extends Component {
         //   myWallet: undefined,
         // },
       ],
-      lifeEvents: [{
-        label: '',
-        age: 0,
-        cost: '0',
-      }],
+      lifeEvents: [
+        {
+          label: "",
+          age: 0,
+          cost: "0"
+        }
+      ],
       retirementResults: false,
       studyCasesResults: false,
-      focusedInput: '',
+      focusedInput: ""
     };
   }
 
   componentDidMount() {
-    if (process.env.NODE_ENV === 'development') return null;
+    if (process.env.NODE_ENV === "development") return null;
 
     if (!window.GA_INITIALIZED) {
       initGA();
@@ -129,46 +131,55 @@ class Index extends Component {
     const nextRetirementResults = getRetirementResults(this.state);
     const nextStudyCasesResults = getStudyCasesResults(this.state);
 
-    if (JSON.stringify(prevState.retirementResults) !== JSON.stringify(nextRetirementResults)) {
+    if (
+      JSON.stringify(prevState.retirementResults) !==
+      JSON.stringify(nextRetirementResults)
+    ) {
       this.setState({ retirementResults: nextRetirementResults });
     }
 
-    if (JSON.stringify(prevState.studyCasesResults) !== JSON.stringify(nextStudyCasesResults)) {
+    if (
+      JSON.stringify(prevState.studyCasesResults) !==
+      JSON.stringify(nextStudyCasesResults)
+    ) {
       this.setState({ studyCasesResults: nextStudyCasesResults });
     }
   }
 
   startApp = () => {
     this.setState({ isShowingQuestions: true });
-    logEvent('User', 'clicked start');
+    logEvent("User", "clicked start");
   };
 
   resetApp = () => {
     this.setState({
       isShowingAnswer: false,
       isShowingQuestions: false,
-      selectedInvestment: false,
+      selectedInvestment: false
     });
   };
 
   assembleStudyCases() {
     // update studyCases with user input
-    const studyCases = this.state.studyCases.map(item => (
-      Object.assign({}, ...Object.keys(item).map((key) => {
-        if (key === 'label') {
-          return { [key]: item[key] };
-        }
-        return { [key]: this.state[key] };
-      }))
-    ));
+    const studyCases = this.state.studyCases.map(item =>
+      Object.assign(
+        {},
+        ...Object.keys(item).map(key => {
+          if (key === "label") {
+            return { [key]: item[key] };
+          }
+          return { [key]: this.state[key] };
+        })
+      )
+    );
     this.setState({ studyCases });
   }
 
   handleShowAnswer = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     this.setState({ isShowingAnswer: true });
     this.assembleStudyCases();
-    logEvent('User', 'clicked calculate');
+    logEvent("User", "clicked calculate");
   };
 
   handleBack = () => {
@@ -177,27 +188,30 @@ class Index extends Component {
 
   handleInput = (e, value) => {
     const { id } = e.target;
-    this.setState({ [id]: value === '' ? 0 : parseFloat(value) });
+    this.setState({ [id]: value === "" ? 0 : parseFloat(value) });
   };
 
-  handleInputButtons = (e) => {
-    const parentNode = e.target.parentNode.parentNode.querySelectorAll('input')[0];
+  handleInputButtons = e => {
+    const parentNode = e.target.parentNode.parentNode.querySelectorAll(
+      "input"
+    )[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
     this.setState({ [parentId]: parseFloat(parentValue) });
   };
 
   handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
-    const {
-      id, type, checked, value,
-    } = e.target;
+    const { id, type, checked, value } = e.target;
 
-    const studyCases = this.state.studyCases.map((item) => {
-      if (item.label === studyCaseLabel || (item.label === 'optimized' && id in item)) {
+    const studyCases = this.state.studyCases.map(item => {
+      if (
+        item.label === studyCaseLabel ||
+        (item.label === "optimized" && id in item)
+      ) {
         // optimized case will mirror the other study cases values
         return {
           ...item,
-          [id]: valueByInputType(type, floatValue, value, checked),
+          [id]: valueByInputType(type, floatValue, value, checked)
         };
       }
       return item;
@@ -208,26 +222,29 @@ class Index extends Component {
 
   handleStudyCaseWallet = (e, floatValue, studyCaseLabel) => {
     const { id } = e.target;
-    const studyCases = this.state.studyCases.map((item) => {
-      if (item.label === studyCaseLabel || (item.label === 'optimized' && 'myWallet' in item)) {
+    const studyCases = this.state.studyCases.map(item => {
+      if (
+        item.label === studyCaseLabel ||
+        (item.label === "optimized" && "myWallet" in item)
+      ) {
         const myWallet = { ...item.myWallet, [id]: parseFloat(floatValue) };
         return {
           ...item,
-          myWallet,
+          myWallet
         };
       }
       return item;
     });
     this.setState({ studyCases });
-  }
+  };
 
-  handleInvestmentRateInput = (e) => {
+  handleInvestmentRateInput = e => {
     const { id, value } = e.target;
-    const myInvestments = this.state.myInvestments.map((item) => {
+    const myInvestments = this.state.myInvestments.map(item => {
       if (item.label === id) {
         return {
           ...item,
-          rate: value,
+          rate: value
         };
       }
       return item;
@@ -238,12 +255,10 @@ class Index extends Component {
   assembleMyWallet(selectedInvestmentLabel) {
     // if some investment option is selected, allocate 100% in that investment
     // and 0 % for the others
-    const myWallet = this.state.myWallet.map(item => (
-      {
-        ...item,
-        allocation: item.label === selectedInvestmentLabel ? 100 : 0,
-      }
-    ));
+    const myWallet = this.state.myWallet.map(item => ({
+      ...item,
+      allocation: item.label === selectedInvestmentLabel ? 100 : 0
+    }));
 
     this.setState({ myWallet });
   }
@@ -252,53 +267,52 @@ class Index extends Component {
     const investmentsState = this.state.myInvestments;
     const myInvestments = investmentsState.map((item, itemIndex) => ({
       ...item,
-      isSelected: index === itemIndex,
+      isSelected: index === itemIndex
     }));
 
     this.assembleMyWallet(myInvestments[index].label);
 
     this.setState({
       myInvestments,
-      selectedInvestment: true,
+      selectedInvestment: true
     });
 
-    const investmentTip = document.getElementById('investmentTip');
+    const investmentTip = document.getElementById("investmentTip");
     if (investmentTip) {
-      investmentTip.scrollIntoView({ behavior: 'smooth' });
+      investmentTip.scrollIntoView({ behavior: "smooth" });
     }
 
-    logEvent('User', 'Selected Investment');
+    logEvent("User", "Selected Investment");
   };
 
   handleResetRates = () => {
     const myInvestments = this.state.myInvestments.map(investment => ({
       ...investment,
-      rate: getRates(investment.label),
+      rate: getRates(investment.label)
     }));
 
     this.setState({ myInvestments });
-    logEvent('User', 'clicked reset taxas');
+    logEvent("User", "clicked reset taxas");
   };
 
   handleWalletInput = (e, floatValue) => {
     const { id } = e.target;
-    const value = floatValue === '' ? 0 : parseFloat(floatValue);
+    const value = floatValue === "" ? 0 : parseFloat(floatValue);
 
-    const myWallet = this.state.myWallet.map((item) => {
+    const myWallet = this.state.myWallet.map(item => {
       if (item.label === id) {
         return {
           ...item,
-          allocation: value,
+          allocation: value
         };
       }
       return item;
     });
 
-
     this.setState({ myWallet });
-  }
+  };
 
-  setFocusedInput = (inputId) => {
+  setFocusedInput = inputId => {
     this.setState({ focusedInput: inputId });
   };
 
@@ -310,41 +324,53 @@ class Index extends Component {
         if (idx === pidx) {
           return {
             ...row,
-            [field]: textField ? value : parseFloat(value),
+            [field]: textField ? value : parseFloat(value)
           };
         }
         return row;
       });
       this.setState(prevState => ({
         [tableName]: updatedTable,
-        retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
+        retirementResults: getRetirementResults({
+          ...prevState,
+          [tableName]: updatedTable
+        })
       }));
     }
   };
 
   handleAddTableRow = (tableName, fields) => () => {
     this.setState({
-      [tableName]: [...this.state[tableName], fields],
+      [tableName]: [...this.state[tableName], fields]
     });
-    logEvent('User', 'added life event');
+    logEvent("User", "added life event");
   };
 
   handleRemoveTableRow = (idx, tableName, table) => () => {
     const updatedTable = table.filter((p, pidx) => idx !== pidx);
     this.setState(prevState => ({
       [tableName]: updatedTable,
-      retirementResults: getRetirementResults({ ...prevState, [tableName]: updatedTable }),
+      retirementResults: getRetirementResults({
+        ...prevState,
+        [tableName]: updatedTable
+      })
     }));
-    logEvent('User', 'removed life event');
+    logEvent("User", "removed life event");
   };
 
   render() {
     return (
-      <div id="pageWrapper" className="center vh-100">
+      <div id="pageWrapper" className="center vh-100 flex flex-column">
         <Header title="Aposentar.me" />
-        <NavBar isShowingAnswer={this.state.isShowingAnswer} />
+        <NavBar
+          resetApp={this.resetApp}
+          isShowingAnswer={this.state.isShowingAnswer}
+        />
         {!this.state.isShowingAnswer ? (
-          <Hero startApp={this.startApp} isShowingQuestions={this.state.isShowingQuestions} />
+          <Hero
+            startApp={this.startApp}
+            isShowingQuestions={this.state.isShowingQuestions}
+          />
         ) : (
           <div>
             <Answer {...this.state} />
@@ -362,7 +388,8 @@ class Index extends Component {
 
         <div
           id="questionsContainer"
-          className={`w-100 center ${this.state.isShowingQuestions && 'pt5 pb6'} `}
+          className={`w-100 center ${this.state.isShowingQuestions &&
+            "pt5 pb6"} `}
           style={{ backgroundColor: colors.lightGray }}
         >
           {this.state.isShowingQuestions && (

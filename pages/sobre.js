@@ -30,7 +30,7 @@ class Index extends Component {
         <NavBar />
         <div
           style={{ backgroundColor: colors.white, color: colors.darkBrown }}
-          className="w-100 pa5-ns pa4 pv6 tl"
+          className="w-100 ph5-ns ph4 pb6 pt0-ns pt3 mt0 tl"
         >
           <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
             <h1

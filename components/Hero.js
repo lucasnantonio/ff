@@ -6,12 +6,12 @@ import colors from "./Colors";
 const Hero = props => (
   <div
     id="hero"
-    style={{ backgroundColor: "skyblue" }}
-    className="vh-100 pa0-l ph3"
+    style={{ backgroundColor: "#CCEEFD" }}
+    className="h-100 pt0-l pt5 ph3"
   >
     <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5">
       <div className="w-50-ns w-100 tl-ns tc mb5-ns">
-        <h1 className="black-80 f2-ns f3 lh-solid normal mt0 b">
+        <h1 className="black-80 f2-ns f3 lh-solid normal mt0 mb0 mb3-ns b">
           Descubra quando você será livre financeiramente.
         </h1>
         <p
@@ -29,7 +29,7 @@ const Hero = props => (
           {!props.isShowingQuestions && (
             <button
               style={{
-                backgroundColor: "#ffe252",
+                backgroundColor: "#F7CBDC",
                 color: "black",
                 fontFamily: "Chocolate Bold, system-ui, sans-serif"
               }}
