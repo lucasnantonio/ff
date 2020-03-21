@@ -360,7 +360,7 @@ class Index extends Component {
 
   render() {
     return (
-      <div id="pageWrapper" className="center vh-100 flex flex-column">
+      <div id="pageWrapper" className="center vh-100">
         <Header title="Aposentar.me" />
         <NavBar
           resetApp={this.resetApp}
@@ -388,7 +388,8 @@ class Index extends Component {
 
         <div
           id="questionsContainer"
-          className={`w-100 center`}
+          className={`w-100 center ${this.state.isShowingQuestions &&
+            "pt5 pb6"} `}
           style={{ backgroundColor: colors.lightGray }}
         >
           {this.state.isShowingQuestions && (

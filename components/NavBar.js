@@ -7,12 +7,17 @@ import colors from "./Colors";
 const NavBar = props => (
   <div
     style={{ background: "#ECF8FE" }}
-    className="white f5 ph4 pv3-ns pv2 w-100 ph4"
+    className="white f5 ph4 pv3-ns pv2 w-100 ph4 z-max"
   >
     <div className="flex mw7 center justify-between">
       <Link href="/">
         <button
-          onClick={() => (props.isShowingAnswer ? props.resetApp() : null)}
+          onClick={() =>
+            // props.isShowingAnswer || props.isShowingQuestions
+            //   ? props.resetApp()
+            //   : null
+            props.resetApp()
+          }
           className="bn bg-transparent b pointer link white ph0"
         >
           <Logo isShowingAnswer={props.isShowingAnswer} />
