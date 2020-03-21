@@ -22,7 +22,7 @@ class OutPutContainer extends Component {
           className={"ph0-ns ph4 pb5"}
         >
           {this.props.isShowingAnswer && (
-            <div className="flex flex-row-ns flex-column mt0-ns pv5-l pt5 pb0 mw7 center ">
+            <div className="flex flex-row-ns flex-column mt0-ns pv5-l pt3 pb0 mw7 center ">
               <div className="w-100 f3-ns f5 tl-ns tc self-center pr5-ns pr0">
                 <RetirementSummary
                   myLifeExpectancy={this.props.myLifeExpectancy}
