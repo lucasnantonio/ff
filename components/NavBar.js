@@ -12,7 +12,7 @@ const NavBar = props => (
     <div className="flex mw7 center justify-between">
       <Link href="/">
         <button
-          onClick={() => props.resetApp()}
+          onClick={() => (props.isShowingAnswer ? props.resetApp() : null)}
           className="bn bg-transparent b pointer link white ph0"
         >
           <Logo isShowingAnswer={props.isShowingAnswer} />
