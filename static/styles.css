@@ -21,3 +21,10 @@ h1,
 .chocolate-bold {
   font-family: "Chocolate Bold" !important;
 }
+
+html * {
+  font-size: 18px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  color: ${colors.darkBrown};
+}

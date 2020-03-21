@@ -26,11 +26,9 @@ class Index extends Component {
   render() {
     return (
       <div>
-        <Header title="Sobre" />
-        <NavBar />
         <div
           style={{ backgroundColor: colors.white, color: colors.darkBrown }}
-          className="w-100 pa5-ns pa4 pv6 tl"
+          className="w-100 ph4 tl"
         >
           <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
             <h1

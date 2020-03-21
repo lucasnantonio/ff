@@ -4,8 +4,8 @@ import Link from "next/link";
 const Hero = props => (
   <div
     id="hero"
-    style={{ backgroundColor: "skyblue" }}
-    className="vh-100 pa0-l ph3"
+    style={{ backgroundColor: "rgb(196, 239, 255)" }}
+    className="flex h-100 ph3"
   >
     <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pb5">
       <div className="w-50-ns w-100 tl-ns tc mb5-ns">
@@ -22,7 +22,7 @@ const Hero = props => (
         <Link href="/calculadora">
           <button
             style={{
-              backgroundColor: "#ffe252",
+              backgroundColor: "#ffc8dc",
               color: "black",
               fontFamily: "Chocolate Bold, system-ui, sans-serif"
             }}
