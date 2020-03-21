@@ -3,8 +3,8 @@ import Link from "next/link";
 import colors from "./Colors";
 
 const DonationCall = () => (
-  <div className="flex flex-column mr2 mt0-l mt4">
-    <p style={{ color: colors.mediumGray }} className="f6 tc">
+  <div className="flex flex-column mr2 mt0-l mt4 pa3 ba bw1 b--near-white br4">
+    <p style={{ color: colors.mediumGray }} className="f6 tc mt0">
       Colabore
     </p>
     <Link href="/sobre">

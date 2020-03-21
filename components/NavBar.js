@@ -13,10 +13,9 @@ const NavBar = props => (
       <Link href="/">
         <button
           onClick={() =>
-            // props.isShowingAnswer || props.isShowingQuestions
-            //   ? props.resetApp()
-            //   : null
-            props.resetApp()
+            props.isShowingAnswer || props.isShowingQuestions
+              ? props.resetApp()
+              : null
           }
           className="bn bg-transparent b pointer link white ph0"
         >
