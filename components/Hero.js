@@ -20,7 +20,7 @@ const Hero = props => (
             <h1 className="black-80 f2-ns f3 lh-title normal mt0 mb0 mb3-ns b mh0-ns mh3">
               Descubra quando você será livre financeiramente.
             </h1>
-            <p className="measure lh-copy f5 dib-ns dn black-50">
+            <p className="measure lh-copy f5 black-50 mh0-ns mh3 mt0-ns mt3 measure-ns measure-narrow center">
               Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu
               sossego no futuro.
             </p>
