@@ -29,10 +29,10 @@ class Index extends Component {
         <Header title="Sobre" />
         <NavBar />
         <div
-          style={{ backgroundColor: colors.white, color: colors.darkBrown }}
-          className="w-100 ph5-ns ph4 pb6 pt0-ns mt0 tl"
+          style={{ backgroundColor: "#f7f7f7", color: colors.darkBrown }}
+          className="w-100 ph5-ns ph4 pb6 tl pt5"
         >
-          <div className="mw7 flex flex-row-l flex-column center justify-between mt5-ns mt0">
+          <div className="mw7 flex flex-row-l flex-column center justify-between">
             <h1
               className="normal f2 tracked-tight b"
               style={{
@@ -118,7 +118,7 @@ class Index extends Component {
                   </button>
                 </a>
               </div>
-              <div className="bt pt3 pb4 mt4 bb bw1 b--near-white">
+              <div className="bt pt3 pb4 mt4 bb bw1 b--black-10">
                 <h3 className="b chocolate">Inscreva-se na nossa newsletter</h3>
                 <Signup />
               </div>

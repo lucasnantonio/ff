@@ -16,12 +16,12 @@ const Hero = props => (
         className="h-100 ph3"
       >
         <div className="mw7-ns center flex flex-row-ns flex-column items-center justify-center h-100 pb0-ns pv5-ns pv4">
-          <div className="w-50-ns w-100 tl-ns tc mb5-ns">
+          <div className="w-60-ns w-100 tl-ns tc mb5-ns">
             <h1 className="black-80 f2-ns f3 lh-solid normal mt0 mb0 mb3-ns b">
               Descubra quando você será livre financeiramente.
             </h1>
             <p
-              className="measure-narrow lh-copy f5 dib-ns dn"
+              className="measure lh-copy f5 dib-ns dn"
               style={{ color: "rgba(0,0,0,.8)" }}
             >
               Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu
