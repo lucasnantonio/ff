@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import IntlCurrencyInput from './CurrencyInput';
-import MinusBtn from './MinusBtn';
-import PlusBtn from './PlusBtn';
-import InputLabel from './InputLabel';
-import InputFieldWrapper from './InputFieldWrapper';
-import PigFeedback from './PigFeedback';
-import colors from './Colors';
+import React, { Component } from "react";
+import IntlCurrencyInput from "./CurrencyInput";
+import MinusBtn from "./MinusBtn";
+import PlusBtn from "./PlusBtn";
+import InputLabel from "./InputLabel";
+import InputFieldWrapper from "./InputFieldWrapper";
+import PigFeedback from "./PigFeedback";
+import colors from "./Colors";
 
 const currencyConfig = {
-  locale: 'pt-BR',
+  locale: "pt-BR",
   formats: {
     number: {
       BRL: {
-        style: 'currency',
-        currency: 'BRL',
+        style: "currency",
+        currency: "BRL",
         minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
-      },
-    },
-  },
+        maximumFractionDigits: 2
+      }
+    }
+  }
 };
 
 class InputField extends Component {
@@ -28,7 +28,7 @@ class InputField extends Component {
       isHovered: false,
       isFocused: false,
       isEmpty: true,
-      hasBeenChanged: false,
+      hasBeenChanged: false
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleCurrencyInput = this.handleCurrencyInput.bind(this);
@@ -42,14 +42,14 @@ class InputField extends Component {
     const { value } = e.target;
     this.props.handleInput(e, value);
     this.setState({
-      hasBeenChanged: true,
+      hasBeenChanged: true
     });
   }
 
   handleCurrencyInput(e, floatValue) {
     this.props.handleInput(e, floatValue);
     this.setState({
-      hasBeenChanged: true,
+      hasBeenChanged: true
     });
   }
 
@@ -65,20 +65,24 @@ class InputField extends Component {
     event.target.select();
 
     this.setState({
-      isFocused: true,
+      isFocused: true
     });
     if (this.props.hasTips) this.props.setFocusedInput(this.props.id);
   }
 
   handleIncrement(e) {
-    const input = e.target.parentElement.parentElement.querySelectorAll('input')[0];
+    const input = e.target.parentElement.parentElement.querySelectorAll(
+      "input"
+    )[0];
     input.stepUp();
     input.focus();
     this.props.handleInputButtons(e);
   }
 
   handleDecrement(e) {
-    const input = e.target.parentElement.parentElement.querySelectorAll('input')[0];
+    const input = e.target.parentElement.parentElement.querySelectorAll(
+      "input"
+    )[0];
     input.stepDown();
     input.focus();
     this.props.handleInputButtons(e);
@@ -88,22 +92,25 @@ class InputField extends Component {
     if (e.target.value.length !== 0) {
       this.setState({
         isEmpty: false,
-        isFocused: true,
+        isFocused: true
       });
     } else {
       this.setState({
         isFocused: false,
-        isEmpty: true,
+        isEmpty: true
       });
     }
   }
 
   render() {
     return (
-      <InputFieldWrapper hiddenBorder={this.props.hiddenBorder} className="w-100">
+      <InputFieldWrapper
+        hiddenBorder={this.props.hiddenBorder}
+        className="w-100"
+      >
         <div className="flex w-100">
           <InputLabel id={this.props.id} label={this.props.label} />
-          <div className={'flex w-100 justify-end'}>
+          <div className={"flex w-100-ns w-60 justify-end"}>
             {this.props.hasSteppers && (
               <button
                 className="pointer flex items-center ba0 bg-transparent"
@@ -113,7 +120,7 @@ class InputField extends Component {
               </button>
             )}
             {!this.props.isCurrency ? (
-              <div className="flex items-center w-100 justify-end">
+              <div className="flex items-center w-100-ns w-40 justify-end">
                 <input
                   required
                   maxLength={this.props.maxLength}
@@ -121,7 +128,7 @@ class InputField extends Component {
                   pattern="[0-9]*"
                   data-type={this.props.dataType}
                   value={this.props.value}
-                  className={'bn pa2 br2 bg-transparent f4-ns f5 tr w3'}
+                  className={"bn pa2 br2 bg-transparent f4-ns f5 tr w3"}
                   min={this.props.min}
                   max={this.props.max}
                   onFocus={e => this.handleFocus(e)}
@@ -138,7 +145,9 @@ class InputField extends Component {
             ) : (
               <IntlCurrencyInput
                 className={`${
-                  this.props.value === 0 && !this.props.acceptZero ? 'black-20' : 'black'
+                  this.props.value === 0 && !this.props.acceptZero
+                    ? "black-20"
+                    : "black"
                 } bn w-100 bg-transparent f4-ns f5 tr`}
                 defaultValue={this.props.placeholder}
                 min={this.props.min}

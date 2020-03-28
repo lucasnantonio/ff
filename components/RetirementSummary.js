@@ -21,7 +21,7 @@ class RetirementSummary extends Component {
         <h1 className="f2-l f3 lh-solid b mb4">
           Aos&nbsp;
           <span
-            className="f2-l f3 lh-solid b"
+            className="f2-l f3 lh-solid fw9"
             style={{ color: colors.darkGreen }}
           >
             {y} anos
