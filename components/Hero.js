@@ -15,7 +15,7 @@ const Hero = props => (
         // style={{ backgroundColor: "#CCEEFD" }}
         className="h-100 ph3-ns"
       >
-        <div className="mw7-ns ph4-ns center flex items-center pv4-ns pt4 flex-row-ns flex-column tl-ns tc">
+        <div className="mw7-ns ph4-ns center flex items-center pt4-ns pb5-ns pt4 flex-row-ns flex-column tl-ns tc">
           <div className="w-100 mr3-ns mr0 ph0-ns ph3">
             <h1 className="black-80 f2-ns f3 lh-solid mt0 mb0 mb3-ns b mh0-ns fw6">
               Descubra quando você será livre financeiramente.
