@@ -35,10 +35,7 @@ class Logo extends Component {
           <circle cx="20.5" cy="23.5" r="1.5" fill={colors.mediumPink} />
           {/* <circle cx="152" cy="24" r="2" fill={this.getColor()} /> */}
         </svg>
-        <span
-          style={{ marginLeft: "-1rem" }}
-          className="black-80 f7 chocolate-bold"
-        >
+        <span style={{ marginLeft: "-1rem" }} className="black-80 f6 fw8">
           Aposentar.me
         </span>
       </div>

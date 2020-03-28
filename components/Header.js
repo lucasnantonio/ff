@@ -12,7 +12,7 @@ const Header = props => (
     <meta charset="utf-8" />
     <title>{props.title}</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Nunito:400,600"
+      href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,900"
       rel="stylesheet"
     />
 
@@ -113,119 +113,6 @@ const Header = props => (
       content="../static/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#ffffff" />
-    <style>
-      {`
-        html,
-        html * {
-          font-size: 18px;
-          font-family: 'Nunito', sans-serif;
-          font-weight: 400;
-          color: ${colors.darkBrown};
-        }
-        ::-webkit-scrollbar {
-          width: 0px; /* remove scrollbar space */
-          background: transparent; /* optional: just make scrollbar invisible */
-        }
-        .ba0 {
-          border: 0px;
-        }
-        .l0 {
-          left: 0;
-        }
-        .r0 {
-          right: 0;
-        }
-        .h0 {
-          height: 0;
-        }
-        ::selection {
-          color: white;
-          background-color: ${colors.redPink};
-          opacity: 1;
-        }
-        .noSelect {
-          -webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-        .showing {
-          opacity: 1;
-        }
-        .hidden {
-          opacity: 0;
-        }
-        .absolute-bottom {
-          bottom: 4rem;
-          right: 0;
-        }
-        .absolute-top {
-          right: 0;
-          top: 4rem;
-        }
-        .mt-negative {
-          margin-top: -5rem;
-        }
-        input {
-          outline: none;
-          caret-color: ${colors.redPink};
-          caret-width: 2px;
-        }
-        input {
-          outline: none;
-        }
-        input:focus::-webkit-input-placeholder
-        {
-            color: transparent;
-        }
-        input:focus::-moz-placeholder {
-          /* Firefox 19+ */
-          color: transparent;
-        }
-        input:focus:::-ms-input-placeholder {
-          /* IE 10+ */
-          color: transparent;
-        }
-        input:focus::-moz-placeholder {
-          /* Firefox 18- */
-          color: transparent;
-        }
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          /* display: none; <- Crashes Chrome on hover */
-          -webkit-appearance: none;
-          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-        input::-webkit-input-placeholder {
-          /* Chrome/Opera/Safari */
-          color: rbga(0, 0, 0, 0.1);
-        }
-        input::-moz-placeholder {
-          /* Firefox 19+ */
-          color: rbga(0, 0, 0, 0.1);
-        }
-        input:-ms-input-placeholder {
-          /* IE 10+ */
-          color: rbga(0, 0, 0, 0.1);
-        }
-        input:-moz-placeholder {
-          /* Firefox 18- */
-          color: rbga(0, 0, 0, 0.1);
-        }
-        .checkmark {
-          transition: all 0.2s;
-        }
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          /* display: none; <- Crashes Chrome on hover */
-          -webkit-appearance: none;
-          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-        button:focus{outline: none;}
-      `}
-    </style>
   </Head>
 );
 

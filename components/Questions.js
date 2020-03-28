@@ -121,7 +121,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div className={"mw7-ns ph0-l ph4 mb5 center"}>
+      <div className={"mw7-ns mb5 center bg-white ph5 pv3 mt4 br4"}>
         {this.props.isShowingAnswer && (
           <QuestionTabs
             isShowingAnswer={this.props.isShowingAnswer}

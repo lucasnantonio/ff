@@ -7,7 +7,7 @@ import colors from "./Colors";
 const NavBar = props => (
   <div
     style={{ background: "#fff" }}
-    className="white f5 ph4 pv3-ns pv2 w-100 ph4 z-max"
+    className="white f5 ph4 pv3-ns pv2 w-100 ph4 z-max bb bw1 b--near-white"
   >
     <div className="flex mw7 center justify-between">
       <Link href="/">

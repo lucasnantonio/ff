@@ -13,12 +13,12 @@ const Signup = () => (
       noValidate
     >
       <div id="mc_embed_signup_scroll" className="flex flex-row-l flex-column">
-        <div className="mc-field-group w-100">
+        <div className="mc-field-group w-100 ">
           <input
             type="email"
             placeholder="email@gmail.com"
             name="EMAIL"
-            className="required email bg-white pa3 black-80 bn br-pill mr2 w-100 tl-l tc"
+            className="required email bg-near-white pa3 black-80 bn br-pill mr2 w-100 tl-l tc"
             id="mce-EMAIL"
           />
         </div>

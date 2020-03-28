@@ -22,7 +22,7 @@ class RetirementSummary extends Component {
           Aos&nbsp;
           <span
             className="f2-l f3 lh-solid b"
-            style={{ color: colors.darkGreen, fontFamily: "Chocolate" }}
+            style={{ color: colors.darkGreen }}
           >
             {y} anos
           </span>

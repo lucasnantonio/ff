@@ -389,27 +389,27 @@ class Index extends Component {
         <div
           id="questionsContainer"
           className={`w-100 center ${this.state.isShowingQuestions && "pb6"} `}
-          style={{ backgroundColor: colors.lightGray }}
+          style={{ backgroundColor: "#CFF6FF" }}
         >
-          {this.state.isShowingQuestions && (
-            <Questions
-              {...this.state}
-              isShowingAnswer={this.state.isShowingAnswer}
-              startApp={this.startApp}
-              handleShowAnswer={this.handleShowAnswer}
-              handleResetRates={this.handleResetRates}
-              handleInput={this.handleInput}
-              handleInputButtons={this.handleInputButtons}
-              handleCurrencyInput={this.handleCurrencyInput}
-              handleTableInput={this.handleTableInput}
-              handleAddTableRow={this.handleAddTableRow}
-              handleRemoveTableRow={this.handleRemoveTableRow}
-              handleInvestmentSelector={this.handleInvestmentSelector}
-              handleInvestmentRateInput={this.handleInvestmentRateInput}
-              setFocusedInput={this.setFocusedInput}
-              handleWalletInput={this.handleWalletInput}
-            />
-          )}
+          {/* {this.state.isShowingQuestions && ( */}
+          <Questions
+            {...this.state}
+            isShowingAnswer={this.state.isShowingAnswer}
+            startApp={this.startApp}
+            handleShowAnswer={this.handleShowAnswer}
+            handleResetRates={this.handleResetRates}
+            handleInput={this.handleInput}
+            handleInputButtons={this.handleInputButtons}
+            handleCurrencyInput={this.handleCurrencyInput}
+            handleTableInput={this.handleTableInput}
+            handleAddTableRow={this.handleAddTableRow}
+            handleRemoveTableRow={this.handleRemoveTableRow}
+            handleInvestmentSelector={this.handleInvestmentSelector}
+            handleInvestmentRateInput={this.handleInvestmentRateInput}
+            setFocusedInput={this.setFocusedInput}
+            handleWalletInput={this.handleWalletInput}
+          />
+          {/* )} */}
         </div>
       </div>
     );

@@ -29,7 +29,7 @@ class Index extends Component {
         <Header title="Sobre" />
         <NavBar />
         <div
-          style={{ backgroundColor: "#f7f7f7", color: colors.darkBrown }}
+          style={{ backgroundColor: "white", color: colors.darkBrown }}
           className="w-100 ph5-ns ph4 pb6 tl pt5"
         >
           <div className="mw7 flex flex-row-l flex-column center justify-between">
@@ -40,7 +40,7 @@ class Index extends Component {
                 fontFamily: "Nunito, system-ui, sans-serif"
               }}
             >
-              sobre
+              Sobre
             </h1>
             <div className="flex flex-column pt4">
               <p className="measure lh-copy normal mt0">
