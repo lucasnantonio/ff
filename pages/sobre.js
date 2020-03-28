@@ -32,7 +32,7 @@ class Index extends Component {
           style={{ backgroundColor: "white", color: colors.darkBrown }}
           className="w-100 ph5-ns ph4 pb6 tl pt5"
         >
-          <div className="mw7 flex flex-row-l flex-column center justify-between">
+          <div className="mw7 ph4-ns flex flex-row-l flex-column center justify-between">
             <h1
               className="normal f2 tracked-tight b"
               style={{

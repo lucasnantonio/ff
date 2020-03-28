@@ -388,10 +388,9 @@ class Index extends Component {
 
         <div
           id="questionsContainer"
-          className={`w-100 center ph0-ns ph2`}
+          className={`w-100 center ph0-ns ph3`}
           style={{ backgroundColor: "#CFF6FF" }}
         >
-          {/* {this.state.isShowingQuestions && ( */}
           <Questions
             {...this.state}
             isShowingAnswer={this.state.isShowingAnswer}
@@ -409,7 +408,6 @@ class Index extends Component {
             setFocusedInput={this.setFocusedInput}
             handleWalletInput={this.handleWalletInput}
           />
-          {/* )} */}
         </div>
       </div>
     );

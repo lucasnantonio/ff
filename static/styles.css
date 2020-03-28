@@ -56,7 +56,6 @@ h1 {
 }
 input {
   outline: none;
-  caret-width: 2px;
 }
 input {
   outline: none;
@@ -68,7 +67,7 @@ input:focus::-moz-placeholder {
   /* Firefox 19+ */
   color: transparent;
 }
-input:focus:::-ms-input-placeholder {
+input:focus::-ms-input-placeholder {
   /* IE 10+ */
   color: transparent;
 }

@@ -15,12 +15,12 @@ const Hero = props => (
         // style={{ backgroundColor: "#CCEEFD" }}
         className="h-100 ph3-ns"
       >
-        <div className="mw7-ns center flex items-center pv4-ns pt4 flex-row-ns flex-column tl-ns tc">
+        <div className="mw7-ns ph4-ns center flex items-center pv4-ns pt4 flex-row-ns flex-column tl-ns tc">
           <div className="w-100 mr3-ns mr0 ph0-ns ph3">
             <h1 className="black-80 f2-ns f3 lh-solid mt0 mb0 mb3-ns b mh0-ns fw6">
               Descubra quando você será livre financeiramente.
             </h1>
-            <p className="measure lh-copy f5 black-50 mh0-ns mh3 mt0-ns mt3 measure-ns measure-narrow center mb3-ns mb0">
+            <p className="measure lh-copy f5-ns black-80 mh0-ns mh3 mt0-ns mt3 pt3 measure-ns measure-narrow center mb3-ns mb0">
               Começar hoje, mesmo com pouco, é o melhor jeito de garantir seu
               sossego no futuro.
             </p>

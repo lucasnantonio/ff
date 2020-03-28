@@ -12,7 +12,7 @@ const DonationCall = () => (
         style={{ backgroundColor: colors.darkGreen }}
         className="pv2-ns ph3-ns pa3 br-pill white f7-ns f5 self-start-ns fl-ns tl-ns tc pointer"
       >
-        Faça uma doação
+        Doe R$
       </div>
     </Link>
   </div>

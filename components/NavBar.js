@@ -9,7 +9,7 @@ const NavBar = props => (
     style={{ background: "#fff" }}
     className="white f5 ph4 pv3-ns pv2 w-100 ph4 z-max bb bw1 b--near-white"
   >
-    <div className="flex mw7 center justify-between">
+    <div className="flex mw7 ph4-ns center justify-between">
       <Link href="/">
         <button
           onClick={() =>
@@ -26,7 +26,7 @@ const NavBar = props => (
         <a
           style={{ transition: "all .2s" }}
           href="#"
-          className="f7 link black-40 hover-black pointer pa3 br-pill chocolate-bold"
+          className="fw9 f7 link black-40 hover-black pointer pa3-ns pv3 br-pill chocolate-bold"
         >
           Sobre
         </a>

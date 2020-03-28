@@ -121,9 +121,7 @@ class InputContainer extends Component {
 
   render() {
     return (
-      <div
-        className={"mw7-ns mb5 center bg-white ph5-ns ph4 pv3 mt4-ns mt2 br4"}
-      >
+      <div className={"mw7-ns center bg-white ph4 pv3 mv4-ns mv3 br4"}>
         {this.props.isShowingAnswer && (
           <QuestionTabs
             isShowingAnswer={this.props.isShowingAnswer}
@@ -230,16 +228,18 @@ class InputContainer extends Component {
                       component="div"
                       transitionName="slideInBottom"
                     >
-                      <button
-                        type="submit"
-                        form="basicquestions"
-                        disabled={!this.canSubmit()}
-                        style={{ backgroundColor: colors.redPink }}
-                        className="f3 fixed l0 r0 bottom-0 pv4 w-100 white ba0 pointer center"
-                        onClick={this.props.handleShowAnswer}
-                      >
-                        Calcular
-                      </button>
+                      <div className="w-100 flex center ">
+                        <button
+                          type="submit"
+                          form="basicquestions"
+                          disabled={!this.canSubmit()}
+                          style={{ backgroundColor: colors.redPink }}
+                          className="f3 fw9 pv3 ph4 br-pill white ba0 pointer center"
+                          onClick={this.props.handleShowAnswer}
+                        >
+                          Calcular
+                        </button>
+                      </div>
                     </CSSTransitionGroup>
                   )}
               </form>
