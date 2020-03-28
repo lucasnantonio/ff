@@ -109,3 +109,8 @@ input::-webkit-inner-spin-button {
 button:focus {
   outline: none;
 }
+@media (max-width: 750px) {
+  .pigAnimation {
+    pointer-events: none;
+  }
+}
