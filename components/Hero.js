@@ -33,14 +33,17 @@ const Hero = props => (
             </div>
           </div>
           <div className="w-100">
-            <iframe
+            {/* <iframe
               id="d0e763cb-faed-49a2-9e5e-8ed9524593ce"
               src="https://www.vectary.com/viewer/v1/?model=d0e763cb-faed-49a2-9e5e-8ed9524593ce&env=theskyisonfire&turntable=0.3&showInteractionPrompt=0"
               frameborder="0"
               width="100%"
               // height="480"
               className="vh-50-ns vh-50 pigAnimation"
-            ></iframe>
+            ></iframe> */}
+                  <img
+        src={'../static/pig-pool.png'}
+      />
           </div>
         </div>
         <style jsx>
