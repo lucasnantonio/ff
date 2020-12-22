@@ -1,7 +1,4 @@
 import React from "react";
-import CSSTransitionGroup from "react-addons-css-transition-group";
-import PigAnimated from "./PigAnimated";
-import colors from "./Colors";
 import { motion, AnimatePresence } from "framer-motion";
 import FreeBadge from "./FreeBadge";
 
