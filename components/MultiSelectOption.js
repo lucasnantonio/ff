@@ -23,7 +23,7 @@ class MultiSelectOption extends Component {
           htmlFor={`radio${this.props.label}`}
           onClick={e => this.props.handleClick(e, this.props.index)}
           className={`pa3 br-pill mr2 f7 mb0-l mb2 dib w-auto-l w-100 ${
-            this.props.isEnabled ? 'pointer' : 'black-90'
+            this.props.isEnabled ? 'pointer' : 'black-90 disabled'
           }`}
         >
           {this.props.label}
@@ -33,6 +33,9 @@ class MultiSelectOption extends Component {
             label {
               display: inline-block;
               border: 2px solid ${colors.lightGray2};
+            }
+            label.disabled {
+              color: rgba(0, 0, 0,.2);
             }
             input[type="radio"]:focus+label {
               background-color: ${colors.lightGray2}
