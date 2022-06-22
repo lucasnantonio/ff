@@ -5157,8 +5157,8 @@ module-deps@^4.0.8:
     xtend "^4.0.0"
 
 moment@^2.10.2, moment@^2.11.2:
-  version "2.22.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+  version "2.29.3"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.3.tgz#edd47411c322413999f7a5940d526de183c031f3"
 
 morgan@~1.6.1:
   version "1.6.1"
