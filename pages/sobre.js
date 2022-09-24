@@ -37,7 +37,7 @@ class Index extends Component {
               className="normal f2 tracked-tight b"
               style={{
                 color: colors.black,
-                fontFamily: "Nunito, system-ui, sans-serif"
+                fontFamily: "Nunito, system-ui, sans-serif",
               }}
             >
               Sobre
@@ -48,78 +48,12 @@ class Index extends Component {
                 planejamento financeiro pode ser mais divertida, acessível,
                 educativa, e transparente.
               </p>
-              <h3 className="b mt4 chocolate">Faça uma doação 🐷 </h3>
-              <p className="measure lh-copy">
-                O aposentar.me é fruto do esforço de dois amigos, muito
-                trabalho, café, noites mal dormidas e investimentos do próprio
-                bolso. Considere fazer uma doação para manter o projeto vivo.
-                Juntos, podemos ajudar muita gente a entender seu futuro
-                financeiro.
-              </p>
-              <div className="flex flex-row-ns flex-column w-100 justify-center mt4">
-                <a
-                  target="_blank"
-                  href="https://nubank.com.br/pagar/9/cx4IwcOlys"
-                >
-                  <button
-                    style={{ backgroundColor: colors.darkGreen }}
-                    className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
-                    onClick={() => handleClick(1)}
-                  >
-                    R$1,00
-                  </button>
-                </a>
-                <a
-                  target="_blank"
-                  href="https://nubank.com.br/pagar/9/zYodSW0aMz"
-                >
-                  <button
-                    style={{ backgroundColor: colors.darkGreen }}
-                    className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
-                    onClick={() => handleClick(5)}
-                  >
-                    R$5,00
-                  </button>
-                </a>
-                <a
-                  target="_blank"
-                  href="https://nubank.com.br/pagar/9/a62eLbpvFE"
-                >
-                  <button
-                    style={{ backgroundColor: colors.darkGreen }}
-                    className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
-                    onClick={() => handleClick(25)}
-                  >
-                    R$25,00
-                  </button>
-                </a>
-                <a
-                  target="_blank"
-                  href="https://nubank.com.br/pagar/9/Rmk77MkcvW"
-                >
-                  <button
-                    style={{ backgroundColor: colors.darkGreen }}
-                    className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
-                    onClick={() => handleClick(50)}
-                  >
-                    R$50,00
-                  </button>
-                </a>
-                <a
-                  target="_blank"
-                  href="https://nubank.com.br/pagar/9/8roiUAN3R3"
-                >
-                  <button
-                    style={{ backgroundColor: colors.darkGreen }}
-                    className="pa3 w-auto-ns w-100 bn f6 br-pill pointer white tc mr2 mb3"
-                    onClick={() => handleClick("x")}
-                  >
-                    Outro valor :)
-                  </button>
-                </a>
-              </div>
-              <div className="bt pt3 pb4 mt4 bb bw1 b--black-10">
-                <h3 className="b chocolate">Inscreva-se na nossa newsletter</h3>
+
+              <div className="pt3 pb4 bw1 b--black-10 bg-lightest-blue pa4 br4">
+                <h3 className="b chocolate">Aposentar.me 2.0 está vindo aí!</h3>
+                <p className="mb4">
+                  Inscreva-se para ficar sabendo do lançamento.
+                </p>
                 <Signup />
               </div>
               <h3 className="b mt5 chocolate">Contato</h3>

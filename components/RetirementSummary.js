@@ -3,12 +3,12 @@ import { formatAge } from "../utils/math";
 import DonationCall from "./DonationCall";
 import ShareCall from "./ShareCall";
 import colors from "./Colors";
-
+import Signup from "../components/Signup";
 class RetirementSummary extends Component {
   state = {};
 
-  getSelectedInvestmentIndex = array => {
-    const selectedItem = array.filter(item => item.isSelected);
+  getSelectedInvestmentIndex = (array) => {
+    const selectedItem = array.filter((item) => item.isSelected);
     return array.indexOf(selectedItem[0]);
   };
 
@@ -37,7 +37,7 @@ class RetirementSummary extends Component {
           <span className="chocolate">
             R$
             {this.props.myRetirementIncome.toLocaleString("pt-BR", {
-              maximumFractionDigits: 0
+              maximumFractionDigits: 0,
             })}{" "}
           </span>
           por mês até os {this.props.myLifeExpectancy}&nbsp;anos.
@@ -50,8 +50,11 @@ class RetirementSummary extends Component {
           ir até R$&nbsp;5645 por mês.
         </p>
         <div className="dn flex-ns mt4">
-          <DonationCall />
-          <ShareCall />
+          <div className="pt3 pb4 bw1 b--black-10 bg-lightest-blue pa4 br4">
+            <h3 className="b chocolate">Aposentar.me 2.0 está vindo aí!</h3>
+            <p className="mb4">Inscreva-se para ficar sabendo do lançamento.</p>
+            <Signup />
+          </div>
         </div>
       </div>
     );
