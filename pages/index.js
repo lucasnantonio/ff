@@ -10,12 +10,13 @@ import NavBar from "../components/NavBar";
 import colors from "../components/Colors";
 import { getRetirementResults, getStudyCasesResults } from "../utils/math";
 import { isNumber, valueByInputType } from "../utils/input";
+import Signup from "../components/Signup";
 
 function getRates(label) {
   return {
     poupança: 1.5,
     "renda fixa": 4.5,
-    "renda variável": 7.0
+    "renda variável": 7.0,
   }[label];
 }
 
@@ -36,42 +37,42 @@ class Index extends Component {
       myWallet: [
         {
           label: "poupança",
-          allocation: 0
+          allocation: 0,
         },
         {
           label: "renda fixa",
-          allocation: 0
+          allocation: 0,
         },
         {
           label: "renda variável",
-          allocation: 0
-        }
+          allocation: 0,
+        },
       ],
       myInvestments: [
         {
           label: "poupança",
           rate: getRates("poupança"),
           isSelected: false,
-          isWallet: false
+          isWallet: false,
         },
         {
           label: "renda fixa",
           rate: getRates("renda fixa"),
           isSelected: false,
-          isWallet: false
+          isWallet: false,
         },
         {
           label: "renda variável",
           rate: getRates("renda variável"),
           isSelected: false,
-          isWallet: false
+          isWallet: false,
         },
         {
           // just a placeholder, not a real investment
           label: "carteira mista",
           isSelected: false,
-          isWallet: true
-        }
+          isWallet: true,
+        },
       ],
       studyCases: [
         // {
@@ -107,12 +108,12 @@ class Index extends Component {
         {
           label: "",
           age: 0,
-          cost: "0"
-        }
+          cost: "0",
+        },
       ],
       retirementResults: false,
       studyCasesResults: false,
-      focusedInput: ""
+      focusedInput: "",
     };
   }
 
@@ -155,16 +156,16 @@ class Index extends Component {
     this.setState({
       isShowingAnswer: false,
       isShowingQuestions: false,
-      selectedInvestment: false
+      selectedInvestment: false,
     });
   };
 
   assembleStudyCases() {
     // update studyCases with user input
-    const studyCases = this.state.studyCases.map(item =>
+    const studyCases = this.state.studyCases.map((item) =>
       Object.assign(
         {},
-        ...Object.keys(item).map(key => {
+        ...Object.keys(item).map((key) => {
           if (key === "label") {
             return { [key]: item[key] };
           }
@@ -191,10 +192,9 @@ class Index extends Component {
     this.setState({ [id]: value === "" ? 0 : parseFloat(value) });
   };
 
-  handleInputButtons = e => {
-    const parentNode = e.target.parentNode.parentNode.querySelectorAll(
-      "input"
-    )[0];
+  handleInputButtons = (e) => {
+    const parentNode =
+      e.target.parentNode.parentNode.querySelectorAll("input")[0];
     const parentId = parentNode.id;
     const parentValue = parentNode.value;
     this.setState({ [parentId]: parseFloat(parentValue) });
@@ -203,7 +203,7 @@ class Index extends Component {
   handleStudyCaseInput = (e, floatValue, studyCaseLabel) => {
     const { id, type, checked, value } = e.target;
 
-    const studyCases = this.state.studyCases.map(item => {
+    const studyCases = this.state.studyCases.map((item) => {
       if (
         item.label === studyCaseLabel ||
         (item.label === "optimized" && id in item)
@@ -211,7 +211,7 @@ class Index extends Component {
         // optimized case will mirror the other study cases values
         return {
           ...item,
-          [id]: valueByInputType(type, floatValue, value, checked)
+          [id]: valueByInputType(type, floatValue, value, checked),
         };
       }
       return item;
@@ -222,7 +222,7 @@ class Index extends Component {
 
   handleStudyCaseWallet = (e, floatValue, studyCaseLabel) => {
     const { id } = e.target;
-    const studyCases = this.state.studyCases.map(item => {
+    const studyCases = this.state.studyCases.map((item) => {
       if (
         item.label === studyCaseLabel ||
         (item.label === "optimized" && "myWallet" in item)
@@ -230,7 +230,7 @@ class Index extends Component {
         const myWallet = { ...item.myWallet, [id]: parseFloat(floatValue) };
         return {
           ...item,
-          myWallet
+          myWallet,
         };
       }
       return item;
@@ -238,13 +238,13 @@ class Index extends Component {
     this.setState({ studyCases });
   };
 
-  handleInvestmentRateInput = e => {
+  handleInvestmentRateInput = (e) => {
     const { id, value } = e.target;
-    const myInvestments = this.state.myInvestments.map(item => {
+    const myInvestments = this.state.myInvestments.map((item) => {
       if (item.label === id) {
         return {
           ...item,
-          rate: value
+          rate: value,
         };
       }
       return item;
@@ -255,9 +255,9 @@ class Index extends Component {
   assembleMyWallet(selectedInvestmentLabel) {
     // if some investment option is selected, allocate 100% in that investment
     // and 0 % for the others
-    const myWallet = this.state.myWallet.map(item => ({
+    const myWallet = this.state.myWallet.map((item) => ({
       ...item,
-      allocation: item.label === selectedInvestmentLabel ? 100 : 0
+      allocation: item.label === selectedInvestmentLabel ? 100 : 0,
     }));
 
     this.setState({ myWallet });
@@ -267,14 +267,14 @@ class Index extends Component {
     const investmentsState = this.state.myInvestments;
     const myInvestments = investmentsState.map((item, itemIndex) => ({
       ...item,
-      isSelected: index === itemIndex
+      isSelected: index === itemIndex,
     }));
 
     this.assembleMyWallet(myInvestments[index].label);
 
     this.setState({
       myInvestments,
-      selectedInvestment: true
+      selectedInvestment: true,
     });
 
     const investmentTip = document.getElementById("investmentTip");
@@ -286,9 +286,9 @@ class Index extends Component {
   };
 
   handleResetRates = () => {
-    const myInvestments = this.state.myInvestments.map(investment => ({
+    const myInvestments = this.state.myInvestments.map((investment) => ({
       ...investment,
-      rate: getRates(investment.label)
+      rate: getRates(investment.label),
     }));
 
     this.setState({ myInvestments });
@@ -299,11 +299,11 @@ class Index extends Component {
     const { id } = e.target;
     const value = floatValue === "" ? 0 : parseFloat(floatValue);
 
-    const myWallet = this.state.myWallet.map(item => {
+    const myWallet = this.state.myWallet.map((item) => {
       if (item.label === id) {
         return {
           ...item,
-          allocation: value
+          allocation: value,
         };
       }
       return item;
@@ -312,7 +312,7 @@ class Index extends Component {
     this.setState({ myWallet });
   };
 
-  setFocusedInput = inputId => {
+  setFocusedInput = (inputId) => {
     this.setState({ focusedInput: inputId });
   };
 
@@ -324,36 +324,36 @@ class Index extends Component {
         if (idx === pidx) {
           return {
             ...row,
-            [field]: textField ? value : parseFloat(value)
+            [field]: textField ? value : parseFloat(value),
           };
         }
         return row;
       });
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         [tableName]: updatedTable,
         retirementResults: getRetirementResults({
           ...prevState,
-          [tableName]: updatedTable
-        })
+          [tableName]: updatedTable,
+        }),
       }));
     }
   };
 
   handleAddTableRow = (tableName, fields) => () => {
     this.setState({
-      [tableName]: [...this.state[tableName], fields]
+      [tableName]: [...this.state[tableName], fields],
     });
     logEvent("User", "added life event");
   };
 
   handleRemoveTableRow = (idx, tableName, table) => () => {
     const updatedTable = table.filter((p, pidx) => idx !== pidx);
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       [tableName]: updatedTable,
       retirementResults: getRetirementResults({
         ...prevState,
-        [tableName]: updatedTable
-      })
+        [tableName]: updatedTable,
+      }),
     }));
     logEvent("User", "removed life event");
   };
